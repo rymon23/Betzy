@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
 
   helper_method :current_user, :logged_in?
 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless current_user
-      render json: { base: ["Invalid credentials"] } status: 401
+      render json: { base: ["Invalid credentials"] }, status: 401
     end
   end
 end
