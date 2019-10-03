@@ -6,5 +6,5 @@ export const enableModal = (modal) => {
 };
 
 export const disableModal = () => {
-    return { type: DISABLE_MODAL, modal};
+    return { type: DISABLE_MODAL };
 };

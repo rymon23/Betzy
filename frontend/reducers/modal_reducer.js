@@ -10,5 +10,5 @@ export default (oldState = null, action) => {
             return null;
         default:
             return oldState;
-    };
+    }
 };

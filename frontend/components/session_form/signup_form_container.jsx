@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { signup } from "../../actions/session_actions";
 import SessionForm from "./session_form";
+import { enableModal, disableModal } from "../../actions/modal_actions";
 
 const mapStateToProps = ({ errors }) => {
   return {
@@ -10,7 +11,7 @@ const mapStateToProps = ({ errors }) => {
     formType: "signup",
     formTitle: "Create your account",
     buttonType: "Register",
-    navLink: <Link to='/login'>Sign in</Link> 
+    // navLink: <Link to='/login'>Sign in</Link> 
   };
 };
 

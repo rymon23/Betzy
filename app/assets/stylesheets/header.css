@@ -1,0 +1,48 @@
+.logo-main {
+  font-weight: bolder;
+  color: crimson;
+  font-size: 48px;
+  padding: 15px;
+}
+nav {
+  float: right;
+  color: darkkhaki;
+  font-weight: bold;  
+}
+
+nav ul {
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+header {
+  background: rgb(94, 79, 79);
+}
+
+header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+header ul li {
+  float: left;
+  margin-right: 25px;
+}
+
+.cart-icon {
+  display: flex;
+  justify-content: left;
+  padding: 10px 0;
+	margin: 0 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+}

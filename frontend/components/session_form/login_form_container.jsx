@@ -11,9 +11,10 @@ const mapStateToProps = ({ errors }) => {
     formType: "login",
     formTitle: "Sign in to continue",
     buttonType: "Sign in",
-    navLink: <Link to='/signup'>Register</Link>
+    // navLink: <Link to='/signup'>Register</Link>
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     action: (user) => dispatch(login(user)),
