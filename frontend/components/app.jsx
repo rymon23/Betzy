@@ -11,11 +11,16 @@ import {
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import SignupFormContainer from "./session_form/signup_form_container";
 import LoginFormContainer from "./session_form/login_form_container";
+import MainNav from "./nav/main_nav_container";
+import Modal from "./modal/modal";
 
 const App = () => {
   return (
-    <div>
-      <header className="main-header">
+    <div className="app">
+      <Modal />
+      <MainNav />
+
+      {/* <header className="main-header">
         <div className="header-container">
           <Link to="/" className="header-link">
             <img src="./logo.png" alt="Betzy" className="logo" />
@@ -33,7 +38,7 @@ const App = () => {
             </ul>            
           </nav>      
         </div>
-      </header>
+      </header> */}
       <Switch>
         <AuthRoute exect path='/login' component={LoginFormContainer} />
         <AuthRoute exect path='/signup' component={SignupFormContainer} />

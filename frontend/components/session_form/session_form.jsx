@@ -18,8 +18,8 @@ class SessionForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const user = Object.assign({}, this.state )
-    this.props.action(user);  //.then(() => this.props.history.push('/'));
+    const user = Object.assign({}, this.state );
+    this.props.action(user).then(this.props.disableModel);
   }
 
   renderErrors(){
@@ -27,6 +27,20 @@ class SessionForm extends React.Component {
       return (<li key={`error-${ix}`}>{err}</li>)
     });
     return (<ul>{errors}</ul>)
+  }
+
+  formTitleText(){
+    const formType = this.props.formType;
+    if (formType === "signup"){
+      return "Create your account";
+    }else { return "Sign in to continue"};
+  }
+
+  formSubmitText() {
+    const formType = this.props.formType;
+    if (formType === "signup") {
+      return "Register";
+    } else { return "Sign in" };
   }
 
   render(){

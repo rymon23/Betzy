@@ -7,14 +7,17 @@ import SessionForm from "./session_form";
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
-    formType: "Create your account",
+    formType: "signup",
     buttonType: "Register",
     navLink: <Link to='/login'>Sign in</Link> 
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    action: (user)=> dispatch(signup(user))
+    action: (user) => dispatch(signup(user)),
+    enableModal: (<button onClick={() => dispatch(enableModal("login"))}>Sign in</button>),
+    disableModal: () => dispatch(disableModal()),
   };
 };
 
