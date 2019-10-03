@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CategoryForm from './category_form';
-import SearchForm from "../search/search";
-import { APP_NAME } from "../../util/config_util";
-const SELL_BUTTON_TEXT = `Sell on ${APP_NAME}`;
+
+const SELL_BUTTON_TEXT = "Sell on Betzy";
 
 class MainNav extends React.Component{
     constructor(props){
@@ -13,17 +12,13 @@ class MainNav extends React.Component{
         this.userAuthOptions = this.userAuthOptions.bind(this);
     }
 
-    navDisplay(){
-        return (this.props.currentUser) ? this.greetCurrentUser() : this.userAuthOptions()
-    }
-
-    navOptionsDisplay() {
+    navOptionsDisplay(){
         return (
             <div className="main-nav-options">
                 {(this.props.currentUser) ? this.greetCurrentUser() : this.userAuthOptions()}
-                <ul className="cart-icon">
-                    <li>[CART]</li>
-                </ul>
+                <div className="cart-icon">
+                    <ul><li>[CART ICON]</li></ul>
+                </div>
             </div>
         );
     }
@@ -68,10 +63,11 @@ class MainNav extends React.Component{
         return (
             <div className="main-nav-parent">
                 <nav className="nav-bar">
-                    <Link to="/" className="header-link logo">
-                        {APP_NAME}
-                    </Link>
-                    <SearchForm />
+                    <div>
+                        <Link to="/" className="header-link">
+                            <h1 className="logo">Betzy</h1>
+                        </Link>
+                    </div>
                     <div>
                         {this.navOptionsDisplay()}
                     </div>

@@ -28,26 +28,12 @@ class SessionForm extends React.Component {
     });
     return (<ul>{errors}</ul>)
   }
-
-  formTitleText(){
-    const formType = this.props.formType;
-    if (formType === "signup"){
-      return "Create your account";
-    }else { return "Sign in to continue"};
-  }
-
-  formSubmitText() {
-    const formType = this.props.formType;
-    if (formType === "signup") {
-      return "Register";
-    } else { return "Sign in" };
-  }
-
+  
   render(){
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <h1 className="form-title" >{this.props.formType}</h1>
+          <h1 className="form-title" >{this.props.formTitle}</h1>
           <div className="credentials-form">
             <br/>
             <label>Email address

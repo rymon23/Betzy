@@ -10,20 +10,25 @@ class CategoryForm extends React.Component {
         return (
             <div className="categories">
                 <nav className="nav-category">
-                    <button
-                        onClick={() => 
-                            this.props.history.push("/")}>
-                        Gear
-                    </button>
-                    <button>Games</button>
-                    <button>Mods</button>
-                    <button>Art</button>
-                    <button>Books</button>
-                    <button>Ramblings</button>
+                    <ul>
+                        <li>
+                            <button
+                                onClick={() => 
+                                    this.props.history.push("/")}>
+                                Gear
+                            </button>                        
+                        </li>
+                        <li><button>Games</button></li>
+                        <li><button>Mods</button></li>
+                        <li><button>Art</button></li>
+                        <li><button>Books</button></li>
+                        <li><button>Ramblings</button></li>
+                        <li><button>[]Gifts</button></li>
+                    </ul>
                 </nav>
             </div>
         );
-    }
+    }   
 }
 
 export default withRouter(CategoryForm);

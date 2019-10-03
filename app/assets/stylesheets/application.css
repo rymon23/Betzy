@@ -14,19 +14,24 @@
  *= require_self
  */
 
- body {
+ /* body {
   margin: 0;
   background: rgb(189, 183, 107);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: 300;
- }
+ } */
 
-.header-container{
+/* .header-container{
   padding: 10px;
   width: 80%;
   margin: 0 auto;
+} */
+.logo {
+  font-weight: bolder;
+  color: crimson;
+  font-size: 48px;
+  padding: 15px;
 }
-
 nav {
   float: right;
   color: darkkhaki;
@@ -98,6 +103,8 @@ header ul li {
     align-items: center;
  }
 
+
+
 .login-form-box label {
   font-weight: bold;
 }
@@ -125,4 +132,133 @@ input[type=text], input[type=password], input[type=email] {
 
 button:hover {
   opacity: 0.8;
+}
+
+ form {
+   display: block;
+ }
+
+.modal-main {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  /* width: 100%;
+  height: 100%; */
+  /* overflow: auto; */
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  /* padding-top: 60px; */
+}
+
+/* .modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+.categories {
+  width: 100%;
+  background: white;
+  display: flex;
+	justify-content: center;
+  border-bottom: 2px solid #797979;
+}
+
+.nav-category {
+	display: flex;
+	justify-content: center;
+}
+.nav-category ul {
+	display: flex;
+	padding: 10px 0;
+}
+.nav-category li {
+	margin: 0 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-evenly; 
+  float: left;
+  background: white;
+  padding: 15px;
+  width: 100%;
+  height: 80px;  
+  padding-top: 2px;
+  padding-bottom: 11px;
+  margin-bottom: 0px;
+}
+
+.current-user-nav {
+	display: flex;
+	justify-content: center;
+	/* border-bottom: 1px solid #d3d3d3; */
+}
+.current-user-nav ul {
+	display: flex;
+	padding: 10px 0;
+}
+.current-user-nav li {
+	margin: 0 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.user-auth-options {
+	display: flex;
+	justify-content: center;
+}
+.user-auth-options ul {
+	display: flex;
+	padding: 10px 0;
+}
+.user-auth-options li {
+	margin: 0 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+.cart-icon {
+  display: flex;
+  justify-content: left;
+  padding: 10px 0;
+	margin: 0 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.main-nav-options {
+	display: flex;
+	justify-content: center;
+}
+
+.search-div {
+  border-radius: 50%;
+
+}
+
+.search-form {
+  color: white;
+  position: relative;
+  width: 900px;
+  font-size: 25px;
+  height: 36px;
+}
+.search-form ul{
+	display: flex;
+	padding: 10px 0;
+}
+.search-submit {
+  outline: none;
+  position: relative;
+
+}
+.search-submit:focus {
+  outline: none;
+}
+.search-submit:hover {
+  cursor: pointer;
 }
