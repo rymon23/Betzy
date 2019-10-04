@@ -32,6 +32,8 @@ const testModal = () => {
 
 const App = () => {
   return (
+    <>
+   {/* // <div className="category-divider"></div> */}
     <div className="app">
       <Modal />
       <header className="main-header">
@@ -47,6 +49,7 @@ const App = () => {
         <AuthRoute exect path='/signup' component={SignupFormContainer} />
       </Switch>
     </div>
+    </>
   );
 };
 

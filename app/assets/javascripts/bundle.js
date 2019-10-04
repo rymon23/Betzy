@@ -170,6 +170,7 @@ var signup = function signup(user) {
 };
 var login = function login(user) {
   return function (dispatch) {
+    debugger;
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user), function (error) {
         return dispatch(receiveErrors(error.responseJSON));
@@ -307,7 +308,7 @@ var testModal = function testModal() {
 };
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "main-header"
@@ -319,7 +320,7 @@ var App = function App() {
     exect: true,
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  })));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -919,7 +920,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     disableModal: function disableModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["disableModal"])());
     },
-    demoLogin: function demoLogin(user) {
+    demoLogin: function demoLogin() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
         user: {
           username: "username",
@@ -1118,7 +1119,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
           password: "password",
           email: "demo@gmail.com"
         }
-      }));
+      }).then(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["disableModal"])()));
     }
   };
 };
@@ -1452,9 +1453,7 @@ var login = function login(user) {
   return $.ajax({
     method: "POST",
     url: "/api/session",
-    data: {
-      user: user
-    }
+    data: user
   });
 };
 var signup = function signup(user) {

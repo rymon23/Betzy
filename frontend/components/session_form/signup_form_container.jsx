@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     disableModal: () => dispatch(disableModal()),
     demoLogin: () => dispatch(login({ user: { username: "username", 
         password: "password", 
-        email: "demo@gmail.com" } }))
+        email: "demo@gmail.com" } }).then(disableModal()))
   };
 };
 

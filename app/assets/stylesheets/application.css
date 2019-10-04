@@ -14,6 +14,14 @@
  *= require_self
  */
 
+ .category-divider {
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  padding-top: 145px;
+  border-bottom: 2px solid lightgray;
+ }
+
 .app {
     width: 1400px;
     margin: auto;
@@ -42,7 +50,7 @@ button:hover {
 
 .category-div ul {
   margin: auto;
-  border-bottom: 1px solid #797979;
+  /* border-bottom: 1px solid #797979; */
 }
 
 .category-div ul li {
