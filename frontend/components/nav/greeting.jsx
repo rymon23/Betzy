@@ -19,7 +19,6 @@ const Greeting = ({ currentUser, logout, enableModal }) => {
   const loggedInGreeting = () => {
     return (
      <hgroup className="greeting-hg">
-      <h2 className="greeting-text">Welcome back, {currentUser.username}!</h2>
       <button className="logout-button" onClick={logout}>Log Out</button>
     </hgroup>     
     );

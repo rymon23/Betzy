@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import Content from "./content";
 import Center from "./center";
@@ -17,11 +18,18 @@ const Homepage = ({ currentUser }) => {
     return (
         <div className="homepage-div">
             <Content />
-            <Welcome />
+            <div className="homepage-welcome">
+                {/* Welcome back, {currentUser.username}! */}
+            </div>
+            {/* <Welcome /> */}
             <Center />
             <Footer />
         </div>
     );
 };
 
-export default Homepage;
+const mapStateToProps = (state, ownProps) => {
+    return { currentUser: state.session.currentUser };
+};
+
+export default connect(mapStateToProps)(Homepage);

@@ -1,5 +1,6 @@
 .logo-main {
   font-weight: bolder;
+  font-family: fantasy;
   color: crimson;
   font-size: 44px;
   padding: 15px;
@@ -43,6 +44,6 @@ header ul li {
   justify-content: left;
   padding: 10px 0;
 	margin: 0 10px;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
 }

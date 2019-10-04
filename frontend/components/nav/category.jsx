@@ -17,8 +17,8 @@ class CategoryForm extends React.Component {
                         <li className="category-link"><Link to="/">Mods</Link></li>
                         <li className="category-link"><Link to="/">Art</Link></li>
                         <li className="category-link"><Link to="/">Books</Link></li>
-                        <li className="category-link"><Link to="/">Ramblings</Link></li>
                         <li className="category-link"><Link to="/">Gifts</Link></li>
+                        <li className="category-link"><Link to="/">Other</Link></li>
                     </ul>
                 </nav>
             </div>

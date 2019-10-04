@@ -32,16 +32,12 @@ export const setupModal = () => {
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser){
-    const preloadedState = {
-      session: {id: window.currentUser.id },
-      entities: { user: { [window.currentUser.id]: window.currentUser }}
-    };
-    store = configureStore(preloadedState);
-    delete window.currentUser;
+      const preloadedState = { session: { currentUser: window.currentUser } };
+      store = configureStore(preloadedState);
+      delete window.currentUser;
   } else {
     store = configureStore();
-    // setupModal();
   }
   const root = document.getElementById("root");
-  ReactDOM.render(<Root store={store} />,root);
+  ReactDOM.render(<Root store={store} />, root);
 });
