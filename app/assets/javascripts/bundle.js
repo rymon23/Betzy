@@ -396,7 +396,9 @@ var Footer = function Footer(_ref) {
     className: "".concat(COMPONENT_NAME, "-parent-div homepage-child")
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "".concat(COMPONENT_NAME, "-div")
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, COMPONENT_NAME), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, COMPONENT_NAME, " - Content"))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, COMPONENT_NAME), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, COMPONENT_NAME, " - Content"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "".concat(COMPONENT_NAME, "-footer")
+  }, "Footer"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -456,8 +458,9 @@ function (_React$Component) {
     _classCallCheck(this, Homepage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Homepage).call(this, props));
-    _this.WelcomeCurrentUser = _this.WelcomeCurrentUser.bind(_assertThisInitialized(_this));
+    _this.welcomeCurrentUser = _this.welcomeCurrentUser.bind(_assertThisInitialized(_this));
     _this.homepageUnderContent = _this.homepageUnderContent.bind(_assertThisInitialized(_this));
+    _this.websiteQuickDecription = _this.websiteQuickDecription.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -479,16 +482,28 @@ function (_React$Component) {
         className: "".concat(CLASS_HEAD)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(CLASS_HEAD, "-div")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Unique everything"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "bla bla bla")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "".concat(CLASS_HEAD, "-header")
+      }, "Unique everything"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "".concat(CLASS_HEAD, "-paragraph")
+      }, "We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(CLASS_HEAD, "-div")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Independent sellers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "bla bla bla")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "".concat(CLASS_HEAD, "-header")
+      }, "Independent sellers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "".concat(CLASS_HEAD, "-paragraph")
+      }, "Buy directly from someone who put their heart and soul into making something special.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(CLASS_HEAD, "-div")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Secure shopping"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "bla bla bla")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "".concat(CLASS_HEAD, "-header")
+      }, "Secure shopping"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "".concat(CLASS_HEAD, "-paragraph")
+      }, "We use best-in-class technology to protect your transactions.")));
     }
   }, {
     key: "homepageUnderContent",
     value: function homepageUnderContent(currentUser) {
-      currentUser ? this.welcomeCurrentUser(currentUser) : this.websiteQuickDecription();
+      return currentUser ? this.welcomeCurrentUser(currentUser) : this.websiteQuickDecription();
     }
   }, {
     key: "render",
@@ -499,7 +514,7 @@ function (_React$Component) {
         className: "homepage-text-heading"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "homepage-text"
-      }, HOMEPAGE_TEXT_HEADING)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_content__WEBPACK_IMPORTED_MODULE_2__["default"], null), this.homepageUnderContent(this.props.currentUser), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_center__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+      }, HOMEPAGE_TEXT_HEADING)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_content__WEBPACK_IMPORTED_MODULE_2__["default"], null), this.homepageUnderContent(this.props.currentUser), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_center__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, "True footer"));
     }
   }]);
 

@@ -11,8 +11,9 @@ const HOMEPAGE_TEXT_HEADING = `If it's handcrafted, vintage, custom, or unique i
 class Homepage extends React.Component {
     constructor(props){
         super(props);
-        this.WelcomeCurrentUser = this.WelcomeCurrentUser.bind(this);
+        this.welcomeCurrentUser = this.welcomeCurrentUser.bind(this);
         this.homepageUnderContent = this.homepageUnderContent.bind(this);
+        this.websiteQuickDecription = this.websiteQuickDecription.bind(this);
     }
 
     welcomeCurrentUser(currentUser) {
@@ -31,22 +32,34 @@ class Homepage extends React.Component {
         return (
             <div className={`${CLASS_HEAD}`}>
                 <div className={`${CLASS_HEAD}-div`}>
-                    <h3>Unique everything</h3>
-                    <p>bla bla bla</p>
+                    <span className={`${CLASS_HEAD}-header`}>
+                        Unique everything
+                    </span>
+                    <p className={`${CLASS_HEAD}-paragraph`}>
+                        We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).
+                    </p>
                 </div>
                 <div className={`${CLASS_HEAD}-div`}>
-                    <h3>Independent sellers</h3>
-                    <p>bla bla bla</p>
+                    <span className={`${CLASS_HEAD}-header`}>
+                        Independent sellers
+                    </span>
+                    <p className={`${CLASS_HEAD}-paragraph`}>
+                        Buy directly from someone who put their heart and soul into making something special.
+                    </p>
                 </div>
                 <div className={`${CLASS_HEAD}-div`}>
-                    <h3>Secure shopping</h3>
-                    <p>bla bla bla</p>
+                    <span className={`${CLASS_HEAD}-header`}>
+                        Secure shopping
+                    </span>
+                    <p className={`${CLASS_HEAD}-paragraph`}>
+                        We use best-in-class technology to protect your transactions.
+                    </p>
                 </div>
             </div>)           
     }
 
     homepageUnderContent(currentUser){
-        currentUser ? this.welcomeCurrentUser(currentUser) : this.websiteQuickDecription()
+        return currentUser ? this.welcomeCurrentUser(currentUser) : this.websiteQuickDecription()
     }
 
     render(){
@@ -61,6 +74,9 @@ class Homepage extends React.Component {
                     { this.homepageUnderContent(this.props.currentUser) }
                 <Center />
                 <Footer />
+                <footer>
+                    True footer
+                </footer>
             </div>
         );
     }

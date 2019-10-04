@@ -11,7 +11,9 @@ const Footer = ({ currentUser }) => {
                     <li>{COMPONENT_NAME} - Content</li>
                 </ul>
             </div>
-
+            <footer className={`${COMPONENT_NAME}-footer`}>
+                Footer
+            </footer>
         </div>
     );
 }

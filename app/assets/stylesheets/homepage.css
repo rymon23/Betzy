@@ -20,7 +20,7 @@
     padding: 10px;
 }
 .homepage-text {
-    font-size: 23px;
+    font-size: 27px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -36,15 +36,41 @@
     padding-left: 0px;
 }
 
+.homepage-under-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.homepage-under-content-div {
+    margin: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+
+}
+.homepage-under-content-header {
+    padding-bottom: 0px;
+    font-size: 20px;
+}
+.homepage-under-content-paragraph {
+    margin-top: 0px;
+    font-size: 17px;
+}
+.homepage-under-content-header, .homepage-under-content-paragraph {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .Content-parent-div {
     height: 345px;
 }
 
 
 .Center-parent-div{
-    height: 2300px;
+    height: fit-content;
 }
 
 .Footer-parent-div{
-    height: 850px;
+    height: fit-content;
 }
