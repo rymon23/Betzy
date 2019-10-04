@@ -14,6 +14,9 @@ import LoginFormContainer from "./session_form/login_form_container";
 import MainNav from "./nav/main_nav_container";
 import Modal from "./modal/modal";
 import Logo from "./logo/logo";
+import SearchForm from "./search/search";
+import Categories from "./nav/category";
+import Homepage from "./homepage/homepage";
 
 const testModal = () => {
   return (
@@ -31,12 +34,13 @@ const App = () => {
   return (
     <div className="app">
       <Modal />
-      <header>
+      <header className="main-header">
         <Logo/>
-        {/* <SearchForm /> */}
+        <SearchForm />
         <MainNav />
-          {/* { testModal() }         */}
       </header>
+      <Categories />
+      <Homepage />
 
       <Switch>
         <AuthRoute exect path='/login' component={LoginFormContainer} />

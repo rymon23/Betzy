@@ -1,7 +1,7 @@
 .logo-main {
   font-weight: bolder;
   color: crimson;
-  font-size: 48px;
+  font-size: 44px;
   padding: 15px;
 }
 nav {
@@ -24,7 +24,7 @@ ul {
 }
 
 header {
-  background: rgb(94, 79, 79);
+  background: whitesmoke;
 }
 
 header::after {

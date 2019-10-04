@@ -8,6 +8,5 @@ export const receiveUser = (id) => ({
 });
 
 export const fetchUser = (id) => dispatch => {
-    return APIUtil.fetchUser(id).then((cartData) => dispatch(receiveUser(cartData));
-};
-
+    return APIUtil.fetchUser(id).then((cartData) => dispatch(receiveUser(cartData)))
+}

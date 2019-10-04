@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { signup } from "../../actions/session_actions";
+import { signup , login } from "../../actions/session_actions";
 import SessionForm from "./session_form";
 import { enableModal, disableModal } from "../../actions/modal_actions";
 
@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     action: (user) => dispatch(signup(user)),
     enableModal: (<button onClick={() => dispatch(enableModal("login"))}>Sign in</button>),
     disableModal: () => dispatch(disableModal()),
+    demoLogin: () => dispatch(login({ user: { username: "username", 
+        password: "password", 
+        email: "demo@gmail.com" } }))
   };
 };
 

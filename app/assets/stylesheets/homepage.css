@@ -1,0 +1,35 @@
+
+.homepage-div{
+    width: 1400px;
+    height: 3500px;
+    display: flex;
+    flex-direction: column;
+    border: 1px black;
+}
+
+/* .homepage-div div {
+    height: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+} */
+
+.homepage-child {
+    height: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid lightgray;
+}
+
+.Content-parent-div{
+    height: 345px;
+}
+
+
+.Center-parent-div{
+    height: 2300px;
+}
+
+.Footer-parent-div{
+    height: 850px;
+}

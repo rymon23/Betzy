@@ -1,6 +1,6 @@
 
 .search-div {
-  border-radius: 50%;
+  /* border-radius: 50%; */
 
 }
 .search-form {
@@ -9,11 +9,11 @@
   width: 900px;
   font-size: 25px;
   height: 36px;
-  border-radius: 40px;
+  border-radius: 40%;
 }
 .search-form ul{
 	display: flex;
-	padding: 10px 0;
+	padding: 0px;
 }
 .search-submit {
   outline: none;
