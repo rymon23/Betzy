@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.demoUserButton = this.demoUserButton.bind(this);
   }
 
   update(field){
@@ -20,7 +21,7 @@ class SessionForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const user = Object.assign({}, this.state );
-    this.props.action(user).then(this.props.disableModel);
+    this.props.action(user);
   }
 
   renderErrors(){
@@ -30,6 +31,15 @@ class SessionForm extends React.Component {
     return (<ul>{errors}</ul>)
   }
   
+  demoUserButton(){
+    if (this.props.formType !== "login") return null;
+    return (
+      <button className="credential-submit demo"
+        onClick={() => this.props.demoLogin()}>Demo User
+      </button>
+    )
+  }
+
   render(){
     return (
       <div className="login-form-container">
@@ -64,8 +74,9 @@ class SessionForm extends React.Component {
             <input type="submit" 
               value={this.props.buttonType}
               className="credential-submit"/>
-            <button className="credential-submit demo"
-               onClick={() => this.props.demoLogin()}>Demo User</button>
+            { this.demoUserButton() }
+            {/* <button className="credential-submit demo"
+               onClick={() => this.props.demoLogin()}>Demo User</button> */}
           </div>
         </form>
       </div>

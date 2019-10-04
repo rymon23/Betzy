@@ -7,13 +7,6 @@
     border: 1px black;
 }
 
-/* .homepage-div div {
-    height: 300px;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
-} */
-
 .homepage-child {
     height: 300px;
     padding: 10px;
@@ -21,15 +14,28 @@
     border: 1px solid lightgray;
 }
 
+.homepage-text-heading {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.homepage-text {
+    font-size: 23px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .homepage-welcome {
     font-size: 23px;
-    /* font-weight: bold; */
     font-family: Arial, Helvetica, sans-serif;
     height: auto;
     padding: 10px;
     margin: 10px;
-    border: 1px solid lightgray;    
+    /* border: 1px solid lightgray;     */
 }
+.homepage-welcome {
+    padding-left: 0px;
+}
+
 .Content-parent-div {
     height: 345px;
 }

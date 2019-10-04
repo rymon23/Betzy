@@ -18,31 +18,24 @@ import SearchForm from "./search/search";
 import Categories from "./nav/category";
 import Homepage from "./homepage/homepage";
 
-const testModal = () => {
-  return (
-    <div id="test-modal" className="test-modal">
-      <div id="test-modal-box" className="test-modal-box">
-        <h1>Test Modal Box</h1>
-        <button>Test button</button>
-      </div>
-
-    </div>
-  );
-}
-
 const App = () => {
   return (
     <>
-   {/* // <div className="category-divider"></div> */}
     <div className="app">
       <Modal />
       <header className="main-header">
-        <Logo/>
-        <SearchForm />
-        <MainNav />
+          <div className="page-column">
+            <div className="main-header-div">
+              <Logo/>
+              <SearchForm />
+              <MainNav />          
+            </div>
+            <Categories />
+          </div>
       </header>
-      <Categories />
-      <Homepage />
+      <div className="page-column">
+        <Homepage />
+      </div>
 
       <Switch>
         <AuthRoute exect path='/login' component={LoginFormContainer} />

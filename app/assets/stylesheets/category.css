@@ -1,0 +1,15 @@
+.category-div {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  padding: 10px;
+}
+
+.category-nav {
+  float: right;
+  font-weight: bold;  
+}
+
+.category-link {
+  display: inline-block;
+}

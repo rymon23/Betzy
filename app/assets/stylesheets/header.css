@@ -1,23 +1,35 @@
+.app {
+    margin: auto;
+}
 .logo-main {
   font-weight: bolder;
   font-family: fantasy;
   color: crimson;
   font-size: 44px;
-  padding: 15px;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
-nav {
-  float: right;
-  color: darkkhaki;
-  font-weight: bold;  
+.main-header {
+  display: flex;
+  padding-top: 0px;
+  text-decoration: none;  
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  height: fit-content;
+}
+.main-header-div {
+  display: flex;
+  flex-direction: row;
+}
+.page-column {
+  margin: auto;
+  width: 1400px;
 }
 
-nav ul {
+/* nav ul {
   margin: 0;
-}
-
-nav li {
-  display: inline-block;
-}
+} */
 
 ul {
   list-style: none;
@@ -25,7 +37,7 @@ ul {
 }
 
 header {
-  background: whitesmoke;
+  /* background: whitesmoke; */
 }
 
 header::after {
@@ -39,6 +51,9 @@ header ul li {
   margin-right: 25px;
 }
 
+.cart-div {
+  border: 1px solid lightgray;
+}
 .cart-icon {
   display: flex;
   justify-content: left;

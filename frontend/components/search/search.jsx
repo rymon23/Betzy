@@ -24,14 +24,14 @@ class SearchForm extends React.Component {
     return (
       <div className="search-div">
         <form onSubmit={this.handleSubmit} className="search-form">
-          <ul>
-            <input type="text" className="seach-field"
+          <div className="search-input-div">
+            <input type="text" className="seach-input"
               placeholder="Search for items or shops"
               value={this.state.title}
-              onChange={this.update('title')}/>
-            <input type="submit" className="search-submit"
-              value="Search"/>            
-          </ul>
+              onChange={this.update('title')}/>              
+          </div>
+          <input type="submit" className="search-submit"
+            value="Search"/>            
         </form>
       </div>
     );

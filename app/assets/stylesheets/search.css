@@ -1,24 +1,76 @@
 
 .search-div {
-  /* border-radius: 50%; */
-
+	height: auto;
+	width: auto;
+	max-width: 90%;
+	overflow: hidden;
+	background: transparent;
+	margin: 0;
+  position: static;
+  padding: 0 15px 0 15px;
 }
 .search-form {
-  color: white;
+	overflow: hidden;
   position: relative;
-  width: 900px;
-  font-size: 25px;
-  height: 36px;
-  border-radius: 40%;
+  color: white;
 }
+
+.search-input-div {
+	padding: 0 66px 0 0; /* Right padding for submit button width */
+	overflow: hidden;
+}
+
+.search-input {
+  width: 100%;
+  height: 20px;
+  /* -webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  
+	box-sizing: content-box;
+ 	height: 60px;
+  padding: 0 46px 0 10px;
+	border-color: #888;
+  border-radius: 35px;
+  border-style: solid;
+	border-width: 5px;
+  margin-top: 15px;
+  color: #333;
+  font-family: 'Helvetica', sans-serif;
+	font-size: 26px;
+	-webkit-appearance: none;
+	-moz-appearance: none; */
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #333;
+}
+
 .search-form ul{
 	display: flex;
 	padding: 0px;
 }
 .search-submit {
-  outline: none;
-  position: relative;
-
+  /* outline: none;
+  position: relative; */
+  position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	width: auto;
+	height: auto;
+  padding: 0;
+  border: none;
+	margin-top: 20px; /* margin-top + border-width */
+  margin-right: 5px; /* border-width */
+	background: transparent;
+  color: #888;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 15px;
+  line-height: 15px;
 }
 .search-submit:focus {
   outline: none;
