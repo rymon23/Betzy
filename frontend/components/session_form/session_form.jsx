@@ -1,15 +1,13 @@
 import React from "react";
+import { DEMO_USER } from "../../util/config_util";
 
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      username: "",
-      email: "",
-      password: ""
-    };
+    this.state = {username: "", email: "", password: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
     this.demoUserButton = this.demoUserButton.bind(this);
   }
 
@@ -18,10 +16,33 @@ class SessionForm extends React.Component {
       this.setState({[field]: e.currentTarget.value });
   }
 
-  handleSubmit(e){
+  // handleSubmit(e){
+  //   e.preventDefault();
+  //   const user = Object.assign({}, this.state );
+  //   this.props.action(user);
+  // }
+
+
+  handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state );
-    this.props.action(user);
+    const user = Object.assign({}, this.state);
+    this.props.action(user)
+      .then(() => this.props.disableModal());
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    this.props.action(DEMO_USER)
+      .then(() => this.props.disableModal());
+  }
+
+  demoUserButton() {
+    if (this.props.formType !== "login") return null;
+    return (
+      <button className="credential-submit demo"
+        onClick={this.handleDemo}>Demo User
+      </button>
+    )
   }
 
   renderErrors(){
@@ -30,21 +51,16 @@ class SessionForm extends React.Component {
     });
     return (<ul>{errors}</ul>)
   }
-  
-  demoUserButton(){
-    if (this.props.formType !== "login") return null;
-    return (
-      <button className="credential-submit demo"
-        onClick={() => this.props.demoLogin()}>Demo User
-      </button>
-    )
-  }
 
   render(){
     return (
       <div className="login-form-container">
+
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h1 className="form-title" >{this.props.formTitle}</h1>
+            <div className={`login-form-errors`}>
+              {this.renderErrors()}
+            </div>
           <div className="credentials-form">
             <br/>
             <label>Email address
@@ -75,8 +91,6 @@ class SessionForm extends React.Component {
               value={this.props.buttonType}
               className="credential-submit"/>
             { this.demoUserButton() }
-            {/* <button className="credential-submit demo"
-               onClick={() => this.props.demoLogin()}>Demo User</button> */}
           </div>
         </form>
       </div>
