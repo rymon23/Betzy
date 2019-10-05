@@ -10,17 +10,13 @@ class CategoryForm extends React.Component {
     render() {
         return (
             <div className="category-div">
-                <nav className="category-nav">
-                    <ul>
-                        <li className="category-link"><Link to="/">Gear</Link></li>
-                        <li className="category-link"><Link to="/">Games</Link></li>
-                        <li className="category-link"><Link to="/">Mods</Link></li>
-                        <li className="category-link"><Link to="/">Art</Link></li>
-                        <li className="category-link"><Link to="/">Books</Link></li>
-                        <li className="category-link"><Link to="/">Gifts</Link></li>
-                        <li className="category-link"><Link to="/">Other</Link></li>
-                    </ul>
-                </nav>
+                <div className="category-link"><Link to="/">Gear</Link></div>
+                <div className="category-link"><Link to="/">Games</Link></div>
+                <div className="category-link"><Link to="/">Mods</Link></div>
+                <div className="category-link"><Link to="/">Art</Link></div>
+                <div className="category-link"><Link to="/">Books</Link></div>
+                <div className="category-link"><Link to="/">Gifts</Link></div>
+                <div className="category-link"><Link to="/">Other</Link></div>
             </div>
         );
     }   

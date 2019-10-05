@@ -6,7 +6,7 @@ import Center from "./center";
 import Footer from "./footer";
 import { APP_NAME } from "../../util/config_util";
 
-const HOMEPAGE_TEXT_HEADING = `If it's handcrafted, vintage, custom, or unique it's on ${APP_NAME}`
+const HOMEPAGE_TEXT_HEADING = `If it's handcrafted, vintage, custom, or unique, it's on ${APP_NAME}`
 
 class Homepage extends React.Component {
     constructor(props){

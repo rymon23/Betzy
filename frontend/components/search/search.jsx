@@ -30,6 +30,7 @@ class SearchForm extends React.Component {
               value={this.state.title}
               onChange={this.update('title')}/>              
           </div>
+          <button type="submit"></button>
           <input type="submit" className="search-submit"
             value="Search"/>            
         </form>

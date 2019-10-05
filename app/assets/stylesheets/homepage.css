@@ -1,7 +1,7 @@
 
 .homepage-div{
     width: 1400px;
-    height: 3500px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     border: 1px black;
@@ -63,7 +63,7 @@
 }
 
 .Content-parent-div {
-    height: 345px;
+    height: fit-content;
 }
 
 

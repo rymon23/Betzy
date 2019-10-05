@@ -1,3 +1,7 @@
+header {
+  /* background: whitesmoke; */
+}
+
 .app {
     margin: auto;
 }
@@ -20,24 +24,18 @@
 }
 .main-header-div {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
 }
 .page-column {
   margin: auto;
+  min-width: 600px;
+  max-width: 1600px;
   width: 1400px;
 }
-
-/* nav ul {
-  margin: 0;
-} */
 
 ul {
   list-style: none;
   padding: 0;
-}
-
-header {
-  /* background: whitesmoke; */
 }
 
 header::after {
@@ -52,8 +50,9 @@ header ul li {
 }
 
 .cart-div {
-  border: 1px solid lightgray;
+  border-left: 1px solid lightgray;
 }
+
 .cart-icon {
   display: flex;
   justify-content: left;

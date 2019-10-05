@@ -1,7 +1,7 @@
 .category-div {
   display: flex;
-  margin: auto;
-  justify-content: center;
+  /* margin: auto; */
+  justify-content: space-between;
   padding: 10px;
 }
 

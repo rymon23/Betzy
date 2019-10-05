@@ -445,7 +445,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var HOMEPAGE_TEXT_HEADING = "If it's handcrafted, vintage, custom, or unique it's on ".concat(_util_config_util__WEBPACK_IMPORTED_MODULE_5__["APP_NAME"]);
+var HOMEPAGE_TEXT_HEADING = "If it's handcrafted, vintage, custom, or unique, it's on ".concat(_util_config_util__WEBPACK_IMPORTED_MODULE_5__["APP_NAME"]);
 
 var Homepage =
 /*#__PURE__*/
@@ -684,37 +684,35 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "category-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Gear")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "Gear")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Games")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "Games")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Mods")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "Mods")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Art")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "Art")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Books")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "Books")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Gifts")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "Gifts")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Other")))));
+      }, "Other")));
     }
   }]);
 
@@ -943,7 +941,9 @@ function (_React$Component) {
         placeholder: "Search for items or shops",
         value: this.state.title,
         onChange: this.update('title')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "search-submit",
         value: "Search"
