@@ -1,10 +1,14 @@
 class Api::UsersController < ApplicationController
+  before_action :require_login, only: [:show, :update]
+
   def show
-      @user = User.find_by(id: params[:id])    
-      render "api/users/show"
+      @user = User.find_by(params[:id])    
+      render :show
   end
 
-  def new
+  def index
+    @users = User.all
+    render :index
   end
 
   def create
@@ -17,10 +21,13 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
+    @user = User.find_by(params[:id])
+    if @user.update(user_params)
+      render :show
+    else
+      render json @user.errors.full_messages
+    end
   end
 
   private

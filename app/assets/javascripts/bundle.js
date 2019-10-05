@@ -1030,6 +1030,7 @@ function (_React$Component) {
     _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
     _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
     _this.demoUserButton = _this.demoUserButton.bind(_assertThisInitialized(_this));
+    _this.inputFirstName = _this.inputFirstName.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1041,12 +1042,7 @@ function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
-    } // handleSubmit(e){
-    //   e.preventDefault();
-    //   const user = Object.assign({}, this.state );
-    //   this.props.action(user);
-    // }
-
+    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
@@ -1078,6 +1074,17 @@ function (_React$Component) {
       }, "Demo User");
     }
   }, {
+    key: "inputFirstName",
+    value: function inputFirstName() {
+      if (this.props.formType === "login") return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.username,
+        onChange: this.update('username'),
+        className: "credential-input"
+      }));
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       var errors = this.props.errors.map(function (err, ix) {
@@ -1106,12 +1113,7 @@ function (_React$Component) {
         value: this.state.email,
         onChange: this.update('email'),
         className: "credential-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.username,
-        onChange: this.update('username'),
-        className: "credential-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.inputFirstName(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
@@ -1447,14 +1449,18 @@ var configureStore = function configureStore() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APP_NAME", function() { return APP_NAME; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEMO_USER", function() { return DEMO_USER; });
-var APP_NAME = "Betzy";
-var DEMO_USER = Object.assign({}, {
-  user: {
-    username: "Demo User",
-    password: "password",
-    email: "demo@gmail.com"
-  }
-});
+var APP_NAME = "Betzy"; // export const DEMO_USER = Object.assign({},
+//         {
+//             user: { username: "Demo User", 
+//             password: "password", 
+//             email: "demo@gmail.com" } 
+//         });
+
+var DEMO_USER = {
+  username: "Demo User",
+  password: "password",
+  email: "demo@gmail.com"
+};
 
 /***/ }),
 
@@ -1536,7 +1542,9 @@ var login = function login(user) {
   return $.ajax({
     method: "POST",
     url: "/api/session",
-    data: user
+    data: {
+      user: user
+    }
   });
 };
 var signup = function signup(user) {

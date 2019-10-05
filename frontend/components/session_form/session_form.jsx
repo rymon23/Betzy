@@ -9,19 +9,13 @@ class SessionForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
     this.demoUserButton = this.demoUserButton.bind(this);
+    this.inputFirstName = this.inputFirstName.bind(this);
   }
 
   update(field){
     return (e) =>
       this.setState({[field]: e.currentTarget.value });
   }
-
-  // handleSubmit(e){
-  //   e.preventDefault();
-  //   const user = Object.assign({}, this.state );
-  //   this.props.action(user);
-  // }
-
 
   handleSubmit(e) {
     e.preventDefault();
@@ -45,6 +39,19 @@ class SessionForm extends React.Component {
     )
   }
 
+  inputFirstName() {
+    if (this.props.formType === "login") return null;
+    return (
+      <label>First name
+         <br />
+        <input type="text"
+          value={this.state.username}
+          onChange={this.update('username')}
+          className="credential-input" />
+      </label>
+    );
+  }
+
   renderErrors(){
     const errors = this.props.errors.map((err, ix)=> {
       return (<li key={`error-${ix}`}>{err}</li>)
@@ -55,7 +62,6 @@ class SessionForm extends React.Component {
   render(){
     return (
       <div className="login-form-container">
-
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h1 className="form-title" >{this.props.formTitle}</h1>
             <div className={`login-form-errors`}>
@@ -71,13 +77,7 @@ class SessionForm extends React.Component {
                 className="credential-input" />
             </label>
             <br/>
-            <label>First name
-              <br/>
-              <input type="text" 
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="credential-input" />
-            </label>
+            { this.inputFirstName() }
             <br/>
             <label>Password
               <br/>
