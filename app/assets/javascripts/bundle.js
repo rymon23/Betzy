@@ -909,9 +909,10 @@ function (_React$Component) {
         placeholder: "Search for items or shops",
         value: this.state.title,
         onChange: this.update('title')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "search-button",
         type: "submit"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "search-submit",
         value: "Search"
