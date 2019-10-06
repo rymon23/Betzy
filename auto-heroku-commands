@@ -2,5 +2,7 @@ heroku git:remote -a betzy
 
 git push heroku master
 
+heroku run bundle exec rails db:migrate
+
 heroku run bundle exec rails db:seed
 

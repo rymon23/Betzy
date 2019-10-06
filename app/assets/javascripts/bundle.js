@@ -115,6 +115,87 @@ var disableModal = function disableModal() {
 
 /***/ }),
 
+/***/ "./frontend/actions/product_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/product_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_ALL_PRODUCTS, RECEIVE_PRODUCT, REMOVE_PRODUCT, fetchProducts, fetchProduct, createProduct, updateProduct, deleteProduct */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_PRODUCTS", function() { return RECEIVE_ALL_PRODUCTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PRODUCT", function() { return RECEIVE_PRODUCT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PRODUCT", function() { return REMOVE_PRODUCT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProducts", function() { return fetchProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProduct", function() { return fetchProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProduct", function() { return createProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProduct", function() { return updateProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProduct", function() { return deleteProduct; });
+/* harmony import */ var _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/products_api_util */ "./frontend/util/products_api_util.js");
+
+var RECEIVE_ALL_PRODUCTS = "RECEIVE_ALL_PRODUCTS";
+var RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
+var REMOVE_PRODUCT = "REMOVE_PRODUCT";
+
+var receiveAllProducts = function receiveAllProducts(products) {
+  return {
+    type: RECEIVE_ALL_PRODUCTS,
+    products: products
+  };
+};
+
+var receiveProduct = function receiveProduct(product) {
+  return {
+    type: RECEIVE_PRODUCT,
+    product: product
+  };
+};
+
+var removeProduct = function removeProduct() {
+  return {
+    type: REMOVE_PRODUCT
+  };
+};
+
+var fetchProducts = function fetchProducts() {
+  return function (dispatch) {
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchProducts"]().then(function (products) {
+      return dispatch(receiveAllProducts(products));
+    });
+  };
+};
+var fetchProduct = function fetchProduct(id) {
+  return function (dispatch) {
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchProduct"](id).then(function (product) {
+      return dispatch(receiveProduct(product));
+    });
+  };
+};
+var createProduct = function createProduct(product) {
+  return function (dispatch) {
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["createProduct"](product).then(function (product) {
+      return dispatch(receiveProduct(product));
+    });
+  };
+};
+var updateProduct = function updateProduct(product) {
+  return function (dispatch) {
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["updateProduct"](product).then(function (product) {
+      return dispatch(receiveProduct(product));
+    });
+  };
+};
+var deleteProduct = function deleteProduct(productId) {
+  return function (dispatch) {
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteProduct"](productId).then(function (product) {
+      return dispatch(removeProduct());
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -177,6 +258,82 @@ var logout = function logout() {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"]().then(function (user) {
       return dispatch(logoutCurrentUser());
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/store_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/store_actions.js ***!
+  \*******************************************/
+/*! exports provided: RECEIVE_ALL_STORES, RECEIVE_STORE, RECEIVE_STORE_ERRORS, fetchStores, fetchStore, createStore, updateStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_STORES", function() { return RECEIVE_ALL_STORES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STORE", function() { return RECEIVE_STORE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STORE_ERRORS", function() { return RECEIVE_STORE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchStores", function() { return fetchStores; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchStore", function() { return fetchStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return createStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateStore", function() { return updateStore; });
+/* harmony import */ var _util_stores_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/stores_api_util */ "./frontend/util/stores_api_util.js");
+
+var RECEIVE_ALL_STORES = "RECEIVE_ALL_STORES";
+var RECEIVE_STORE = "RECEIVE_STORE";
+var RECEIVE_STORE_ERRORS = "RECEIVE_STORE_ERRORS";
+
+var receiveAllStores = function receiveAllStores(stores) {
+  return {
+    type: RECEIVE_ALL_STORES,
+    stores: stores
+  };
+};
+
+var receiveStore = function receiveStore(store) {
+  return {
+    type: RECEIVE_ALL_STORES,
+    store: store
+  };
+};
+
+var receiveStoreErrors = function receiveStoreErrors(errors) {
+  return {
+    type: RECEIVE_STORE_ERRORS,
+    errors: errors
+  };
+};
+
+var fetchStores = function fetchStores() {
+  return function (dispatch) {
+    return _util_stores_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchStores"]().then(function (stores) {
+      return dispatch(receiveAllStores(stores));
+    });
+  };
+};
+var fetchStore = function fetchStore(id) {
+  return function (dispatch) {
+    return _util_stores_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchStore"](id).then(function (store) {
+      return dispatch(receiveStore(store));
+    });
+  };
+};
+var createStore = function createStore(store) {
+  return function (dispatch) {
+    return _util_stores_api_util__WEBPACK_IMPORTED_MODULE_0__["createStore"](store).then(function (store) {
+      return dispatch(receiveStore(store));
+    });
+  };
+};
+var updateStore = function updateStore(store) {
+  return function (dispatch) {
+    return _util_stores_api_util__WEBPACK_IMPORTED_MODULE_0__["updateStore"](store).then(function (store) {
+      return dispatch(receiveStore(store), function (errors) {
+        return dispatch(receiveStoreErrors(errors.responseJSON));
+      });
     });
   };
 };
@@ -1202,12 +1359,16 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _products_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./products_reducer */ "./frontend/reducers/products_reducer.js");
+/* harmony import */ var _stores_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores_reducer */ "./frontend/reducers/stores_reducer.js");
 
- // import reviews from "./reviews_reducer";
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"] // reviews
-
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  products: _products_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  stores: _stores_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -1260,6 +1421,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/reducers/products_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/products_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var productsReducer = function productsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_PRODUCTS"]:
+      return Object.assign({}, action.products);
+
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT"]:
+      return Object.assign({}, state, _defineProperty({}, action.product.id, action.product));
+
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PRODUCT"]:
+      var newState = Object.assign({}, state);
+      delete newState[action.productId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (productsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/root_reducer.js":
 /*!*******************************************!*\
   !*** ./frontend/reducers/root_reducer.js ***!
@@ -1299,6 +1500,8 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1311,6 +1514,9 @@ __webpack_require__.r(__webpack_exports__);
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
       return action.errors;
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["DISABLE_MODAL"]:
+      return [];
 
     default:
       return state;
@@ -1354,6 +1560,41 @@ var sessionReducer = function sessionReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/stores_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/stores_reducer.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_store_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/store_actions */ "./frontend/actions/store_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var storeReducer = function storeReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_store_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_STORES"]:
+      return Object.assign({}, action.stores);
+
+    case _actions_store_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_STORE"]:
+      return Object.assign({}, state, _defineProperty({}, action.store.id, action.store));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (storeReducer);
 
 /***/ }),
 
@@ -1469,6 +1710,56 @@ var DEMO_USER = {
 
 /***/ }),
 
+/***/ "./frontend/util/products_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/products_api_util.js ***!
+  \********************************************/
+/*! exports provided: fetchProducts, fetchProduct, createProduct, updateProduct, deleteProduct */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProducts", function() { return fetchProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProduct", function() { return fetchProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProduct", function() { return createProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProduct", function() { return updateProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProduct", function() { return deleteProduct; });
+var fetchProducts = function fetchProducts() {
+  return $.ajax({
+    method: "GET",
+    url: "api/products"
+  });
+};
+var fetchProduct = function fetchProduct(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/products/".concat(id)
+  });
+};
+var createProduct = function createProduct(product) {
+  return $.ajax({
+    method: "POST",
+    url: "api/products",
+    data: {
+      product: product
+    }
+  });
+};
+var updateProduct = function updateProduct(product) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/products/".concat(product.id)
+  });
+};
+var deleteProduct = function deleteProduct(productId) {
+  return $.ajax({
+    method: "Delete",
+    url: "api/products/".concat(productId)
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/util/route_util.jsx":
 /*!**************************************!*\
   !*** ./frontend/util/route_util.jsx ***!
@@ -1565,6 +1856,49 @@ var logout = function logout() {
   return $.ajax({
     method: "DELETE",
     url: "/api/session"
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/stores_api_util.js":
+/*!******************************************!*\
+  !*** ./frontend/util/stores_api_util.js ***!
+  \******************************************/
+/*! exports provided: fetchStores, fetchStore, createStore, updateStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchStores", function() { return fetchStores; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchStore", function() { return fetchStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return createStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateStore", function() { return updateStore; });
+var fetchStores = function fetchStores() {
+  return $.ajax({
+    method: "GET",
+    url: "api/stores"
+  });
+};
+var fetchStore = function fetchStore(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/stores/".concat(id)
+  });
+};
+var createStore = function createStore(store) {
+  return $.ajax({
+    method: "POST",
+    url: "api/stores",
+    data: {
+      store: store
+    }
+  });
+};
+var updateStore = function updateStore(store) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/stores/".concat(store.id)
   });
 };
 
