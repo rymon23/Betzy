@@ -62,6 +62,13 @@
     text-align: center;
 }
 
+.homepage-child {
+    background-color: linen;
+    color:lightgrey;
+    display: flex;
+    justify-content: center;
+}
+
 .Content-parent-div {
     height: fit-content;
 }

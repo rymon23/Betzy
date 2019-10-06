@@ -362,7 +362,7 @@ var Footer = function Footer(_ref) {
     className: "".concat(COMPONENT_NAME, "-div")
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, COMPONENT_NAME), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, COMPONENT_NAME, " - Content"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "".concat(COMPONENT_NAME, "-footer")
-  }, "Footer"));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -478,7 +478,7 @@ function (_React$Component) {
         className: "homepage-text-heading"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "homepage-text"
-      }, HOMEPAGE_TEXT_HEADING)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_content__WEBPACK_IMPORTED_MODULE_2__["default"], null), this.homepageUnderContent(this.props.currentUser), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_center__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, "True footer"));
+      }, HOMEPAGE_TEXT_HEADING)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_content__WEBPACK_IMPORTED_MODULE_2__["default"], null), this.homepageUnderContent(this.props.currentUser), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_center__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
     }
   }]);
 
@@ -708,17 +708,21 @@ var Greeting = function Greeting(_ref) {
       enableModal = _ref.enableModal;
 
   var sellLink = function sellLink() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"]);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "user-nav-option"
+    }, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"]);
   };
 
   var sessionOptions = function sessionOptions() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "session-options"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, sellLink()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "user-nav-option",
       onClick: function onClick() {
         return enableModal('signup');
       }
     }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "session-options-login",
       onClick: function onClick() {
         return enableModal('login');
       }
@@ -1069,7 +1073,7 @@ function (_React$Component) {
     value: function demoUserButton() {
       if (this.props.formType !== "login") return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "credential-submit demo",
+        className: "credential-submit-demo",
         onClick: this.handleDemo
       }, "Demo User");
     }
@@ -1121,7 +1125,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: this.props.buttonType,
-        className: "credential-submit"
+        className: "credential-submit-submit"
       }), this.demoUserButton())));
     }
   }]);

@@ -1,9 +1,15 @@
 header {
   /* background: whitesmoke; */
 }
-
+a:link, :visited{
+  text-decoration:  none;
+  color: black;
+} 
 .app {
     margin: auto;
+}
+.logo-link {
+  color: crimson;
 }
 .logo-main {
   font-weight: bolder;
@@ -13,6 +19,7 @@ header {
   padding: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
+  text-decoration: none;
 }
 .main-header {
   display: flex;
@@ -61,3 +68,33 @@ header ul li {
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
+
+header button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.session-options {
+  font-size: 15px;
+  font-weight: bold;
+}
+.session-options-login {
+  border: 1px solid black;
+  padding: 7px;
+  border-radius: 9%;
+  font-size: 15px;
+}
+.session-options-login:hover {
+  background: black;
+  color: white;
+}
+
+/* header button:hover {
+  background: black;
+  color: white;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+} */

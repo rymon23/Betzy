@@ -75,7 +75,7 @@ class Homepage extends React.Component {
                 <Center />
                 <Footer />
                 <footer>
-                    True footer
+                    {/* True footer */}
                 </footer>
             </div>
         );

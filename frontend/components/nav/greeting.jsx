@@ -4,7 +4,7 @@ import { APP_NAME } from "../../util/config_util";
 const Greeting = ({ currentUser, logout, enableModal }) => {
   const sellLink = () => {
     return (
-      <div>
+      <div className="user-nav-option" >
         Sell on { APP_NAME }
       </div>
     );
@@ -18,10 +18,12 @@ const Greeting = ({ currentUser, logout, enableModal }) => {
             {sellLink()}
           </li>
           <li>
-            <button onClick={() => enableModal('signup')}>Register</button>
+            <button className="user-nav-option"
+              onClick={() => enableModal('signup')}>Register</button>
           </li>
           <li>
-            <button onClick={() => enableModal('login')}>Sign in</button>          
+            <button className="session-options-login" 
+              onClick={() => enableModal('login')}>Sign in</button>          
           </li>
           <li>
             <div className="cart-div">
@@ -35,7 +37,7 @@ const Greeting = ({ currentUser, logout, enableModal }) => {
 
   const accountNav = () => {
     return (
-     <div className="account-nav">
+      <div className="account-nav">
        <ul>
          <li>
            { sellLink() }

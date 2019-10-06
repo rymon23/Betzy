@@ -39,9 +39,8 @@
   font-weight: bold;
 }
 
-.credential-submit {
+.credential-submit-submit {
   align-self: center;
-  color: black;
   background-color: rgb(6, 7, 6);
   color: white;
   padding: 14px 20px;
@@ -50,6 +49,17 @@
   cursor: pointer;
   width: 100%;
 }
+.credential-submit-demo {
+  align-self: center;
+  background-color: green;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
 
 .credentials-form 
   input[type=text], input[type=password], input[type=email] {

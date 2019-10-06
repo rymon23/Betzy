@@ -33,7 +33,7 @@ class SessionForm extends React.Component {
   demoUserButton() {
     if (this.props.formType !== "login") return null;
     return (
-      <button className="credential-submit demo"
+      <button className="credential-submit-demo"
         onClick={this.handleDemo}>Demo User
       </button>
     )
@@ -87,10 +87,10 @@ class SessionForm extends React.Component {
                 className="credential-input" />
             </label>
             <br/>
-            <input type="submit" 
-              value={this.props.buttonType}
-              className="credential-submit"/>
-            { this.demoUserButton() }
+              <input type="submit" 
+                value={this.props.buttonType}
+                className="credential-submit-submit"/>
+              { this.demoUserButton() }              
           </div>
         </form>
       </div>

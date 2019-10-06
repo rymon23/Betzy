@@ -12,7 +12,7 @@ const Footer = ({ currentUser }) => {
                 </ul>
             </div>
             <footer className={`${COMPONENT_NAME}-footer`}>
-                Footer
+                {/* Footer */}
             </footer>
         </div>
     );
