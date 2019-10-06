@@ -1,0 +1,12 @@
+git clone https://github.com/rymon23/Betzy.git
+
+cd Betzy/
+
+bundle exec install
+
+npm install
+
+bundle exec rails db:setup
+
+bundle exec install
+

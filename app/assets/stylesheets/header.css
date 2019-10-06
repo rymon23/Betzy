@@ -79,6 +79,10 @@ header button {
 .session-options {
   font-size: 15px;
   font-weight: bold;
+  margin: 6px 6px;
+  font-family: sans-serif;
+  cursor: pointer;
+  padding-left: 15px;
 }
 .session-options-login {
   border: 1px solid black;

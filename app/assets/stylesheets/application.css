@@ -83,9 +83,3 @@
 	display: flex;
 	justify-content: center;
 }
-
-.session-options {
-	margin: 0 10px;
-  font-family: sans-serif;
-  cursor: pointer;
-}

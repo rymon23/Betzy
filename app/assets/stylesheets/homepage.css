@@ -63,7 +63,7 @@
 }
 
 .homepage-child {
-    background-color: linen;
+    background-color: rgb(240, 239, 237);
     color:lightgrey;
     display: flex;
     justify-content: center;

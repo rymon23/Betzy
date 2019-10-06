@@ -29,6 +29,8 @@ class SearchForm extends React.Component {
               placeholder="Search for items or shops"
               value={this.state.title}
               onChange={this.update('title')}/>
+            {/* <i className="fas fa-search"></i> */}
+            
             <button className="search-button" type="submit"></button>
           </div>
           <input type="submit" className="search-submit"

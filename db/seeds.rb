@@ -20,4 +20,5 @@ user1=User.create!(username: 'Demo User',password: 'password',email:"demo@gmail.
 user2=User.create!(username: 'bobdob',password: 'password',email:"bd@gmail.com")
 
 # Product.delete_all
-# Store.delete_all
+Store.delete_all
+demo_store = Store.create!(title: "Demo Store", owner_id: user1.id)
