@@ -19,7 +19,6 @@ class Product < ApplicationRecord
     class_name: :Store,
     primary_key: :store_id
 
-
   # belongs_to :category,
     # class_name: :Category,
     # primary_key: :category_id

@@ -20,6 +20,10 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_one :store,
+    class_name: :Store,
+    foreign_key: :owner_id
+  
   # has_many :authored_products
   # has_many :authored_reviews
   # has_one :cart ?

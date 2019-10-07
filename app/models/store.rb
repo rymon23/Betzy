@@ -13,8 +13,10 @@ class Store < ApplicationRecord
   validates :title, :owner_id, presence: true
 
   belongs_to :owner,
-  class_name: :User,
-  foreign_key: :owner_id
+    class_name: :User,
+    foreign_key: :owner_id
 
   has_many :products
+    class_name: :Product,
+    foreign_key: :store_id
 end 
