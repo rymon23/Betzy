@@ -31,6 +31,7 @@ class Api::ProductsController < ApplicationController
       :name, 
       :description, 
       :price, 
-      :category_id)
+      :category_id,
+      :store_id)
   end
 end

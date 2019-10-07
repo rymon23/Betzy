@@ -17,11 +17,11 @@ class Product < ApplicationRecord
   
   belongs_to :store,
     class_name: :Store,
-    primary_key: :store_id
+    foreign_key: :store_id
 
-  # belongs_to :category,
-    # class_name: :Category,
-    # primary_key: :category_id
+  belongs_to :category,
+    class_name: :Category,
+    foreign_key: :category_id
 
   # has_many :reviews,
 end 

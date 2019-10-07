@@ -8,8 +8,10 @@ const storeReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALL_STORES:
       return Object.assign({}, action.stores);
+
     case RECEIVE_STORE:
       return Object.assign({}, state, { [action.store.id]: action.store });
+      
     default:
       return state;
   }

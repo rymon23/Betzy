@@ -16,7 +16,7 @@ class Api::StoresController < ApplicationController
     if @store.save
       render "api/stores/show"
     else
-      render json: ["Soemething went wrong"], status: 422
+      render json: ["Something went wrong"], status: 422
     end
   end
 

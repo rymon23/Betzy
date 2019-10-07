@@ -9,10 +9,13 @@ export default (state = [], action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return [];
+      
     case RECEIVE_SESSION_ERRORS:
       return action.errors;
+
     case DISABLE_MODAL:
       return []
+
     default:
       return state;
   }

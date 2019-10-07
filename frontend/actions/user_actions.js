@@ -1,16 +1,16 @@
-import * as APIUtil from "../util/user_api_util";
+import * as APIUtil from "../util/users_api_util";
 export const RECEIVE_USER = "RECEIVE_USER";
 import { receiveCurrentUser } from "../actions/session_actions";
 
-export const receiveUser = (id) => ({
+export const receiveAllUsers = (users) => ({
     type: RECEIVE_USER,
-    cartData
+    users
 });
-
-export const fetchUser = (id) => dispatch => {
-    return APIUtil.fetchUser(id).then((cartData) => dispatch(receiveUser(cartData)))
+export const fetchAllUsers = () => dispatch => {
+    return APIUtil.fetchAllUsers()
+        .then((users) => dispatch(receiveAllUsers(users)))
 }
-
-// export const updateUser = (user) => dispatch => {
-//     return APIUtil.fetchUser(id).then((cartData) => dispatch(receiveCurrentUser(cartData)))
-// }
+export const updateUser = (user) => dispatch => {
+    return APIUtil.updateUser(user)
+        .then((user) => dispatch(receiveCurrentUser(user)))
+}

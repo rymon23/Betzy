@@ -29,7 +29,7 @@ export const updateProduct = (product) => {
 
 export const deleteProduct = (productId) => {
   return $.ajax({
-    method: "Delete",
+    method: "DELETE",
     url: `api/products/${productId}`
   });
 }
