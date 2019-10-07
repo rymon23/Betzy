@@ -1,13 +1,4 @@
-header {
-  /* background: whitesmoke; */
-}
-a:link, :visited{
-  text-decoration:  none;
-  color: black;
-} 
-.app {
-    margin: auto;
-}
+
 .logo-link {
   color: crimson;
 }
@@ -21,6 +12,22 @@ a:link, :visited{
   padding-bottom: 0px;
   text-decoration: none;
 }
+.logo-nav {
+  padding-right: 55px;
+}
+
+
+/* header { */
+  /* background: whitesmoke; */
+/* } */
+/* a:link, :visited{
+  text-decoration:  none;
+  color: black;
+} 
+.app {
+    margin: auto;
+}
+
 .main-header {
   display: flex;
   padding-top: 0px;
@@ -93,7 +100,7 @@ header button {
 .session-options-login:hover {
   background: black;
   color: white;
-}
+} */
 
 /* header button:hover {
   background: black;

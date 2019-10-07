@@ -1,89 +1,79 @@
-import React from "react";
-import { connect } from "react-redux";
-
-import Content from "./content";
-import Center from "./center";
-import Footer from "./footer";
+import React from 'react';
+import {withRouter} from 'react-router-dom';
 import { APP_NAME } from "../../util/config_util";
 
-const HOMEPAGE_TEXT_HEADING = `If it's handcrafted, vintage, custom, or unique, it's on ${APP_NAME}`
-
-class Homepage extends React.Component {
+class HomePage extends React.Component {
     constructor(props){
         super(props);
-        this.welcomeCurrentUser = this.welcomeCurrentUser.bind(this);
-        this.homepageUnderContent = this.homepageUnderContent.bind(this);
-        this.websiteQuickDecription = this.websiteQuickDecription.bind(this);
+        this.recommendedOnClick = this.recommendedOnClick.bind(this);
+    }
+    componentDidMount() {
+        this.props.fetchCategories();
+        this.props.fetchProducts();
+        this.props.fetchStores();
+        this.props.fetchAllUsers();
     }
 
-    welcomeCurrentUser(currentUser) {
-        if (!currentUser) return null;
+    recommendedOnClick(e, categoryId){
+        e.preventDefault();
+        this.props.history.push(`/categories/${categoryId}`);
+    }
+
+    render() {
         return (
-            <div className="homepage-welcome">
-                <div className="homepage-welcome-text">
-                    Welcome back, {currentUser.username}!
-                </div>               
-            </div>);
+            <div className="homepage">
 
-    }
+                <h1>If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.</h1>
 
-    websiteQuickDecription() {
-        const CLASS_HEAD = "homepage-under-content";
-        return (
-            <div className={`${CLASS_HEAD}`}>
-                <div className={`${CLASS_HEAD}-div`}>
-                    <span className={`${CLASS_HEAD}-header`}>
-                        Unique everything
-                    </span>
-                    <p className={`${CLASS_HEAD}-paragraph`}>
-                        We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).
-                    </p>
+                <div className="homepage-banner">
+                    <h1>Personalized jewelry shines a little brighter</h1>
+                    <button>
+                        Shop custom jewelry
+                        <i className="fa fa-caret-right" aria-hidden="true"></i>
+                    </button>
                 </div>
-                <div className={`${CLASS_HEAD}-div`}>
-                    <span className={`${CLASS_HEAD}-header`}>
-                        Independent sellers
-                    </span>
-                    <p className={`${CLASS_HEAD}-paragraph`}>
-                        Buy directly from someone who put their heart and soul into making something special.
-                    </p>
-                </div>
-                <div className={`${CLASS_HEAD}-div`}>
-                    <span className={`${CLASS_HEAD}-header`}>
-                        Secure shopping
-                    </span>
-                    <p className={`${CLASS_HEAD}-paragraph`}>
-                        We use best-in-class technology to protect your transactions.
-                    </p>
-                </div>
-            </div>)           
-    }
 
-    homepageUnderContent(currentUser){
-        return currentUser ? this.welcomeCurrentUser(currentUser) : this.websiteQuickDecription()
-    }
-
-    render(){
-        return (
-            <div className="homepage-div">
-                <div className="homepage-text-heading">
-                    <h1 className="homepage-text">
-                        { HOMEPAGE_TEXT_HEADING }  
-                    </h1>
+                <div className="middle-banner">
+                    <ul className="middle-banner-list">
+                        <li>
+                            <h3>
+                                <i className="fa fa-check" aria-hidden="true"></i>
+                                Unique everything
+                            </h3>
+                            <p>We have millions of one-of-a-kind items, so you can find whatever you need
+                                (or really, really want).</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <i className="fa fa-check" aria-hidden="true"></i>
+                                Independent sellers
+                            </h3>
+                            <p>Buy directly from someone who put their heart and soul into making something
+                                special.</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <i className="fa fa-check" aria-hidden="true"></i>
+                                Secure shopping
+                            </h3>
+                            <p>We use best-in-class technology to protect your transactions.</p>
+                        </li>
+                    </ul>
                 </div>
-                <Content />
-                    { this.homepageUnderContent(this.props.currentUser) }
-                <Center />
-                <Footer />
-                <footer>
-                    {/* True footer */}
-                </footer>
+
+                <div className="bottom-banner">
+                    <h3>You might be interested in</h3>
+                    <ul className="category-images-ul">
+                        <li onClick={this.recommendedOnClick}>
+                            <div id="recommended"></div>
+                            <h4>Sub category</h4>
+                        </li>
+                    </ul>
+
+                </div>
             </div>
-        );
+        )
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return { currentUser: state.session.currentUser };
-};
-
-export default connect(mapStateToProps)(Homepage);
+export default withRouter(HomePage)

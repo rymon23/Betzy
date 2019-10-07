@@ -14,20 +14,19 @@
  *= require_self
  */
 
-  button:hover {
+  /* button:hover {
     opacity: 0.8;
-  }
+  } */
 
  /* form {
    display: block;
  } */
 
-.category-div ul {
+/* .category-div ul {
   margin: auto;
-  /* border-bottom: 1px solid #797979; */
-}
+} */
 
-.category-div ul li {
+/* .category-div ul li {
   padding-right: 18px;
 }
 
@@ -82,4 +81,4 @@
 .main-nav-options {
 	display: flex;
 	justify-content: center;
-}
+} */

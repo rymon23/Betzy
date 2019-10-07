@@ -21,17 +21,29 @@ import Categories from "./nav/category";
 import Homepage from "./homepage/homepage";
 
 //Store
-import StoreShowContainer from "./store/store_show_container";
-import StoreCreateContainer from "./store/store_form_create";
-import StoreEditContainer from "./store/store_form_edit";
-//Product
-import ProductShowContainer from "./product/product_show_container";
-import ProductCreateContainer from "./product/product_form_create";
-import ProductEditContainer from "./product/product_form_edit";
+// import StoreShowContainer from "./store/store_show_container";
+// import StoreCreateContainer from "./store/store_form_create";
+// import StoreEditContainer from "./store/store_form_edit";
+// //Product
+// import ProductCreateContainer from "./product/(old)product_form_create";
+// import ProductEditContainer from "./product/(old)product_form_edit";
 //Category
 // import CategoryShowContainer from "./store/store_form_new";
 //User 
 // import UserShowContainer from "./store/store_form_new";
+
+//
+//
+import Navbar from './navbar/navbar';
+import EditStoreContainer from './vendors/edit_shop_container';
+import CreateStoreContainer from './vendors/create_shop_container';
+import StoreShowContainer from './vendors/shop_show_container';
+import HomePageContainer from './homepage/homepage_container';
+import CategoryShowContainer from './category/category_show_container';
+import CreateProductContainer from './product/create_product_container';
+import EditProductForm from './product/edit_product_container';
+import ProductShowContainer from './product/product_show_container';
+
 
 const App = () => {
   return (
@@ -39,27 +51,34 @@ const App = () => {
     <div className="app">
       <Modal />
       <header className="main-header">
-          <div className="page-column">
+          {/* <div className="page-column">
             <div className="main-header-div">
               <Logo/>
               <SearchForm />
               <MainNav />          
             </div>
             <Categories />
-          </div>
+          </div> */}
+          <Navbar />
       </header>
-      <div className="page-column">
+      {/* <div className="page-column">
         <Homepage />
-      </div>
+      </div> */}
 
       <Switch>
+        <Route exact path='/' component={HomePageContainer} />
         <AuthRoute exect path='/login' component={LoginFormContainer} />
         <AuthRoute exect path='/signup' component={SignupFormContainer} />
 
-        {/* Store Routes */}
-        {/* <Route exact path='/stores/:storeId' component={StoreShowContainer} /> */}
-        <ProtectedRoute exect path='/stores/new' component={StoreCreateContainer} />
-        <ProtectedRoute exect path='/stores/:storeId/edit' component={StoreEditContainer} />
+        <ProtectedRoute exact path='/stores/:storeId/edit' component={EditStoreContainer} />
+        <ProtectedRoute exact path='/stores/new' component={CreateStoreContainer} />
+        <Route exact path='/stores/:storeId' component={StoreShowContainer} />
+
+        <Route exact path='/categories/:categoryId' component={CategoryShowContainer} />
+
+        <ProtectedRoute exact path='/stores/:storeId/products/new' component={CreateProductContainer} />
+        <ProtectedRoute exact path='/products/:productId/edit' component={EditProductForm} />
+        <Route exact path='/stores/:storeId/products/:productId' component={ProductShowContainer} />
 
       </Switch>
     </div>
