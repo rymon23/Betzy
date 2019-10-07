@@ -1,5 +1,6 @@
 import React from "react";
 import { APP_NAME } from "../../util/config_util";
+import { Link } from "react-router-dom";
 
 const Greeting = ({ currentUser, logout, enableModal }) => {
   const sellLink = () => {
@@ -40,7 +41,7 @@ const Greeting = ({ currentUser, logout, enableModal }) => {
       <div className="account-nav">
        <ul>
          <li>
-           { sellLink() }
+           <Link to={`/stores/${currentUser.id}`} >Store Manager</Link>
          </li>
          <li>
            <button>Favorites</button>

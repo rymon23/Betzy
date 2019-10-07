@@ -12,7 +12,7 @@ const receiveAllStores = (stores) => {
 } 
 const receiveStore = (store) => {
   return {
-    type: RECEIVE_ALL_STORES,
+    type: RECEIVE_STORE,
     store
   }
 } 

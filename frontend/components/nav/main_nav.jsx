@@ -19,29 +19,27 @@ class MainNav extends React.Component{
 
     navOptionsDisplay() {
         return (
-            <div className="main-nav-options">
+            <ul className="main-nav-options">
                 {(this.props.currentUser) ? this.greetCurrentUser() : this.userAuthOptions()}
-                <ul className="cart-icon">
-                    <li>[CART]</li>
-                </ul>
-            </div>
+                <li className="cart-icon">
+                    CART
+                </li>
+            </ul>
         );
     }
 
     greetCurrentUser(){
         return (
-            <div className="current-user-nav">
-                <ul>
-                    <li><Link to='/'>{ SELL_BUTTON_TEXT }}</Link></li>
-                    <li><Link to={`/users/${this.props.currentUser.id}`}>You</Link></li>
-                   <li>
-                        <button className="logout-button"
-                            onClick={this.props.logout}>
-                            Log out
-                        </button>
-                   </li>
-                </ul>
-            </div>
+            <li className="current-user-nav">
+                <Link to='/'>Store Manager</Link>
+                <li><Link to={`/users/${this.props.currentUser.id}`}>You</Link></li>
+                <li>
+                    <button className="logout-button"
+                        onClick={this.props.logout}>
+                        Log out
+                    </button>
+                </li>
+            </li>
         );
     }
 
@@ -72,9 +70,9 @@ class MainNav extends React.Component{
                         {APP_NAME}
                     </Link>
                     <SearchForm />
-                    <div>
-                        {this.navOptionsDisplay()}
-                    </div>
+
+                    {this.navOptionsDisplay()}
+
                 </nav>
                 <CategoryForm />
             </div>
