@@ -15,7 +15,6 @@ class Homepage extends React.Component {
         this.homepageUnderContent = this.homepageUnderContent.bind(this);
         this.websiteQuickDecription = this.websiteQuickDecription.bind(this);
     }
-
     welcomeCurrentUser(currentUser) {
         if (!currentUser) return null;
         return (

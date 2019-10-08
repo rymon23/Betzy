@@ -8,8 +8,8 @@ import {
   HashRouter
 } from 'react-router-dom'
 
-import { AuthRoute, ProtectedRoute } from "../util/route_util";
 //Session
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import SignupFormContainer from "./session_form/signup_form_container";
 import LoginFormContainer from "./session_form/login_form_container";
 

@@ -18,7 +18,13 @@ class EditUserProfleForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.removeProfilePicture = this.removeProfilePicture.bind(this);
-    };
+    }
+
+    update(field) {
+        return event => {
+            this.setState({ [field]: event.target.value })
+        };
+    }
 
     handleSubmit(event){
         event.preventDefault();
@@ -32,8 +38,7 @@ class EditUserProfleForm extends React.Component {
 
         if (this.state.imageFile){
             formData.append('user[profile_pic]', this.state.imageFile)
-        };
-
+        }
 
         this.props.updateUser(formData);
         this.props.fetchAllUsers();
@@ -53,13 +58,7 @@ class EditUserProfleForm extends React.Component {
         if (file) {
             fileReader.readAsDataURL(file);
         }
-    };
-
-    update(field){
-        return event => {
-            this.setState({[field]: event.target.value})
-        };
-    };
+    }
 
     removeProfilePicture(event){
         event.preventDefault();
@@ -74,7 +73,6 @@ class EditUserProfleForm extends React.Component {
                 <div className="header-section">
                     <div className="title">
                         <h3>Your Public Profile</h3>
-                        <p>Everything on this page can be seen by anyone</p>
                     </div>
                     <Link to={`/users/${user.id}`} className="btn-block">View Profile</Link>
                 </div>
@@ -88,7 +86,6 @@ class EditUserProfleForm extends React.Component {
                         <div className="profile-pic">
                             {preview}
                         </div>
-                    
                         <input type="file" onChange={this.handleFile} id="profile-picture" />
                         <button className="normal-button" onClick={this.removeProfilePicture}>Remove picture</button>
                         
@@ -121,8 +118,6 @@ class EditUserProfleForm extends React.Component {
                                 <input type="radio" checked={this.state.gender === 'Other'} value='Male' value='Other' id="gender" onChange={this.update('gender')} />
                             </div>
 
-                            
-                            
                         </div>
                         
                     </div>
@@ -144,7 +139,6 @@ class EditUserProfleForm extends React.Component {
                     <div className="section">
                         <div className="label">
                             About
-                            <p>Tell people a little about yourself.</p>
                         </div>
                         <textarea value={this.state.about} id="about" onChange={this.update('about')} cols="30" rows="10"></textarea>
                         
@@ -152,11 +146,9 @@ class EditUserProfleForm extends React.Component {
 
                     <button className="clicky">Save Changes</button>
                 </form>
-            </div>
-            
-                
+            </div>  
         )
-    };
+    }
 }
 
 export default EditUserProfleForm;

@@ -504,8 +504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_product_show_container__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./product/product_show_container */ "./frontend/components/product/product_show_container.js");
 
 
-
  //Session
+
 
 
 

@@ -7,7 +7,6 @@ import Homepage from './homepage';
 const mapStateToProps = ({ session }) => {
   return { currentUser: session.currentUser };
 };
-
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
