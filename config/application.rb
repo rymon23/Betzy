@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Added per suggestion:
+#https://stackoverflow.com/questions/19650621/heroku-upload-precompiling-assets-failed
+config.assets.initialize_on_precompile = false
+
 module Betzy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
