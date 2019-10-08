@@ -24,7 +24,10 @@ class User < ApplicationRecord
     class_name: :Store,
     foreign_key: :owner_id
   
-  # has_many :authored_products
+  has_many :authored_products,
+    through: :store,
+    source: :products 
+    
   # has_many :authored_reviews
   # has_one :cart ?
 
