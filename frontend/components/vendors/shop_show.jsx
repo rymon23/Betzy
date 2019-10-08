@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
-class ShopShow extends React.Component {
+class StoreShow extends React.Component {
     constructor() {
         super();
         this.handleEdit = this.handleEdit.bind(this);
@@ -10,42 +10,42 @@ class ShopShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchShop(this.props.match.params.shopId);
+        this.props.fetchStore(this.props.match.params.storeId);
         this.props.fetchProducts();
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.match.params.shopId !== prevProps.match.params.shopId) {
-            this.props.fetchShop(this.props.match.params.shopId);
+        if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
+            this.props.fetchStore(this.props.match.params.storeId);
             this.props.fetchProducts();
         }
     }
 
     handleEdit(event){
         event.preventDefault();
-        this.props.history.push(`/shops/${this.props.shop.id}/edit`);  
+        this.props.history.push(`/stores/${this.props.store.id}/edit`);  
     }
 
     handleStock(event){
         event.preventDefault();
-        this.props.history.push(`/shops/${this.props.shop.id}/products/new`);   
+        this.props.history.push(`/stores/${this.props.store.id}/products/new`);   
     }
 
     toProductPage(productId){
         return (event) => {
             event.preventDefault();
-            this.props.history.push(`/shops/${this.props.shop.id}/products/${productId}`)
+            this.props.history.push(`/stores/${this.props.store.id}/products/${productId}`)
         }
     }
 
     editDeleteButton(product){
-        let { shop, currentUserId, deleteProduct } = this.props;
+        let { store, currentUserId, deleteProduct } = this.props;
         let editDeleteButton;
-        if (currentUserId === shop.owner.id) {
+        if (currentUserId === store.owner.id) {
             editDeleteButton = (
                 <div className="edit-delete-button">
                     <Link to={`/products/${product.id}/edit`} className="clicky">Edit item</Link>
-                    <button onClick={() => deleteProduct(product.id)} className="clicky">Delete me</button>
+                    <button onClick={() => deleteProduct(product.id)} className="clicky">Delete</button>
                 </div>
             );
         };
@@ -53,18 +53,20 @@ class ShopShow extends React.Component {
     }
 
     render() {
-        let { shop, currentUserId, products } = this.props;
-        if (!shop || !products) {
+        
+        let { store, currentUserId, products } = this.props;
+        if (!store || !products) {
             return (
                 <div></div>
             )
         }
+
         let stockItemButton;
-        if ( currentUserId === shop.owner.id ){
+        if ( currentUserId === store.owner.id ){
             stockItemButton = (
                 <div className="stock-edit-button">
                     <button className="clicky stock-your-shop-button" onClick={this.handleStock}>
-                        Stock your shop
+                        Stock your store
                     </button>
 
                     <button className="clicky edit-your-shop-button" onClick={this.handleEdit}>
@@ -77,16 +79,12 @@ class ShopShow extends React.Component {
             stockItemButton = '';
         };
 
-        
-
         const productLi = products.map(product => {
-
-            // if (product.shopId === shop.id){
                 return (
                     <li key={product.id}>
                         <div onClick={this.toProductPage(product.id)}>
                             <img src={product.imageUrls[0]} />
-                            <p className="product-title">{product.title.slice(0, 27)}...</p>
+                            <p className="product-name">{product.name.slice(0, 27)}...</p>
                             <p><strong>USD {product.price}</strong></p>
                         </div>
 
@@ -100,28 +98,28 @@ class ShopShow extends React.Component {
             <div className="shop-show">
                 <div className="shop-show-header">
                     <div className="shop-logo">
-                        <img src={shop.imageUrl} />
+                        <img src={store.imageUrl} />
                         {stockItemButton}
                     </div>
 
                     <div className="shop-info">
                         <div className="shop-name-show">
-                            {shop.name}
+                            {store.name}
                         </div>
-                        <div className="favorite-shop">
+                        {/* <div className="favorite-shop">
                             <i className="fa fa-heart-o" aria-hidden="true"></i>
-                            Favorite shop ({shop.users_who_favorited_me.length})
-                        </div>
+                            Favorite shop ({store.users_who_favorited_me.length})
+                        </div> */}
                         
                     </div>
 
                     <div className="owner-info">
                         <p>Shop owner</p>
-                        <img src={shop.profilePicUrl} id="owner-info-image" />
-                        <div className="shop-owner-name">{shop.owner.fname}</div>
+                        [image here]
+                        <div className="shop-owner-name">{store.owner.fname}</div>
                         <div className="shop-owner-email">
                             <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                            {shop.owner.email}
+                            {store.owner.email}
                         </div>
                     </div>
                     
@@ -134,12 +132,9 @@ class ShopShow extends React.Component {
                     </ul>
                 </div>
 
-                {/* show products sold by this shop */}
-                {/* can insert reviews too */}
-
             </div>
         );
     };
 }
 
-export default withRouter(ShopShow);
+export default withRouter(StoreShow);

@@ -1,56 +1,48 @@
 import { connect } from 'react-redux';
 import { updateStore, fetchStore } from '../../actions/store_actions';
-import ShopForm from './shop_form';
+import StoreForm from './shop_form';
 import React from 'react';
-// import LoadingIcon from '../loading_icon';
-// import {fetchAllUsers} from'../../actions/users_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    const shopId = parseInt(ownProps.match.params.shopId);
-    const shop = state.entities.shops[shopId];
-    const errors = state.errors.shop;
-    return { shop: shop, errors: errors };
+    const storeId = parseInt(ownProps.match.params.storeId);
+    const store = state.entities.stores[storeId];
+    const errors = state.errors.store;
+    return { 
+        store,
+        errors
+    };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    action: formData => dispatch(updateStore(formData)),
-    fetchStore: id => dispatch(fetchStore(id)),
-    // fetchAllUsers: () => dispatch(fetchAllUsers())
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        action: formData => dispatch(updateStore(formData)),
+        fetchStore: id => dispatch(fetchStore(id)),
+    }
+};
 
-class EditShopForm extends React.Component {
+class EditStoreForm extends React.Component {
     componentDidMount() {
-        this
-            .props
-            .fetchStore(this.props.match.params.shopId);
-        // this.props.fetchAllUsers();
+        this.props.fetchStore(this.props.match.params.storeId);
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.match.params.shopId !== prevProps.match.params.shopId) {
-            this
-                .props
-                .fetchStore(this.props.match.params.shopId);
-                // this.props.fetchAllUsers();
+        if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
+            this.props.fetchStore(this.props.match.params.storeId);
         }
     };
 
     render() {
-        const { action, shop } = this.props;
+        const { action, store } = this.props;
 
-        if (!shop) {
+        if (!store) {
             return (
                 <div></div>
-                // <LoadingIcon />
             )
         }
-
         return (
-            <ShopForm action={action} shop={shop} />
+            <StoreForm action={action} store={store} />
         )
     }
 }
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditShopForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditStoreForm);

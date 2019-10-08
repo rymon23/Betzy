@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import ProductForm from './product_form';
 import { updateProduct, fetchProduct } from '../../actions/product_actions';
 import React from 'react';
-// import LoadingIcon from '../loading_icon';
 
 const mapStateToProps = (state, ownProps) => {
     const productId = ownProps.match.params.productId;
@@ -41,7 +40,6 @@ class EditProductForm extends React.Component {
         const { product, action, errors } = this.props;
         if (!product){
             return (
-                // <LoadingIcon />
                 <div></div>
             )
         }

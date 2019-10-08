@@ -1,10 +1,10 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-class ShopForm extends React.Component {
+class StoreForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.shop;
+        this.state = this.props.store;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
     };
@@ -12,21 +12,21 @@ class ShopForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('shop[name]', this.state.name);
-        formData.append('shop[owner_id]', this.state.owner.id);
+        formData.append('store[name]', this.state.name);
+        formData.append('store[owner_id]', this.state.owner.id);
 
         if (this.state.id){
-            formData.append('shop[id]', this.state.id);
+            formData.append('store[id]', this.state.id);
         };
 
-        formData.append('shop[owner_id]', this.state.owner.id);
+        formData.append('store[owner_id]', this.state.owner.id);
 
         if (this.state.imageFile) {
-            formData.append('shop[shop_image]', this.state.imageFile);
+            formData.append('store[store_image]', this.state.imageFile);
         };
 
         this.props.action(formData).then(action => {
-            this.props.history.push(`/shops/${action.shop.id}`)
+            this.props.history.push(`/stores/${action.store.id}`)
         }).then(() => this.props.fetchAllUsers());
         
     }
@@ -63,8 +63,7 @@ class ShopForm extends React.Component {
                 
                 <div className="shop-name">
                     <label htmlFor="name">
-                        Name your shop
-                        <p>Choose a memorable name that reflects your style.</p>
+                        Name your store
                     </label>
                     <br/>
                     
@@ -75,17 +74,12 @@ class ShopForm extends React.Component {
                             value={this.state.name}
                             id="name"
                             onChange={this.update('name')} />
-                        <p>Your shop name will appear in your shop 
-                            and next to each of your listings throughout 
-                            Etsy. After you open your shop, you still can
-                            change your name. </p>
                     </div>
                    
                 </div>
                 <br/>
                 <div className="shop-image-upload">
                     <label htmlFor="shop-image">Add your shop's logo here</label>
-                    <p>After you open your shop, you still can change your logo.</p>
                     <br/>
 
                     <div className="image-preview">
@@ -94,8 +88,6 @@ class ShopForm extends React.Component {
 
                     <input type="file" id="shop-image" onChange={this.handleFile}/>
                 </div>
-
-                
 
                 <button className="clicky" id="save-shop">Save and continue</button>
 
@@ -106,4 +98,4 @@ class ShopForm extends React.Component {
 
 }
 
-export default withRouter(ShopForm);
+export default withRouter(StoreForm);
