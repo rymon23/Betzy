@@ -23,6 +23,7 @@ export const selectProductsByCategory = (allProducts, categoryId) => {
   return selectedProducts;
 };
 export const selectProductsByStore = (allProducts, storeId) => {
+    debugger
   const selectedProducts = [];
   Object.keys(allProducts).forEach(id => {
     if (allProducts[id].store_id == storeId) {
@@ -33,7 +34,7 @@ export const selectProductsByStore = (allProducts, storeId) => {
 };
 
 //SELECT ALL *
-export const selectAllStores = allStores => {
+export const selectAllStores = (allStores) => {
     return Object.keys(allStores)
         .map(id => allStores[id]);
 }
@@ -41,11 +42,11 @@ export const selectAllUsers = (allUsers) => {
     return Object.keys(allUsers)
         .map(id => allUsers[id]);
 }
-export const selectAllProducts = allProducts => {
+export const selectAllProducts = (allProducts) => {
     return Object.keys(allProducts)
         .map(id => allProducts[id]);
 };
-export const selectAllReviews = allReviews => {
+export const selectAllReviews = (allReviews) => {
     return Object.keys(allReviews)
         .map(id => allReviews[id]);
 };

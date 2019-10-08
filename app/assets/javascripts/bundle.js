@@ -3167,6 +3167,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _actions_category_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/category_actions */ "./frontend/actions/category_actions.js");
 /* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
+/* harmony import */ var _reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../reducers/selector_reducer */ "./frontend/reducers/selector_reducer.js");
+
 
 
 
@@ -3177,8 +3179,9 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUser"])(state);
   var storeId = ownProps.match.params.storeId;
-  var store = state.entities.stores[storeId];
-  var products = state.entities.products || [];
+  var store = state.entities.stores[storeId]; // const products = state.entities.products || [];
+
+  var products = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__["selectProductsByStore"])(store, storeId);
   var categories = state.entities.categories || [];
   var currentUserId = state.session.currentUser.id;
   debugger;
@@ -3390,6 +3393,80 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
   ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/selector_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/selector_reducer.js ***!
+  \***********************************************/
+/*! exports provided: selectCurrentUser, selectCurrentUserStore, currentUserHasStore, selectProductsByCategory, selectProductsByStore, selectAllStores, selectAllUsers, selectAllProducts, selectAllReviews */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectCurrentUser", function() { return selectCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectCurrentUserStore", function() { return selectCurrentUserStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserHasStore", function() { return currentUserHasStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectProductsByCategory", function() { return selectProductsByCategory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectProductsByStore", function() { return selectProductsByStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllStores", function() { return selectAllStores; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllUsers", function() { return selectAllUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllProducts", function() { return selectAllProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllReviews", function() { return selectAllReviews; });
+//CURRENT USER
+var selectCurrentUser = function selectCurrentUser(users, sessionId) {
+  return users[sessionId];
+};
+var selectCurrentUserStore = function selectCurrentUserStore(stores, storeId) {
+  return stores[storeId];
+};
+var currentUserHasStore = function currentUserHasStore(sessionId, allUsers) {
+  var user = allUsers[sessionId];
+  var storeId = user.store_id;
+  return storeId;
+}; //JOINS SELECT
+
+var selectProductsByCategory = function selectProductsByCategory(allProducts, categoryId) {
+  var selectedProducts = [];
+  Object.keys(allProducts).forEach(function (id) {
+    if (allProducts[id].categoryId == categoryId) {
+      selectedProducts.push(allProducts[id]);
+    }
+  });
+  return selectedProducts;
+};
+var selectProductsByStore = function selectProductsByStore(allProducts, storeId) {
+  debugger;
+  var selectedProducts = [];
+  Object.keys(allProducts).forEach(function (id) {
+    if (allProducts[id].store_id == storeId) {
+      selectedProducts.push(allProducts[id]);
+    }
+  });
+  return selectedProducts;
+}; //SELECT ALL *
+
+var selectAllStores = function selectAllStores(allStores) {
+  return Object.keys(allStores).map(function (id) {
+    return allStores[id];
+  });
+};
+var selectAllUsers = function selectAllUsers(allUsers) {
+  return Object.keys(allUsers).map(function (id) {
+    return allUsers[id];
+  });
+};
+var selectAllProducts = function selectAllProducts(allProducts) {
+  return Object.keys(allProducts).map(function (id) {
+    return allProducts[id];
+  });
+};
+var selectAllReviews = function selectAllReviews(allReviews) {
+  return Object.keys(allReviews).map(function (id) {
+    return allReviews[id];
+  });
+};
 
 /***/ }),
 
