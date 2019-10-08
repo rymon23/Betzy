@@ -48,7 +48,7 @@ class StoreShow extends React.Component {
                     <button onClick={() => deleteProduct(product.id)} className="clicky">Delete</button>
                 </div>
             );
-        };
+        }
         return editDeleteButton;
     }
 
@@ -83,7 +83,7 @@ class StoreShow extends React.Component {
                 return (
                     <li key={product.id}>
                         <div onClick={this.toProductPage(product.id)}>
-                            <img src={product.imageUrls[0]} />
+                            {/* <img src={product.imageUrls[0]} /> */}
                             <p className="product-name">{product.name.slice(0, 27)}...</p>
                             <p><strong>USD {product.price}</strong></p>
                         </div>
@@ -116,7 +116,7 @@ class StoreShow extends React.Component {
                     <div className="owner-info">
                         <p>Shop owner</p>
                         [image here]
-                        <div className="shop-owner-name">{store.owner.fname}</div>
+                        <div className="shop-owner-name">{store.owner.username}</div>
                         <div className="shop-owner-email">
                             <i className="fa fa-envelope-o" aria-hidden="true"></i>
                             {store.owner.email}

@@ -8,27 +8,27 @@ class UserProfileShow extends React.Component {
 
     componentDidMount(){
         this.props.fetchAllUsers();
-        this.props.fetchShops();
+        this.props.fetchStores();
     }
 
     componentDidUpdate(prevProps){
         if (this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.fetchAllUsers();
-            this.props.fetchShops();
+            this.props.fetchStores();
         }
     }
 
     render(){
-        let {user, shop} = this.props;
-        let shopLogo;
-        if (Boolean(shop)) {
-            shopLogo = (
+        let {user, store} = this.props;
+        let storeLogo;
+        if (Boolean(store)) {
+            storeLogo = (
                 <div>
                     <div id="default-shop-logo">
                     </div>
                     <div className="enter-shop">
-                        <span className="profile-shop-name">{shop.name}</span>
-                        <Link to={`/shops/${shop.id}`} className="btn-block">Visit shop</Link>
+                        <span className="profile-shop-name">{store.name}</span>
+                        <Link to={`/stores/${store.id}`} className="btn-block">Visit store</Link>
                     </div>
                 </div>
             )
@@ -42,7 +42,7 @@ class UserProfileShow extends React.Component {
                         <div>
                             <img src={user.imageUrl} />
                             <div>
-                                <h3>{user.fname}</h3>
+                                <h3>{user.username}</h3>
                                 
                                 <Link to={`/users/${user.id}/edit`} className="btn-block">
                                     <i className="fa fa-pencil" aria-hidden="true"></i>
@@ -53,7 +53,7 @@ class UserProfileShow extends React.Component {
                         
                         <div className="shop-section">
                             <h4>About</h4>
-                            {shopLogo}
+                            {storeLogo}
                         </div>
                     </div>
 
@@ -62,14 +62,8 @@ class UserProfileShow extends React.Component {
                 <div className="favorite-lists-navbar">
                     <ul>
                         <li><a href="#">Favorite items</a></li>
-                        <li><a href="#">Favorite shops</a></li>
+                        <li><a href="#">Favorite vendors</a></li>
                     </ul>
-                    {/* favorite items, favorite shops  */}
-                </div>
-
-                <div className="favorite-list">
-                    {/* list of items or shops favorited by user */}
-                    {/* can use an onClick function to show the selected list*/}
                 </div>
 
             </div>

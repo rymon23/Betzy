@@ -6,11 +6,9 @@ class EditUserProfleForm extends React.Component {
         super(props);
         this.state = Object.assign({
             id: '',
-            fname: '',
+            username: '',
             gender: '',
-            city: '',
             birthday: '',
-            about: '',
             imageUrl: undefined,
             imageFile: undefined
         }, this.props.user);
@@ -29,12 +27,10 @@ class EditUserProfleForm extends React.Component {
     handleSubmit(event){
         event.preventDefault();
         const formData = new FormData();
-        formData.append('user[fname]', this.state.fname);
+        formData.append('user[username]', this.state.username);
         formData.append('user[id]', this.state.id);
         formData.append('user[gender]', this.state.gender);
-        formData.append('user[city]', this.state.city);
         formData.append('user[birthday]', this.state.birthday);
-        formData.append('user[about]', this.state.about);
 
         if (this.state.imageFile){
             formData.append('user[profile_pic]', this.state.imageFile)
@@ -95,7 +91,7 @@ class EditUserProfleForm extends React.Component {
                         <div className="label">
                             Your Name
                         </div>
-                        <input type="text" value={this.state.fname} id="name" onChange={this.update('fname')} />
+                        <input type="text" value={this.state.username} id="name" onChange={this.update('username')} />
                     </div>
 
                     <div className="section">
@@ -124,24 +120,9 @@ class EditUserProfleForm extends React.Component {
 
                     <div className="section">
                         <div className="label">
-                            City
-                        </div>
-                        <input type="text" value={this.state.city} onChange={this.update('city')} id="city" />
-                    </div>
-
-                    <div className="section">
-                        <div className="label">
                             Birthday
                         </div>
                         <input type="date" value={this.state.birthday} onChange={this.update('birthday')} id="birthday" />
-                    </div>
-
-                    <div className="section">
-                        <div className="label">
-                            About
-                        </div>
-                        <textarea value={this.state.about} id="about" onChange={this.update('about')} cols="30" rows="10"></textarea>
-                        
                     </div>
 
                     <button className="clicky">Save Changes</button>

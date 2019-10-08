@@ -3075,7 +3075,6 @@ function (_React$Component) {
         }, "Delete"));
       }
 
-      ;
       return editDeleteButton;
     }
   }, {
@@ -3113,9 +3112,7 @@ function (_React$Component) {
           key: product.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           onClick: _this3.toProductPage(product.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: product.imageUrls[0]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "product-name"
         }, product.name.slice(0, 27), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "USD ", product.price))), _this3.editDeleteButton(product));
       });
@@ -3135,7 +3132,7 @@ function (_React$Component) {
         className: "owner-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Shop owner"), "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-name"
-      }, store.owner.fname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, store.owner.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-envelope-o",
