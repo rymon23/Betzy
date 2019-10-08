@@ -1,0 +1,133 @@
+.shop-nav {
+    position: relative;
+    border-right: 1px solid rgba(34, 34, 34, 0.15);
+    height: 40px;
+    padding-top: 25px;
+    margin-left: 30px;
+    text-align: center;
+    padding-right: 30px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+#store-icon {
+    position: absolute;
+    background-image: image-url("store.svg");
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: 41px;
+    left: 25px;
+}
+.shop-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.shop-name {
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 50px;
+    margin-top: 50px;
+}
+
+.shop-name p {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.shop-name-input > input {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    width: 500px;
+    margin: 10px 50px;
+    padding-left: 20px;
+}
+
+.shop-name-input {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 0;
+    width: 1200px;
+    color: gray;
+}
+
+.shop-name-input > p {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.shop-image-upload {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.shop-image-upload > p {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.shop-image-upload > input {
+    margin: 0 auto 30px;
+}
+
+#save-shop {
+    width: 20%;
+    margin: 0 auto;
+}
+
+.shop-errors {
+    font-size: 14px;
+    color: red;
+    position: absolute;
+    left: 980px;
+    top: 180px;
+    font-style: italic;
+}
+
+.shop-show-header {
+    display: inline-flex;
+    flex-flow: row;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 30px;
+    margin: 0 50px;
+}
+
+.shop-logo > img {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    margin-left: 13px;
+}
+
+
+.edit-your-shop-button {
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.shop-name-show {
+    margin-top: 30px;
+    margin-left: 41px;
+    font-size: 25px;
+    width: 178px;
+}
+
+.favorite-shop {
+    margin-left: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: gray;
+    padding: 5px 15px;
+    margin-top: 100px;
+}
+
+.shop-owner-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

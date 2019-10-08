@@ -1,0 +1,28 @@
+
+.bottom-banner {
+    font-family: "Hepta";
+    display: flex;
+    flex-direction: column;
+    width: 1400px;
+}
+
+.bottom-banner  h4 {
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bottom-banner > ul.category-images-ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.bottom-banner > ul.category-images-ul > li {
+    margin-right: 15px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+}

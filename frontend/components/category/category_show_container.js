@@ -5,16 +5,19 @@ import { fetchStores } from "../../actions/store_actions";
 import { fetchProducts } from '../../actions/product_actions';
 
 const mapStateToProps = (state, ownProps)=> {
+    const stores = Object.values(state.entities.stores) || [];
+    const products = Object.values(state.entities.products) || [];
+
     return {
         category: state.entities.categories[ownProps.match.params.categoryId],
-        stores: state.entities.stores,
-        products: state.entities.products
+        stores,
+        products
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchCategory: id => dispatch(fetchCategory(id)),
+        fetchCategory: (id) => dispatch(fetchCategory(id)),
         fetchStores: () => dispatch(fetchStores()),
         fetchProducts: () => dispatch(fetchProducts())
     }

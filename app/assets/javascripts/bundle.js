@@ -597,9 +597,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -612,10 +612,14 @@ var CategoryShow =
 function (_React$Component) {
   _inherits(CategoryShow, _React$Component);
 
-  function CategoryShow() {
+  function CategoryShow(props) {
+    var _this;
+
     _classCallCheck(this, CategoryShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CategoryShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CategoryShow).call(this, props));
+    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CategoryShow, [{
@@ -635,43 +639,42 @@ function (_React$Component) {
       }
     }
   }, {
-    key: "toProductPage",
-    value: function toProductPage(product) {
-      var _this = this;
+    key: "ProductPage",
+    value: function ProductPage(product) {
+      var _this2 = this;
 
       event.preventDefault();
       return function (event) {
         event.preventDefault();
 
-        _this.props.history.push("/stores/".concat(product.storeId, "/products/").concat(product.id));
+        _this2.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
       };
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$props = this.props,
           category = _this$props.category,
           stores = _this$props.stores,
           products = _this$props.products;
 
-      if (!category || Object.keys(stores).length === 0 || !products) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      if (!category || !products || Object.keys(stores).length === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       }
 
-      var categoryItems = products.map(function (product) {
+      var categoryProducts = products.map(function (product) {
+        if (product === undefined) return null;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: product.id,
-          onClick: _this2.toProductPage(product)
-        }, "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.title.slice(0, 35), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "category-shop-name"
-        }, stores[product.storeId].name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "USD ", product.price));
+          onClick: _this3.ProductPage(product)
+        }, "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.name.slice(0, 35), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "USD ", product.price));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "products-listing",
         id: "category-show"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, categoryItems));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, categoryProducts));
     }
   }]);
 
@@ -703,10 +706,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var stores = Object.values(state.entities.stores) || [];
+  var products = Object.values(state.entities.products) || [];
   return {
     category: state.entities.categories[ownProps.match.params.categoryId],
-    stores: state.entities.stores,
-    products: state.entities.products
+    stores: stores,
+    products: products
   };
 };
 
@@ -921,6 +926,26 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var currentUser = this.props.currentUser;
+
+      var middleBanner = function middleBanner() {
+        if (currentUser) return null;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "middle-banner"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "middle-banner-list"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-check",
+          "aria-hidden": "true"
+        }), "Unique everything"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-check",
+          "aria-hidden": "true"
+        }), "Independent sellers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Buy directly from someone who put their heart and soul into making something special.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-check",
+          "aria-hidden": "true"
+        }), "Secure shopping"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We use best-in-class technology to protect your transactions."))));
+      };
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "homepage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "If it's handcrafted, vintage, custom, or unique, it's on ", _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -928,22 +953,17 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Personalized jewelry shines a little brighter"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Shop custom jewelry", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-caret-right",
         "aria-hidden": "true"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "middle-banner"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "middle-banner-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-check",
-        "aria-hidden": "true"
-      }), "Unique everything"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-check",
-        "aria-hidden": "true"
-      }), "Independent sellers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Buy directly from someone who put their heart and soul into making something special.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-check",
-        "aria-hidden": "true"
-      }), "Secure shopping"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We use best-in-class technology to protect your transactions.")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), middleBanner(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bottom-banner"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "You might be interested in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "welcome-back-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "welcome-back"
+      }, "Welcome back ", currentUser.username)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "popular-right-now-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "popular-right-now"
+      }, "Popular right now")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "category-images-ul"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         onClick: this.recommendedOnClick
@@ -982,6 +1002,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var mapStateToProps = function mapStateToProps(state) {
+  var currentUser = state.session.currentUser;
+  return {
+    currentUser: currentUser
+  };
+};
+
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchCategories: function fetchCategories() {
@@ -999,7 +1026,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mapDispatchToProps)(_homepage__WEBPACK_IMPORTED_MODULE_5__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_homepage__WEBPACK_IMPORTED_MODULE_5__["default"]));
 
 /***/ }),
 
@@ -1449,14 +1476,14 @@ var LoggedOutNavbar = function LoggedOutNavbar(props) {
   }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_2__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "sell-on-epsy",
     onClick: function onClick() {
-      return alert('Please log in or sign up first!');
+      return alert('Please log in or sign up');
     }
   }, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_4__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "greeting-nav"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "cart-nav",
     onClick: function onClick() {
-      return alert('Please log in or sign up first!');
+      return alert('Please log in or sign up');
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fa fa-shopping-cart",
@@ -1563,6 +1590,9 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   debugger;
+  var currentUser = state.session.currentUser;
+  var userIsVendor;
+  if (currentUser) userIsVendor = currentUser.store;
   var storeId;
   storeId = false;
   var categories = Object.values(state.entities.categories) || [];
@@ -1605,13 +1635,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var shopId = ownProps.match.params.shopId;
+  var storeId = ownProps.match.params.storeId;
   var product = {
     title: '',
     description: '',
     price: '',
     categoryId: '',
-    shopId: shopId
+    storeId: storeId
   };
   var errors = state.errors.product;
   return {
@@ -2846,7 +2876,6 @@ function (_React$Component) {
         formData.append('store[id]', this.state.id);
       }
 
-      ;
       formData.append('store[owner_id]', this.state.owner.id);
 
       if (this.state.imageFile) {
@@ -3074,12 +3103,11 @@ function (_React$Component) {
         }, "Stock your store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "clicky edit-your-shop-button",
           onClick: this.handleEdit
-        }, "Edit your shop"));
+        }, "Edit your store"));
       } else {
         stockItemButton = '';
       }
 
-      ;
       var productLi = products.map(function (product) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: product.id

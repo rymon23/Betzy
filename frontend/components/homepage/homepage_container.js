@@ -6,6 +6,14 @@ import { fetchProducts } from '../../actions/product_actions';
 
 import HomePage from './homepage';
 
+const mapStateToProps = (state) => {
+    const currentUser = state.session.currentUser; 
+    return {
+      currentUser
+    };
+};
+
+
 const mapDispatchToProps = (dispatch) => {
     return {
     fetchCategories: () => dispatch(fetchCategories()),
@@ -15,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

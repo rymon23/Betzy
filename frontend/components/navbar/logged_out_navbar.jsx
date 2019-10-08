@@ -13,13 +13,15 @@ const LoggedOutNavbar = (props) => {
 
             <SearchForm />
 
-            <li className="sell-on-epsy" onClick={() => alert('Please log in or sign up first!')}>
+            <li className="sell-on-epsy" 
+                onClick={() => alert('Please log in or sign up')}>
                 Sell on {APP_NAME}
             </li>
 
             <li className="greeting-nav"><GreetingContainer/></li>
 
-            <li className="cart-nav" onClick={() => alert('Please log in or sign up first!')}>
+            <li className="cart-nav" 
+                onClick={() => alert('Please log in or sign up')}>
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 Cart
             </li>

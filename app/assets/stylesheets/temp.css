@@ -79,9 +79,7 @@ a.btn-block {
     cursor: pointer;
 }
 
-/* Main body */
 
-/* Login and signup form */
 #demo-login {
     font-size: 12px;
     padding: 0 10px;
@@ -143,20 +141,14 @@ a.btn-block {
     padding-left: 5px;
     color: orangered;
 }
-/* Login and signup form */
 
-/* Button 3d effect */
+
 .clicky {
-    /** Offset the Position **/
     position: relative;
     top: 0;
     margin-top: 0;
     margin-bottom: 10px;
 
-    /** 3D Block Effect **/
-    /* box-shadow: 0 10px 0 0 #6B2A4A; */
-
-    /** Make it look pretty **/
     display: block;
     background: black;
     color: #eee;
@@ -170,9 +162,8 @@ a.btn-block {
     font-weight: bold;
 
 }
-/* Button 3d effect */
 
-/* Modal */
+
 .modal-background {
     position: fixed;
     top: 0;
@@ -196,9 +187,8 @@ a.btn-block {
     right: 5px;
     cursor: pointer;
 }
-/* Modal */
 
-/* NavBar */
+
 .navbar-ul {
     left: 200px;
     padding-left: 30px;
@@ -268,8 +258,6 @@ a.btn-block {
 }
 
 
-/* // Logged in navbar */
-
 .notification-nav {
     position: relative;
     padding-right: 25px;
@@ -293,28 +281,6 @@ a.btn-block {
     font-size: 20px;
 }
 
-.shop-nav {
-    position: relative;
-    border-right: 1px solid rgba(34, 34, 34, 0.15);
-    height: 40px;
-    padding-top: 25px;
-    margin-left: 30px;
-    text-align: center;
-    padding-right: 30px;
-    margin-top: 15px;
-    cursor: pointer;
-}
-
-#store-icon {
-    position: absolute;
-    background-image: image-url("store.svg");
-    width: 25px;
-    height: 25px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    bottom: 41px;
-    left: 25px;
-}
 
 .dropdown {
     position: relative;
@@ -438,15 +404,14 @@ a.btn-block {
     right: 1px;
 }
 
-/* // Logged in navbar
 
-// Logged out navbar */
+
 .logged-out-navbar-ul {
     height: 60.978px;
     display: flex;
     align-content: center;
 }
-/* // Logged out navbar */
+
 
 .logged-out-navbar-ul > li {
     list-style: none;
@@ -532,9 +497,7 @@ a.btn-block {
     color: gray;
 }
 
-/* // Category navbar
 
-// Errors ul styling  */
 .session-form {
     display: flex;
     flex-direction: column;
@@ -552,61 +515,9 @@ a.btn-block {
     top: 165px;
     left: 20px;
 }
-/* // Errors ul styling 
 
-// Create shop page */
-.shop-form {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-    margin-bottom: 50px;
-}
 
-.shop-name {
-    font-size: 30px;
-    font-weight: bold;
-    padding-bottom: 50px;
-    margin-top: 50px;
-}
 
-.shop-name p {
-    font-size: 12px;
-    font-weight: normal;
-}
-
-.shop-name-input > input {
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
-    width: 500px;
-    margin: 10px 50px;
-    padding-left: 20px;
-}
-
-.shop-name-input {
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    margin: 0 auto;
-    padding: 0;
-    width: 1200px;
-    color: gray;
-}
-
-.shop-name-input > p {
-    width: 500px;
-    margin: 0 auto;
-}
-
-.shop-image-upload {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.shop-image-upload > p {
-    font-size: 12px;
-    font-weight: normal;
-}
 
 .image-preview {
     width: 200px;
@@ -622,7 +533,7 @@ a.btn-block {
     border-radius: inherit;
 }
 
-.shop-image-upload > input {
+/* .shop-image-upload > input {
     margin: 0 auto 30px;
 }
 
@@ -638,11 +549,8 @@ a.btn-block {
     left: 980px;
     top: 180px;
     font-style: italic;
-}
+} */
 
-// Create shop page
-
-// Loading icon
 .loader,
 .loader:after,
 .loader:before {
@@ -710,10 +618,9 @@ a.btn-block {
         transform: rotate(360deg);
     }
 }
-/* // Loading icon
 
-// Shop show page */
-.shop-show-header {
+
+/* .shop-show-header {
     display: inline-flex;
     flex-flow: row;
     border-bottom: 1px solid lightgray;
@@ -726,14 +633,14 @@ a.btn-block {
     width: 180px;
     height: 180px;
     margin-left: 13px;
-}
+} */
 .stock-edit-button {
     margin-top: 20px;
     margin-left: 15px;
     font-size: 10px;
 }
 
-.edit-your-shop-button {
+/* .edit-your-shop-button {
     margin-left: 5px;
     margin-bottom: 10px;
 }
@@ -743,16 +650,16 @@ a.btn-block {
     margin-left: 41px;
     font-size: 25px;
     width: 178px;
-}
+} */
 
-.favorite-shop {
+/* .favorite-shop {
     margin-left: 30px;
     border: 1px solid gray;
     border-radius: 5px;
     color: gray;
     padding: 5px 15px;
     margin-top: 100px;
-}
+} */
 
 .fa-heart-o {
     margin-right: 10px;
@@ -781,16 +688,16 @@ a.btn-block {
     background-repeat: no-repeat;
 }
 
-.shop-owner-name {
+/* .shop-owner-name {
     margin-top: 10px;
     margin-bottom: 10px;
-}
+} */
 
 .fa-envelope-o {
     margin-right: 5px;
 }
 
-.products-listing {
+/* .products-listing {
     padding-left: 30px;
     font-size: 16px;
     font-weight: bold;
@@ -854,9 +761,8 @@ a.btn-block {
     font-size: 12px;
     margin: 5px;
 }
-/* // Shop show page
 
-// Product form */
+
 .product-form {
     background: #FAF9F5;
     padding-top: 20px;
@@ -907,7 +813,7 @@ a.btn-block {
     width: 150px;
     height: 150px;
     border-radius: 5px;
-}
+} */
 
 .first-preview {
     background-image: image-url('placeholder-1.svg');
@@ -1050,72 +956,8 @@ a.btn-block {
     margin-bottom: 0;
     width: 954px;
 }
-/* // Product form */
 
-/* // Product show */
-.product-show {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    font-family: 'Hepta Slab', serif;
-}
 
-.product-show a {
-    text-decoration: none;
-    font-size: 15px;
-    color: grey;
-}
-
-.product-show .carousel {
-    margin-top: 30px;
-    height: 900px;
-    width: 800px;
-    margin-left: 65px;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 20px;
-}
-
-.product-show .product-info {
-    margin: 0 auto;
-    width: 420px;
-    padding-right: 10px;
-}
-
-.product-show .product-info > ul {
-    list-style: none;
-    font-size: 18px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid lightgray;
-}
-
-.product-show .product-info > ul > li {
-    margin-bottom: 30px;
-}
-
-.product-show .product-info .quantity {
-    font-size: 12px;
-}
-
-.product-show .product-info input {
-    border-radius: 5px;
-    height: 36px;
-    border: 1px solid lightgray;
-    padding-left: 5px;
-    margin-right: 10px;
-}
-
-.product-show .product-info span {
-    font-size: 12px;
-    color: gray;
-}
-
-.product-show .reviews {
-    background: gray;
-}
-
-.product-show .owner-info {
-    margin: 0 auto;
-}
 
 .slider {
     height: 100%;
@@ -1144,27 +986,8 @@ a.btn-block {
     height: 100%;
 }
 
-.product-details {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid lightgray;
-    padding-left: 10px;
-    padding-right: 10px;
-    flex-wrap: wrap;
-    line-height: 30px;
-}
 
-.product-details > label {
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-/* // Product show */
 
-/* // Category show */
 #category-show {
     font-weight: medium;
     font-family: "Hepta";
@@ -1187,11 +1010,9 @@ a.btn-block {
         opacity: 0.5;
     }
 }
-/* // Category show */
 
-/* // Edit user profile page */
+
 .user-profile-edit {
-
     p {
         color: gray;
         font-style: italic;
@@ -1313,9 +1134,8 @@ a.btn-block {
     }
 
 }
-/* // Edit user profile page */
 
-/* // User profile show page */
+
 .user-profile-show {
     display: flex;
     flex-direction: column;
@@ -1410,17 +1230,14 @@ a.btn-block {
     color: gray;
 }
 
-/* // User profile show page */
 
-/* // Search products listing page */
 .search-shop-name {
     font-size: 14px;
     color: gray;
     font-family: "Hepta";
 }
-/* // Search products listing page */
 
-/* // Cart items page */
+
 .cart-items-checkout {
     background: #FAF9F5;
     padding-top: 30px;
@@ -1578,60 +1395,8 @@ div.cart-shop-logo {
     margin-bottom: 20px;
     margin-top: 20px;
 }
-/* // Cart items page */
 
-/* // Homepage */
-.homepage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.homepage > h1 {
-    font-family: "Hepta";
-    font-weight: normal;
-}
-
-.homepage > div.homepage-banner {
-    background-image: image-url('jewelry_ep_1680x280.4.jpg');
-    height: 280.4px;
-    width: 1680px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.homepage > div.homepage-banner > h1 {
-    font-weight: normal;
-    font-family: "Hepta";
-    margin-right: 587px;
-    font-size: 50px;
-    width: 569px;
-}
-.homepage > div.homepage-banner > button {
-    background: white;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    padding: 12px 17px;
-    margin-right: 970px;
-    margin-bottom: 20px;
-}
-
-.homepage > div.middle-banner {
-    width: 100%;
-}
-
-.homepage > div.middle-banner > ul.middle-banner-list {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    padding: 0;
-}
 
 .fa-check {
     color: #E55400;
@@ -1639,45 +1404,6 @@ div.cart-shop-logo {
     margin-right: 10px;
 }
 
-.homepage > div.middle-banner > ul.middle-banner-list > li {
-    font-weight: normal;
-    font-family: "Hepta";
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 300px;
-}
-
-.homepage > div.middle-banner > ul.middle-banner-list > li > h3 {
-    font-weight: normal;
-    font-family: "Hepta";
-    margin-bottom: 0;
-}
-
-.bottom-banner {
-    font-family: "Hepta";
-}
-
-.bottom-banner  h4 {
-    font-weight: normal;
-    margin: 0;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.bottom-banner > ul.category-images-ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.bottom-banner > ul.category-images-ul > li {
-    margin-right: 15px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 #wedding-gifts {
     background-image: image-url('wedding_gifts.jpg');
@@ -1727,9 +1453,7 @@ div.cart-shop-logo {
     background-repeat: no-repeat;
 }
 
-/* // Homepage */
 
-/* // reviews index  */
 .reviews-index {
     background: white;
     margin-left: 71px;
@@ -1775,9 +1499,8 @@ div.cart-shop-logo {
 .reviews-index-title > span {
     margin-left: 20px;
 }
-/* // reviews index  */
 
-/* // pagination */
+
 ul.pagination {
     list-style: none;
     display: flex;

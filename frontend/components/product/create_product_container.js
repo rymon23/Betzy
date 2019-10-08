@@ -3,13 +3,13 @@ import ProductForm from "./product_form";
 import { createProduct } from "../../actions/product_actions";
 
 const mapStateToProps = (state, ownProps) => {    
-    const shopId = ownProps.match.params.shopId;
+    const storeId = ownProps.match.params.storeId;
     const product = { 
             title: '',
             description: '', 
             price: '',
             categoryId: '', 
-            shopId: shopId 
+            storeId: storeId 
         };
     const errors = state.errors.product;
     return {

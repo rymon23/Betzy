@@ -70,14 +70,14 @@ class StoreShow extends React.Component {
                     </button>
 
                     <button className="clicky edit-your-shop-button" onClick={this.handleEdit}>
-                        Edit your shop
+                        Edit your store
                     </button>
                 </div>
                 
             );
         } else {
             stockItemButton = '';
-        };
+        }
 
         const productLi = products.map(product => {
                 return (

@@ -20,6 +20,41 @@ class HomePage extends React.Component {
     }
 
     render() {
+        let { currentUser } = this.props;
+
+        const middleBanner = () => {
+            if ( currentUser ) return null;
+            return (
+                <div className="middle-banner">
+                    <ul className="middle-banner-list">
+                        <li>
+                            <h3>
+                                <i className="fa fa-check" aria-hidden="true"></i>
+                                Unique everything
+                                </h3>
+                            <p>We have millions of one-of-a-kind items, so you can find whatever you need
+                                    (or really, really want).</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <i className="fa fa-check" aria-hidden="true"></i>
+                                Independent sellers
+                                </h3>
+                            <p>Buy directly from someone who put their heart and soul into making something
+                                    special.</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <i className="fa fa-check" aria-hidden="true"></i>
+                                Secure shopping
+                                </h3>
+                            <p>We use best-in-class technology to protect your transactions.</p>
+                        </li>
+                    </ul>
+                </div>
+            )            
+        }
+
         return (
             <div className="homepage">
 
@@ -33,36 +68,23 @@ class HomePage extends React.Component {
                     </button>
                 </div>
 
-                <div className="middle-banner">
-                    <ul className="middle-banner-list">
-                        <li>
-                            <h3>
-                                <i className="fa fa-check" aria-hidden="true"></i>
-                                Unique everything
-                            </h3>
-                            <p>We have millions of one-of-a-kind items, so you can find whatever you need
-                                (or really, really want).</p>
-                        </li>
-                        <li>
-                            <h3>
-                                <i className="fa fa-check" aria-hidden="true"></i>
-                                Independent sellers
-                            </h3>
-                            <p>Buy directly from someone who put their heart and soul into making something
-                                special.</p>
-                        </li>
-                        <li>
-                            <h3>
-                                <i className="fa fa-check" aria-hidden="true"></i>
-                                Secure shopping
-                            </h3>
-                            <p>We use best-in-class technology to protect your transactions.</p>
-                        </li>
-                    </ul>
-                </div>
+                { middleBanner() }
 
                 <div className="bottom-banner">
-                    <h3>You might be interested in</h3>
+                    {
+                       currentUser ? 
+                       <div className="welcome-back-div">
+                            <h3 className="welcome-back" >
+                                Welcome back { currentUser.username }</h3>                           
+                       </div>
+ 
+                        : 
+                        <div className="popular-right-now-div">
+                            <h2 className="popular-right-now">
+                                Popular right now</h2>                            
+                        </div>
+
+                    }
                     <ul className="category-images-ul">
                         <li onClick={this.recommendedOnClick}>
                             <div id="recommended"></div>

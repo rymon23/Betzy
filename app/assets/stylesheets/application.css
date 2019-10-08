@@ -13,6 +13,17 @@
  *= require_tree .
  *= require_self
  */
+/* .welcome-back-div{
+  display: flex;
+  flex-direction: row;
+} */
+.popular-right-now-div {
+  display: flex;
+  justify-content: center;
+}
+.popular-right-now {
+  font-weight: bold;
+}
 
   /* button:hover {
     opacity: 0.8;

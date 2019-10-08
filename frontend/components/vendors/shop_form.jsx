@@ -7,7 +7,7 @@ class StoreForm extends React.Component {
         this.state = this.props.store;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
-    };
+    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -17,7 +17,7 @@ class StoreForm extends React.Component {
 
         if (this.state.id){
             formData.append('store[id]', this.state.id);
-        };
+        }
 
         formData.append('store[owner_id]', this.state.owner.id);
 

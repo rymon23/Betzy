@@ -40,9 +40,11 @@ class Navbar extends React.Component{
     }
 } 
     
-
 const mapStateToProps = (state) => {
     debugger
+    const currentUser = state.session.currentUser; 
+    let userIsVendor;
+    if (currentUser) userIsVendor = currentUser.store;
     let storeId;
 
         storeId = false;
