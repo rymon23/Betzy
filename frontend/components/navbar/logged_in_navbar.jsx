@@ -21,7 +21,7 @@ class LoggedInNavbar extends React.Component {
 
     cartClick(event){
         event.preventDefault();
-        this.props.history.push('/cartItems');
+        // this.props.history.push('/cartItems');
     }
 
     render(){

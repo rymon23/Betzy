@@ -1401,8 +1401,7 @@ function (_React$Component) {
   }, {
     key: "cartClick",
     value: function cartClick(event) {
-      event.preventDefault();
-      this.props.history.push('/cartItems');
+      event.preventDefault(); // this.props.history.push('/cartItems');
     }
   }, {
     key: "render",
