@@ -1,0 +1,7 @@
+bundle install
+
+npm install
+
+bundle exec rails db:setup
+
+bundle install

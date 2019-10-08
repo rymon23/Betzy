@@ -1,7 +1,7 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import ProductForm from './product_form';
 import { updateProduct, fetchProduct } from '../../actions/product_actions';
-import React from 'react';
 
 const mapStateToProps = (state, ownProps) => {
     const productId = ownProps.match.params.productId;
@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         action: formData => dispatch(updateProduct(formData)),
-        fetchProduct: id => dispatch(fetchProduct(id))
+        fetchProduct: (id) => dispatch(fetchProduct(id))
     };
 };
 

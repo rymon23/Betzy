@@ -15,13 +15,8 @@ class Navbar extends React.Component{
         this.props.fetchAllUsers();
         this.props.fetchCategories();
     }
-    componentDidUpdate() {
-        // debugger
-        // this.props.fetchCategories();
-    }
 
     render() {
-        debugger
         let { loggedIn, storeId, categories } = this.props;
 
         const categoryList = () => {
@@ -30,37 +25,23 @@ class Navbar extends React.Component{
                 { categories.slice(0,6).map((category) => 
                 { return (<li key={category.id}>
                             <Link to={`/categories/${category.id}`}>
-                            {category.name}
+                                {category.name}
                             </Link>
                         </li>)})}</ul>)
         }
-
-        // const cats = (
-        //     <ul className="category-ul">
-        //         <li><Link to={`/categories/56`}>Jewelry & Accessories</Link></li>
-        //         <li><Link to={`/categories/57`}>Clothing & Shoes</Link></li>
-        //         <li><Link to={`/categories/58`}>Home & Living</Link></li>
-        //         <li><Link to={`/categories/59`}>Wedding & Party</Link></li>
-        //         <li><Link to={`/categories/60`}>Toys & Entertainment</Link></li>
-        //         <li><Link to={`/categories/61`}>Art & Collectibles</Link></li>
-        //         <li><Link to={`/categories/62`}>Craft Supplies & Tools</Link></li>
-        //         <li><Link to={`/categories/63`}>Vintage</Link></li>
-        //     </ul>
-        // );
 
         const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} />;
         return (
             <div className="navbar">
                 {loggedComponent}
                 {categoryList()}
-                {/* {cats} */}
             </div>
         );
     }
 } 
     
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     debugger
     let storeId;
 
@@ -73,12 +54,11 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-    fetchAllUsers: () => dispatch(fetchAllUsers()),
-    fetchCategories: () => dispatch(fetchCategories()),
+        fetchAllUsers: () => dispatch(fetchAllUsers()),
+        fetchCategories: () => dispatch(fetchCategories()),
     };
 };
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));

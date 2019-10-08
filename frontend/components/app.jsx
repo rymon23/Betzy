@@ -18,22 +18,7 @@ import Modal from "./modal/modal";
 import Logo from "./logo/logo";
 import SearchForm from "./search/search";
 import Categories from "./nav/category";
-import Homepage from "./homepage/homepage";
 
-//Store
-// import StoreShowContainer from "./store/store_show_container";
-// import StoreCreateContainer from "./store/store_form_create";
-// import StoreEditContainer from "./store/store_form_edit";
-// //Product
-// import ProductCreateContainer from "./product/(old)product_form_create";
-// import ProductEditContainer from "./product/(old)product_form_edit";
-//Category
-// import CategoryShowContainer from "./store/store_form_new";
-//User 
-// import UserShowContainer from "./store/store_form_new";
-
-//
-//
 import Navbar from './navbar/navbar';
 import EditStoreContainer from './vendors/edit_shop_container';
 import CreateStoreContainer from './vendors/create_shop_container';

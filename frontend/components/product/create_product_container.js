@@ -4,7 +4,13 @@ import { createProduct } from "../../actions/product_actions";
 
 const mapStateToProps = (state, ownProps) => {    
     const shopId = ownProps.match.params.shopId;
-    const product = {title: '', description: '', price: '', categoryId: '', shopId: shopId,  quantity: '' };
+    const product = { 
+            title: '',
+            description: '', 
+            price: '',
+            categoryId: '', 
+            shopId: shopId 
+        };
     const errors = state.errors.product;
     return {
         product,
@@ -12,9 +18,10 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-
-const mapDispatchToProps = dispatch => ({
-    action: formData => dispatch(createProduct(formData))
-});
+const mapDispatchToProps = dispatch => {
+    return {
+        action: formData => dispatch(createProduct(formData))
+    }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);
