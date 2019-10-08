@@ -5,6 +5,7 @@ import LoggedOutNavbar from './logged_out_navbar';
 import {withRouter, Link} from 'react-router-dom'; 
 import { fetchAllUsers } from '../../actions/user_actions';
 import { fetchCategories } from '../../actions/category_actions';
+import { getStoreId } from "../../util/helpers_util";
 
 
 class Navbar extends React.Component{
@@ -15,7 +16,7 @@ class Navbar extends React.Component{
         this.props.fetchAllUsers();
         this.props.fetchCategories();
     }
-
+    
     render() {
         let { loggedIn, storeId, categories } = this.props;
 
@@ -41,13 +42,8 @@ class Navbar extends React.Component{
 } 
     
 const mapStateToProps = (state) => {
-    debugger
     const currentUser = state.session.currentUser; 
-    let userIsVendor;
-    if (currentUser) userIsVendor = currentUser.store;
-    let storeId;
-
-        storeId = false;
+    const storeId = getStoreId(currentUser);
     const categories = Object.values(state.entities.categories) || [];
     return {
         loggedIn: Boolean(state.session.currentUser),

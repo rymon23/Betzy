@@ -23,7 +23,7 @@ class StoreForm extends React.Component {
 
         if (this.state.imageFile) {
             formData.append('store[store_image]', this.state.imageFile);
-        };
+        }
 
         this.props.action(formData).then(action => {
             this.props.history.push(`/stores/${action.store.id}`)
@@ -35,7 +35,7 @@ class StoreForm extends React.Component {
         return event => {
             this.setState({[field]: event.target.value});
         };
-    };
+    }
 
     handleFile(event) {
         const file = event.currentTarget.files[0];

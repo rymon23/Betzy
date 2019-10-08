@@ -12,12 +12,14 @@ class StoreShow extends React.Component {
     componentDidMount() {
         this.props.fetchStore(this.props.match.params.storeId);
         this.props.fetchProducts();
+        this.props.fetchCategories();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
             this.props.fetchStore(this.props.match.params.storeId);
             this.props.fetchProducts();
+            this.props.fetchCategories();
         }
     }
 
@@ -55,6 +57,8 @@ class StoreShow extends React.Component {
     render() {
         
         let { store, currentUserId, products } = this.props;
+
+        debugger
         if (!store || !products) {
             return (
                 <div></div>
@@ -79,7 +83,8 @@ class StoreShow extends React.Component {
             stockItemButton = '';
         }
 
-        const productLi = products.map(product => {
+        const productLi = products.map((product) => {
+            debugger
                 return (
                     <li key={product.id}>
                         <div onClick={this.toProductPage(product.id)}>
@@ -106,11 +111,6 @@ class StoreShow extends React.Component {
                         <div className="shop-name-show">
                             {store.name}
                         </div>
-                        {/* <div className="favorite-shop">
-                            <i className="fa fa-heart-o" aria-hidden="true"></i>
-                            Favorite shop ({store.users_who_favorited_me.length})
-                        </div> */}
-                        
                     </div>
 
                     <div className="owner-info">
@@ -134,7 +134,7 @@ class StoreShow extends React.Component {
 
             </div>
         );
-    };
+    }
 }
 
 export default withRouter(StoreShow);
