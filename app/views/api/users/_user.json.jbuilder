@@ -12,4 +12,7 @@ if user
     else
         json.storeId nil
     end
+    if user == current_user
+        json.store user.store
+    end
 end

@@ -45,6 +45,7 @@ const mapStateToProps = (state) => {
     const currentUser = state.session.currentUser; 
     const storeId = getStoreId(currentUser);
     const categories = Object.values(state.entities.categories) || [];
+    debugger
     return {
         loggedIn: Boolean(state.session.currentUser),
         storeId,

@@ -7,13 +7,11 @@ class CategoryShow extends React.Component {
         super(props);
         this.ProductPage = this.ProductPage.bind(this);
     }
-
     componentDidMount(){
         this.props.fetchCategory(this.props.match.params.categoryId);
         this.props.fetchStores();
         this.props.fetchProducts();
     }
-
     componentDidUpdate(prevProps){
         if (this.props.match.params.categoryId !== prevProps.match.params.categoryId){
             this.props.fetchCategory(this.props.match.params.categoryId);
@@ -21,7 +19,6 @@ class CategoryShow extends React.Component {
             this.props.fetchProducts();
         }
     }
-
     ProductPage(product) {
         event.preventDefault();
         return (event) => {
@@ -29,7 +26,6 @@ class CategoryShow extends React.Component {
             this.props.history.push(`/stores/${product.store_id}/products/${product.id}`)
         }
     }
-
     render(){
         let {category, stores, products} = this.props;
 
@@ -42,7 +38,6 @@ class CategoryShow extends React.Component {
         if (!category || products.length === 0 || Object.keys(stores).length === 0 ){
             return <div>{ loading() }</div>
         }
-        debugger
         const categoryProducts = products.map((product, ix) => {
             if (product === undefined) return null;
             return (

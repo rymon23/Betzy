@@ -14,6 +14,7 @@ class LoggedInNavbar extends React.Component {
 
     redirectToTarget(event){
         event.preventDefault();
+        debugger
         let { storeId } = this.props;
         const shopManagerLink = storeId ? `/stores/${storeId}` : "/stores/new";
         this.props.history.push(shopManagerLink);

@@ -677,7 +677,6 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
 
-      debugger;
       var categoryProducts = products.map(function (product, ix) {
         if (product === undefined) return null;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -1410,6 +1409,7 @@ function (_React$Component) {
     key: "redirectToTarget",
     value: function redirectToTarget(event) {
       event.preventDefault();
+      debugger;
       var storeId = this.props.storeId;
       var shopManagerLink = storeId ? "/stores/".concat(storeId) : "/stores/new";
       this.props.history.push(shopManagerLink);
@@ -1609,6 +1609,7 @@ var mapStateToProps = function mapStateToProps(state) {
   var currentUser = state.session.currentUser;
   var storeId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_7__["getStoreId"])(currentUser);
   var categories = Object.values(state.entities.categories) || [];
+  debugger;
   return {
     loggedIn: Boolean(state.session.currentUser),
     storeId: storeId,
