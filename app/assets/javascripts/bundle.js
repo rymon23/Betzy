@@ -675,7 +675,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["noItemsFound"])()));
       }
 
-      if (!category || products.length === 0 || Object.keys(stores).length === 0) {
+      if (!category || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
 
@@ -3452,7 +3452,7 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!***********************************************!*\
   !*** ./frontend/reducers/selector_reducer.js ***!
   \***********************************************/
-/*! exports provided: selectCurrentUser, selectCurrentUserStore, currentUserHasStore, selectProductsByCategory, selectProductsByStore, selectCategoriesByProducts, selectReviewsByProduct, selectAllStores, selectAllUsers, selectAllProducts, selectAllCategories, selectAllReviews */
+/*! exports provided: selectCurrentUser, selectCurrentUserStore, currentUserHasStore, selectProductsByCategory, selectProductsByStore, selectCategoriesByProducts, selectAllStores, selectAllUsers, selectAllProducts, selectAllCategories, selectAllReviews */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3463,7 +3463,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectProductsByCategory", function() { return selectProductsByCategory; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectProductsByStore", function() { return selectProductsByStore; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectCategoriesByProducts", function() { return selectCategoriesByProducts; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectReviewsByProduct", function() { return selectReviewsByProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllStores", function() { return selectAllStores; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllUsers", function() { return selectAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllProducts", function() { return selectAllProducts; });
@@ -3484,19 +3483,18 @@ var currentUserHasStore = function currentUserHasStore(sessionId, allUsers) {
 
 var selectProductsByCategory = function selectProductsByCategory(allProducts, categoryId) {
   var selectedProducts = [];
-  Object.values(allProducts).forEach(function (product) {
-    if (product.category_id == categoryId) {
-      selectedProducts.push(product);
-      console.log(selectedProducts);
+  Object.keys(allProducts).forEach(function (id) {
+    if (allProducts[id].category_id == categoryId) {
+      selectedProducts.push(allProducts[id]);
     }
   });
   return selectedProducts;
 };
 var selectProductsByStore = function selectProductsByStore(allProducts, storeId) {
   var selectedProducts = [];
-  Object.values(allProducts).forEach(function (product) {
-    if (product.store_id == storeId) {
-      selectedProducts.push(product);
+  Object.keys(allProducts).forEach(function (id) {
+    if (allProducts[id].store_id == storeId) {
+      selectedProducts.push(allProducts[id]);
     }
   });
   return selectedProducts;
@@ -3511,16 +3509,16 @@ var selectCategoriesByProducts = function selectCategoriesByProducts(allCategori
     return catagoryIds.includes(category.id);
   }) || [];
   return selectedCategories;
-};
-var selectReviewsByProduct = function selectReviewsByProduct(allReviews, productId) {
-  var selectedReviews = [];
-  Object.values(allReviews).forEach(function (review) {
-    if (review.product_id == productId) {
-      selectedReviews.push(review);
-    }
-  });
-  return selectedReviews;
-}; //SELECT ALL *
+}; // export const selectReviewsByProduct = (allReviews, productId) => {
+//   const selectedReviews = [];
+//   Object.values(allReviews).forEach((review) => {
+//     if (review.product_id == productId) {
+//       selectedReviews.push(review);
+//     }
+//   });
+//   return selectedReviews;
+// };
+//SELECT ALL *
 
 var selectAllStores = function selectAllStores(allStores) {
   return Object.keys(allStores).map(function (id) {

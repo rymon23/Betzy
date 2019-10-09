@@ -12,23 +12,21 @@ export const currentUserHasStore = (sessionId, allUsers) => {
   return storeId;
 };
 
-
 //JOINS SELECT
 export const selectProductsByCategory = (allProducts, categoryId) => {
   const selectedProducts = [];
-  Object.values(allProducts).forEach((product) => {
-    if (product.category_id == categoryId) {
-      selectedProducts.push(product);
-      console.log(selectedProducts);
+  Object.keys(allProducts).forEach((id) => {
+    if (allProducts[id].category_id == categoryId) {
+      selectedProducts.push(allProducts[id]);
     }
   });
   return selectedProducts;
 };
 export const selectProductsByStore = (allProducts, storeId) => {
   const selectedProducts = [];
-  Object.values(allProducts).forEach((product) => {
-    if (product.store_id == storeId) {
-      selectedProducts.push(product);
+  Object.keys(allProducts).forEach(id => {
+    if (allProducts[id].store_id == storeId) {
+      selectedProducts.push(allProducts[id]);
     }
   });
   return selectedProducts;
@@ -43,15 +41,15 @@ export const selectCategoriesByProducts = (allCategories, products) => {
     Object.values(allCategories).filter(category => catagoryIds.includes(category.id)) || [];
   return selectedCategories;
 };
-export const selectReviewsByProduct = (allReviews, productId) => {
-  const selectedReviews = [];
-  Object.values(allReviews).forEach((review) => {
-    if (review.product_id == productId) {
-      selectedReviews.push(review);
-    }
-  });
-  return selectedReviews;
-};
+// export const selectReviewsByProduct = (allReviews, productId) => {
+//   const selectedReviews = [];
+//   Object.values(allReviews).forEach((review) => {
+//     if (review.product_id == productId) {
+//       selectedReviews.push(review);
+//     }
+//   });
+//   return selectedReviews;
+// };
 
 
 
