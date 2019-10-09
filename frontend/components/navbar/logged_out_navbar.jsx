@@ -3,6 +3,7 @@ import GreetingContainer from '../greeting/greeting_container';
 import Logo from "../logo/logo";
 import SearchForm from "../search/search";
 import { APP_NAME } from "../../util/config_util";
+import SearchBarContainer from '../search/search_bar_container';
 
 const LoggedOutNavbar = (props) => {
     return (
@@ -11,7 +12,8 @@ const LoggedOutNavbar = (props) => {
                 { Logo() }
             </li>
 
-            <SearchForm />
+            <SearchBarContainer />
+            {/* <SearchForm /> */}
 
             <li className="sell-on-epsy" 
                 onClick={() => alert('Please log in or sign up')}>

@@ -3,6 +3,7 @@ import GreetingContainer from '../greeting/greeting_container';
 import {withRouter} from 'react-router-dom';
 import Logo from "../logo/logo";
 import SearchForm from "../search/search";
+import SearchBarContainer from '../search/search_bar_container';
 
 
 class LoggedInNavbar extends React.Component {
@@ -32,7 +33,8 @@ class LoggedInNavbar extends React.Component {
                     { Logo() }
                 </li>
 
-                <SearchForm />                
+                <SearchBarContainer />
+                {/* <SearchForm />                 */}
 
                 <li className="notification-nav">
                     <div className="bell-icon">

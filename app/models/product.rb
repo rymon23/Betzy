@@ -15,6 +15,8 @@
 class Product < ApplicationRecord
   validates :name, :description, :price, :store_id, :category_id, presence: true
   
+  has_many_attached :images
+
   belongs_to :store,
     class_name: :Store,
     foreign_key: :store_id

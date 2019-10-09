@@ -4,18 +4,16 @@ import {Link, withRouter} from 'react-router-dom';
 const Greeting = ({currentUser, logout, enableModal}) => {
     const sessionLinks = () => (
         <div className="login-signup">
-            <span className="login">
-                <a href="#" onClick={() => enableModal('login')} >
-                    Login
-                </a>
-            </span>
-
             <span className="register">
                 <a href="#" onClick={() => enableModal('signup')} >
                     Register
                 </a>
+            </span>  
+            <span className="login">
+                <a href="#" onClick={() => enableModal('login')} >
+                    Sign in
+                </a>
             </span>
-
         </div>
     );
 
