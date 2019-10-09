@@ -1,3 +1,5 @@
+import { runInNewContext } from "vm";
+
 //CURRENT USER
 export const selectCurrentUser = (users, sessionId) => {
   return users[sessionId];
@@ -14,24 +16,48 @@ export const currentUserHasStore = (sessionId, allUsers) => {
 
 //JOINS SELECT
 export const selectProductsByCategory = (allProducts, categoryId) => {
+  debugger
   const selectedProducts = [];
-  Object.keys(allProducts).forEach(id => {
-    if (allProducts[id].categoryId == categoryId) {
-      selectedProducts.push(allProducts[id]);
+  Object.values(allProducts).forEach((product) => {
+    debugger
+    if (product.category_id == categoryId) {
+      selectedProducts.push(product);
+      console.log(selectedProducts);
     }
   });
+
+  debugger
   return selectedProducts;
 };
 export const selectProductsByStore = (allProducts, storeId) => {
-    debugger
   const selectedProducts = [];
-  Object.keys(allProducts).forEach(id => {
-    if (allProducts[id].store_id == storeId) {
-      selectedProducts.push(allProducts[id]);
+  Object.values(allProducts).forEach((product) => {
+    if (product.store_id == storeId) {
+      selectedProducts.push(product);
     }
   });
   return selectedProducts;
 };
+export const selectCategoriesByProducts = (allCategories, products) => {
+  const catagoryIds = [];
+  Object.values(products).forEach((product) => {
+    if (catagoryIds.includes(product.category_id)) return;
+    catagoryIds.push(product.category_id);
+  }) 
+  const selectedCategories = 
+    Object.values(allCategories).filter(category => catagoryIds.includes(category.id)) || [];
+  return selectedCategories;
+};
+export const selectReviewsByProduct = (allReviews, productId) => {
+  const selectedReviews = [];
+  Object.values(allReviews).forEach((review) => {
+    if (review.product_id == productId) {
+      selectedReviews.push(review);
+    }
+  });
+  return selectedReviews;
+};
+
 
 //SELECT ALL *
 export const selectAllStores = (allStores) => {
@@ -45,6 +71,10 @@ export const selectAllUsers = (allUsers) => {
 export const selectAllProducts = (allProducts) => {
     return Object.keys(allProducts)
         .map(id => allProducts[id]);
+};
+export const selectAllCategories = (allCategories) => {
+    return Object.keys(allCategories)
+        .map(id => allCategories[id]);
 };
 export const selectAllReviews = (allReviews) => {
     return Object.keys(allReviews)

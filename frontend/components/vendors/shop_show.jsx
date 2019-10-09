@@ -13,6 +13,7 @@ class StoreShow extends React.Component {
         this.props.fetchStore(this.props.match.params.storeId);
         this.props.fetchProducts();
         this.props.fetchCategories();
+        this.props.fetchAllUsers();
     }
 
     componentDidUpdate(prevProps) {
@@ -20,6 +21,7 @@ class StoreShow extends React.Component {
             this.props.fetchStore(this.props.match.params.storeId);
             this.props.fetchProducts();
             this.props.fetchCategories();
+            this.props.fetchAllUsers();
         }
     }
 
@@ -43,7 +45,7 @@ class StoreShow extends React.Component {
     editDeleteButton(product){
         let { store, currentUserId, deleteProduct } = this.props;
         let editDeleteButton;
-        if (currentUserId === store.owner.id) {
+        if (currentUserId === store.owner_id) {
             editDeleteButton = (
                 <div className="edit-delete-button">
                     <Link to={`/products/${product.id}/edit`} className="clicky">Edit item</Link>
@@ -56,17 +58,16 @@ class StoreShow extends React.Component {
 
     render() {
         
-        let { store, currentUserId, products } = this.props;
-
+        let { store, currentUserId, products, categories ,users } = this.props;
         debugger
-        if (!store || !products) {
+        if (!store || products.length === 0 || categories.length === 0 || users.length === 0) {
             return (
-                <div></div>
+                <div>Loading...</div>
             )
         }
 
         let stockItemButton;
-        if ( currentUserId === store.owner.id ){
+        if ( currentUserId === store.owner_id ){
             stockItemButton = (
                 <div className="stock-edit-button">
                     <button className="clicky stock-your-shop-button" onClick={this.handleStock}>
@@ -103,23 +104,23 @@ class StoreShow extends React.Component {
             <div className="shop-show">
                 <div className="shop-show-header">
                     <div className="shop-logo">
-                        <img src={store.imageUrl} />
-                        {stockItemButton}
+                        {/* <img src={store.imageUrl} />
+                        {stockItemButton} */}
                     </div>
 
                     <div className="shop-info">
                         <div className="shop-name-show">
-                            {store.name}
+                            {store.title}
                         </div>
                     </div>
 
                     <div className="owner-info">
                         <p>Shop owner</p>
                         [image here]
-                        <div className="shop-owner-name">{store.owner.username}</div>
+                        <div className="shop-owner-name">{ users[store.owner_id].username }</div>
                         <div className="shop-owner-email">
                             <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                            {store.owner.email}
+                            { users[store.owner_id].email }
                         </div>
                     </div>
                     

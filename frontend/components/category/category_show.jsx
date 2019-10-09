@@ -30,13 +30,16 @@ class CategoryShow extends React.Component {
 
     render(){
         let {category, stores, products} = this.props;
-        if (!category || !products || Object.keys(stores).length === 0){
+
+        debugger
+        if (!category || products.length === 0 || Object.keys(stores).length === 0){
             return <div>Loading...</div>
         }
-        const categoryProducts = products.map((product) => {
+        const categoryProducts = products.map((product, ix) => {
+            debugger
             if (product === undefined) return null;
             return (
-                <li key={product.id} onClick={this.ProductPage(product)} >
+                <li key={ix} onClick={this.ProductPage(product)} >
                     [image here]
                     <p>{product.name.slice(0, 35)}...</p>
                     {/* { <p className="category-shop-name">{stores[product.store_id].title}</p> } */}

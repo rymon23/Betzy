@@ -46,7 +46,6 @@ class ProductShow extends React.Component {
             return <div></div>
         }
 
-
         const addToCartButton = currentUserId === product.ownerId
             ? ''
             : <button className="clicky" onClick={this.AddToCart}>Add to cart</button>;
@@ -59,9 +58,9 @@ class ProductShow extends React.Component {
                 <div className="product-info">
                     <ul>
                         <li>
-                            <Link to={`/stores/${store.id}`}>{store.name}</Link>
+                            <Link to={`/stores/${store.id}`}>{store.title}</Link>
                         </li>
-                        <li>{product.title}</li>
+                        <li>{product.name}</li>
                         <li className="price">
                             <strong>USD {product.price}</strong>
                         </li>
@@ -89,9 +88,9 @@ class ProductShow extends React.Component {
                         {product.description}
                     </div>
                     <div className="owner-info">
-                        <p>Meet {store.owner.name}</p>
+                        <p>Meet {store.owner.username}</p>
                         <img id="owner-info-image" src={store.profilePicUrl} />
-                        <div className="shop-owner-name">{store.owner.name}</div>
+                        <div className="shop-owner-name">{store.owner.username}</div>
                         <div className="shop-owner-email">
                             <i className="fa fa-envelope-o" aria-hidden="true"></i>
                             {store.owner.email}

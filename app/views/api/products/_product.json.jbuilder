@@ -4,6 +4,4 @@ json.extract! product,
   :description, 
   :price, 
   :store_id,
-  :category_id,
-  :store,
-  :category
+  :category_id

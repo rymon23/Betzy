@@ -35,7 +35,7 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                             View profile
                             <i className="fa fa-caret-right" aria-hidden="true"></i>
                         </span>
-                        <span className="fname">{currentUser.fname}</span>
+                        <span className="fname">{currentUser.username}</span>
                         <div id="profile-pic">
                             <img src={currentUser.imageUrl}/>
                         </div>

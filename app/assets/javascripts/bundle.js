@@ -393,23 +393,23 @@ var updateStore = function updateStore(store) {
 /*!******************************************!*\
   !*** ./frontend/actions/user_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_USER, receiveAllUsers, fetchAllUsers, updateUser */
+/*! exports provided: RECEIVE_ALL_USERS, receiveAllUsers, fetchAllUsers, updateUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_USER", function() { return RECEIVE_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsers", function() { return receiveAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUser", function() { return updateUser; });
 /* harmony import */ var _util_users_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/users_api_util */ "./frontend/util/users_api_util.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 
-var RECEIVE_USER = "RECEIVE_USER";
+var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 
 var receiveAllUsers = function receiveAllUsers(users) {
   return {
-    type: RECEIVE_USER,
+    type: RECEIVE_ALL_USERS,
     users: users
   };
 };
@@ -661,15 +661,17 @@ function (_React$Component) {
           category = _this$props.category,
           stores = _this$props.stores,
           products = _this$props.products;
+      debugger;
 
-      if (!category || !products || Object.keys(stores).length === 0) {
+      if (!category || products.length === 0 || Object.keys(stores).length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       }
 
-      var categoryProducts = products.map(function (product) {
+      var categoryProducts = products.map(function (product, ix) {
+        debugger;
         if (product === undefined) return null;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: product.id,
+          key: ix,
           onClick: _this3.ProductPage(product)
         }, "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.name.slice(0, 35), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "USD ", product.price));
       });
@@ -701,6 +703,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _category_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category_show */ "./frontend/components/category/category_show.jsx");
 /* harmony import */ var _actions_store_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/store_actions */ "./frontend/actions/store_actions.js");
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var _reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../reducers/selector_reducer */ "./frontend/reducers/selector_reducer.js");
+
 
 
 
@@ -709,7 +713,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var stores = Object.values(state.entities.stores) || [];
-  var products = Object.values(state.entities.products) || [];
+  var products = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_5__["selectProductsByCategory"])(state.entities.products, ownProps.match.params.categoryId);
+  debugger;
   return {
     category: state.entities.categories[ownProps.match.params.categoryId],
     stores: stores,
@@ -798,7 +803,7 @@ var Greeting = function Greeting(_ref) {
       "aria-hidden": "true"
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "fname"
-    }, currentUser.fname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "profile-pic"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: currentUser.imageUrl
@@ -2184,7 +2189,7 @@ function (_React$Component) {
         className: "product-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(store.id)
-      }, store.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, product.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, store.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, product.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "price"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "USD ", product.price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "quantity",
@@ -2195,12 +2200,12 @@ function (_React$Component) {
         htmlFor: "details"
       }, "Item details"), product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.owner.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.owner.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "owner-info-image",
         src: store.profilePicUrl
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-name"
-      }, store.owner.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, store.owner.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-envelope-o",
@@ -2868,7 +2873,7 @@ function (_React$Component) {
 
       event.preventDefault();
       var formData = new FormData();
-      formData.append('store[name]', this.state.name);
+      formData.append('store[title]', this.state.title);
       formData.append('store[owner_id]', this.state.owner.id);
 
       if (this.state.id) {
@@ -2936,9 +2941,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         required: true,
         type: "text",
-        value: this.state.name,
+        value: this.state.title,
         id: "name",
-        onChange: this.update('name')
+        onChange: this.update('title')
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-image-upload"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -3019,6 +3024,7 @@ function (_React$Component) {
       this.props.fetchStore(this.props.match.params.storeId);
       this.props.fetchProducts();
       this.props.fetchCategories();
+      this.props.fetchAllUsers();
     }
   }, {
     key: "componentDidUpdate",
@@ -3027,6 +3033,7 @@ function (_React$Component) {
         this.props.fetchStore(this.props.match.params.storeId);
         this.props.fetchProducts();
         this.props.fetchCategories();
+        this.props.fetchAllUsers();
       }
     }
   }, {
@@ -3061,7 +3068,7 @@ function (_React$Component) {
           deleteProduct = _this$props.deleteProduct;
       var editDeleteButton;
 
-      if (currentUserId === store.owner.id) {
+      if (currentUserId === store.owner_id) {
         editDeleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "edit-delete-button"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -3085,16 +3092,18 @@ function (_React$Component) {
       var _this$props2 = this.props,
           store = _this$props2.store,
           currentUserId = _this$props2.currentUserId,
-          products = _this$props2.products;
+          products = _this$props2.products,
+          categories = _this$props2.categories,
+          users = _this$props2.users;
       debugger;
 
-      if (!store || !products) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      if (!store || products.length === 0 || categories.length === 0 || users.length === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       }
 
       var stockItemButton;
 
-      if (currentUserId === store.owner.id) {
+      if (currentUserId === store.owner_id) {
         stockItemButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "stock-edit-button"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -3124,22 +3133,20 @@ function (_React$Component) {
         className: "shop-show-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-logo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: store.imageUrl
-      }), stockItemButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-name-show"
-      }, store.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, store.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Shop owner"), "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-name"
-      }, store.owner.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, users[store.owner_id].username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-envelope-o",
         "aria-hidden": "true"
-      }), store.owner.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), users[store.owner_id].email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "products-listing"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "All items"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, productLi)));
     }
@@ -3168,6 +3175,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_category_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/category_actions */ "./frontend/actions/category_actions.js");
 /* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 /* harmony import */ var _reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../reducers/selector_reducer */ "./frontend/reducers/selector_reducer.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 
 
@@ -3179,11 +3188,11 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUser"])(state);
   var storeId = ownProps.match.params.storeId;
-  var store = state.entities.stores[storeId]; // const products = state.entities.products || [];
-
-  var products = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__["selectProductsByStore"])(store, storeId);
-  var categories = state.entities.categories || [];
+  var store = state.entities.stores[storeId];
+  var products = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__["selectProductsByStore"])(state.entities.products, storeId);
+  var categories = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__["selectCategoriesByProducts"])(state.entities.categories, products);
   var currentUserId = state.session.currentUser.id;
+  var users = Object.values(state.entities.users) || [];
   debugger;
   return {
     store: store,
@@ -3191,7 +3200,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     currentUserId: currentUserId,
     products: products,
     categories: categories,
-    currentUser: currentUser
+    currentUser: currentUser,
+    users: users
   };
 };
 
@@ -3208,6 +3218,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchCategories: function fetchCategories() {
       return dispatch(Object(_actions_category_actions__WEBPACK_IMPORTED_MODULE_4__["fetchCategories"])());
+    },
+    fetchAllUsers: function fetchAllUsers() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_7__["fetchAllUsers"])());
     }
   };
 };
@@ -3400,7 +3413,7 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!***********************************************!*\
   !*** ./frontend/reducers/selector_reducer.js ***!
   \***********************************************/
-/*! exports provided: selectCurrentUser, selectCurrentUserStore, currentUserHasStore, selectProductsByCategory, selectProductsByStore, selectAllStores, selectAllUsers, selectAllProducts, selectAllReviews */
+/*! exports provided: selectCurrentUser, selectCurrentUserStore, currentUserHasStore, selectProductsByCategory, selectProductsByStore, selectCategoriesByProducts, selectReviewsByProduct, selectAllStores, selectAllUsers, selectAllProducts, selectAllCategories, selectAllReviews */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3410,11 +3423,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserHasStore", function() { return currentUserHasStore; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectProductsByCategory", function() { return selectProductsByCategory; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectProductsByStore", function() { return selectProductsByStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectCategoriesByProducts", function() { return selectCategoriesByProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectReviewsByProduct", function() { return selectReviewsByProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllStores", function() { return selectAllStores; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllUsers", function() { return selectAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllProducts", function() { return selectAllProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllCategories", function() { return selectAllCategories; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllReviews", function() { return selectAllReviews; });
-//CURRENT USER
+/* harmony import */ var vm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vm */ "./node_modules/vm-browserify/index.js");
+/* harmony import */ var vm__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vm__WEBPACK_IMPORTED_MODULE_0__);
+ //CURRENT USER
+
 var selectCurrentUser = function selectCurrentUser(users, sessionId) {
   return users[sessionId];
 };
@@ -3428,23 +3447,47 @@ var currentUserHasStore = function currentUserHasStore(sessionId, allUsers) {
 }; //JOINS SELECT
 
 var selectProductsByCategory = function selectProductsByCategory(allProducts, categoryId) {
+  debugger;
   var selectedProducts = [];
-  Object.keys(allProducts).forEach(function (id) {
-    if (allProducts[id].categoryId == categoryId) {
-      selectedProducts.push(allProducts[id]);
+  Object.values(allProducts).forEach(function (product) {
+    debugger;
+
+    if (product.category_id == categoryId) {
+      selectedProducts.push(product);
+      console.log(selectedProducts);
+    }
+  });
+  debugger;
+  return selectedProducts;
+};
+var selectProductsByStore = function selectProductsByStore(allProducts, storeId) {
+  var selectedProducts = [];
+  Object.values(allProducts).forEach(function (product) {
+    if (product.store_id == storeId) {
+      selectedProducts.push(product);
     }
   });
   return selectedProducts;
 };
-var selectProductsByStore = function selectProductsByStore(allProducts, storeId) {
-  debugger;
-  var selectedProducts = [];
-  Object.keys(allProducts).forEach(function (id) {
-    if (allProducts[id].store_id == storeId) {
-      selectedProducts.push(allProducts[id]);
+var selectCategoriesByProducts = function selectCategoriesByProducts(allCategories, products) {
+  var catagoryIds = [];
+  Object.values(products).forEach(function (product) {
+    if (catagoryIds.includes(product.category_id)) return;
+    catagoryIds.push(product.category_id);
+  });
+  var selectedCategories = Object.values(allCategories).filter(function (category) {
+    return catagoryIds.includes(category.id);
+  }) || [];
+  return selectedCategories;
+};
+var selectReviewsByProduct = function selectReviewsByProduct(allReviews, productId) {
+  var selectedReviews = [];
+  Object.values(allReviews).forEach(function (review) {
+    if (review.product_id == productId) {
+      selectedReviews.push(review);
     }
   });
-  return selectedProducts;
+  return selectedReviews;
 }; //SELECT ALL *
 
 var selectAllStores = function selectAllStores(allStores) {
@@ -3460,6 +3503,11 @@ var selectAllUsers = function selectAllUsers(allUsers) {
 var selectAllProducts = function selectAllProducts(allProducts) {
   return Object.keys(allProducts).map(function (id) {
     return allProducts[id];
+  });
+};
+var selectAllCategories = function selectAllCategories(allCategories) {
+  return Object.keys(allCategories).map(function (id) {
+    return allCategories[id];
   });
 };
 var selectAllReviews = function selectAllReviews(allReviews) {
@@ -3609,7 +3657,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3621,6 +3671,9 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_USERS"]:
+      return Object.assign({}, action.users);
 
     default:
       return state;
@@ -42566,6 +42619,166 @@ function valueEqual(a, b) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (valueEqual);
+
+
+/***/ }),
+
+/***/ "./node_modules/vm-browserify/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/vm-browserify/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var indexOf = function (xs, item) {
+    if (xs.indexOf) return xs.indexOf(item);
+    else for (var i = 0; i < xs.length; i++) {
+        if (xs[i] === item) return i;
+    }
+    return -1;
+};
+var Object_keys = function (obj) {
+    if (Object.keys) return Object.keys(obj)
+    else {
+        var res = [];
+        for (var key in obj) res.push(key)
+        return res;
+    }
+};
+
+var forEach = function (xs, fn) {
+    if (xs.forEach) return xs.forEach(fn)
+    else for (var i = 0; i < xs.length; i++) {
+        fn(xs[i], i, xs);
+    }
+};
+
+var defineProp = (function() {
+    try {
+        Object.defineProperty({}, '_', {});
+        return function(obj, name, value) {
+            Object.defineProperty(obj, name, {
+                writable: true,
+                enumerable: false,
+                configurable: true,
+                value: value
+            })
+        };
+    } catch(e) {
+        return function(obj, name, value) {
+            obj[name] = value;
+        };
+    }
+}());
+
+var globals = ['Array', 'Boolean', 'Date', 'Error', 'EvalError', 'Function',
+'Infinity', 'JSON', 'Math', 'NaN', 'Number', 'Object', 'RangeError',
+'ReferenceError', 'RegExp', 'String', 'SyntaxError', 'TypeError', 'URIError',
+'decodeURI', 'decodeURIComponent', 'encodeURI', 'encodeURIComponent', 'escape',
+'eval', 'isFinite', 'isNaN', 'parseFloat', 'parseInt', 'undefined', 'unescape'];
+
+function Context() {}
+Context.prototype = {};
+
+var Script = exports.Script = function NodeScript (code) {
+    if (!(this instanceof Script)) return new Script(code);
+    this.code = code;
+};
+
+Script.prototype.runInContext = function (context) {
+    if (!(context instanceof Context)) {
+        throw new TypeError("needs a 'context' argument.");
+    }
+    
+    var iframe = document.createElement('iframe');
+    if (!iframe.style) iframe.style = {};
+    iframe.style.display = 'none';
+    
+    document.body.appendChild(iframe);
+    
+    var win = iframe.contentWindow;
+    var wEval = win.eval, wExecScript = win.execScript;
+
+    if (!wEval && wExecScript) {
+        // win.eval() magically appears when this is called in IE:
+        wExecScript.call(win, 'null');
+        wEval = win.eval;
+    }
+    
+    forEach(Object_keys(context), function (key) {
+        win[key] = context[key];
+    });
+    forEach(globals, function (key) {
+        if (context[key]) {
+            win[key] = context[key];
+        }
+    });
+    
+    var winKeys = Object_keys(win);
+
+    var res = wEval.call(win, this.code);
+    
+    forEach(Object_keys(win), function (key) {
+        // Avoid copying circular objects like `top` and `window` by only
+        // updating existing context properties or new properties in the `win`
+        // that was only introduced after the eval.
+        if (key in context || indexOf(winKeys, key) === -1) {
+            context[key] = win[key];
+        }
+    });
+
+    forEach(globals, function (key) {
+        if (!(key in context)) {
+            defineProp(context, key, win[key]);
+        }
+    });
+    
+    document.body.removeChild(iframe);
+    
+    return res;
+};
+
+Script.prototype.runInThisContext = function () {
+    return eval(this.code); // maybe...
+};
+
+Script.prototype.runInNewContext = function (context) {
+    var ctx = Script.createContext(context);
+    var res = this.runInContext(ctx);
+
+    if (context) {
+        forEach(Object_keys(ctx), function (key) {
+            context[key] = ctx[key];
+        });
+    }
+
+    return res;
+};
+
+forEach(Object_keys(Script.prototype), function (name) {
+    exports[name] = Script[name] = function (code) {
+        var s = Script(code);
+        return s[name].apply(s, [].slice.call(arguments, 1));
+    };
+});
+
+exports.isContext = function (context) {
+    return context instanceof Context;
+};
+
+exports.createScript = function (code) {
+    return exports.Script(code);
+};
+
+exports.createContext = Script.createContext = function (context) {
+    var copy = new Context();
+    if(typeof context === 'object') {
+        forEach(Object_keys(context), function (key) {
+            copy[key] = context[key];
+        });
+    }
+    return copy;
+};
 
 
 /***/ }),

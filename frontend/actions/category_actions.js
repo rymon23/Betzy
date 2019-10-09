@@ -21,6 +21,6 @@ export const fetchCategories = () => dispatch => {
     dispatch(receiveAllCategories(categories))
   );
 };
-export const fetchCategory = id => dispatch => {
+export const fetchCategory = (id) => dispatch => {
   return APIUtil.fetchCategory(id).then(category => dispatch(receiveCategory(category)));
 };
