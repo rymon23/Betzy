@@ -16,17 +16,13 @@ export const currentUserHasStore = (sessionId, allUsers) => {
 
 //JOINS SELECT
 export const selectProductsByCategory = (allProducts, categoryId) => {
-  debugger
   const selectedProducts = [];
   Object.values(allProducts).forEach((product) => {
-    debugger
     if (product.category_id == categoryId) {
       selectedProducts.push(product);
       console.log(selectedProducts);
     }
   });
-
-  debugger
   return selectedProducts;
 };
 export const selectProductsByStore = (allProducts, storeId) => {

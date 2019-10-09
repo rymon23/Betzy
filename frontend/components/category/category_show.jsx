@@ -1,4 +1,6 @@
 import React from 'react';
+import { categoryHasProducts } from "../../util/helpers_util";
+import { loading, noItemsFound } from "../utility";
 
 class CategoryShow extends React.Component {
     constructor(props) {
@@ -31,25 +33,30 @@ class CategoryShow extends React.Component {
     render(){
         let {category, stores, products} = this.props;
 
-        debugger
-        if (!category || products.length === 0 || Object.keys(stores).length === 0){
-            return <div>Loading...</div>
+        if (category && categoryHasProducts(category)){
+            return <div className="products-listing" id="category-show">
+                    <h2>{category.name}</h2>
+                    <ul>{ noItemsFound() }</ul>
+                    </div>  
         }
+        if (!category || products.length === 0 || Object.keys(stores).length === 0 ){
+            return <div>{ loading() }</div>
+        }
+        debugger
         const categoryProducts = products.map((product, ix) => {
-            debugger
             if (product === undefined) return null;
             return (
                 <li key={ix} onClick={this.ProductPage(product)} >
                     [image here]
                     <p>{product.name.slice(0, 35)}...</p>
-                    {/* { <p className="category-shop-name">{stores[product.store_id].title}</p> } */}
+                    { <p className="category-shop-name">{stores[product.store_id].title}</p> }
                     { <p>USD {product.price}</p>}
                 </li>
             )
         });
         return (
             <div className="products-listing" id="category-show">
-                {/* <h2>{ category.name }</h2> */}
+                <h2>{ category.name }</h2>
                 <ul>
                     {categoryProducts}
                 </ul>

@@ -6,15 +6,10 @@ import { fetchProducts } from '../../actions/product_actions';
 import { selectProductsByCategory } from "../../reducers/selector_reducer";
 
 const mapStateToProps = (state, ownProps)=> {
-    const stores = Object.values(state.entities.stores) || [];
-    const products = selectProductsByCategory(state.entities.products, ownProps.match.params.categoryId);
-
-    debugger
-
     return {
         category: state.entities.categories[ownProps.match.params.categoryId],
-        stores,
-        products
+        stores: state.entities.stores,
+        products: selectProductsByCategory(state.entities.products, ownProps.match.params.categoryId)
     }
 };
 
