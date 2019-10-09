@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     const products = selectProductsByStore(state.entities.products, storeId);
     const categories = selectCategoriesByProducts(state.entities.categories, products);
     const currentUserId = state.session.currentUser.id;
-    const users = Object.values(state.entities.users) || [];
+    const users = state.entities.users;
     debugger
 
     return {

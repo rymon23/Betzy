@@ -591,6 +591,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 /* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -608,6 +609,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -677,10 +679,10 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
 
-      var categoryProducts = products.map(function (product, ix) {
+      var categoryProducts = products.map(function (product) {
         if (product === undefined) return null;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: ix,
+          key: product.id,
           onClick: _this3.ProductPage(product)
         }, "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.name.slice(0, 35), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "category-shop-name"
@@ -2100,6 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2117,6 +2120,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2182,9 +2186,10 @@ function (_React$Component) {
           product = _this$props.product,
           store = _this$props.store,
           currentUserId = _this$props.currentUserId;
+      debugger;
 
       if (!product || !store) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
 
       var addToCartButton = currentUserId === product.ownerId ? '' : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2204,23 +2209,20 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "USD ", product.price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "quantity",
         htmlFor: "quantity"
-      }, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Only", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, product.quantity), "in stock!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, addToCartButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, addToCartButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "details"
       }, "Item details"), product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.owner.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        id: "owner-info-image",
-        src: store.profilePicUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-name"
-      }, store.owner.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-envelope-o",
         "aria-hidden": "true"
-      }), store.owner.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "[reviews]"));
+      }), store.ownerEmail))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "[reviews]"));
     }
   }]);
 
@@ -2250,10 +2252,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   var product = state.entities.products[ownProps.match.params.productId];
   var store = state.entities.stores[ownProps.match.params.storeId];
   var currentUserId = state.session.currentUser.id;
+  debugger;
   return {
     product: product,
     store: store,
@@ -3134,7 +3136,7 @@ function (_React$Component) {
           users = _this$props2.users;
       debugger;
 
-      if (!store || products.length === 0 || categories.length === 0 || users.length === 0) {
+      if (!store || products.length === 0 || categories.length === 0 || Object.keys(users).length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       }
 
@@ -3229,7 +3231,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var products = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__["selectProductsByStore"])(state.entities.products, storeId);
   var categories = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_6__["selectCategoriesByProducts"])(state.entities.categories, products);
   var currentUserId = state.session.currentUser.id;
-  var users = Object.values(state.entities.users) || [];
+  var users = state.entities.users;
   debugger;
   return {
     store: store,
@@ -3467,10 +3469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllProducts", function() { return selectAllProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllCategories", function() { return selectAllCategories; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllReviews", function() { return selectAllReviews; });
-/* harmony import */ var vm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vm */ "./node_modules/vm-browserify/index.js");
-/* harmony import */ var vm__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vm__WEBPACK_IMPORTED_MODULE_0__);
- //CURRENT USER
-
+//CURRENT USER
 var selectCurrentUser = function selectCurrentUser(users, sessionId) {
   return users[sessionId];
 };
@@ -3800,7 +3799,7 @@ var DEMO_USER = {
 /*!***************************************!*\
   !*** ./frontend/util/helpers_util.js ***!
   \***************************************/
-/*! exports provided: getCurrentUser, hasShop, getStoreId, getStore, categoryHasProducts */
+/*! exports provided: getCurrentUser, hasShop, getStoreId, getStore, categoryHasProducts, arrayShuffle */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3810,6 +3809,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStoreId", function() { return getStoreId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStore", function() { return getStore; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categoryHasProducts", function() { return categoryHasProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "arrayShuffle", function() { return arrayShuffle; });
 //CURRENT USER
 var getCurrentUser = function getCurrentUser(state) {
   return state.session.currentUser;
@@ -3830,6 +3830,18 @@ var getStore = function getStore(currentUser) {
 var categoryHasProducts = function categoryHasProducts(category) {
   if (!category) return false;
   return category.productIds.length === 0;
+};
+var arrayShuffle = function arrayShuffle(array) {
+  var shuffledArray = array.slice();
+
+  for (var i = shuffledArray.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * i);
+    var temp = array[i];
+    shuffledArray[i] = array[j];
+    shuffledArray[j] = temp;
+  }
+
+  return shuffledArray;
 }; //STORE
 // export const getStoreCategories = (store) => {
 //   if (!store || store === undefined) return [];
@@ -42655,166 +42667,6 @@ function valueEqual(a, b) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (valueEqual);
-
-
-/***/ }),
-
-/***/ "./node_modules/vm-browserify/index.js":
-/*!*********************************************!*\
-  !*** ./node_modules/vm-browserify/index.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var indexOf = function (xs, item) {
-    if (xs.indexOf) return xs.indexOf(item);
-    else for (var i = 0; i < xs.length; i++) {
-        if (xs[i] === item) return i;
-    }
-    return -1;
-};
-var Object_keys = function (obj) {
-    if (Object.keys) return Object.keys(obj)
-    else {
-        var res = [];
-        for (var key in obj) res.push(key)
-        return res;
-    }
-};
-
-var forEach = function (xs, fn) {
-    if (xs.forEach) return xs.forEach(fn)
-    else for (var i = 0; i < xs.length; i++) {
-        fn(xs[i], i, xs);
-    }
-};
-
-var defineProp = (function() {
-    try {
-        Object.defineProperty({}, '_', {});
-        return function(obj, name, value) {
-            Object.defineProperty(obj, name, {
-                writable: true,
-                enumerable: false,
-                configurable: true,
-                value: value
-            })
-        };
-    } catch(e) {
-        return function(obj, name, value) {
-            obj[name] = value;
-        };
-    }
-}());
-
-var globals = ['Array', 'Boolean', 'Date', 'Error', 'EvalError', 'Function',
-'Infinity', 'JSON', 'Math', 'NaN', 'Number', 'Object', 'RangeError',
-'ReferenceError', 'RegExp', 'String', 'SyntaxError', 'TypeError', 'URIError',
-'decodeURI', 'decodeURIComponent', 'encodeURI', 'encodeURIComponent', 'escape',
-'eval', 'isFinite', 'isNaN', 'parseFloat', 'parseInt', 'undefined', 'unescape'];
-
-function Context() {}
-Context.prototype = {};
-
-var Script = exports.Script = function NodeScript (code) {
-    if (!(this instanceof Script)) return new Script(code);
-    this.code = code;
-};
-
-Script.prototype.runInContext = function (context) {
-    if (!(context instanceof Context)) {
-        throw new TypeError("needs a 'context' argument.");
-    }
-    
-    var iframe = document.createElement('iframe');
-    if (!iframe.style) iframe.style = {};
-    iframe.style.display = 'none';
-    
-    document.body.appendChild(iframe);
-    
-    var win = iframe.contentWindow;
-    var wEval = win.eval, wExecScript = win.execScript;
-
-    if (!wEval && wExecScript) {
-        // win.eval() magically appears when this is called in IE:
-        wExecScript.call(win, 'null');
-        wEval = win.eval;
-    }
-    
-    forEach(Object_keys(context), function (key) {
-        win[key] = context[key];
-    });
-    forEach(globals, function (key) {
-        if (context[key]) {
-            win[key] = context[key];
-        }
-    });
-    
-    var winKeys = Object_keys(win);
-
-    var res = wEval.call(win, this.code);
-    
-    forEach(Object_keys(win), function (key) {
-        // Avoid copying circular objects like `top` and `window` by only
-        // updating existing context properties or new properties in the `win`
-        // that was only introduced after the eval.
-        if (key in context || indexOf(winKeys, key) === -1) {
-            context[key] = win[key];
-        }
-    });
-
-    forEach(globals, function (key) {
-        if (!(key in context)) {
-            defineProp(context, key, win[key]);
-        }
-    });
-    
-    document.body.removeChild(iframe);
-    
-    return res;
-};
-
-Script.prototype.runInThisContext = function () {
-    return eval(this.code); // maybe...
-};
-
-Script.prototype.runInNewContext = function (context) {
-    var ctx = Script.createContext(context);
-    var res = this.runInContext(ctx);
-
-    if (context) {
-        forEach(Object_keys(ctx), function (key) {
-            context[key] = ctx[key];
-        });
-    }
-
-    return res;
-};
-
-forEach(Object_keys(Script.prototype), function (name) {
-    exports[name] = Script[name] = function (code) {
-        var s = Script(code);
-        return s[name].apply(s, [].slice.call(arguments, 1));
-    };
-});
-
-exports.isContext = function (context) {
-    return context instanceof Context;
-};
-
-exports.createScript = function (code) {
-    return exports.Script(code);
-};
-
-exports.createContext = Script.createContext = function (context) {
-    var copy = new Context();
-    if(typeof context === 'object') {
-        forEach(Object_keys(context), function (key) {
-            copy[key] = context[key];
-        });
-    }
-    return copy;
-};
 
 
 /***/ }),

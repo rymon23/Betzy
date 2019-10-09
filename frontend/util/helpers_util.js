@@ -22,6 +22,19 @@ export const categoryHasProducts = (category) => {
   return category.productIds.length === 0;
 };
 
+export const arrayShuffle = (array) => {
+  const shuffledArray = array.slice();
+  for(let i = shuffledArray.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * i)
+    const temp = array[i]
+    shuffledArray[i] = array[j]
+    shuffledArray[j] = temp
+  }
+  return shuffledArray 
+}
+
+
+
 //STORE
 // export const getStoreCategories = (store) => {
 //   if (!store || store === undefined) return [];

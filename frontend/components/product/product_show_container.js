@@ -4,10 +4,11 @@ import { fetchProduct } from "../../actions/product_actions";
 import { fetchStore } from '../../actions/store_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     const product = state.entities.products[ownProps.match.params.productId];
     const store = state.entities.stores[ownProps.match.params.storeId];
     const currentUserId = state.session.currentUser.id;
+    debugger
+
     return {
         product,
         store,

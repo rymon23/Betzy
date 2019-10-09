@@ -3,8 +3,7 @@ json.extract! user,
     :username, 
     :email,
     :gender, 
-    :birthday,
-    :store
+    :birthday
 
 if user
     if user.store

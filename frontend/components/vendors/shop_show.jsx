@@ -60,7 +60,7 @@ class StoreShow extends React.Component {
         
         let { store, currentUserId, products, categories ,users } = this.props;
         debugger
-        if (!store || products.length === 0 || categories.length === 0 || users.length === 0) {
+        if (!store || products.length === 0 || categories.length === 0 || Object.keys(users).length === 0) {
             return (
                 <div>Loading...</div>
             )

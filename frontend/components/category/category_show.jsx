@@ -1,6 +1,7 @@
 import React from 'react';
 import { categoryHasProducts } from "../../util/helpers_util";
 import { loading, noItemsFound } from "../utility";
+import { Link } from 'react-router-dom';
 
 class CategoryShow extends React.Component {
     constructor(props) {
@@ -38,14 +39,19 @@ class CategoryShow extends React.Component {
         if (!category || products.length === 0 || Object.keys(stores).length === 0 ){
             return <div>{ loading() }</div>
         }
-        const categoryProducts = products.map((product, ix) => {
+        const categoryProducts = products.map((product) => {
             if (product === undefined) return null;
             return (
-                <li key={ix} onClick={this.ProductPage(product)} >
+                <li key={product.id} onClick={this.ProductPage(product)} >
                     [image here]
                     <p>{product.name.slice(0, 35)}...</p>
+                    {/* <p className="category-shop-name">
+                        <Link to={`/stores/${product.store_id}`}>
+                            {stores[product.store_id].title}</Link>
+                    </p> */}
+
                     { <p className="category-shop-name">{stores[product.store_id].title}</p> }
-                    { <p>USD {product.price}</p>}
+                    { <p>USD {product.price}</p> }
                 </li>
             )
         });
