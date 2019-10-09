@@ -2246,6 +2246,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_show */ "./frontend/components/product/product_show.jsx");
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _actions_store_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/store_actions */ "./frontend/actions/store_actions.js");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
+
 
 
 
@@ -2254,7 +2256,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var product = state.entities.products[ownProps.match.params.productId];
   var store = state.entities.stores[ownProps.match.params.storeId];
-  var currentUserId = state.session.currentUser.id;
+  var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["getCurrentUser"])(state);
+  var currentUserId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["getCurrentUserId"])(currentUser);
   debugger;
   return {
     product: product,
@@ -3797,12 +3800,13 @@ var DEMO_USER = {
 /*!***************************************!*\
   !*** ./frontend/util/helpers_util.js ***!
   \***************************************/
-/*! exports provided: getCurrentUser, hasShop, getStoreId, getStore, categoryHasProducts, arrayShuffle */
+/*! exports provided: getCurrentUser, getCurrentUserId, hasShop, getStoreId, getStore, categoryHasProducts, arrayShuffle */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentUser", function() { return getCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentUserId", function() { return getCurrentUserId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasShop", function() { return hasShop; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStoreId", function() { return getStoreId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStore", function() { return getStore; });
@@ -3811,6 +3815,10 @@ __webpack_require__.r(__webpack_exports__);
 //CURRENT USER
 var getCurrentUser = function getCurrentUser(state) {
   return state.session.currentUser;
+};
+var getCurrentUserId = function getCurrentUserId(currentUser) {
+  if (!currentUser) return false;
+  return currentUser.id;
 };
 var hasShop = function hasShop(currentUser) {
   if (!currentUser || currentUser === undefined) return false;

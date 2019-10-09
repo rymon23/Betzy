@@ -3,6 +3,10 @@
 export const getCurrentUser = (state) => {
   return state.session.currentUser;
 };
+export const getCurrentUserId = (currentUser) => {
+  if (!currentUser) return false;
+  return currentUser.id;
+};
 export const hasShop = (currentUser) => {
   if (!currentUser || currentUser === undefined) return false;
   return Boolean(currentUser.store);
