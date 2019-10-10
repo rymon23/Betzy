@@ -13,10 +13,17 @@
  *= require_tree .
  *= require_self
  */
-/* .welcome-back-div{
-  display: flex;
-  flex-direction: row;
-} */
+
+:root {
+  --primary-bg-color: rgb(187, 42, 42);
+  --secondary-bg-color: black;
+  --footer-primary-bg-color: rgb(131, 30, 30);
+  --footer-secondary-bg-color: rgb(196, 173, 173);
+  --footer-bg-color: rgb(82, 18, 18);
+  --main-content-width: 1400px;
+  --main-content-font-family: fantasy;
+}
+
 .popular-right-now-div {
   display: flex;
   justify-content: center;

@@ -59,16 +59,19 @@ class HomePage extends React.Component {
             return (
                 <div className="wob-container">
                     <div className="wob-content static-width">
-                        <div className="wob-head">
-                            <h1>What is {APP_NAME}?</h1>
-                            <a href="">Read our wonderfully weird story</a>
+                        <div className="wob-head-container">
+                            <div className="wob-head">
+                                <h1>What is {APP_NAME}?</h1>
+                                <a href="">Read our wonderfully weird story</a>
+                            </div>
                         </div>
+
                         <div className="wob-content-column-container">
                             <div className="wob-column">
                                 <div>
                                     <h2>A one-of-a-kind community</h2>
                                     <p>
-
+                                    {APP_NAME} is a global online marketplace, where people come together to make, sell, buy, and collect unique items.
                                     </p>
                                 </div>
                             </div>
@@ -76,7 +79,7 @@ class HomePage extends React.Component {
                                 <div>
                                     <h2>Support independent creators</h2>
                                     <p>
-
+                                    There’s no {APP_NAME} warehouse – just millions of people selling the things they love. We make the whole process easy, helping you connect directly with makers to find something extraordinary.
                                     </p>
                                 </div>
                             </div>
@@ -84,16 +87,18 @@ class HomePage extends React.Component {
                                 <div>
                                     <h2>Peace of mind</h2>
                                     <p>
-
+                                    Your privacy is the highest priority of our dedicated team. And if you ever need assistance, we are always ready to step in for support.
                                     </p>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="wob-help">
-                            <h2>Have a question? Well, we’ve got some answers.</h2>
-                            <button>Go to Help Center</button>
+                        <div className="wob-help-container">
+                            <div className="wob-help">
+                                <h2>Have a question? Well, we’ve got some answers.</h2>
+                                <button>Go to Help Center</button>
+                            </div>                       
                         </div>
+
                     </div>
                 </div>
             );

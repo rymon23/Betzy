@@ -1,5 +1,11 @@
 
 //  @import "font-awesome"; 
+// :root {
+//   --primary-bg-color: rgb(187, 42, 42);
+//   --secondary-bg-color: black;
+//   --main-content-width: 1400px;
+//   --main-content-font-family: fantasy;
+// }
 
 .homepage {
     display: flex;
@@ -16,7 +22,7 @@
     font-weight: normal;
 }
 .homepage-banner-container > div.homepage-banner {
-    background-color: rgb(187, 42, 42);
+    background-color: var(--primary-bg-color);
     height: 280.4px;
     width: 100%;
     background-size: contain;
@@ -72,7 +78,7 @@
     height: fit-content;
     display: flex;
     justify-content: center;
-    background-color: lightgrey;
+    background-color: var(--primary-bg-color);
 
     .wob-content {
         display: flex;
@@ -82,5 +88,47 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+}
+.wob-head-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 26px;
+
+    .wob-head {
+        display: flex;
+        flex-direction: column;
+    }    
+}
+.wob-help-container {
+    display: flex;
+    justify-content: center;
+}
+.wob-help {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    font-size: 16px;
+    button {
+        width: fit-content;
+        padding: 12px;
+        border: 2px solid black;
+        border-radius: 40px;
+        align-self: center;
+        font-weight: bold;
+        font-size: 16px;
+        background-color: var(--primary-bg-color);
+    }
+}
+
+.wob-column {
+    display: flex;
+    flex-direction: column;
+    h2 {
+        text-align: center;
+    }
+    p{
+        text-align: center;
     }
 }

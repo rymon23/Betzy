@@ -43,6 +43,22 @@ export default () => {
     );
   }
 
+  const footer = () => {
+    return (
+      <div className="footer-container static-width">
+        <button>
+          United States   |   English (US)   |   $ (USD)
+        </button>
+        <div className="footer-links-container">
+          <span>© 2019 {APP_NAME}, Inc.</span>
+          <a href="">Terms of Use</a>
+          <a href="">Privacy</a>
+          <a href="">Interest-based ads</a>
+        </div>
+      </div>
+    )
+  }
+  
   const footerColumns = () => {
     return (
       <>
@@ -104,13 +120,10 @@ export default () => {
           <div className="app-footer-content-column-container">
             {footerColumns()}
           </div>
-
-          <footer>
-            Footer
-          </footer>
         </div>
       </div>
 
+      <footer>{footer()}</footer>
     </div>
   );
 };
