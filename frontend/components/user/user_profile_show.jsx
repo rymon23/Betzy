@@ -5,12 +5,10 @@ class UserProfileShow extends React.Component {
     constructor(props){
         super(props);
     }
-
     componentDidMount(){
         this.props.fetchAllUsers();
         this.props.fetchStores();
     }
-
     componentDidUpdate(prevProps){
         if (this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.fetchAllUsers();
@@ -27,7 +25,7 @@ class UserProfileShow extends React.Component {
                     <div id="default-shop-logo">
                     </div>
                     <div className="enter-shop">
-                        <span className="profile-shop-name">{store.name}</span>
+                        <span className="profile-shop-name">{store.title}</span>
                         <Link to={`/stores/${store.id}`} className="btn-block">Visit store</Link>
                     </div>
                 </div>

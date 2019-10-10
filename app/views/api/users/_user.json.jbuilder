@@ -6,6 +6,10 @@ json.extract! user,
     :birthday
 
 if user
+    if user.profile_image.attached?
+        json.imageUrl url_for(user.profile_image)
+    end
+
     if user.store
         json.storeId user.store.id
     else

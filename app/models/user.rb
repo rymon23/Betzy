@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  has_one :store,
+  has_one :store , dependent: :destroy,
     class_name: :Store,
     foreign_key: :owner_id
 

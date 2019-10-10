@@ -12,6 +12,8 @@
 class Store < ApplicationRecord
   validates :title, :owner_id, presence: true
 
+  has_one_attached :store_logo
+
   belongs_to :owner,
     class_name: :User,
     foreign_key: :owner_id

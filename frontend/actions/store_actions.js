@@ -23,20 +23,20 @@ const receiveStoreErrors = (errors) => {
   }
 } 
 
-export const fetchStores = () => dispatch => {
+export const fetchStores = () => (dispatch) => {
   return APIUtil.fetchStores()
     .then((stores) => dispatch(receiveAllStores(stores)))
 };
-export const fetchStore = (id) => dispatch => {
+export const fetchStore = (id) => (dispatch) => {
   return APIUtil.fetchStore(id)
     .then((store) => dispatch(receiveStore(store)))
 };
-export const createStore = (store) => dispatch => {
+export const createStore = (store) => (dispatch) => {
   return APIUtil.createStore(store)
     .then((store) => dispatch(receiveStore(store)))
 };
-export const updateStore = (store) => dispatch => {
-  return APIUtil.updateStore(store)
+export const updateStore = (formData) => (dispatch) => {
+  return APIUtil.updateStore(formData)
     .then((store) => dispatch(receiveStore(store)
     ,(errors) => dispatch(receiveStoreErrors(errors.responseJSON))) )
 };

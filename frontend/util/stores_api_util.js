@@ -12,17 +12,22 @@ export const fetchStore = (id) => {
   });
 }
 
-export const createStore = (store) => {
+export const createStore = (formData) => {
   return $.ajax({
     method: "POST",
     url: `api/stores`,
-    data: { store }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 }
 
-export const updateStore = (store) => {
+export const updateStore = (formData) => {
   return $.ajax({
     method: "PATCH",
-    url: `api/stores/${store.id}`
+    url: `/api/stores/${formData.get('store[id]')}`,
+    data: formData,
+    contentType: false,
+    processData: false
   });
 }

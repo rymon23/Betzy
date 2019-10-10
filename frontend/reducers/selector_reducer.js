@@ -6,11 +6,15 @@ export const selectCurrentUser = (users, sessionId) => {
 export const selectCurrentUserStore = (stores, storeId) => {
   return stores[storeId];
 };
-export const currentUserHasStore = (sessionId, allUsers) => {
-  const user = allUsers[sessionId];
-  const storeId = user.store_id;
-  return storeId;
+export const currentUserHasStore = (currentUser) => {
+  if (!currentUser) return false;
+  return currentUser.store_id;
 };
+// export const currentUserHasStore = (sessionId, allUsers) => {
+//   const user = allUsers[sessionId];
+//   const storeId = user.store_id;
+//   return storeId;
+// };
 
 //JOINS SELECT
 export const selectProductsByCategory = (allProducts, categoryId) => {

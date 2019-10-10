@@ -22,13 +22,12 @@ class StoreForm extends React.Component {
         formData.append('store[owner_id]', this.state.owner.id);
 
         if (this.state.imageFile) {
-            formData.append('store[store_image]', this.state.imageFile);
+            formData.append('store[store_logo]', this.state.imageFile);
         }
 
         this.props.action(formData).then(action => {
             this.props.history.push(`/stores/${action.store.id}`)
         }).then(() => this.props.fetchAllUsers());
-        
     }
 
     update(field) {
@@ -93,9 +92,7 @@ class StoreForm extends React.Component {
 
             </form>
         )
-
     }
-
 }
 
 export default withRouter(StoreForm);

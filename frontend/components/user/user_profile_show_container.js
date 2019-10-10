@@ -1,16 +1,16 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import UserProfileShow from './user_profile_show';
-import { currentUserHasShop, selectCurrentUserShop } from '../../reducers/selectors';
-import { fetchAllUsers } from '../../actions/users_actions';
-import {fetchStores} from '../../actions/shops_actions';
+import { getCurrentUser } from "../../util/helpers_util";
+import { currentUserHasStore, selectCurrentUserStore } from '../../reducers/selector_reducer';
+import { fetchAllUsers } from '../../actions/user_actions';
+import { fetchStores } from '../../actions/store_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    const storeId = currentUserHasShop(state.session.id, state.entities.users);
+    const storeId = currentUserHasStore(getCurrentUser(state));
     let store;
     if (Boolean(storeId)){
-        shop = selectCurrentUserShop(state.entities.shops, storeId)
+        store = selectCurrentUserStore(state.entities.shops, storeId)
     }
-    
     return {
         user: state.entities.users[ownProps.match.params.userId],
         store

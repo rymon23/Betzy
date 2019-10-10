@@ -13,7 +13,7 @@ export const fetchAllUsers = () => dispatch => {
     return APIUtil.fetchAllUsers()
         .then((users) => dispatch(receiveAllUsers(users)))
 }
-export const updateUser = (user) => dispatch => {
-    return APIUtil.updateUser(user)
+export const updateUser = (formData) => dispatch => {
+    return APIUtil.updateUser(formData)
         .then((user) => dispatch(receiveCurrentUser(user)))
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchStore } from '../../actions/store_actions';
 import { deleteProduct, fetchProducts } from '../../actions/product_actions';
 import { fetchCategories } from '../../actions/category_actions';
-import { getCurrentUser } from "../../util/helpers_util";
+import { getCurrentUser, getCurrentUserId } from "../../util/helpers_util";
 import { selectProductsByStore, selectCategoriesByProducts } from "../../reducers/selector_reducer";
 import { fetchAllUsers } from "../../actions/user_actions";
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     const store = state.entities.stores[storeId];
     const products = selectProductsByStore(state.entities.products, storeId);
     const categories = selectCategoriesByProducts(state.entities.categories, products);
-    const currentUserId = state.session.currentUser.id;
+    const currentUserId = getCurrentUserId(currentUser);
     const users = state.entities.users;
     debugger
 

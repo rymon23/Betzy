@@ -28,7 +28,8 @@ import CategoryShowContainer from './category/category_show_container';
 import CreateProductContainer from './product/create_product_container';
 import EditProductForm from './product/edit_product_container';
 import ProductShowContainer from './product/product_show_container';
-
+import EditUserProfileContainer from './user/edit_user_profile_container';
+import UserProfileShowContainer from './user/user_profile_show_container';
 
 const App = () => {
   return (
@@ -46,9 +47,6 @@ const App = () => {
           </div> */}
           <Navbar />
       </header>
-      {/* <div className="page-column">
-        <Homepage />
-      </div> */}
 
       <Switch>
         <Route exact path='/' component={HomePageContainer} />
@@ -58,6 +56,9 @@ const App = () => {
         <ProtectedRoute exact path='/stores/:storeId/edit' component={EditStoreContainer} />
         <ProtectedRoute exact path='/stores/new' component={CreateStoreContainer} />
         <Route exact path='/stores/:storeId' component={StoreShowContainer} />
+
+        <Route exact path='/users/:userId' component={UserProfileShowContainer} />
+        <ProtectedRoute exact path='/users/:userId/edit' component={EditUserProfileContainer} />
 
         <Route exact path='/categories/:categoryId' component={CategoryShowContainer} />
 

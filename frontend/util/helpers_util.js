@@ -7,7 +7,7 @@ export const getCurrentUserId = (currentUser) => {
   if (!currentUser) return false;
   return currentUser.id;
 };
-export const hasShop = (currentUser) => {
+export const hasStore= (currentUser) => {
   if (!currentUser || currentUser === undefined) return false;
   return Boolean(currentUser.store);
 };
