@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { loading } from "../utility";
 
 class StoreShow extends React.Component {
     constructor() {
@@ -7,15 +8,14 @@ class StoreShow extends React.Component {
         this.handleEdit = this.handleEdit.bind(this);
         this.handleStock = this.handleStock.bind(this);
         this.toProductPage = this.toProductPage.bind(this);
+        this.toUserProfile = this.toUserProfile.bind(this);
     }
-
     componentDidMount() {
         this.props.fetchStore(this.props.match.params.storeId);
         this.props.fetchProducts();
         this.props.fetchCategories();
         this.props.fetchAllUsers();
     }
-
     componentDidUpdate(prevProps) {
         if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
             this.props.fetchStore(this.props.match.params.storeId);
@@ -24,24 +24,26 @@ class StoreShow extends React.Component {
             this.props.fetchAllUsers();
         }
     }
-
     handleEdit(event){
         event.preventDefault();
         this.props.history.push(`/stores/${this.props.store.id}/edit`);  
     }
-
-    handleStock(event){
-        event.preventDefault();
+    handleStock(e){
+        e.preventDefault();
         this.props.history.push(`/stores/${this.props.store.id}/products/new`);   
     }
-
     toProductPage(productId){
-        return (event) => {
-            event.preventDefault();
-            this.props.history.push(`/stores/${this.props.store.id}/products/${productId}`)
+        return (e) => {
+            e.preventDefault();
+            this.props.history.push(`/stores/${this.props.store.id}/products/${productId}`);
         }
     }
-
+    toUserProfile(userId) {
+        return (e) => {
+            e.preventDefault();
+            this.props.history.push(`/users/${userId}`);
+        }
+    }
     editDeleteButton(product){
         let { store, currentUserId, deleteProduct } = this.props;
         let editDeleteButton;
@@ -60,10 +62,9 @@ class StoreShow extends React.Component {
         
         let { store, currentUserId, products, categories ,users } = this.props;
         debugger
+        
         if (!store || products.length === 0 || categories.length === 0 || Object.keys(users).length === 0) {
-            return (
-                <div>Loading...</div>
-            )
+            return <div>{loading()}</div>
         }
 
         let stockItemButton;
@@ -114,7 +115,8 @@ class StoreShow extends React.Component {
                         </div>
                     </div>
 
-                    <div className="owner-info">
+                    <div className="owner-info" 
+                        onClick={this.toUserProfile(store.owner_id)} >
                         <p>Shop owner</p>
                         [image here]
                         <div className="shop-owner-name">{ users[store.owner_id].username }</div>

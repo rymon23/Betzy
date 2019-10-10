@@ -14,7 +14,7 @@ export default (state = [], action) => {
       return action.errors;
 
     case DISABLE_MODAL:
-      return []
+      return [];
 
     default:
       return state;

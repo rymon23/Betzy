@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { loading } from "../utility";
 class EditUserProfleForm extends React.Component {
     constructor(props){
         super(props);
@@ -63,7 +63,13 @@ class EditUserProfleForm extends React.Component {
     
     render(){
         const preview = this.state.imageUrl ? <img src={this.state.imageUrl}/> : '';
-        let {user} = this.props
+        let { user } = this.props
+        debugger
+
+        if (!user){
+            { loading() }
+        }
+
         return (
             <div className="user-profile-edit">
                 <div className="header-section">

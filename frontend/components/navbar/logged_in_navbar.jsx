@@ -13,8 +13,8 @@ class LoggedInNavbar extends React.Component {
         this.cartClick = this.cartClick.bind(this);
     }
 
-    redirectToTarget(event){
-        event.preventDefault();
+    redirectToTarget(e){
+        e.preventDefault();
         debugger
         let { storeId } = this.props;
         const shopManagerLink = storeId ? `/stores/${storeId}` : "/stores/new";

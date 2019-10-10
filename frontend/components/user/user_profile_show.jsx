@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter, Link} from 'react-router-dom';
+import { loading } from "../utility";
 
 class UserProfileShow extends React.Component {
     constructor(props){
@@ -17,8 +18,14 @@ class UserProfileShow extends React.Component {
     }
 
     render(){
-        let {user, store} = this.props;
+        let { user, store } = this.props;
         let storeLogo;
+        debugger
+
+        if (!user) {
+            return <div>{loading()}</div>
+        }
+
         if (Boolean(store)) {
             storeLogo = (
                 <div>

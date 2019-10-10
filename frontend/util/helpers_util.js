@@ -11,13 +11,14 @@ export const hasStore= (currentUser) => {
   if (!currentUser || currentUser === undefined) return false;
   return Boolean(currentUser.store);
 };
-export const getStoreId = (currentUser) => {
-  if (!currentUser || currentUser === undefined) return false;
-  return currentUser.store.id;
-};
 export const getStore = (currentUser) => {
   if (!currentUser || currentUser === undefined) return null;
   return currentUser.store;
+};
+//USER
+export const getStoreId = (user) => {
+  if (!user || user === undefined) return false;
+  return user.storeId;
 };
 
 //CATEGORY

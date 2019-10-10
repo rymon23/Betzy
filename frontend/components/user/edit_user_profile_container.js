@@ -1,15 +1,19 @@
 import EditUserProfleForm from "./edit_user_profile_form";
 import {connect} from 'react-redux';
 import { updateUser, fetchAllUsers } from "../../actions/user_actions";
-import { selectCurrentUser } from '../../reducers/selector_reducer';
+import { getCurrentUser } from "../../util/helpers_util";
 
-const mapStateToProps = state => ({
-    user: selectCurrentUser(state.entities.users, state.session.id)
-});
+const mapStateToProps = (state) => {
+    return {
+        user: getCurrentUser(state)
+    }
+};
 
-const mapDispatchToProps = dispatch => ({
-    updateUser: formData => dispatch(updateUser(formData)),
-    fetchAllUsers: () => dispatch(fetchAllUsers())
-});
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateUser: (formData) => dispatch(updateUser(formData)),
+        fetchAllUsers: () => dispatch(fetchAllUsers())
+    }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUserProfleForm);

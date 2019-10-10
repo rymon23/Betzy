@@ -15,7 +15,7 @@ const LoggedOutNavbar = (props) => {
             <SearchBarContainer />
             {/* <SearchForm /> */}
 
-            <li className="sell-on-epsy" 
+            <li className="sell-on-betzy" 
                 onClick={() => alert('Please log in or sign up')}>
                 Sell on {APP_NAME}
             </li>
