@@ -1,9 +1,10 @@
 
 header {
+  display: flex;
+  justify-content: center;  
   width: 100%;
   border-bottom: 1px solid rgba(34, 34, 34, 0.15);
-  display: flex;
-  justify-content: center;
+  margin-top: -19px;
 }
 .logo-link {
   color: crimson;
