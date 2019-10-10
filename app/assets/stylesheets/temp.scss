@@ -207,6 +207,11 @@ a.btn-block {
     color: #595959;
 }
 
+.navbar {
+    width: 1400px;
+}
+
+
 .logo-nav {
     margin-right: 25px;
     height: 45px;
@@ -482,9 +487,8 @@ a.btn-block {
     font-size: 14px;
     color: gray;
     justify-content: center;
-    border-bottom: 1px solid rgba(34, 34, 34, 0.15);
-    padding-bottom: 15px;
-
+    // border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    // padding-bottom: 15px;
 }
 
 .category-ul > li {

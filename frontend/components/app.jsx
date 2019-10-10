@@ -50,23 +50,89 @@ const App = () => {
 
       <Switch>
         <Route exact path='/' component={HomePageContainer} />
-        <AuthRoute exect path='/login' component={LoginFormContainer} />
-        <AuthRoute exect path='/signup' component={SignupFormContainer} />
+        
+        <div className="static-width">
+          <AuthRoute exect path='/login' component={LoginFormContainer} />
+          <AuthRoute exect path='/signup' component={SignupFormContainer} />
 
-        <ProtectedRoute exact path='/stores/:storeId/edit' component={EditStoreContainer} />
-        <ProtectedRoute exact path='/stores/new' component={CreateStoreContainer} />
-        <Route exact path='/stores/:storeId' component={StoreShowContainer} />
+          <ProtectedRoute exact path='/stores/:storeId/edit' component={EditStoreContainer} />
+          <ProtectedRoute exact path='/stores/new' component={CreateStoreContainer} />
+          <Route exact path='/stores/:storeId' component={StoreShowContainer} />
 
-        <Route exact path='/users/:userId' component={UserProfileShowContainer} />
-        <ProtectedRoute exact path='/users/:userId/edit' component={EditUserProfileContainer} />
+          <Route exact path='/users/:userId' component={UserProfileShowContainer} />
+          <ProtectedRoute exact path='/users/:userId/edit' component={EditUserProfileContainer} />
 
-        <Route exact path='/categories/:categoryId' component={CategoryShowContainer} />
+          <Route exact path='/categories/:categoryId' component={CategoryShowContainer} />
 
-        <ProtectedRoute exact path='/stores/:storeId/products/new' component={CreateProductContainer} />
-        <ProtectedRoute exact path='/products/:productId/edit' component={EditProductForm} />
-        <Route exact path='/stores/:storeId/products/:productId' component={ProductShowContainer} />
+          <ProtectedRoute exact path='/stores/:storeId/products/new' component={CreateProductContainer} />
+          <ProtectedRoute exact path='/products/:productId/edit' component={EditProductForm} />
+          <Route exact path='/stores/:storeId/products/:productId' component={ProductShowContainer} />
+        </div>
 
       </Switch>
+      <div className="app-footer-container">
+        <div className="app-footer-ridge-top">
+        </div>
+        <div className="app-footer-subscribe-container">
+            <h3>Get fresh Betsy trends and unique gift ideas delivered right to your inbox.</h3>
+          <div>
+              <form className='subscribe'>
+                <div className='subscribe-container'>
+                  <input className='subscribe-input' type="text"
+                    placeholder='Enter your email' />
+                  <button className='subscribe-button' type="submit">
+                    Subscribe
+                  </button>
+                </div>
+              </form>            
+          </div>
+        </div>
+        <div className="app-footer-ridge-bottom">
+        </div>
+          
+        <div className="app-footer-content">
+          
+          <div className="app-footer-content-column-container"> 
+            <div className="app-footer-column">
+              <div>
+                <h3>Shop</h3>
+                <ul>
+                  <li>Gift cards</li>
+                  <li>Betzy blog</li>
+                </ul>              
+              </div>
+            </div>
+
+            <div className="app-footer-column">
+              <h3>Sell</h3>
+              <ul>
+                <li>Gift cards</li>
+                <li>Betzy blog</li>
+              </ul>
+            </div>
+
+            <div className="app-footer-column">
+              <h3>About</h3>
+              <ul>
+                <li>Gift cards</li>
+                <li>Betzy blog</li>
+              </ul>
+            </div>
+
+            <div className="app-footer-column">
+              <h3>Help</h3>
+              <ul>
+                <li>Gift cards</li>
+                <li>Betzy blog</li>
+              </ul>
+            </div>
+          </div>
+
+          <footer>
+            Footer
+          </footer> 
+        </div>
+      </div>
     </div>
     </>
   );

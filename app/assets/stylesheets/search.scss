@@ -78,19 +78,15 @@
 //   background: #ccc;
 // }
 
-
-
 //
 .search {
     display: flex;
 }
-
 .search-input {
   width: 100%;
   height: 20px;
   padding: 8px;
 }
-
 .search-container {
     border-radius: 96px;
     border: 1px solid #eee;
@@ -136,11 +132,9 @@
           color: #bb2a2a;
       }
     }
-    
     .search-input :focus ::placeholder {
       color: #bb2a2a;
     }
-
     .search-button{   
         box-shadow: none;
         cursor: pointer;
@@ -158,11 +152,9 @@
         &:hover{
             background-color: black;
             color: #bb2a2a;
-
             // color: white;
         }
     }
-
     .search-container, .search-input, .search-button {
         background-color: #bb2a2a;
     } 

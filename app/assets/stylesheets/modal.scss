@@ -1,3 +1,4 @@
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -7,24 +8,20 @@
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
 }
-
 .modal-child {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .login-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-
 .login-input {
   margin-left: 20px;
 }
-
 .login-form-box {
   background-color: #fefefe;
   margin: 5px auto;
@@ -34,7 +31,6 @@
   padding: 15px;
   align-items: center;
 }
-
 .login-form-box label {
   font-weight: bold;
 }
@@ -59,8 +55,6 @@
   cursor: pointer;
   width: 100%;
 }
-
-
 .credentials-form 
   input[type=text], input[type=password], input[type=email] {
     width: 100%;

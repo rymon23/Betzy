@@ -1,4 +1,10 @@
 
+header {
+  width: 100%;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+  display: flex;
+  justify-content: center;
+}
 .logo-link {
   color: crimson;
 }
@@ -15,97 +21,3 @@
 .logo-nav {
   padding-right: 55px;
 }
-
-
-/* header { */
-  /* background: whitesmoke; */
-/* } */
-/* a:link, :visited{
-  text-decoration:  none;
-  color: black;
-} 
-.app {
-    margin: auto;
-}
-
-.main-header {
-  display: flex;
-  padding-top: 0px;
-  text-decoration: none;  
-  flex-direction: column;
-  border-bottom: 1px solid black;
-  height: fit-content;
-}
-.main-header-div {
-  display: flex;
-  justify-content: space-between;
-}
-.page-column {
-  margin: auto;
-  min-width: 600px;
-  max-width: 1600px;
-  width: 1400px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-header::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-header ul li {
-  float: left;
-  margin-right: 25px;
-}
-
-.cart-div {
-  border-left: 1px solid lightgray;
-}
-
-.cart-icon {
-  display: flex;
-  justify-content: left;
-  padding: 10px 0;
-	margin: 0 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
-}
-
-header button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.session-options {
-  font-size: 15px;
-  font-weight: bold;
-  margin: 6px 6px;
-  font-family: sans-serif;
-  cursor: pointer;
-  padding-left: 15px;
-}
-.session-options-login {
-  border: 1px solid black;
-  padding: 7px;
-  border-radius: 9%;
-  font-size: 15px;
-}
-.session-options-login:hover {
-  background: black;
-  color: white;
-} */
-
-/* header button:hover {
-  background: black;
-  color: white;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-} */

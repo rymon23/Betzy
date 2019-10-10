@@ -1,21 +1,24 @@
 
-/* @import "font-awesome"; */
+ @import "font-awesome"; 
 
 .homepage {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-.homepage > h1 {
+.homepage-banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.homepage-banner-container > h1 {
     font-family: "Hepta";
     font-weight: normal;
 }
-
-.homepage > div.homepage-banner {
+.homepage-banner-container > div.homepage-banner {
     background-color: rgb(187, 42, 42);
     height: 280.4px;
-    width: 1680px;
+    width: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     display: flex;
@@ -23,15 +26,14 @@
     flex-direction: column;
     align-items: center;
 }
-
-.homepage > div.homepage-banner > h1 {
+.homepage-banner-container > div.homepage-banner > h1 {
     font-weight: normal;
     font-family: fantasy;
     margin-right: 587px;
     font-size: 50px;
     width: 569px;
 }
-.homepage > div.homepage-banner > button {
+.homepage-banner-container > div.homepage-banner > button {
     background: white;
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -39,12 +41,10 @@
     margin-right: 970px;
     margin-bottom: 20px;
 }
-
-.homepage > div.middle-banner {
+.homepage-banner-container > div.middle-banner {
     width: 100%;
 }
-
-.homepage > div.middle-banner > ul.middle-banner-list {
+.homepage-banner-container > div.middle-banner > ul.middle-banner-list {
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -52,8 +52,7 @@
     width: 100%;
     padding: 0;
 }
-
-.homepage > div.middle-banner > ul.middle-banner-list > li {
+.homepage-banner-container > div.middle-banner > ul.middle-banner-list > li {
     font-weight: normal;
     font-family: "Hepta";
     display: flex;
@@ -61,94 +60,27 @@
     text-align: center;
     width: 300px;
 }
-
-.homepage > div.middle-banner > ul.middle-banner-list > li > h3 {
+.homepage-banner-container > div.middle-banner > ul.middle-banner-list > li > h3 {
     font-weight: normal;
     font-family: "Hepta";
     margin-bottom: 0;
 }
 
 
-
-
-/* .homepage-div{
-    width: 1400px;
+.wob-container {
+    width: 100%;
     height: fit-content;
-    display: flex;
-    flex-direction: column;
-    border: 1px black;
-}
-
-.homepage-child {
-    height: 300px;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid lightgray;
-}
-
-.homepage-text-heading {
     display: flex;
     justify-content: center;
-    padding: 10px;
-}
-.homepage-text {
-    font-size: 27px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+    background-color: lightgrey;
 
-.homepage-welcome {
-    font-size: 23px;
-    font-family: Arial, Helvetica, sans-serif;
-    height: auto;
-    padding: 10px;
-    margin: 10px;
+    .wob-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .wob-content-column-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
-.homepage-welcome {
-    padding-left: 0px;
-}
-
-.homepage-under-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-.homepage-under-content-div {
-    margin: 5px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-
-}
-.homepage-under-content-header {
-    padding-bottom: 0px;
-    font-size: 20px;
-}
-.homepage-under-content-paragraph {
-    margin-top: 0px;
-    font-size: 17px;
-}
-.homepage-under-content-header, .homepage-under-content-paragraph {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-.homepage-child {
-    background-color: rgb(240, 239, 237);
-    color:lightgrey;
-    display: flex;
-    justify-content: center;
-}
-
-.Content-parent-div {
-    height: fit-content;
-}
-
-
-.Center-parent-div{
-    height: fit-content;
-}
-
-.Footer-parent-div{
-    height: fit-content;
-} */

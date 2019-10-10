@@ -55,20 +55,71 @@ class HomePage extends React.Component {
             )            
         }
 
+        const whatIsBetzy = () => {
+            return (
+                <div className="wob-container">
+                    <div className="wob-content static-width">
+                        <div className="wob-head">
+                            <h1>What is {APP_NAME}?</h1>
+                            <a href="">Read our wonderfully weird story</a>
+                        </div>
+                        <div className="wob-content-column-container">
+                            <div className="wob-column">
+                                <div>
+                                    <h2>A one-of-a-kind community</h2>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="wob-column">
+                                <div>
+                                    <h2>Support independent creators</h2>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="wob-column">
+                                <div>
+                                    <h2>Peace of mind</h2>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="wob-help">
+                            <h2>Have a question? Well, we’ve got some answers.</h2>
+                            <button>Go to Help Center</button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         return (
             <div className="homepage">
+                <div className="static-width">
+                    <div className="homepage-banner-container">
+                        <h1>
+                            If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.
+                        </h1>
 
-                <h1>If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.</h1>
+                        <div className="homepage-banner">
+                            <h1>Personalized jewelry shines a little brighter</h1>
+                            <button>
+                                Shop custom jewelry
+                                <i className="fa fa-caret-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
 
-                <div className="homepage-banner">
-                    <h1>Personalized jewelry shines a little brighter</h1>
-                    <button>
-                        Shop custom jewelry
-                        <i className="fa fa-caret-right" aria-hidden="true"></i>
-                    </button>
+                        { middleBanner() }
+                    </div>
                 </div>
 
-                { middleBanner() }
+
 
                 <div className="bottom-banner">
                     {
@@ -91,8 +142,9 @@ class HomePage extends React.Component {
                             <h4>Sub category</h4>
                         </li>
                     </ul>
-
                 </div>
+
+                { whatIsBetzy() }
             </div>
         )
     }
