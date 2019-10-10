@@ -506,9 +506,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_product_show_container__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./product/product_show_container */ "./frontend/components/product/product_show_container.js");
 /* harmony import */ var _user_edit_user_profile_container__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/edit_user_profile_container */ "./frontend/components/user/edit_user_profile_container.js");
 /* harmony import */ var _user_user_profile_show_container__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user/user_profile_show_container */ "./frontend/components/user/user_profile_show_container.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
 
 
  //Session
+
 
 
 
@@ -585,38 +587,7 @@ var App = function App() {
     exact: true,
     path: "/stores/:storeId/products/:productId",
     component: _product_product_show_container__WEBPACK_IMPORTED_MODULE_19__["default"]
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-ridge-top"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-subscribe-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Get fresh Betsy trends and unique gift ideas delivered right to your inbox."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    className: "subscribe"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "subscribe-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "subscribe-input",
-    type: "text",
-    placeholder: "Enter your email"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "subscribe-button",
-    type: "submit"
-  }, "Subscribe"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-ridge-bottom"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-content-column-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Betzy blog")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sell"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Betzy blog"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Betzy blog"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Help"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Betzy blog")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, "Footer")))));
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_22__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -792,6 +763,82 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_category_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/footer/footer.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/footer/footer.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_config_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/config_util */ "./frontend/util/config_util.js");
+
+ //FOOTER
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var socialMediaContent = function socialMediaContent() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-social-media-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-social-media-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "app-social-media-download-button"
+    }, "Download the ".concat(_util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], " App")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-social-media-tags"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "I"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "P"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "T"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Y"))));
+  };
+
+  var subscribe = function subscribe() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-footer-subscribe-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Get fresh ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], " trends and unique gift ideas delivered right to your inbox."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      className: "subscribe"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "subscribe-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      className: "subscribe-input",
+      type: "text",
+      placeholder: "Enter your email"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "subscribe-button",
+      type: "submit"
+    }, "Subscribe")))));
+  };
+
+  var footerColumns = function footerColumns() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-footer-column"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], " blog")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-footer-column"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sell"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Teams"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Forums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Affiliates"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-footer-column"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Policies"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Careers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Press"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Impact"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-footer-column"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Help"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Help Center")), socialMediaContent()));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-footer-bar"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-footer-ridge-top"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-footer-container"
+  }, subscribe()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-footer-ridge-bottom"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-footer-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-footer-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-footer-content-column-container"
+  }, footerColumns()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, "Footer"))));
+});
 
 /***/ }),
 
@@ -1041,7 +1088,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Personalized jewelry shines a little brighter"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Shop custom jewelry", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-caret-right",
         "aria-hidden": "true"
-      }))), middleBanner())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), middleBanner()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bottom-banner"
       }, currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "welcome-back-div"
@@ -1057,7 +1104,7 @@ function (_React$Component) {
         onClick: this.recommendedOnClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "recommended"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Sub category")))), whatIsBetzy());
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Sub category"))))), whatIsBetzy());
     }
   }]);
 

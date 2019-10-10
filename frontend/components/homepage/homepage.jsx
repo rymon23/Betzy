@@ -117,31 +117,29 @@ class HomePage extends React.Component {
 
                         { middleBanner() }
                     </div>
-                </div>
 
-
-
-                <div className="bottom-banner">
-                    {
-                       currentUser ? 
-                       <div className="welcome-back-div">
-                            <h3 className="welcome-back" >
-                                Welcome back { currentUser.username }</h3>                           
-                       </div>
- 
-                        : 
-                        <div className="popular-right-now-div">
-                            <h2 className="popular-right-now">
-                                Popular right now</h2>                            
+                    <div className="bottom-banner">
+                        {
+                        currentUser ? 
+                        <div className="welcome-back-div">
+                                <h3 className="welcome-back" >
+                                    Welcome back { currentUser.username }</h3>                           
                         </div>
+    
+                            : 
+                            <div className="popular-right-now-div">
+                                <h2 className="popular-right-now">
+                                    Popular right now</h2>                            
+                            </div>
 
-                    }
-                    <ul className="category-images-ul">
-                        <li onClick={this.recommendedOnClick}>
-                            <div id="recommended"></div>
-                            <h4>Sub category</h4>
-                        </li>
-                    </ul>
+                        }
+                        <ul className="category-images-ul">
+                            <li onClick={this.recommendedOnClick}>
+                                <div id="recommended"></div>
+                                <h4>Sub category</h4>
+                            </li>
+                        </ul>
+                    </div>                    
                 </div>
 
                 { whatIsBetzy() }

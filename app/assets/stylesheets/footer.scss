@@ -1,19 +1,44 @@
 
-.app-footer-container{
+// .app-footer-ridge-top {
+//   border: 2px solid lightgrey;
+//   border-top-left-radius: 25px;
+//   border-top-right-radius: 25px;
+// }
+// .app-footer-ridge-bottom{
+//   border: 2px solid rgb(190, 93, 93);
+//   border-top-left-radius: 25px;
+//   border-top-right-radius: 25px;
+// }
+
+
+.app-footer-bar {
+  height: 600px;
+  width: 100%;
+  // float: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.app-footer-container {
   height: 600px;
   width: 100%;
   float: center;
+  display: flex;
+  justify-content: center;
+
   .app-footer-content{
     height: 100%;
     width: 1400px;
     background-color: #bb2a2a;
+    color: white;
   }
 }
-.app-footer-container ul{
+.app-footer-container ul {
   list-style: none;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -149,3 +174,35 @@ footer{
     padding-bottom: 7px;
   }
 }
+
+.app-social-media-content {
+  display: flex;
+  flex-direction: column;
+
+
+  .app-social-media-download-button {
+    background-color: #bb2a2a;
+    border: 2px solid white;
+    border-radius: 40px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .app-social-media-tags {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    justify-content: space-between;    
+
+    button {
+      background-color: #bb2a2a;
+      border: 2px solid white;
+      border-radius: 40px;
+      padding: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
+
