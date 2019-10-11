@@ -692,7 +692,9 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: product.id,
           onClick: _this3.ProductPage(product)
-        }, "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.name.slice(0, 35), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: product.imageUrls[0]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.name.slice(0, 35), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "category-shop-name"
         }, stores[product.store_id].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "USD ", product.price));
       });
@@ -1803,7 +1805,6 @@ function (_React$Component) {
         formData.append('product[id]', this.state.id);
       }
 
-      ;
       var imageFiles = this.state.imageFiles;
 
       if (imageFiles.length > 0) {
@@ -1869,8 +1870,6 @@ function (_React$Component) {
         alert('Number of files exceeded, upload 5 pictures only!');
         return;
       }
-
-      ;
     }
   }, {
     key: "update",
@@ -2116,7 +2115,6 @@ function (_React$Component) {
           product = _this$props.product,
           store = _this$props.store,
           currentUserId = _this$props.currentUserId;
-      debugger;
 
       if (!product || !store) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
@@ -2130,7 +2128,9 @@ function (_React$Component) {
         className: "product-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "carousel"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: product.imageUrls[0]
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(store.id)
@@ -2145,7 +2145,10 @@ function (_React$Component) {
         htmlFor: "details"
       }, "Item details"), product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "owner-info-image",
+        src: store.ownerImgUrl
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-name"
       }, store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
@@ -3640,7 +3643,6 @@ function (_React$Component) {
           products = _this$props2.products,
           categories = _this$props2.categories,
           users = _this$props2.users;
-      debugger;
 
       if (!store || products.length === 0 || categories.length === 0 || Object.keys(users).length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
@@ -3663,12 +3665,13 @@ function (_React$Component) {
       }
 
       var productLi = products.map(function (product) {
-        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: product.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           onClick: _this4.toProductPage(product.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: product.imageUrls[0]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "product-name"
         }, product.name.slice(0, 27), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "USD ", product.price))), _this4.editDeleteButton(product));
       });
@@ -3678,14 +3681,19 @@ function (_React$Component) {
         className: "shop-show-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-logo"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: store.imageUrl
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-name-show"
       }, store.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-info",
         onClick: this.toUserProfile(store.owner_id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Shop owner"), "[image here]", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Shop owner"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: store.ownerImgUrl,
+        id: "owner-info-image"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-name"
       }, users[store.owner_id].username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
@@ -46919,7 +46927,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

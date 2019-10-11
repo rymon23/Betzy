@@ -25,8 +25,7 @@ class ProductForm extends React.Component {
 
         if (this.state.id){
             formData.append('product[id]', this.state.id);
-        };
-
+        }
         let {imageFiles} = this.state;
         
         if (imageFiles.length > 0) {
@@ -74,10 +73,8 @@ class ProductForm extends React.Component {
         } else {
             alert('Number of files exceeded, upload 5 pictures only!');
             return;
-        };
-
-        
-    };
+        }
+    }
 
     update(field) {
         return (event) => {

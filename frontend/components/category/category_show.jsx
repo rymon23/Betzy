@@ -43,7 +43,7 @@ class CategoryShow extends React.Component {
             if (product === undefined) return null;
             return (
                 <li key={product.id} onClick={this.ProductPage(product)} >
-                    [image here]
+                    <img src={product.imageUrls[0]} />
                     <p>{product.name.slice(0, 35)}...</p>
                     {/* <p className="category-shop-name">
                         <Link to={`/stores/${product.store_id}`}>

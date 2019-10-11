@@ -40,8 +40,6 @@ class ProductShow extends React.Component {
 
     render() {
         let { product, store, currentUserId } = this.props;
-
-        debugger
         if (!product || !store) {
             return <div>{loading()}</div>
         }
@@ -52,7 +50,7 @@ class ProductShow extends React.Component {
         return (
             <div className="product-show">
                 <div className="carousel">
-                    {/* <Slider imageUrls={product.imageUrls} /> */}
+                    <img src={product.imageUrls[0]} />
                 </div>
 
                 <div className="product-info">
@@ -88,7 +86,7 @@ class ProductShow extends React.Component {
                     </div>
                     <div className="owner-info">
                         <p>Meet {store.ownerName}</p>
-                        {/* <img id="owner-info-image" src={store.profilePicUrl} /> */}
+                        <img id="owner-info-image" src={store.ownerImgUrl} />
                         <div className="shop-owner-name">{store.ownerName}</div>
                         <div className="shop-owner-email">
                             <i className="fa fa-envelope-o" aria-hidden="true"></i>
@@ -102,7 +100,7 @@ class ProductShow extends React.Component {
 
             </div>
         )
-    };
+    }
 }
 
 export default withRouter(ProductShow);

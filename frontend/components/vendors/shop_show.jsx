@@ -61,7 +61,6 @@ class StoreShow extends React.Component {
     render() {
         
         let { store, currentUserId, products, categories ,users } = this.props;
-        debugger
         
         if (!store || products.length === 0 || categories.length === 0 || Object.keys(users).length === 0) {
             return <div>{loading()}</div>
@@ -86,11 +85,10 @@ class StoreShow extends React.Component {
         }
 
         const productLi = products.map((product) => {
-            debugger
                 return (
                     <li key={product.id}>
                         <div onClick={this.toProductPage(product.id)}>
-                            {/* <img src={product.imageUrls[0]} /> */}
+                            <img src={product.imageUrls[0]} />
                             <p className="product-name">{product.name.slice(0, 27)}...</p>
                             <p><strong>USD {product.price}</strong></p>
                         </div>
@@ -105,8 +103,8 @@ class StoreShow extends React.Component {
             <div className="shop-show">
                 <div className="shop-show-header">
                     <div className="shop-logo">
-                        {/* <img src={store.imageUrl} />
-                        {stockItemButton} */}
+                        <img src={store.imageUrl} />
+                        {/* {stockItemButton} */}
                     </div>
 
                     <div className="shop-info">
@@ -118,7 +116,7 @@ class StoreShow extends React.Component {
                     <div className="owner-info" 
                         onClick={this.toUserProfile(store.owner_id)} >
                         <p>Shop owner</p>
-                        [image here]
+                        <img src={store.ownerImgUrl} id="owner-info-image" />
                         <div className="shop-owner-name">{ users[store.owner_id].username }</div>
                         <div className="shop-owner-email">
                             <i className="fa fa-envelope-o" aria-hidden="true"></i>
