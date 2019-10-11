@@ -61,8 +61,13 @@ PRODUCT_SEED_IMG = [
   "seed_16.png"
 ].freeze
 
-img_path = './app/assets/images/seeds/'
-file = File.open(img_path + "seed_01.jpg")
+
+
+# img_path = './app/assets/images/seeds/'
+# file = File.open(img_path + "seed_01.jpg")
+
+img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'seed_01.jpg')
+file = File.open(img_path)
 user1.profile_image.attach(io: file, filename: "seed_01.jpg")
 
 
