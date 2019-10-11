@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import { APP_NAME } from "../../util/config_util";
+import { loading } from "../utility";
 
 class HomePage extends React.Component {
     constructor(props){
@@ -13,14 +14,36 @@ class HomePage extends React.Component {
         this.props.fetchStores();
         this.props.fetchAllUsers();
     }
-
     recommendedOnClick(e, categoryId){
         e.preventDefault();
         this.props.history.push(`/categories/${categoryId}`);
     }
 
     render() {
-        let { currentUser } = this.props;
+        let { currentUser, products } = this.props;
+
+        const sampleProducts = (products) => {
+            if ( Object.keys(products).length === 0 ) {
+                return <div>{ loading() }</div>
+            }
+            const sampleProducts = products.map((product) => {
+                if (product === undefined) return null;
+                return (
+                    <li key={product.id} >
+                        <img src={product.imageUrls[0]} />
+                        <p>{product.name.slice(0, 35)}...</p>
+                        {/* <p className="category-shop-name">
+                        <Link to={`/stores/${product.store_id}`}>
+                            {stores[product.store_id].title}</Link>
+                    </p> */}
+                        {/* {<p className="category-shop-name">{stores[product.store_id].title}</p>} */}
+                        {<p>USD {product.price}</p>}
+                    </li>
+                )
+            });
+            return sampleProducts;
+        }
+
 
         const middleBanner = () => {
             if ( currentUser ) return null;
@@ -134,16 +157,25 @@ class HomePage extends React.Component {
                             : 
                             <div className="popular-right-now-div">
                                 <h2 className="popular-right-now">
-                                    Popular right now</h2>                            
+                                    Popular right now</h2> 
+                                <div className="products-listing" id="category-show">
+                                    {/* <h2>{category.name}</h2> */}
+                                    <ul>
+                                        {sampleProducts(products)}
+                                    </ul>
+                                </div>                        
                             </div>
 
                         }
-                        <ul className="category-images-ul">
+                        {/* <ul className="category-images-ul">
                             <li onClick={this.recommendedOnClick}>
                                 <div id="recommended"></div>
-                                <h4>Sub category</h4>
+        
+                                <ul>
+                                    {sampleProducts(products)}
+                                </ul>
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>                    
                 </div>
 

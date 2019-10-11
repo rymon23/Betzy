@@ -28,6 +28,7 @@ export const categoryHasProducts = (category) => {
 };
 
 export const arrayShuffle = (array) => {
+  debugger
   const shuffledArray = array.slice();
   for(let i = shuffledArray.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * i)

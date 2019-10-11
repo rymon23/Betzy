@@ -1,3 +1,4 @@
+import { arrayShuffle } from "../util/helpers_util";
 
 //CURRENT USER
 export const selectCurrentUser = (users, sessionId) => {
@@ -45,6 +46,23 @@ export const selectCategoriesByProducts = (allCategories, products) => {
     Object.values(allCategories).filter(category => catagoryIds.includes(category.id)) || [];
   return selectedCategories;
 };
+
+export const sampleProducts = (allProducts, amount = 18) => {
+  debugger
+  if ( Object.keys(allProducts).length === 0 ) return allProducts;
+  debugger
+  const sample = arrayShuffle(Object.values(allProducts));
+  debugger
+  
+  const result = sample.slice(0, amount);
+  // const result = {};
+  // for (let index = 0; index < sample.length; index++) {
+  //   const element = sample[index];
+  //   result.id = element
+  // }
+  return result;
+};
+
 // export const selectReviewsByProduct = (allReviews, productId) => {
 //   const selectedReviews = [];
 //   Object.values(allReviews).forEach((review) => {

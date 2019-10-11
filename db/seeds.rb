@@ -8,7 +8,6 @@
 
 require 'open-uri'
 
-
 User.destroy_all
 Category.delete_all
 Store.delete_all
@@ -120,7 +119,7 @@ end
 categories = Category.all
 category_art = nil
 categories.each {|category| category_art = category if category.name == "Art"}
-
+categories = categories.select {|category| category.name != "Art"}
 
 # img_path = './app/assets/images/seeds/'
 
