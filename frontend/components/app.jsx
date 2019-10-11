@@ -12,13 +12,7 @@ import {
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import SignupFormContainer from "./session_form/signup_form_container";
 import LoginFormContainer from "./session_form/login_form_container";
-
-import MainNav from "./nav/main_nav_container";
 import Modal from "./modal/modal";
-import Logo from "./logo/logo";
-import SearchForm from "./search/search";
-import Categories from "./nav/category";
-
 import Navbar from './navbar/navbar';
 import EditStoreContainer from './vendors/edit_shop_container';
 import CreateStoreContainer from './vendors/create_shop_container';
@@ -31,6 +25,7 @@ import ProductShowContainer from './product/product_show_container';
 import EditUserProfileContainer from './user/edit_user_profile_container';
 import UserProfileShowContainer from './user/user_profile_show_container';
 import Footer from "./footer/footer";
+
 
 const App = () => {
   return (

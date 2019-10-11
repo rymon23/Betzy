@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_one_attached :profile_image
+  has_one_attached :profile_image #, service: :s3
 
   has_one :store , dependent: :destroy,
     class_name: :Store,

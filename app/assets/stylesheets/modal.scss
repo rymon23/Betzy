@@ -1,16 +1,35 @@
 
+
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(128, 127, 127, 0.7);
+    z-index: 10;
+}
+
+.modal-child {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .modal-background {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(29, 29, 29, 0.7);
   z-index: 10;
 }
 .modal-child {
   position: absolute;
-  top: 50%;
+  top: 32%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -26,14 +45,28 @@
   background-color: #fefefe;
   margin: 5px auto;
   border: 1px solid #888;
-  width: 400px;
-  height: 750px;
+  width: 340px;
+  height: 730px;
   padding: 15px;
   align-items: center;
+
+  h2 {
+    margin-top: -1px;
+    font-size: 26px;  
+  }
+  .login-form-terms-container{
+
+  }
 }
 .login-form-box label {
   font-weight: bold;
 }
+
+.credential-submit-container {
+  font-weight: bold;
+  font-size: 15px;
+}
+
 
 .credential-submit-submit {
   align-self: center;

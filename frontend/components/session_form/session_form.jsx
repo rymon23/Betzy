@@ -89,10 +89,17 @@ class SessionForm extends React.Component {
                 className="credential-input" />
             </label>
             <br/>
-              <input type="submit" 
-                value={this.props.buttonType}
-                className="credential-submit-submit"/>
-              { this.demoUserButton() }              
+              <div className="credential-submit-container">
+                <input type="submit" 
+                  value={this.props.buttonType}
+                  className="credential-submit-submit"/>
+                { this.demoUserButton() }  
+              </div>
+          </div>
+          <div className="login-form-terms-container">
+            <p>
+              By clicking Register, Continue with Google, or Continue with Facebook, you agree to Etsy's Terms of Use and Privacy Policy. Etsy may send you communications; you may change your preferences in your account settings. We'll never post without your permission.              
+            </p>
           </div>
         </form>
       </div>

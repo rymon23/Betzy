@@ -87,8 +87,6 @@ a.btn-block {
 .login-form-container {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
-    background: white;
 }
 
 .login-form {
@@ -109,7 +107,7 @@ a.btn-block {
 .login-form-box {
     outline: 0;
     padding: 20px;
-    width: 358.462px;
+    width: 340px;
     border-radius: 4px;
 }
 
@@ -163,72 +161,11 @@ a.btn-block {
 
 }
 
-
-.modal-background {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(128, 127, 127, 0.7);
-    z-index: 10;
-}
-
-.modal-child {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .close-x {
     position: absolute;
     top: 5px;
     right: 5px;
     cursor: pointer;
-}
-
-
-.navbar-ul {
-    left: 200px;
-    padding-left: 30px;
-    padding-right: 30px;
-    height: 60.978px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-.navbar-ul li {
-    list-style: none;
-    display: inline-block;
-
-    font-size: 12px;
-    color: #595959;
-}
-
-.navbar {
-    width: 1400px;
-}
-
-
-.logo-nav {
-    margin-right: 25px;
-    height: 45px;
-    position: relative;
-    width: 60px;
-    margin-left: 50px;
-    cursor: pointer;
-}
-
-#logo {
-    // background-image: image-url("logo.png");
-    width: 116px;
-    height: 90px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -13px;
 }
 
 .search-products-form {
@@ -262,16 +199,6 @@ a.btn-block {
     border-radius: 5%;
 }
 
-
-.notification-nav {
-    position: relative;
-    padding-right: 25px;
-    border-right: 1px solid rgba(34, 34, 34, 0.15);
-    height: 40px;
-    padding-top: 25px;
-    margin-left: 30px;
-    margin-top: 15px;
-}
 
 .down-icon {
     position: absolute;
@@ -410,98 +337,6 @@ a.btn-block {
 }
 
 
-
-.logged-out-navbar-ul {
-    height: 60.978px;
-    display: flex;
-    align-content: center;
-}
-
-
-.logged-out-navbar-ul > li {
-    list-style: none;
-    display: inline-block;
-    padding-right: 15px;
-    font-size: 14px;
-    color: #595959;
-}
-
-.logged-out-navbar-ul .logo-nav {
-    margin-left: 10px;
-    padding-right: 55px;
-}
-
-.logged-out-navbar-ul .sell-on-betzy {
-    margin-left: 30px;
-    text-align: center;
-    padding-top: 35px;
-    height: 30px;
-    padding-bottom: 50px;
-    cursor: pointer;
-}
-
-.login-signup {
-    padding-top: 35px;
-    padding-right: 20px;
-    padding-bottom: 35px;
-    border-right: 1px solid rgba(165, 165, 165, 0.15);
-}
-
-.login-signup > span > a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.login-signup > span {
-    margin-left: 20px;
-}
-
-.login a {
-    border: 1px solid gray;
-    border-radius: 3px;
-    padding: 5px 5px;
-}
-
-.logged-out-navbar-ul .cart-nav {
-    margin-left: 25px;
-    position: relative;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.logged-out-navbar-ul .cart-nav .fa-shopping-cart {
-    position: absolute;
-    right: 15px;
-}
-
-// Category navbar
-.navbar {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.navbar .category-ul {
-    display: flex;
-    font-size: 14px;
-    color: gray;
-    justify-content: center;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.category-ul > li {
-    list-style: none;
-    padding-right: 50px;
-}
-
-.category-ul > li > a {
-    text-decoration: none;
-    color: gray;
-}
-
-
 .session-form {
     display: flex;
     flex-direction: column;
@@ -519,7 +354,6 @@ a.btn-block {
     top: 165px;
     left: 20px;
 }
-
 
 
 
@@ -692,10 +526,10 @@ a.btn-block {
     background-repeat: no-repeat;
 }
 
-/* .shop-owner-name {
-    margin-top: 10px;
-    margin-bottom: 10px;
-} */
+.shop-owner-name {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .fa-envelope-o {
     margin-right: 5px;
@@ -1139,7 +973,6 @@ a.btn-block {
 
 }
 
-
 .user-profile-show {
     display: flex;
     flex-direction: column;
@@ -1401,77 +1234,11 @@ div.cart-shop-logo {
 }
 
 
-
 .fa-check {
     color: #E55400;
     font-size: 20px;
     margin-right: 10px;
 }
-
-
-// #wedding-gifts {
-//     // background-image: image-url('wedding_gifts.jpg');
-//     width: 200px;
-//     height: 180px;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-// }
-
-// #her-gifts {
-//     background-image: image-url('her_gifts.jpg');
-//     width: 200px;
-//     height: 180px;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-// }
-
-
-.reviews-index {
-    background: white;
-    margin-left: 71px;
-}
-
-.reviews-index > ul {
-    list-style: none;
-}
-
-.reviews-index > ul > li {
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 10px;
-    width: 773px;
-    display: flex;
-    flex-direction: row;
-}
-
-.reviews-index > ul > li > div {
-    padding-left: 50px;
-}
-
-.reviews-index > ul > li img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
- .reviews-index > ul > li a {
-     text-decoration: underline;
-     color: black;
- }
-
-.review-body {
-    margin-top: 1.67em;
-}
-
-.reviews-index-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
-.reviews-index-title > span {
-    margin-left: 20px;
-}
-
 
 ul.pagination {
     list-style: none;
