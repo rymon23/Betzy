@@ -1715,8 +1715,6 @@ function (_React$Component) {
       if (this.props.match.params.productId !== prevProps.match.params.productId) {
         this.props.fetchProduct(this.props.match.params.productId);
       }
-
-      ;
     }
   }, {
     key: "render",
@@ -4058,9 +4056,9 @@ var sampleProducts = function sampleProducts(allProducts) {
   debugger;
   if (Object.keys(allProducts).length === 0) return allProducts;
   debugger;
-  var sample = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_0__["arrayShuffle"])(Object.values(allProducts));
-  debugger;
-  var result = sample.slice(0, amount); // const result = {};
+  var result = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_0__["sample"])(Object.values(allProducts), amount);
+  debugger; // const result = sample.slice(0, amount);
+  // const result = {};
   // for (let index = 0; index < sample.length; index++) {
   //   const element = sample[index];
   //   result.id = element
@@ -4355,7 +4353,7 @@ var DEMO_USER = {
 /*!***************************************!*\
   !*** ./frontend/util/helpers_util.js ***!
   \***************************************/
-/*! exports provided: getCurrentUser, getCurrentUserId, hasStore, getStore, getStoreId, categoryHasProducts, arrayShuffle */
+/*! exports provided: getCurrentUser, getCurrentUserId, hasStore, getStore, getStoreId, categoryHasProducts, arrayShuffle, sample, removeDups */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4367,6 +4365,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStoreId", function() { return getStoreId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categoryHasProducts", function() { return categoryHasProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "arrayShuffle", function() { return arrayShuffle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sample", function() { return sample; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeDups", function() { return removeDups; });
 //CURRENT USER
 var getCurrentUser = function getCurrentUser(state) {
   return state.session.currentUser;
@@ -4396,8 +4396,10 @@ var categoryHasProducts = function categoryHasProducts(category) {
 var arrayShuffle = function arrayShuffle(array) {
   debugger;
   var shuffledArray = array.slice();
+  debugger;
 
   for (var i = shuffledArray.length - 1; i > 0; i--) {
+    debugger;
     var j = Math.floor(Math.random() * i);
     var temp = array[i];
     shuffledArray[i] = array[j];
@@ -4405,6 +4407,32 @@ var arrayShuffle = function arrayShuffle(array) {
   }
 
   return shuffledArray;
+};
+var sample = function sample(array) {
+  var amount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  if (amount === 1) return array[Math.floor(Math.random() * array.length)];
+  var sampleArr = [];
+
+  while (sampleArr.length < 14) {
+    var el = sample(array);
+
+    if (!sampleArr.includes(el)) {
+      sampleArr.push(el);
+    }
+  }
+
+  return sampleArr;
+};
+var removeDups = function removeDups(array) {
+  var result = [];
+
+  for (var index = 0; index < array.length; index++) {
+    var element = array[index];
+
+    if (!result.includes(element)) {
+      result.push(element);
+    }
+  }
 }; //STORE
 // export const getStoreCategories = (store) => {
 //   if (!store || store === undefined) return [];

@@ -28,13 +28,13 @@ class EditProductForm extends React.Component {
     }
     componentDidMount(){
         this.props.fetchProduct(this.props.match.params.productId);
-    };
+    }
 
     componentDidUpdate(prevProps){
         if (this.props.match.params.productId !== prevProps.match.params.productId){
             this.props.fetchProduct(this.props.match.params.productId);
-        };
-    };
+        }
+    }
     
     render(){
         const { product, action, errors } = this.props;
@@ -46,7 +46,6 @@ class EditProductForm extends React.Component {
         return (
             <ProductForm action={action} product={product} errors={errors}/>
         )
-        
     }
 }
 

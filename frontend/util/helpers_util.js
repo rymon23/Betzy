@@ -29,8 +29,11 @@ export const categoryHasProducts = (category) => {
 
 export const arrayShuffle = (array) => {
   debugger
+
   const shuffledArray = array.slice();
+  debugger
   for(let i = shuffledArray.length - 1; i > 0; i--){
+    debugger
     const j = Math.floor(Math.random() * i)
     const temp = array[i]
     shuffledArray[i] = array[j]
@@ -39,6 +42,27 @@ export const arrayShuffle = (array) => {
   return shuffledArray 
 }
 
+export const sample = (array, amount = 1) => {
+  if (amount === 1) return array[Math.floor ( Math.random() * array.length )];
+  const sampleArr = [];
+  while (sampleArr.length < 14) {
+    let el = sample(array);
+    if (!sampleArr.includes(el)) {
+      sampleArr.push(el);
+    }
+  }
+  return sampleArr;
+}
+
+export const removeDups = (array) => {
+  const result = [];
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    if (!result.includes(element)){
+      result.push(element);
+    }
+  }
+}
 
 
 //STORE
