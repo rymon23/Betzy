@@ -1,4 +1,4 @@
-import { arrayShuffle, sample } from "../util/helpers_util";
+import { sample } from "../util/helpers_util";
 
 //CURRENT USER
 export const selectCurrentUser = (users, sessionId) => {

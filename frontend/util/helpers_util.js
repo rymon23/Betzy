@@ -45,7 +45,9 @@ export const arrayShuffle = (array) => {
 export const sample = (array, amount = 1) => {
   if (amount === 1) return array[Math.floor ( Math.random() * array.length )];
   const sampleArr = [];
-  while (sampleArr.length < 14) {
+  if (amount > array.length - 1) amount = array.length;
+  
+  while (sampleArr.length < amount) {
     let el = sample(array);
     if (!sampleArr.includes(el)) {
       sampleArr.push(el);

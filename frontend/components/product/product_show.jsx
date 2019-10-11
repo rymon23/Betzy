@@ -49,10 +49,10 @@ class ProductShow extends React.Component {
             : <button className="clicky" onClick={this.AddToCart}>Add to cart</button>;
         return (
             <div className="product-show">
-                <div className="carousel">
+                {/* <div className="carousel"> */}
+                {/* <div className="product-image-container"> */}
                     <img src={product.imageUrls[0]} />
-                </div>
-
+                {/* </div> */}
                 <div className="product-info">
                     <ul>
                         <li>

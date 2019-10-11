@@ -7,6 +7,7 @@ class HomePage extends React.Component {
     constructor(props){
         super(props);
         this.recommendedOnClick = this.recommendedOnClick.bind(this);
+        this.ProductPage = this.ProductPage.bind(this);
     }
     componentDidMount() {
         this.props.fetchCategories();
@@ -19,6 +20,13 @@ class HomePage extends React.Component {
         this.props.history.push(`/categories/${categoryId}`);
     }
 
+    ProductPage(product) {
+        return (e) => {
+            e.preventDefault();
+            this.props.history.push(`/stores/${product.store_id}/products/${product.id}`)
+        }
+    }
+
     render() {
         let { currentUser, products } = this.props;
 
@@ -29,7 +37,7 @@ class HomePage extends React.Component {
             const sampleProducts = products.map((product) => {
                 if (product === undefined) return null;
                 return (
-                    <li key={product.id} >
+                    <li key={product.id} onClick={this.ProductPage(product)}>
                         <img src={product.imageUrls[0]} />
                         <p>{product.name.slice(0, 35)}...</p>
                         {/* <p className="category-shop-name">

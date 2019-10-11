@@ -534,6 +534,8 @@ var App = function App() {
     path: "/",
     component: _homepage_homepage_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-switch-body-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "static-width"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
     exect: true,
@@ -579,7 +581,7 @@ var App = function App() {
     exact: true,
     path: "/stores/:storeId/products/:productId",
     component: _product_product_show_container__WEBPACK_IMPORTED_MODULE_15__["default"]
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_18__["default"], null)));
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_18__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -1025,6 +1027,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
     _this.recommendedOnClick = _this.recommendedOnClick.bind(_assertThisInitialized(_this));
+    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1043,8 +1046,21 @@ function (_React$Component) {
       this.props.history.push("/categories/".concat(categoryId));
     }
   }, {
+    key: "ProductPage",
+    value: function ProductPage(product) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+
+        _this2.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           products = _this$props.products;
@@ -1057,7 +1073,8 @@ function (_React$Component) {
         var sampleProducts = products.map(function (product) {
           if (product === undefined) return null;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            key: product.id
+            key: product.id,
+            onClick: _this3.ProductPage(product)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: product.imageUrls[0]
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.name.slice(0, 35), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "USD ", product.price));
@@ -1170,7 +1187,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   var currentUser = state.session.currentUser;
-  var products = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_5__["sampleProducts"])(state.entities.products, 18);
+  var products = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_5__["sampleProducts"])(state.entities.products, 20);
   return {
     currentUser: currentUser,
     products: products
@@ -2145,11 +2162,9 @@ function (_React$Component) {
       }, "Add to cart");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-show"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "carousel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: product.imageUrls[0]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(store.id)
@@ -4412,8 +4427,9 @@ var sample = function sample(array) {
   var amount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
   if (amount === 1) return array[Math.floor(Math.random() * array.length)];
   var sampleArr = [];
+  if (amount > array.length - 1) amount = array.length;
 
-  while (sampleArr.length < 14) {
+  while (sampleArr.length < amount) {
     var el = sample(array);
 
     if (!sampleArr.includes(el)) {

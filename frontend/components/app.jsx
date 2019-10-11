@@ -39,22 +39,24 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={HomePageContainer} />
 
-        <div className="static-width">
-          <AuthRoute exect path='/login' component={LoginFormContainer} />
-          <AuthRoute exect path='/signup' component={SignupFormContainer} />
+        <div className="app-switch-body-container">
+          <div className="static-width">
+            <AuthRoute exect path='/login' component={LoginFormContainer} />
+            <AuthRoute exect path='/signup' component={SignupFormContainer} />
 
-          <ProtectedRoute exact path='/stores/:storeId/edit' component={EditStoreContainer} />
-          <ProtectedRoute exact path='/stores/new' component={CreateStoreContainer} />
-          <Route exact path='/stores/:storeId' component={StoreShowContainer} />
+            <ProtectedRoute exact path='/stores/:storeId/edit' component={EditStoreContainer} />
+            <ProtectedRoute exact path='/stores/new' component={CreateStoreContainer} />
+            <Route exact path='/stores/:storeId' component={StoreShowContainer} />
 
-          <Route exact path='/users/:userId' component={UserProfileShowContainer} />
-          <ProtectedRoute exact path='/users/:userId/edit' component={EditUserProfileContainer} />
+            <Route exact path='/users/:userId' component={UserProfileShowContainer} />
+            <ProtectedRoute exact path='/users/:userId/edit' component={EditUserProfileContainer} />
 
-          <Route exact path='/categories/:categoryId' component={CategoryShowContainer} />
+            <Route exact path='/categories/:categoryId' component={CategoryShowContainer} />
 
-          <ProtectedRoute exact path='/stores/:storeId/products/new' component={CreateProductContainer} />
-          <ProtectedRoute exact path='/products/:productId/edit' component={EditProductForm} />
-          <Route exact path='/stores/:storeId/products/:productId' component={ProductShowContainer} />
+            <ProtectedRoute exact path='/stores/:storeId/products/new' component={CreateProductContainer} />
+            <ProtectedRoute exact path='/products/:productId/edit' component={EditProductForm} />
+            <Route exact path='/stores/:storeId/products/:productId' component={ProductShowContainer} />
+          </div>
         </div>
       </Switch>
 
