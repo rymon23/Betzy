@@ -9,6 +9,8 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  gender          :string
+#  birthday        :date
 #
 
 class User < ApplicationRecord
@@ -19,7 +21,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_one_attached :profile_image #, service: :s3
+  has_one_attached :profile_image
 
   has_one :store , dependent: :destroy,
     class_name: :Store,
@@ -29,8 +31,9 @@ class User < ApplicationRecord
     through: :store,
     source: :products 
     
-  # has_many :authored_reviews
-  # has_one :cart ?
+  has_many :authored_reviews,
+    class: :Review,
+    foreign_key: :user_id
 
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)
@@ -54,6 +57,7 @@ class User < ApplicationRecord
   end
   
   private
+
 
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token

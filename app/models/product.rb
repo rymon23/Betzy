@@ -25,5 +25,7 @@ class Product < ApplicationRecord
     class_name: :Category,
     foreign_key: :category_id
 
-  # has_many :reviews,
+  has_many :reviews,
+    class_name: :Review,
+    foreign_key: :product_id   
 end 

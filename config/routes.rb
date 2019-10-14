@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # resources :reviews
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'
@@ -16,12 +17,13 @@ Rails.application.routes.draw do
     resources :categories, only: [:show, :index]
 
     resources :products, only: [:show, :update, :destroy, :index] do    
-      # resources :reviews, only: [:index, :create]
+      resources :reviews, only: [:index, :create]
     end
 
     resources :stores, only: [:show, :index, :create, :update] do
       resources :products, only: [:create]
     end
-
+    
+    resources :reviews, only: [:update, :destroy]
   end
 end
