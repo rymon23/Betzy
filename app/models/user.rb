@@ -32,7 +32,7 @@ class User < ApplicationRecord
     source: :products 
     
   has_many :authored_reviews,
-    class: :Review,
+    class_name: :Review,
     foreign_key: :user_id
 
   def self.find_by_credentials(email, password)
@@ -57,7 +57,6 @@ class User < ApplicationRecord
   end
   
   private
-
 
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token

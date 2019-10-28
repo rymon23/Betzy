@@ -22,23 +22,23 @@ const removeProduct = () => {
   }
 };
 
-export const fetchProducts = () => dispatch => {
+export const fetchProducts = () => (dispatch) => {
   return APIUtil.fetchProducts()
     .then((products) => dispatch(receiveAllProducts(products)))
 };
-export const fetchProduct = (id) => dispatch => {
+export const fetchProduct = (id) => (dispatch) => {
   return APIUtil.fetchProduct(id)
     .then((product) => dispatch(receiveProduct(product)))
 };
-export const createProduct = (product) => dispatch => {
+export const createProduct = (product) => (dispatch) => {
   return APIUtil.createProduct(product)
     .then((product) => dispatch(receiveProduct(product)))
 };
-export const updateProduct = (product) => dispatch => {
+export const updateProduct = (product) => (dispatch) => {
   return APIUtil.updateProduct(product)
     .then((product) => dispatch(receiveProduct(product)))
 };
-export const deleteProduct = (productId) => dispatch => {
+export const deleteProduct = (productId) => (dispatch) => {
   return APIUtil.deleteProduct(productId)
     .then((product) => dispatch(removeProduct()))
 };

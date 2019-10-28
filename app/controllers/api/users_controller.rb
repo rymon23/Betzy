@@ -2,8 +2,8 @@ class Api::UsersController < ApplicationController
   before_action :require_login, only: [:show, :update]
 
   def show
-      @user = User.find_by(params[:id])    
-      render :show
+    @user = User.find_by(params[:id])    
+    render :show
   end
 
   def index
