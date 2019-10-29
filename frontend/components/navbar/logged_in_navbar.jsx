@@ -29,11 +29,11 @@ class LoggedInNavbar extends React.Component {
     render(){
         return (
             <ul className="navbar-ul">
-                <li className="logo-nav">
+                {/* <li className="logo-nav">
                     { Logo() }
                 </li>
 
-                <SearchBarContainer />
+                <SearchBarContainer /> */}
                 {/* <SearchForm />                 */}
 
                 <li className="notification-nav">

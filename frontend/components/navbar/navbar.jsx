@@ -6,7 +6,8 @@ import {withRouter, Link} from 'react-router-dom';
 import { fetchAllUsers } from '../../actions/user_actions';
 import { fetchCategories } from '../../actions/category_actions';
 import { getStoreId } from "../../util/helpers_util";
-
+import Logo from "../logo/logo";
+import SearchBarContainer from '../search/search_bar_container';
 
 class Navbar extends React.Component{
     constructor(props){
@@ -16,7 +17,6 @@ class Navbar extends React.Component{
         this.props.fetchAllUsers();
         this.props.fetchCategories();
     }
-    
     render() {
         let { loggedIn, storeId, categories } = this.props;
 
@@ -30,12 +30,19 @@ class Navbar extends React.Component{
                             </Link>
                         </li>)})}</ul>)
         }
-
+        
         const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} />;
         return (
-            <div className="navbar">
-                {loggedComponent}
-                {categoryList()}
+            <div className="static-width navbar">
+                <div className="navbar-top-container">
+                    <li className="logo-nav">{Logo()}</li>
+                    <SearchBarContainer />
+                    {loggedComponent}
+                </div>
+                <div className="navbar-bottom-container">
+                    {categoryList()}
+                    {/* <a href="#">Gifts</a> */}
+                </div>
             </div>
         );
     }
@@ -45,8 +52,6 @@ const mapStateToProps = (state) => {
     const currentUser = state.session.currentUser; 
     const storeId = getStoreId(currentUser);
     const categories = Object.values(state.entities.categories) || [];
-
-    debugger
     return {
         loggedIn: Boolean(state.session.currentUser),
         storeId,

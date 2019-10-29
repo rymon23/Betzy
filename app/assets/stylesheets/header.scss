@@ -1,116 +1,19 @@
 
 header {
-  display: flex;
-  justify-content: center;  
-  width: 100%;
-  border-bottom: 1px solid rgba(34, 34, 34, 0.15);
-  margin-top: -19px;
-}
-.logo-link {
-  color: crimson;
-}
-.logo-main {
-  font-weight: bolder;
-  font-family: fantasy;
-  color: crimson;
-  font-size: 44px;
-  padding: 10px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  text-decoration: none;
-}
-.logo-nav {
-  padding-right: 15px;
-  margin-left: -38px;
-
-  position: relative;
-  cursor: pointer;
-}
-
-#logo {
-    // background-image: image-url("logo.png");
-    width: 116px;
-    height: 90px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -13px;
-}
-
-
-
-.logged-out-navbar-ul {
-    height: 60.978px;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.15);
     display: flex;
-    align-content: center;
+    justify-content: center;  
+    width: 100%;
+    margin-top: -10px;
 }
-
-
-.logged-out-navbar-ul > li {
-    list-style: none;
-    display: inline-block;
-    padding-right: 15px;
-    font-size: 14px;
-    // color: #595959;
-}
-
-.logged-out-navbar-ul .logo-nav {
-    margin-left: 10px;
-    padding-right: 55px;
-}
-
-.logged-out-navbar-ul .sell-on-betzy {
-    margin-left: 30px;
-    text-align: center;
-    padding-top: 35px;
-    height: 30px;
-    padding-bottom: 50px;
-    cursor: pointer;
-}
-
-.login-signup {
-    padding-top: 35px;
-    padding-right: 20px;
-    padding-bottom: 35px;
-    border-right: 1px solid rgba(165, 165, 165, 0.15);
-}
-
-.login-signup > span > a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.login-signup > span {
-    margin-left: 20px;
-}
-
-.login a {
-    border: 1px solid gray;
-    border-radius: 3px;
-    padding: 5px 5px;
-}
-
-.logged-out-navbar-ul .cart-nav {
-    margin-left: 25px;
-    position: relative;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.logged-out-navbar-ul .cart-nav .fa-shopping-cart {
-    position: absolute;
-    right: 15px;
-}
-
 
 .navbar {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    // width: 1400px;
+    padding-top: 12px;
+    padding: 0px;
 }
-
 .navbar .category-ul {
     display: flex;
     justify-content: center;
@@ -124,7 +27,6 @@ header {
 ul.category-ul {
   margin-top: 0px;
 }
-
 .navbar-ul {
     left: 200px;
     padding-left: 30px;
@@ -134,7 +36,6 @@ ul.category-ul {
     align-content: center;
     justify-content: center;
 }
-
 .navbar-ul li {
     list-style: none;
     display: inline-block;
@@ -142,11 +43,100 @@ ul.category-ul {
     font-size: 12px;
     color: #595959;
 }
+.navbar-top-container, .navbar-bottom-container{
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.logged-out-navbar-ul {
+    height: 60.978px;
+    display: flex;
+    align-content: center;
+}
+.logged-out-navbar-ul > li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 15px;
+    font-size: 14px;
+}
+.logged-out-navbar-ul .logo-nav {
+    margin-left: 10px;
+    padding-right: 55px;
+}
+.logged-out-navbar-ul .sell-on-betzy {
+    margin-left: 30px;
+    text-align: center;
+    padding-top: 35px;
+    height: 30px;
+    padding-bottom: 50px;
+    cursor: pointer;
+}
+.login-signup {
+    padding-top: 35px;
+    padding-right: 20px;
+    padding-bottom: 35px;
+    border-right: 1px solid rgba(165, 165, 165, 0.15);
+}
+.login-signup > span > a {
+    text-decoration: none;
+    color: inherit;
+}
+.login-signup > span {
+    margin-left: 20px;
+}
+.login a {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 5px 5px;
+}
+.logged-out-navbar-ul .cart-nav {
+    margin-left: 25px;
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.logged-out-navbar-ul .cart-nav .fa-shopping-cart {
+    position: absolute;
+    right: 15px;
+}
 
 
 
 
+.logo-main {
+  font-weight: bolder;
+  font-family: fantasy;
+  color: crimson;
+  font-size: 44px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-decoration: none;
+  text-decoration-line: none;
+}
+.logo-link {
+  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-color: none;
+  text-decoration-style: none;
+  color: inherit;
+}
 
+.logo-nav {
+  padding-right: 15px;
+  position: relative;
+  cursor: pointer;
+}
+#logo {
+    // background-image: image-url("logo.png");
+    width: 116px;
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -13px;
+}
 
 
 .category-ul > li {
