@@ -37,7 +37,9 @@ class Navbar extends React.Component{
                 <div className="navbar-top-container">
                     <li className="logo-nav">{Logo()}</li>
                     <SearchBarContainer />
-                    {loggedComponent}
+                    <div className="logged-bar-container">
+                        {loggedComponent}
+                    </div>
                 </div>
                 <div className="navbar-bottom-container">
                     {categoryList()}

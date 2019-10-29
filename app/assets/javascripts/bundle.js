@@ -1562,6 +1562,11 @@ var LoggedOutNavbar = function LoggedOutNavbar(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "logged-out-navbar-ul"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "sell-on-betzy",
+    onClick: function onClick() {
+      return alert('Please log in or sign up');
+    }
+  }, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_4__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "greeting-nav"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "cart-nav",
@@ -1674,7 +1679,9 @@ function (_React$Component) {
         className: "navbar-top-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "logo-nav"
-      }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), loggedComponent), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "logged-bar-container"
+      }, loggedComponent)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-bottom-container"
       }, categoryList()));
     }
