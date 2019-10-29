@@ -1,5 +1,7 @@
 import React from "react";
 import { APP_NAME } from "../../util/config_util";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, } from '@fortawesome/free-solid-svg-icons'
 
 //FOOTER
 export default () => {
@@ -13,11 +15,11 @@ export default () => {
           </button>
           <br/>
           <div className="app-social-media-tags">
-            <button>I</button>
-            <button>F</button>
-            <button>P</button>
-            <button>T</button>
-            <button>Y</button>
+            <FontAwesomeIcon className="sm-link" icon={['fab','instagram']} size="2x"/>
+            <FontAwesomeIcon className="sm-link" icon={['fab','facebook-square']} size="2x"/>
+            <FontAwesomeIcon className="sm-link" icon={['fab','pinterest']} size="2x"/>
+            <FontAwesomeIcon className="sm-link" icon={['fab','twitter']} size="2x"/>
+            <FontAwesomeIcon className="sm-link" icon={['fab','youtube']} size="2x"/>
           </div>
         </div>
       </div>
