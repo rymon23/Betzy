@@ -31,7 +31,7 @@
   .app-footer-content{
     height: 100%;
     width: 1400px;
-    color: white;
+    color: var(--footer-text-color);
   }
 }
 .app-footer-container ul {
@@ -48,11 +48,11 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  color: var(--footer-container-text-color);
   h3 {
     font-size: 16px;
   }
 }
-
 .app-footer-content {
   display: flex;
   flex-direction: column;
@@ -60,9 +60,6 @@ footer {
     font-size: 16px;
   }
 }
-
-
-
 .subscribe {
     display: flex;
 }

@@ -4,7 +4,7 @@ header {
     display: flex;
     justify-content: center;  
     width: 100%;
-    margin-top: -10px;
+    margin-top: -2px;
 }
 
 .navbar {
@@ -106,7 +106,7 @@ ul.category-ul {
 .logo-main {
   font-weight: bolder;
   font-family: fantasy;
-  color: crimson;
+  color: var(--logo-color);
   font-size: 44px;
   padding-top: 0px;
   padding-bottom: 0px;
