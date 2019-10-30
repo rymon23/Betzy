@@ -21,7 +21,6 @@ class Navbar extends React.Component{
         this.props.fetchAllUsers();
         this.props.fetchCategories();
     }
-
     cartClick(e) {
         e.preventDefault();
         (!this.props || !this.props.loggedIn) ? 
@@ -31,7 +30,7 @@ class Navbar extends React.Component{
     }
     render() {
         let { loggedIn, storeId, categories } = this.props;
-        
+
         const categoryList = () => {
             if (!categories.length) return null;
             return ( <ul className="category-ul"> 
