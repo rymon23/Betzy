@@ -43,16 +43,16 @@
   display: flex;
   justify-content: center;
 }
+
 ul {
   padding-inline-start: 0px;
   margin: 0px;
 }
+
 a:visited{
     color: inherit;
 }
 
-.clickable {
-  :hover{
+.clickable:hover{
     cursor: pointer;
-  }
 }
