@@ -254,3 +254,35 @@ header {
         padding-right: 6px;
     }
 }
+
+.dropdown {
+    border: none;
+}
+.dropdown-btn{
+    background: white;
+    border: none;
+    padding: 0px;
+    margin-bottom: 4px;
+    
+    .flex-row p {
+        padding-right: 6px;
+    }
+}
+.profile-icon{
+    margin-bottom: 0px;
+}
+
+// .dropdown-btn {
+//     background: white;
+//     border: 0;
+//     font-family: inherit;
+//     margin-top: 15px;
+//     font-size: inherit;
+//     color: inherit;
+//     height: 66px;
+//     margin-left: 20px;
+//     padding-right: 30px;
+//     border-right: 1px solid rgba(34, 34, 34, 0.15);
+//     padding-bottom: 25px;
+//     cursor: pointer;
+// }

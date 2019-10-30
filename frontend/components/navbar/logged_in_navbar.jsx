@@ -34,14 +34,14 @@ class LoggedInNavbar extends React.Component {
 
                 <div className="notifications-container clickable nav-icon-link-container">
                     <FontAwesomeIcon className="notifications" icon="bell" size="1x" />
-                    <div className="flex-row">
+                    <div className="flex-row align-items-center">
                         <p>Notifications</p>
                         <FontAwesomeIcon icon="caret-down"/>
                     </div>
                 </div>
 
                 <div className="shop-manager-container clickable nav-icon-link-container" onClick={this.redirectToTarget}>
-                    <FontAwesomeIcon className="shop-manager" icon="store" size="xs" />
+                    <FontAwesomeIcon className="shop-manager" icon="store" size="1x" />
                     <p className="width-max-content">Shop Manager</p>
                 </div>
 
