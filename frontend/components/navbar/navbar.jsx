@@ -64,12 +64,12 @@ class Navbar extends React.Component{
                 <div className="navbar-top-container">
                     <li className="logo-nav">{Logo()}</li>
                     <SearchBarContainer />
-                    <div className="logged-bar-container">
+                    {/* <div className="logged-bar-container"> */}
                         {loggedComponent}
-                        <div className="cart-container clickable" onClick={this.cartClick}>
-                            <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />
-                            <p>Cart</p>
-                        </div>
+                    {/* </div> */}
+                    <div className="cart-container clickable" onClick={this.cartClick}>
+                        <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />
+                        <p>Cart</p>
                     </div>
                 </div>
                 <div className="navbar-bottom-container">

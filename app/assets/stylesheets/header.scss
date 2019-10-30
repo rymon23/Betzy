@@ -104,12 +104,6 @@ header {
     padding-bottom: 50px;
     cursor: pointer;
 }
-.login-signup {
-    padding-top: 35px;
-    padding-right: 20px;
-    padding-bottom: 35px;
-    border-right: 1px solid rgba(165, 165, 165, 0.15);
-}
 .login-signup > span > a {
     text-decoration: none;
     color: inherit;
@@ -120,17 +114,11 @@ header {
 .login a {
     border: 1px solid gray;
     border-radius: 3px;
-    padding: 5px 5px;
+    padding: 7px 7px;
 }
-.logged-out-navbar-ul .cart-nav {
-    margin-left: 25px;
-    position: relative;
-    margin-right: 10px;
-    cursor: pointer;
-}
-.logged-out-navbar-ul .cart-nav .fa-shopping-cart {
-    position: absolute;
-    right: 15px;
+.login a:hover{
+    background-color:rgb(107, 107, 107);
+    color: white;
 }
 
 .logo-main {
@@ -206,7 +194,13 @@ header {
 .logged-bar-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .sell-link:hover, .register:hover {
+        text-decoration-line: underline;
+    }
 }
+
 .cart-container{
     display: flex;
     flex-direction: column;
@@ -214,12 +208,20 @@ header {
     padding-left: 9px;
     margin-bottom: auto;
     margin-top: 25px;
+    p {
+        color: black;
+    }
+    :hover{
+        color: black;
+    }
 }
 .navbar-cart {
+    color: grey;
     height: 20px;
     align-self: center;
     font-size: 18px;
 }
+
 .gift-container{
     display: flex;
     flex-direction: row;

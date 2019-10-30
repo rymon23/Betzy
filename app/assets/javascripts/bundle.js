@@ -1541,28 +1541,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
-/* harmony import */ var _logo_logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../logo/logo */ "./frontend/components/logo/logo.jsx");
-/* harmony import */ var _search_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search/search */ "./frontend/components/search/search.jsx");
-/* harmony import */ var _util_config_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/config_util */ "./frontend/util/config_util.js");
-/* harmony import */ var _search_search_bar_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../search/search_bar_container */ "./frontend/components/search/search_bar_container.js");
-
-
-
+/* harmony import */ var _util_config_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/config_util */ "./frontend/util/config_util.js");
 
 
 
 
 var LoggedOutNavbar = function LoggedOutNavbar(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "logged-out-navbar-ul"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "sell-on-betzy",
-    onClick: function onClick() {
-      return alert('Please log in or sign up');
-    }
-  }, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_4__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "greeting-nav"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+  var alertText = 'Please log in or sign up';
+  return (// <div className="logged-out-navbar-ul">
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "logged-bar-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "sell-link",
+      onClick: function onClick() {
+        return alert(alertText);
+      }
+    }, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)) // <ul className="logged-out-navbar-ul">
+    //     <li className="sell-on-betzy" 
+    //         onClick={() => alert('Please log in or sign up')}>
+    //         Sell on {APP_NAME}
+    //     </li>
+    //     <li className="greeting-nav"><GreetingContainer/></li>
+    // </ul>
+
+  );
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (LoggedOutNavbar);
@@ -1689,16 +1692,14 @@ function (_React$Component) {
         className: "navbar-top-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "logo-nav"
-      }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "logged-bar-container"
-      }, loggedComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), loggedComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-container clickable",
         onClick: this.cartClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
         className: "navbar-cart",
         icon: "shopping-cart",
         size: "xs"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cart")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cart"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-bottom-container"
       }, categoryList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "gift-container clickable",
