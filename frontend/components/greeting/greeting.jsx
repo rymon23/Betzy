@@ -18,10 +18,16 @@ const Greeting = ({currentUser, logout, enableModal}) => {
         </div>
     );
 
+    const dropDownMenu = () => (
+        <div className="dropdown-container">
+            
+        </div>
+    );
+
     const personalGreeting = () => (
         <div className="dropdown nav-icon-link-container clickable">
             <button className="dropdown-btn clickable">
-                
+
                 <div className="profile-pic-dropdown">
                     <img src={currentUser.imageUrl} />
                 </div>
@@ -34,24 +40,44 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                 </div>
             </button>
             
-            <div className="dropdown-menu">               
-                <div className="dropdown-header">
-                    <Link to={`/users/${currentUser.id}`}>
-                        <span className="view-profile">
-                            View profile
-                            <i className="fa fa-caret-right" aria-hidden="true"></i>
-                        </span>
-                        <span className="fname">{currentUser.username}</span>
-                        <div id="profile-pic">
-                            <img src={currentUser.imageUrl}/>
-                        </div>
-                    </Link>
-                    
+            <div className="dropdown-menu">  
+
+                <div className="dropdown-header-container">
+                    <div className="dropdown-header">
+                        <Link to={`/users/${currentUser.id}`}>
+                            <span className="view-profile">
+                                View profile
+                                <i className="fa fa-caret-right" aria-hidden="true"></i>
+                            </span>
+                            <span className="fname">{currentUser.username}</span>
+                            <div id="profile-pic">
+                                <img src={currentUser.imageUrl}/>
+                            </div>
+                        </Link>
+                    </div>
                 </div>
+
                 <div className="dropdown-content">
-                    <a href="#">Favorites</a>
-                    <a href="#">Puchases and reviews</a>
-                    <a href="#" onClick={logout} className="logout-btn">Log out</a>
+                    <div className="dropdown-option-icon-container dropdown-option-container">
+                        <FontAwesomeIcon className="dropdown-option-icon" icon="gift" />
+                        <p>Gift card balance: $0.00</p>
+                    </div>
+                    <div className="dropdown-option-icon-container dropdown-option-container">
+                        <FontAwesomeIcon className="dropdown-option-icon" icon="message" />
+                        <p>Messages</p>
+                    </div>
+                    <div className="dropdown-option-container">
+                        <a href="#">Puchases and reviews</a>
+                    </div>
+                    <div className="dropdown-option-container">
+                        <a href="#">Account settings</a>
+                    </div>
+                    <div className="dropdown-option-container">
+                        <a href="#">Your teams</a>
+                    </div>
+                    <div className="dropdown-option-container">
+                        <a href="#" onClick={logout} className="logout-btn">Sign out</a>
+                    </div>
                 </div>
             </div>
 

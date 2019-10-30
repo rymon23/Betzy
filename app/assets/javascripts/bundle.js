@@ -999,6 +999,12 @@ var Greeting = function Greeting(_ref) {
     }, "Sign in")));
   };
 
+  var dropDownMenu = function dropDownMenu() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-container"
+    });
+  };
+
   var personalGreeting = function personalGreeting() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown nav-icon-link-container clickable"
@@ -1015,6 +1021,8 @@ var Greeting = function Greeting(_ref) {
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-menu"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-header-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-header"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/users/".concat(currentUser.id)
@@ -1029,17 +1037,37 @@ var Greeting = function Greeting(_ref) {
       id: "profile-pic"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: currentUser.imageUrl
-    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-icon-container dropdown-option-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+      className: "dropdown-option-icon",
+      icon: "gift"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Gift card balance: $0.00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-icon-container dropdown-option-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+      className: "dropdown-option-icon",
+      icon: "message"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Messages")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#"
-    }, "Favorites"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, "Puchases and reviews")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#"
-    }, "Puchases and reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, "Account settings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#"
+    }, "Your teams")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#",
       onClick: logout,
       className: "logout-btn"
-    }, "Log out"))));
+    }, "Sign out")))));
   };
 
   return currentUser ? personalGreeting() : sessionLinks();
