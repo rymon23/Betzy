@@ -29,13 +29,6 @@ class LoggedInNavbar extends React.Component {
     render(){
         return (
             <ul className="navbar-ul">
-                {/* <li className="logo-nav">
-                    { Logo() }
-                </li>
-
-                <SearchBarContainer /> */}
-                {/* <SearchForm />                 */}
-
                 <li className="notification-nav">
                     <div className="bell-icon">
                         <i className="fa fa-bell-o" aria-hidden="true"></i>
@@ -45,16 +38,15 @@ class LoggedInNavbar extends React.Component {
                         <i className="fa fa-caret-down" aria-hidden="true"></i>
                     </span>
                 </li>
-
                 <li className="shop-nav" onClick={this.redirectToTarget}>
                     <div id="store-icon"></div>
                     Shop Manager
                 </li>
                 <li className="greeting-nav"><GreetingContainer /></li>
-                <li className="cart-nav" onClick={this.cartClick}>
+                {/* <li className="cart-nav" onClick={this.cartClick}>
                         <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                         Cart
-                </li>
+                </li> */}
 
             </ul>
         );

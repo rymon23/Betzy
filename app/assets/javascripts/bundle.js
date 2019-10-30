@@ -1518,13 +1518,7 @@ function (_React$Component) {
         id: "store-icon"
       }), "Shop Manager"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "greeting-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "cart-nav",
-        onClick: this.cartClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-shopping-cart",
-        "aria-hidden": "true"
-      }), "Cart"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 
@@ -1568,15 +1562,7 @@ var LoggedOutNavbar = function LoggedOutNavbar(props) {
     }
   }, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_4__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "greeting-nav"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "cart-nav",
-    onClick: function onClick() {
-      return alert('Please log in or sign up');
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-shopping-cart",
-    "aria-hidden": "true"
-  }), "Cart"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (LoggedOutNavbar);
@@ -1603,6 +1589,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 /* harmony import */ var _logo_logo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../logo/logo */ "./frontend/components/logo/logo.jsx");
 /* harmony import */ var _search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../search/search_bar_container */ "./frontend/components/search/search_bar_container.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1613,13 +1601,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -1638,9 +1628,13 @@ function (_React$Component) {
   _inherits(Navbar, _React$Component);
 
   function Navbar(props) {
+    var _this;
+
     _classCallCheck(this, Navbar);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
+    _this.cartClick = _this.cartClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Navbar, [{
@@ -1648,6 +1642,12 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchAllUsers();
       this.props.fetchCategories();
+    }
+  }, {
+    key: "cartClick",
+    value: function cartClick(e) {
+      e.preventDefault();
+      !this.props || !this.props.loggedIn ? alert('Please log in or sign up') : alert('Go to cart items'); // this.props.history.push('/cartItems');
     }
   }, {
     key: "render",
@@ -1681,7 +1681,14 @@ function (_React$Component) {
         className: "logo-nav"
       }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logged-bar-container"
-      }, loggedComponent)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, loggedComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-container",
+        onClick: this.cartClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+        className: "navbar-cart",
+        icon: "shopping-cart",
+        size: "xs"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cart")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-bottom-container"
       }, categoryList()));
     }

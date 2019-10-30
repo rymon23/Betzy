@@ -48,6 +48,7 @@ ul.category-ul {
     display: flex;
     flex-direction: row;
     list-style: none;
+    justify-content: space-between;
 }
 
 .logged-out-navbar-ul {
@@ -173,4 +174,24 @@ ul.category-ul {
   .shop-nav,
     .cart-nav {
     color: var(--navbar-text-color);
+}
+
+.logged-bar-container {
+    display: flex;
+    flex-direction: row;
+}
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    align-self: left;
+    p {
+        padding: 0px;
+        margin: 0px;
+    }  
+}
+.navbar-cart {
+    height: 20px;
+    align-self: center;
+    padding-top: 25px;
+    font-size: 18px;
 }

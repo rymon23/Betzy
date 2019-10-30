@@ -21,12 +21,11 @@ const LoggedOutNavbar = (props) => {
 
             <li className="greeting-nav"><GreetingContainer/></li>
 
-            <li className="cart-nav" 
+            {/* <li className="cart-nav" 
                 onClick={() => alert('Please log in or sign up')}>
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 Cart
-            </li>
-
+            </li> */}
         </ul>
     );
 };

@@ -8,18 +8,30 @@ import { fetchCategories } from '../../actions/category_actions';
 import { getStoreId } from "../../util/helpers_util";
 import Logo from "../logo/logo";
 import SearchBarContainer from '../search/search_bar_container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, } from '@fortawesome/free-solid-svg-icons'
+
 
 class Navbar extends React.Component{
     constructor(props){
         super(props);
+        this.cartClick = this.cartClick.bind(this);
     }
     componentDidMount(){
         this.props.fetchAllUsers();
         this.props.fetchCategories();
     }
+
+    cartClick(e) {
+        e.preventDefault();
+        (!this.props || !this.props.loggedIn) ? 
+            alert('Please log in or sign up') 
+            : alert('Go to cart items');
+        // this.props.history.push('/cartItems');
+    }
     render() {
         let { loggedIn, storeId, categories } = this.props;
-
+        
         const categoryList = () => {
             if (!categories.length) return null;
             return ( <ul className="category-ul"> 
@@ -39,6 +51,10 @@ class Navbar extends React.Component{
                     <SearchBarContainer />
                     <div className="logged-bar-container">
                         {loggedComponent}
+                        <div className="cart-container" onClick={this.cartClick}>
+                            <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />
+                            <p>Cart</p>
+                        </div>
                     </div>
                 </div>
                 <div className="navbar-bottom-container">
