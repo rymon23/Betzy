@@ -21,12 +21,13 @@ const Greeting = ({currentUser, logout, enableModal}) => {
     const personalGreeting = () => (
         <div className="dropdown nav-icon-link-container clickable">
             <button className="dropdown-btn clickable">
-                {/* <div className="user-icon">
-                    <i className="fa fa-user" aria-hidden="true"></i>
-                </div> */}
-                <FontAwesomeIcon 
+                
+                <div className="profile-pic-dropdown">
+                    <img src={currentUser.imageUrl} />
+                </div>
+                {/* <FontAwesomeIcon 
                     className="profile-icon" 
-                    icon="user" size="2x"/>
+                    icon="user" size="2x"/> */}
                 <div className="flex-row align-items-center">
                     <p>You</p>
                     <FontAwesomeIcon icon="caret-down" />

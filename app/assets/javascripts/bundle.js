@@ -1004,11 +1004,11 @@ var Greeting = function Greeting(_ref) {
       className: "dropdown nav-icon-link-container clickable"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "dropdown-btn clickable"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-      className: "profile-icon",
-      icon: "user",
-      size: "2x"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "profile-pic-dropdown"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: currentUser.imageUrl
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "flex-row align-items-center"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
       icon: "caret-down"

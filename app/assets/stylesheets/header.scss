@@ -263,14 +263,28 @@ header {
     border: none;
     padding: 0px;
     margin-bottom: 4px;
-    
+
     .flex-row p {
         padding-right: 6px;
     }
 }
+
 .profile-icon{
     margin-bottom: 0px;
 }
+.profile-pic-dropdown{
+    margin-bottom: -2px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    img {
+        width: 30px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
 
 // .dropdown-btn {
 //     background: white;
