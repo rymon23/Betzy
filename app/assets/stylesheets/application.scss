@@ -50,3 +50,9 @@ ul {
 a:visited{
     color: inherit;
 }
+
+.clickable {
+  :hover{
+    cursor: pointer;
+  }
+}

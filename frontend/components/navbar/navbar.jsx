@@ -9,13 +9,13 @@ import { getStoreId } from "../../util/helpers_util";
 import Logo from "../logo/logo";
 import SearchBarContainer from '../search/search_bar_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, } from '@fortawesome/free-solid-svg-icons'
 
 
 class Navbar extends React.Component{
     constructor(props){
         super(props);
         this.cartClick = this.cartClick.bind(this);
+        this.giftClick = this.giftClick.bind(this);
     }
     componentDidMount(){
         this.props.fetchAllUsers();
@@ -28,18 +28,34 @@ class Navbar extends React.Component{
             : alert('Go to cart items');
         // this.props.history.push('/cartItems');
     }
+    giftClick(e) {
+        e.preventDefault();
+        (!this.props || !this.props.loggedIn) ? 
+            alert('Please log in or sign up') 
+            : alert('Go to gift items');
+        // this.props.history.push('/cartItems');
+    }
     render() {
         let { loggedIn, storeId, categories } = this.props;
 
         const categoryList = () => {
             if (!categories.length) return null;
-            return ( <ul className="category-ul"> 
-                { categories.slice(0,6).map((category) => 
-                { return (<li key={category.id}>
-                            <Link to={`/categories/${category.id}`}>
-                                {category.name}
-                            </Link>
-                        </li>)})}</ul>)
+            return (<>
+                {categories.slice(0, 6).map((category) => {
+                    return (<div className="navbar-category" key={category.id}>
+                        <Link to={`/categories/${category.id}`}>
+                            {category.name}
+                        </Link>
+                    </div>)
+                })}</>)
+
+            // return ( <ul className="category-ul"> 
+            //     { categories.slice(0,6).map((category) => 
+            //     { return (<li key={category.id}>
+            //                 <Link to={`/categories/${category.id}`}>
+            //                     {category.name}
+            //                 </Link>
+            //             </li>)})}</ul>)
         }
         
         const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} />;
@@ -50,7 +66,7 @@ class Navbar extends React.Component{
                     <SearchBarContainer />
                     <div className="logged-bar-container">
                         {loggedComponent}
-                        <div className="cart-container" onClick={this.cartClick}>
+                        <div className="cart-container clickable" onClick={this.cartClick}>
                             <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />
                             <p>Cart</p>
                         </div>
@@ -58,7 +74,10 @@ class Navbar extends React.Component{
                 </div>
                 <div className="navbar-bottom-container">
                     {categoryList()}
-                    {/* <a href="#">Gifts</a> */}
+                    <div className="gift-container clickable" onClick={this.giftClick}>
+                        <FontAwesomeIcon icon="gift"/>
+                        <p>Gifts</p>
+                    </div>
                 </div>
             </div>
         );

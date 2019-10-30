@@ -1,10 +1,22 @@
 
 header {
-    border-bottom: 1px solid rgba(34, 34, 34, 0.15);
-    display: flex;
-    justify-content: center;  
     width: 100%;
     margin-top: -2px;
+    // border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    border-bottom: 2.2px solid var(--navbar-border-color);
+    display: flex;
+    justify-content: center;  
+
+    a {
+        text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-color: none;
+        text-decoration-style: none;        
+    }
+    p {
+        padding: 0px;
+        margin: 0px;
+    }  
 }
 
 .navbar {
@@ -24,31 +36,20 @@ header {
     margin-top: 0px;
     margin-bottom: 12px;
 }
-ul.category-ul {
-  margin-top: 0px;
-}
-.navbar-ul {
-    left: 200px;
-    padding-left: 30px;
-    padding-right: 30px;
-    height: 60.978px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-.navbar-ul li {
-    list-style: none;
-    display: inline-block;
-
-    font-size: 12px;
-    color: #595959;
-}
 .navbar-top-container, .navbar-bottom-container{
     margin: 0px;
     display: flex;
     flex-direction: row;
     list-style: none;
     justify-content: space-between;
+}
+.navbar-bottom-container{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.navbar-category {
+    color: gray;
+    font-size: 14px;
 }
 
 .logged-out-navbar-ul {
@@ -184,13 +185,17 @@ ul.category-ul {
     padding-left: 9px;
     margin-bottom: auto;
     margin-top: 25px;
-    p {
-        padding: 0px;
-        margin: 0px;
-    }  
 }
 .navbar-cart {
     height: 20px;
     align-self: center;
     font-size: 18px;
 }
+.gift-container{
+    display: flex;
+    flex-direction: row;
+    p {
+        padding-left: 5px;
+    }
+}
+
