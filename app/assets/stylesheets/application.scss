@@ -56,3 +56,12 @@ a:visited{
 .clickable:hover{
     cursor: pointer;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.width-max-content {
+  width: max-content;
+}

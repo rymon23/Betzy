@@ -1436,9 +1436,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _logo_logo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../logo/logo */ "./frontend/components/logo/logo.jsx");
-/* harmony import */ var _search_search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../search/search */ "./frontend/components/search/search.jsx");
-/* harmony import */ var _search_search_bar_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../search/search_bar_container */ "./frontend/components/search/search_bar_container.js");
+/* harmony import */ var _search_search_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search/search_bar_container */ "./frontend/components/search/search_bar_container.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1463,7 +1462,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var LoggedInNavbar =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1475,8 +1473,8 @@ function (_React$Component) {
     _classCallCheck(this, LoggedInNavbar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LoggedInNavbar).call(this, props));
-    _this.redirectToTarget = _this.redirectToTarget.bind(_assertThisInitialized(_this));
-    _this.cartClick = _this.cartClick.bind(_assertThisInitialized(_this));
+    _this.redirectToTarget = _this.redirectToTarget.bind(_assertThisInitialized(_this)); // this.cartClick = this.cartClick.bind(this);
+
     return _this;
   }
 
@@ -1488,37 +1486,57 @@ function (_React$Component) {
       var storeId = this.props.storeId;
       var shopManagerLink = storeId ? "/stores/".concat(storeId) : "/stores/new";
       this.props.history.push(shopManagerLink);
-    }
-  }, {
-    key: "cartClick",
-    value: function cartClick(event) {
-      event.preventDefault(); // this.props.history.push('/cartItems');
-    }
+    } // cartClick(event){
+    //     event.preventDefault();
+    // }
+
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "navbar-ul"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "notification-nav"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "logged-bar-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bell-icon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bell-o",
-        "aria-hidden": "true"
-      })), "Notifications", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "down-icon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-caret-down",
-        "aria-hidden": "true"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "shop-nav",
+        className: "favorites-container clickable nav-icon-link-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+        className: "favorites",
+        icon: "heart",
+        size: "1x"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Favorites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "notifications-container clickable nav-icon-link-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+        className: "notifications",
+        icon: "bell",
+        size: "1x"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flex-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+        icon: "caret-down"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "shop-manager-container clickable nav-icon-link-container",
         onClick: this.redirectToTarget
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "store-icon"
-      }), "Shop Manager"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "greeting-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+        className: "shop-manager",
+        icon: "store",
+        size: "xs"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "width-max-content"
+      }, "Shop Manager")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)) // <ul className="navbar-ul">
+      //     <li className="notification-nav">
+      //         <div className="bell-icon">
+      //             <i className="fa fa-bell-o" aria-hidden="true"></i>
+      //         </div>
+      //         Notifications
+      //     <span className="down-icon">
+      //             <i className="fa fa-caret-down" aria-hidden="true"></i>
+      //         </span>
+      //     </li>
+      //     <li className="shop-nav" onClick={this.redirectToTarget}>
+      //         <div id="store-icon"></div>
+      //         Shop Manager
+      //     </li>
+      //     <GreetingContainer />
+      // </ul>
+      ;
     }
   }]);
 
@@ -2410,107 +2428,6 @@ var Root = function Root(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
-
-/***/ }),
-
-/***/ "./frontend/components/search/search.jsx":
-/*!***********************************************!*\
-  !*** ./frontend/components/search/search.jsx ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var SearchForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(SearchForm, _React$Component);
-
-  function SearchForm(props) {
-    var _this;
-
-    _classCallCheck(this, SearchForm);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchForm).call(this, props));
-    _this.state = {
-      title: ""
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(SearchForm, [{
-    key: "update",
-    value: function update(field) {
-      var _this2 = this;
-
-      return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
-      };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault(); //DO LATER
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "search-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-input-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "seach-input",
-        placeholder: "Search for items or shops",
-        value: this.state.title,
-        onChange: this.update('title')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "search-button",
-        type: "submit"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        className: "search-submit",
-        value: "Search"
-      })));
-    }
-  }]);
-
-  return SearchForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (SearchForm);
 
 /***/ }),
 
