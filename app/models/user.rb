@@ -33,7 +33,7 @@ class User < ApplicationRecord
     
   has_many :authored_reviews,
     class_name: :Review,
-    foreign_key: :user_id
+    foreign_key: :author_id
 
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)

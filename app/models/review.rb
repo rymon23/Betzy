@@ -3,7 +3,7 @@
 # Table name: reviews
 #
 #  id         :bigint(8)        not null, primary key
-#  user_id    :integer          not null
+#  author_id  :integer          not null
 #  product_id :integer          not null
 #  stars      :integer          not null
 #  body       :text
@@ -21,5 +21,5 @@ class Review < ApplicationRecord
 
   belongs_to :author,
     class_name: :User,
-    foreign_key: :user_id
+    foreign_key: :author_id
 end
