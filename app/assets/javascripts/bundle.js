@@ -1470,8 +1470,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _search_search_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search/search_bar_container */ "./frontend/components/search/search_bar_container.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1489,7 +1488,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1520,10 +1518,7 @@ function (_React$Component) {
       var storeId = this.props.storeId;
       var shopManagerLink = storeId ? "/stores/".concat(storeId) : "/stores/new";
       this.props.history.push(shopManagerLink);
-    } // cartClick(event){
-    //     event.preventDefault();
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1531,46 +1526,30 @@ function (_React$Component) {
         className: "logged-bar-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "favorites-container clickable nav-icon-link-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         className: "favorites",
         icon: "heart",
         size: "1x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Favorites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notifications-container clickable nav-icon-link-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         className: "notifications",
         icon: "bell",
         size: "1x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex-row align-items-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         icon: "caret-down"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-manager-container clickable nav-icon-link-container",
         onClick: this.redirectToTarget
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         className: "shop-manager",
         icon: "store",
         size: "1x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "width-max-content"
-      }, "Shop Manager")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)) // <ul className="navbar-ul">
-      //     <li className="notification-nav">
-      //         <div className="bell-icon">
-      //             <i className="fa fa-bell-o" aria-hidden="true"></i>
-      //         </div>
-      //         Notifications
-      //     <span className="down-icon">
-      //             <i className="fa fa-caret-down" aria-hidden="true"></i>
-      //         </span>
-      //     </li>
-      //     <li className="shop-nav" onClick={this.redirectToTarget}>
-      //         <div id="store-icon"></div>
-      //         Shop Manager
-      //     </li>
-      //     <GreetingContainer />
-      // </ul>
-      ;
+      }, "Shop Manager")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 

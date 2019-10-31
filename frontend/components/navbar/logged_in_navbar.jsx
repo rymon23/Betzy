@@ -1,7 +1,6 @@
 import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
 import {withRouter} from 'react-router-dom';
-import SearchBarContainer from '../search/search_bar_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class LoggedInNavbar extends React.Component {
@@ -18,10 +17,6 @@ class LoggedInNavbar extends React.Component {
         const shopManagerLink = storeId ? `/stores/${storeId}` : "/stores/new";
         this.props.history.push(shopManagerLink);
     }
-
-    // cartClick(event){
-    //     event.preventDefault();
-    // }
 
     render(){
         return (
@@ -47,23 +42,6 @@ class LoggedInNavbar extends React.Component {
 
                 <GreetingContainer />
             </div>
-
-            // <ul className="navbar-ul">
-            //     <li className="notification-nav">
-            //         <div className="bell-icon">
-            //             <i className="fa fa-bell-o" aria-hidden="true"></i>
-            //         </div>
-            //         Notifications
-            //     <span className="down-icon">
-            //             <i className="fa fa-caret-down" aria-hidden="true"></i>
-            //         </span>
-            //     </li>
-            //     <li className="shop-nav" onClick={this.redirectToTarget}>
-            //         <div id="store-icon"></div>
-            //         Shop Manager
-            //     </li>
-            //     <GreetingContainer />
-            // </ul>
         );
     }
 }
