@@ -1,6 +1,6 @@
 json.extract! review, 
   :id, 
-  :user_id,
+  :author_id,
   :product_id,
   :stars,
   :body

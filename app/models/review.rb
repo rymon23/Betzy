@@ -12,14 +12,14 @@
 #
 
 class Review < ApplicationRecord
-  validates :stars, presence: true
-  validates :stars, numericality: { greater_than_or_equal_to: 0, less_than: 6 }
+  # validates :stars, presence: true
+  # validates :stars, numericality: { greater_than_or_equal_to: 0, less_than: 6 }
 
-  belongs_to :product,
-    class_name: :Product,
-    foreign_key: :product_id  
+  # belongs_to :product,
+  #   class_name: :Product,
+  #   foreign_key: :product_id  
 
-  belongs_to :author,
-    class_name: :User,
-    foreign_key: :author_id
+  # belongs_to :author,
+  #   class_name: :User,
+  #   foreign_key: :author_id
 end

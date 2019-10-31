@@ -18,7 +18,7 @@ class ReviewsTest < ApplicationSystemTestCase
     fill_in "Integer", with: @review.integer
     fill_in "Product", with: @review.product_id
     fill_in "Stars", with: @review.stars
-    fill_in "User", with: @review.user_id
+    fill_in "User", with: @review.author_id
     click_on "Create Review"
 
     assert_text "Review was successfully created"
@@ -33,7 +33,7 @@ class ReviewsTest < ApplicationSystemTestCase
     fill_in "Integer", with: @review.integer
     fill_in "Product", with: @review.product_id
     fill_in "Stars", with: @review.stars
-    fill_in "User", with: @review.user_id
+    fill_in "User", with: @review.author_id
     click_on "Update Review"
 
     assert_text "Review was successfully updated"
