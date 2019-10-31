@@ -999,12 +999,6 @@ var Greeting = function Greeting(_ref) {
     }, "Sign in")));
   };
 
-  var dropDownMenu = function dropDownMenu() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dropdown-container"
-    });
-  };
-
   var personalGreeting = function personalGreeting() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown nav-icon-link-container clickable"
@@ -1023,33 +1017,40 @@ var Greeting = function Greeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-header-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dropdown-header"
+      className: "dropdown-header flex-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "flex-row",
       to: "/users/".concat(currentUser.id)
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "view-profile"
-    }, "View profile", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fa fa-caret-right",
-      "aria-hidden": "true"
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "fname"
-    }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      id: "profile-pic"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "profile-pic",
+      className: "view-profile-pic-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: currentUser.imageUrl
-    }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "view-profile-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "fname"
+    }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "view-profile-wrapper flex-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "View Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+      icon: "carret-right"
+    })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-content"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dropdown-option-icon-container dropdown-option-container"
+      className: "dropdown-option-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-wrapper flex-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
       className: "dropdown-option-icon",
       icon: "gift"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Gift card balance: $0.00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dropdown-option-icon-container dropdown-option-container"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Gift card balance: $0.00"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-option-wrapper flex-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
       className: "dropdown-option-icon",
-      icon: "message"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Messages")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      icon: "comment-alt"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Messages"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-option-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#"

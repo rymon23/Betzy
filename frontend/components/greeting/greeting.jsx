@@ -18,12 +18,6 @@ const Greeting = ({currentUser, logout, enableModal}) => {
         </div>
     );
 
-    const dropDownMenu = () => (
-        <div className="dropdown-container">
-            
-        </div>
-    );
-
     const personalGreeting = () => (
         <div className="dropdown nav-icon-link-container clickable">
             <button className="dropdown-btn clickable">
@@ -36,15 +30,27 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                     icon="user" size="2x"/> */}
                 <div className="flex-row align-items-center">
                     <p>You</p>
-                    <FontAwesomeIcon icon="caret-down" />
+                    <FontAwesomeIcon icon="caret-down"/>
                 </div>
             </button>
             
             <div className="dropdown-menu">  
 
                 <div className="dropdown-header-container">
-                    <div className="dropdown-header">
-                        <Link to={`/users/${currentUser.id}`}>
+                    <div className="dropdown-header flex-row">
+                        <Link className="flex-row" to={`/users/${currentUser.id}`}>
+                            <div id="profile-pic" className="view-profile-pic-container">
+                                <img src={currentUser.imageUrl}/>
+                            </div>
+                            <div className="view-profile-container">
+                                <p className="fname">{currentUser.username}</p>
+                                <div className="view-profile-wrapper flex-row">
+                                    <p>View Profile</p>
+                                    <FontAwesomeIcon icon="carret-right"/>
+                                </div>
+                            </div>
+                        </Link>
+                        {/* <Link to={`/users/${currentUser.id}`}>
                             <span className="view-profile">
                                 View profile
                                 <i className="fa fa-caret-right" aria-hidden="true"></i>
@@ -53,18 +59,22 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                             <div id="profile-pic">
                                 <img src={currentUser.imageUrl}/>
                             </div>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
 
                 <div className="dropdown-content">
-                    <div className="dropdown-option-icon-container dropdown-option-container">
-                        <FontAwesomeIcon className="dropdown-option-icon" icon="gift" />
-                        <p>Gift card balance: $0.00</p>
+                    <div className="dropdown-option-container">
+                        <div className="dropdown-option-wrapper flex-row">
+                            <FontAwesomeIcon className="dropdown-option-icon" icon="gift" />
+                            <p>Gift card balance: $0.00</p>                            
+                        </div>
                     </div>
-                    <div className="dropdown-option-icon-container dropdown-option-container">
-                        <FontAwesomeIcon className="dropdown-option-icon" icon="message" />
-                        <p>Messages</p>
+                    <div className="dropdown-option-container">
+                        <div className="dropdown-option-wrapper flex-row">
+                            <FontAwesomeIcon className="dropdown-option-icon" icon="comment-alt" />
+                            <p>Messages</p>                            
+                        </div>
                     </div>
                     <div className="dropdown-option-container">
                         <a href="#">Puchases and reviews</a>
