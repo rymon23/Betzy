@@ -3,7 +3,8 @@ json.extract! user,
     :username, 
     :email,
     :gender, 
-    :birthday
+    :birthday,
+    :created_at
 
 if user
     if user.profile_image.attached?
@@ -18,4 +19,5 @@ if user
     if user == current_user
         json.store user.store
     end
+    json.createdDate user.created_at.to_date
 end

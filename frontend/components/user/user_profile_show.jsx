@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import { loading } from "../utility";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class UserProfileShow extends React.Component {
     constructor(props){
@@ -28,12 +29,14 @@ class UserProfileShow extends React.Component {
 
         if (Boolean(store)) {
             storeLogo = (
-                <div>
-                    <div id="default-shop-logo">
-                    </div>
-                    <div className="enter-shop">
-                        <span className="profile-shop-name">{store.title}</span>
-                        <Link to={`/stores/${store.id}`} className="btn-block">Visit store</Link>
+                <div className="user-profile-visit-shop-container flex-row">
+                    <img src={store.imageUrl} />
+                    <div className="enter-shop flex-row">
+                        <div className="user-profile-visit-shop-wrapper">
+                            <span className="profile-shop-name">{store.title}</span>
+                            <Link to={`/stores/${store.id}`} className="btn-block">Visit store</Link>                            
+                        </div>
+                        <FontAwesomeIcon icon="caret-right" size="2x"/>
                     </div>
                 </div>
             )
@@ -41,36 +44,64 @@ class UserProfileShow extends React.Component {
 
         return (
             <div className="user-profile-show">
+                <div className="user-profile-info flex-row">
 
-                <div className="user-info">
+                    <div className="user-profile-pic-show-container">
+                        <img src={user.imageUrl} />
+                        <button className="user-profile-camera-button">
+                            <FontAwesomeIcon icon="camera" size="2x" />
+                        </button>
+                    </div>
+
+                    <div className="user-profile-show-edit-container">
+                        <h3>{user.username}</h3>
+                        <div className="flex-row">
+                            <p>0 Following</p>
+                            <p>0 Followers</p>
+                        </div>
+                        <Link to={`/users/${user.id}/edit`} className="btn-block">
+                            <i className="fa fa-pencil" aria-hidden="true"></i>
+                            Edit profile
+                        </Link>                     
+                    </div>
+
+                    <div className="user-profile-about-container">
+                        <h3>About</h3>
+                        <p>Joined {user.createdDate}</p>
+                        {storeLogo}
+                    </div>
+                </div>
+
+                {/* <div className="user-info">
                     <div>
                         <div>
                             <img src={user.imageUrl} />
                             <div>
                                 <h3>{user.username}</h3>
-                                
+                                <div className="flex-row">
+                                    <p>0 Following</p>
+                                    <p>0 Followers</p>
+                                </div>
                                 <Link to={`/users/${user.id}/edit`} className="btn-block">
                                     <i className="fa fa-pencil" aria-hidden="true"></i>
                                     Edit profile
                                 </Link> 
                             </div>
                         </div>
-                        
                         <div className="shop-section">
                             <h4>About</h4>
                             {storeLogo}
                         </div>
                     </div>
-
-                </div>
+                </div> */}
 
                 <div className="favorite-lists-navbar">
                     <ul>
                         <li><a href="#">Favorite items</a></li>
-                        <li><a href="#">Favorite vendors</a></li>
+                        <li><a href="#">Favorite shops</a></li>
+                        <li><a href="#">Lists</a></li>
                     </ul>
                 </div>
-
             </div>
 
         )

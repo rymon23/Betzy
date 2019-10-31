@@ -1,3 +1,109 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-profile-show {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+.user-profile-info {
+  min-width: 900px;
+  max-width: fit-content;
+  justify-content: space-between;
+}
+.user-profile-pic-show-container {
+  height: max-content;
+  width: max-content;
+  margin-right: -150px;
+
+  img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      // background-image: image-url("default_avatar_400x400.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-bottom: -10px;
+  }
+  button {
+    margin-left: -20px;
+    font-size: 8px;
+    padding: 10px;
+    height: max-content;
+    width: max-content;
+    border-radius: 100%;
+    border: 1px solid grey;
+  }
+}
+.user-profile-show-edit-container {
+  width: max-content;
+  margin: 0px;
+  h3{
+    font-size: 20px;
+  }
+  h3, .flex-row{
+    margin: 0px;
+    padding-bottom: 6px;
+    width: max-content;
+  }
+  .flex-row p{
+    margin: 0px;
+    padding-right: 10px;
+  }
+}
+.user-profile-about-container {
+  width: max-content;
+  margin: 0px;
+
+  h3{
+    font-size: 14px;
+  }
+  h3, .flex-row{
+    margin: 0px;
+    padding-bottom: 6px;
+    width: max-content;
+  }
+
+  // div.enter-shop {
+  //     flex-direction: column;
+  //     margin-left: 10px;
+  //     text-align: center;
+  //     color: gray;
+  // }
+}
+
+.user-profile-visit-shop-container {
+  img{
+      width: 80px;
+      height: 80px;
+      background-size: contain;
+      background-repeat: no-repeat;
+  }
+
+
+}
+
+.favorite-lists-navbar {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+.favorite-lists-navbar > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+.favorite-lists-navbar > ul > li {
+    margin-right: 50px;
+    
+}
+.favorite-lists-navbar > ul > li > a {
+    text-decoration: none;
+    color: gray;
+}
