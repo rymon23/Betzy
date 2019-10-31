@@ -1,24 +1,17 @@
-# README
+# Betzy
+[Live Link](https://betzy.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A single page full stack application inspired by the popular online store, Etsy.
 
-Things you may want to cover:
+## Technologies Used
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- React
+- Redux
+- Ruby on Rails
+- PostgreSQL
+- JavaScript
+- JBuilder
+- CSS
+- SASS
+- NPM
+- Webpack
