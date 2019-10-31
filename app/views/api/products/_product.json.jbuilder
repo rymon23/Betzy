@@ -22,6 +22,7 @@ if product.reviews.count > 0
   json.reviewIds reviewIds
   json.ratingAvg = (ratingSum * 1.0) / reviews.count
 else 
+  
   json.reviewIds []
   json.ratingAvg = 0.0
 end
