@@ -104,12 +104,14 @@ PRODUCT_PRICES = [
   10099
 ].freeze
 
+CATEGORY_ART_TITLE = "Art & Collectibles"
+
 CATEGORIES = [
   "Clothing & Shoes",
   "Gear & Accessories",
   "Toys & Entertainment",
   "Tools & Craft Supplies",
-  "Art & Collectibles",
+  CATEGORY_ART_TITLE,
   "Vintage"
 ].freeze
 
@@ -118,8 +120,8 @@ CATEGORIES.each_with_index do |category, ix|
 end
 categories = Category.all
 category_art = nil
-categories.each {|category| category_art = category if category.name == "Art"}
-categories = categories.select {|category| category.name != "Art"}
+categories.each {|category| category_art = category if category.name == CATEGORY_ART_TITLE}
+categories = categories.select {|category| category.name != CATEGORY_ART_TITLE}
 
 # img_path = './app/assets/images/seeds/'
 
