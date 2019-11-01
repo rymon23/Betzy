@@ -10,6 +10,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <script type="text/javascript">
+      window.pagePics = { 
+        banners: [],
+        placeholders: { store_logo: null, user_profile_pic: null },
+        logo: null,
+      };
+      window.pagePics.banners.push('<%= image_url('seeds/banner/banner_1.jpg') %>');
+      window.pagePics.banners.push('<%= image_url('seeds/banner/banner_2.jpg') %>');
+      window.pagePics.banners.push('<%= image_url('seeds/banner/banner_3.jpg') %>');
+      window.pagePics.banners.push('<%= image_url('seeds/banner/banner_4.jpg') %>');
+
+      window.pagePics.placeholders.store_logo = '<%= image_url('seeds/placeholder/ph_store_logo.png') %>';
+      window.pagePics.placeholders.user_profile_pic = '<%= image_url('seeds/placeholder/ph_profile_pic.jpg') %>';
+    </script>
   </head>
 
   <body>

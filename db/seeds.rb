@@ -13,6 +13,13 @@ Category.delete_all
 Store.delete_all
 Product.destroy_all
 
+
+PLACEHOLDER_PICS = {
+  user: "ph_profile_pic.jpg",
+  shop: "ph_store_logo.png",
+  product: "ph_1.png"
+}.freeze
+
 ART_PICS = [
   "rm_art_1.jpg",
   "rm_art_2.jpg",
@@ -75,20 +82,30 @@ PROFILE_PICS = [
   "profile_pic_1.jpg",
   "profile_pic_2.jpg",
   "profile_pic_3.jpg",
-  "profile_pic_4.png",
+  "profile_pic_4.jpg",
   "profile_pic_5.jpg",
   "profile_pic_6.jpg",
   "profile_pic_7.jpg",
-  "profile_pic_8.png",
+  "profile_pic_8.jpg",
   "profile_pic_9.jpg",
-  "profile_pic_10.jpg",
-  "profile_pic_11.jpg",
-  "profile_pic_12.jpg"
+  "profile_pic_10.jpg"
 ].freeze
 
 STORE_LOGOS = [
-  "placeholder_logo.jpg"
+  "store_1.jpg",
+  "store_2.jpg",
+  "store_3.jpg",
+  "store_4.jpg",
+  "store_5.jpg",
+  "store_6.jpg"
 ].freeze
+
+BANNER_PICS = [
+  "banner_1.jpg",
+  "banner_2.jpg",
+  "banner_3.jpg"
+].freeze
+
 
 PRODUCT_PRICES = [
   9.99,
@@ -127,14 +144,14 @@ categories = categories.select {|category| category.name != CATEGORY_ART_TITLE}
 
 def setup_user_profile_pic(user)
   pic = PROFILE_PICS.sample
-  img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'profile_pics', pic)
+  img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'user', pic)
   file = File.open(img_path)
   user.profile_image.attach(io: file, filename: pic)
 end
 
 def setup_store_logo(store)
   pic = STORE_LOGOS.sample
-  img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'placeholder', pic)
+  img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'store', pic)
   file = File.open(img_path)
   store.store_logo.attach(io: file, filename: pic)
 end

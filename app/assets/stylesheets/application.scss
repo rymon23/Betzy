@@ -16,7 +16,26 @@
 
 :root {
   --logo-color: rgb(58, 118, 182);
-  --primary-bg-color: rgb(137, 161, 187);
+  --logo-font-family: monospace;
+  //
+  --app-bg-color-page: white;
+  --app-bg-color-main: rgb(137, 161, 187);
+  --app-bg-color-header: rgb(137, 161, 187);
+  --app-bg-color-footer: rgb(137, 161, 187);
+  --app-bg-color-container: rgb(137, 161, 187);
+  --app-bg-color-search: rgb(34, 34, 34);
+  //
+  --app-text-color-main: rgb(137, 161, 187);
+  --app-text-color-header: rgb(137, 161, 187);
+  --app-text-color-footer: rgb(137, 161, 187);
+  --app-text-color-container: rgb(137, 161, 187);
+  //
+  --app-text-family-main: serif;
+  --app-text-family-header: serif;
+  --app-text-family-footer: serif;
+  --app-text-family-container: serif;
+  //
+  // --primary-bg-color: rgb(137, 161, 187);
   --secondary-bg-color: black;
   --footer-primary-bg-color: rgb(106, 128, 152);
   --footer-secondary-bg-color: rgb(196, 173, 173);
@@ -27,6 +46,11 @@
   --main-content-font-family: fantasy;
   --navbar-text-color: #222222;
   --navbar-border-color: rgba(34, 34, 34, 0.15);
+
+  --dark-mode-bg-color: rgba(73, 73, 73);
+  --dark-mode-bg-color-search:rgb(31, 31, 31);
+  --dark-mode-font-color-main:rgb(70, 70, 70);
+  --dark-mode-font-color-nav-options:rgb(70, 70, 70);
 }
 
 .popular-right-now-div {
@@ -73,4 +97,25 @@ a:visited{
 a, .no-text-dec{
     color: inherit;
     text-decoration-line: inherit;
+}
+
+body {
+  background-color: var(--app-bg-color-page);
+}
+
+.text-with-carot-right {
+  display: flex;
+  flex-direction: row;
+  span {
+    padding-right: 6px;
+    width: max-content;
+  }
+  img {
+    align-self: baseline;
+  }
+}
+
+.contained-img{
+  width: 100%;
+  height: 100%;
 }

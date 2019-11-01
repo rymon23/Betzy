@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import { APP_NAME } from "../../util/config_util";
 import { loading } from "../utility";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class HomePage extends React.Component {
     constructor(props){
@@ -139,16 +140,45 @@ class HomePage extends React.Component {
             <div className="homepage">
                 <div className="static-width">
                     <div className="homepage-banner-container">
-                        <h1>
+                        <h1 className="homepage-banner-head">
                             If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.
                         </h1>
 
-                        <div className="homepage-banner">
-                            <h1>Personalized jewelry shines a little brighter</h1>
-                            <button>
-                                Shop custom jewelry
-                                <i className="fa fa-caret-right" aria-hidden="true"></i>
-                            </button>
+                        <div className="homepage-banner-box flex-row clickable">
+                            <div className="homepage-banner-gifts-container flex-row">
+                                <div className="homepage-banner-gifts-text-container">
+                                    <div className="homepage-banner-gifts-text">
+                                        <h2>One-of-a-kind... just like them.</h2>
+                                        <div className="text-with-carot-right">
+                                            <span>Shop gifts</span>
+                                            <FontAwesomeIcon icon="caret-right" size="1x" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="homepage-banner-img-container">
+                                    <img className="contained-img" src={window.pagePics.banners[0]}/>
+                                </div>
+                            </div>
+
+                            <div className="homepage-banner-section-2-container">
+                                <div className="homepage-banner-section-2">
+                                    <div className="homepage-banner-shop-holidays">
+                                        <img className="contained-img" src={window.pagePics.banners[3]} />
+                                        <h2>Cheerful gatherings, with a twist</h2>
+                                        <div className="text-with-carot-right">
+                                            <span>Shop Thanksgiving</span>
+                                            <FontAwesomeIcon icon="caret-right" size="1x" />
+                                        </div>   
+                                    </div>
+                                    <div className="explore-container">
+                                        <div className="text-with-carot-right">
+                                            <span>Explore 5-star finds</span>
+                                            <FontAwesomeIcon icon="caret-right" size="1x" />
+                                        </div>                             
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
                         { middleBanner() }
