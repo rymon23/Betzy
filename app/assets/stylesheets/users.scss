@@ -23,7 +23,6 @@
       width: 250px;
       height: 250px;
       border-radius: 50%;
-      // background-image: image-url("default_avatar_400x400.png");
       background-size: contain;
       background-repeat: no-repeat;
       margin-bottom: -10px;
@@ -32,7 +31,7 @@
     margin-left: -20px;
     font-size: 8px;
     padding: 10px;
-    height: max-content;
+    // height: max-content;
     width: max-content;
     border-radius: 100%;
     border: 1px solid grey;
@@ -53,6 +52,30 @@
     margin: 0px;
     padding-right: 10px;
   }
+  .edit-button {
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px; 
+
+    a{
+      text-decoration: none;
+      text-decoration-line: none;
+      text-decoration-color: none;
+      text-decoration-style: none;         
+    }
+
+    p{
+      padding-left: 10px;
+      padding-right: 0px;
+    }
+
+  }
+  .edit-button:hover{
+    background-color: rgb(184, 184, 184);
+  }
+
 }
 .user-profile-about-container {
   width: max-content;
@@ -63,19 +86,46 @@
   }
   h3, .flex-row{
     margin: 0px;
-    padding-bottom: 6px;
+    // padding-bottom: 6px;
     width: max-content;
   }
 }
 .user-profile-visit-shop-container {
+  align-items: center;
+
   img{
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       background-size: contain;
       background-repeat: no-repeat;
+      padding-right: 5px;
   }
 
+  .flex-row .user-profile-visit-shop-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-right: 5px;
 
+    span{
+      width: max-content;
+    }
+    span:hover{
+      text-decoration-line: underline;
+    }
+    .user-profile-visit-shop-caret{
+      font-size: 22px;
+    }
+  }
+}
+.profile-shop-name {
+  font-size: 12px;
+}
+.visit-shop-wrapper{
+  margin: 0px;
+  span{
+    align-self: center;
+    padding-right: 5px;
+  }
 }
 
 .favorite-lists-navbar {

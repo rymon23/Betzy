@@ -3173,22 +3173,23 @@ function (_React$Component) {
 
       if (Boolean(store)) {
         storeLogo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "user-profile-visit-shop-container flex-row"
+          className: "user-profile-visit-shop-container flex-row clickable"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: store.imageUrl
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "enter-shop flex-row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/stores/".concat(store.id),
           className: "user-profile-visit-shop-wrapper"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "profile-shop-name"
-        }, store.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/stores/".concat(store.id),
-          className: "btn-block"
-        }, "Visit store")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        }, store.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "visit-shop-wrapper flex-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Visit your shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+          className: "user-profile-visit-shop-caret",
           icon: "caret-right",
           size: "2x"
-        })));
+        })))));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3200,7 +3201,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: user.imageUrl
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "user-profile-camera-button"
+        className: "user-profile-camera-button clickable"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         icon: "camera",
         size: "2x"
@@ -3210,11 +3211,13 @@ function (_React$Component) {
         className: "flex-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "0 Following"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "0 Followers")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/users/".concat(user.id, "/edit"),
-        className: "btn-block"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-pencil",
-        "aria-hidden": "true"
-      }), "Edit profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-button flex-row no-text-dec"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        className: "no-text-dec",
+        icon: "pencil-alt"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "no-text-dec"
+      }, "Edit profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-profile-about-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Joined ", user.createdDate), storeLogo)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "favorite-lists-navbar"

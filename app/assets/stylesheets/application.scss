@@ -69,3 +69,8 @@ a:visited{
 .width-max-content {
   width: max-content;
 }
+
+a, .no-text-dec{
+    color: inherit;
+    text-decoration-line: inherit;
+}
