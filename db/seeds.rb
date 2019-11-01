@@ -107,10 +107,10 @@ PRODUCT_PRICES = [
 CATEGORIES = [
   "Clothing & Shoes",
   "Gear & Accessories",
-  "Entertainment",
+  "Toys & Entertainment",
   "Tools & Craft Supplies",
-  "Art",
-  "Other"
+  "Art & Collectibles",
+  "Vintage"
 ].freeze
 
 CATEGORIES.each_with_index do |category, ix|
@@ -137,7 +137,7 @@ def setup_store_logo(store)
   store.store_logo.attach(io: file, filename: pic)
 end
 
-user1=User.create!(username: 'Demo',password: 'password',email:"demo@gmail.com")
+user1=User.create!(username: 'Demo User',password: 'password',email:"demo@gmail.com")
 user2=User.create!(username: 'Bobdob',password: 'password',email:"bd@gmail.com")
 user3=User.create!(username: 'Debrah',password: 'password',email:"deb@gmail.com")
 user4=User.create!(username: 'Samantha',password: 'password',email:"sam@gmail.com")

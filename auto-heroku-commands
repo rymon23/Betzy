@@ -1,5 +1,7 @@
 heroku git:remote -a betzy
 
+heroku pg:reset --confirm betzy
+
 git push heroku master
 
 heroku run bundle exec rails db:migrate
