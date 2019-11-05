@@ -34,6 +34,3 @@ export const updateProduct = (formData) => {
     processData: false
   });
 }
-
-
-

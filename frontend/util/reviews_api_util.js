@@ -34,5 +34,3 @@ export const updateReview = (review) => (
         data: { review: review }
     })
 );
-
-

@@ -4,6 +4,7 @@ export const fetchAllUsers = () => {
         url: `api/users`
     });
 };
+
 export const updateUser = (formData) => {
     return $.ajax({
         method: "PATCH",
