@@ -25,9 +25,7 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                 <div className="profile-pic-dropdown">
                     <img src={currentUser.imageUrl} />
                 </div>
-                {/* <FontAwesomeIcon 
-                    className="profile-icon" 
-                    icon="user" size="2x"/> */}
+
                 <div className="flex-row align-items-center">
                     <p>You</p>
                     <FontAwesomeIcon icon="caret-down"/>
@@ -50,16 +48,6 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                                 </div>
                             </div>
                         </Link>
-                        {/* <Link to={`/users/${currentUser.id}`}>
-                            <span className="view-profile">
-                                View profile
-                                <i className="fa fa-caret-right" aria-hidden="true"></i>
-                            </span>
-                            <span className="fname">{currentUser.username}</span>
-                            <div id="profile-pic">
-                                <img src={currentUser.imageUrl}/>
-                            </div>
-                        </Link> */}
                     </div>
                 </div>
 
@@ -92,7 +80,6 @@ const Greeting = ({currentUser, logout, enableModal}) => {
             </div>
 
         </div>
- 
     );
 
     return (currentUser

@@ -10,12 +10,14 @@ class HomePage extends React.Component {
         this.recommendedOnClick = this.recommendedOnClick.bind(this);
         this.ProductPage = this.ProductPage.bind(this);
     }
+
     componentDidMount() {
         this.props.fetchCategories();
         this.props.fetchProducts();
         this.props.fetchStores();
         this.props.fetchAllUsers();
     }
+
     recommendedOnClick(e, categoryId){
         e.preventDefault();
         this.props.history.push(`/categories/${categoryId}`);
@@ -148,7 +150,7 @@ class HomePage extends React.Component {
                             <div className="homepage-banner-gifts-container flex-row">
                                 <div className="homepage-banner-gifts-text-container">
                                     <div className="homepage-banner-gifts-text">
-                                        <h2>One-of-a-kind... just like them.</h2>
+                                        <h2>One-of-a-kind... just<br/>like them.</h2>
                                         <div className="text-with-carot-right">
                                             <span>Shop gifts</span>
                                             <FontAwesomeIcon icon="caret-right" size="1x" />
