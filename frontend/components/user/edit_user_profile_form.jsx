@@ -10,7 +10,7 @@ class EditUserProfleForm extends React.Component {
             gender: '',
             birthday: '',
             imageUrl: undefined,
-            imageFile: undefined
+            imageFile: undefined,
         }, this.props.user);
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,6 +32,7 @@ class EditUserProfleForm extends React.Component {
         formData.append('user[gender]', this.state.gender);
         formData.append('user[birthday]', this.state.birthday);
 
+        debugger
         if (this.state.imageFile){
             formData.append('user[profile_pic]', this.state.imageFile)
         }

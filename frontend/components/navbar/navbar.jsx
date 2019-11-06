@@ -47,16 +47,8 @@ class Navbar extends React.Component{
                             {category.name}
                         </Link>
                     </div>)
-                })}</>)
-
-            // return ( <ul className="category-ul"> 
-            //     { categories.slice(0,6).map((category) => 
-            //     { return (<li key={category.id}>
-            //                 <Link to={`/categories/${category.id}`}>
-            //                     {category.name}
-            //                 </Link>
-            //             </li>)})}</ul>)
-        }
+                })}</>);
+        };
         
         const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} />;
         return (
@@ -89,12 +81,11 @@ const mapStateToProps = (state) => {
     const storeId = getStoreId(currentUser);
     const categories = Object.values(state.entities.categories) || [];
     return {
-        loggedIn: Boolean(state.session.currentUser),
+        loggedIn: Boolean(currentUser),
         storeId,
         categories
-    }
+    };
 };
-
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchAllUsers: () => dispatch(fetchAllUsers()),

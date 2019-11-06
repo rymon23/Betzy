@@ -1,14 +1,16 @@
 import React from 'react';
 import {withRouter, Link} from 'react-router-dom';
-import { loading } from "../utility";
+import { loading, setDarkMode } from "../utility";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class UserProfileShow extends React.Component {
     constructor(props){
         super(props);
         this.state = Object.assign({
+            id: '',
             dark_mode: false
         }, this.props.user);
+
         this.updateDarkMode = this.updateDarkMode.bind(this);
     }
 
@@ -16,7 +18,6 @@ class UserProfileShow extends React.Component {
         this.props.fetchAllUsers();
         this.props.fetchStores();
     }
-
     componentDidUpdate(prevProps){
         if (this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.fetchAllUsers();
@@ -25,17 +26,17 @@ class UserProfileShow extends React.Component {
     }
 
     updateDarkMode() {
-        debugger
         event.preventDefault();
-        return (event) => {
-            this.props.user.dark_mode? 
-                this.setState({['dark_mode']: false})
-                : this.setState({ ['dark_mode']: true });
-        };
+        const formData = new FormData();
+        const newState = !this.state.dark_mode
+        this.setState({ ['dark_mode']: newState });
+        formData.append('user[id]', this.props.user.id);
+        formData.append('user[dark_mode]', newState);
+        this.props.updateUser(formData);
     }
 
     render(){
-        let { user, store } = this.props;
+        let { user, store, currentUser} = this.props;
         let storeLogo;
         debugger
 
@@ -43,14 +44,36 @@ class UserProfileShow extends React.Component {
             return <div>{loading()}</div>
         };
 
-        const darkMode = () => {
-            const darkModeOn = Boolean(user.dark_mode);
-            const buttonStateClass = darkModeOn? "button-on" : "button-off";
-            return <button className={`dark-mode-button clickable ${buttonStateClass}`}
-                        onClick={this.updateDarkMode}> 
-                    <p>Dark Mode {darkModeOn ? <strong>On</strong> : <strong>Off</strong>}</p>
-                </button>
+        const isThisUser = () => {
+            return (currentUser && user.id === currentUser.id);
         };
+
+        const profileOwnerButtons = () => {
+            const darkModeOn = Boolean(user.dark_mode);
+            const buttonStateClass = darkModeOn ? "button-on" : "button-off";
+            setDarkMode(darkModeOn)
+            return <div className="user-profile-owner-buttons-container">
+                <Link to={`/users/${user.id}/edit`} className="edit-button flex-row no-text-dec">
+                    <FontAwesomeIcon className="no-text-dec" icon="pencil-alt" />
+                    <p className="no-text-dec">Edit profile</p>
+                </Link>
+                <button className={`dark-mode-button clickable ${buttonStateClass}`}
+                    onClick={this.updateDarkMode}>
+                    <p>Dark Mode: {darkModeOn ? <strong>On</strong> : <strong>Off</strong>}</p>
+                </button>
+            </div>  
+        };
+
+        const followButton = () => {
+            return <button className={`user-profile-button-follow clickable`}>
+                <FontAwesomeIcon className="align-self-center" icon="plus"/>
+                <p>Follow</p>
+            </button>
+        };
+
+        const profileButtonOptions = () => {
+            return isThisUser() ? profileOwnerButtons() : followButton();
+        }
 
         if (Boolean(store)) {
             storeLogo = (
@@ -60,7 +83,7 @@ class UserProfileShow extends React.Component {
                         <Link to={`/stores/${store.id}`} className="user-profile-visit-shop-wrapper">
                             <span className="profile-shop-name">{store.title}</span>
                             <div className="visit-shop-wrapper flex-row">
-                                <span>Visit your shop</span>
+                                <span>Visit {isThisUser()? "your" : "their"} shop</span>
                                 <FontAwesomeIcon className="user-profile-visit-shop-caret" icon="caret-right" size="2x"/>
                             </div>
                         </Link>                            
@@ -86,16 +109,8 @@ class UserProfileShow extends React.Component {
                             <p>0 Following</p>
                             <p>0 Followers</p>
                         </div>
-                        <Link to={`/users/${user.id}/edit`} className="edit-button flex-row no-text-dec">
-                            <FontAwesomeIcon className="no-text-dec" icon="pencil-alt" />
-                            <p className="no-text-dec">Edit profile</p>
-                        </Link>
 
-                        <div className="user-profile-dark-mode-container ">
-                            {/* <button className="dark-mode-button clickable"> */}
-                                {darkMode()}
-                            {/* </button> */}
-                        </div>
+                        {profileButtonOptions()}
                     </div>
 
                     <div className="user-profile-about-container">
@@ -104,29 +119,6 @@ class UserProfileShow extends React.Component {
                         {storeLogo}
                     </div>
                 </div>
-
-                {/* <div className="user-info">
-                    <div>
-                        <div>
-                            <img src={user.imageUrl} />
-                            <div>
-                                <h3>{user.username}</h3>
-                                <div className="flex-row">
-                                    <p>0 Following</p>
-                                    <p>0 Followers</p>
-                                </div>
-                                <Link to={`/users/${user.id}/edit`} className="btn-block">
-                                    <i className="fa fa-pencil" aria-hidden="true"></i>
-                                    Edit profile
-                                </Link> 
-                            </div>
-                        </div>
-                        <div className="shop-section">
-                            <h4>About</h4>
-                            {storeLogo}
-                        </div>
-                    </div>
-                </div> */}
 
                 <div className="favorite-lists-navbar">
                     <ul>

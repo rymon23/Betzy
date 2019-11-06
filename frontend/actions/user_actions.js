@@ -1,6 +1,6 @@
 import * as APIUtil from "../util/users_api_util";
-export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 import { receiveCurrentUser } from "../actions/session_actions";
+export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 
 export const receiveAllUsers = (users) => {
     return {

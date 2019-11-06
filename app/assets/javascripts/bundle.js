@@ -486,8 +486,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_users_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/users_api_util */ "./frontend/util/users_api_util.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 
-var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 
+var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 var receiveAllUsers = function receiveAllUsers(users) {
   return {
     type: RECEIVE_ALL_USERS,
@@ -1745,13 +1745,7 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
             to: "/categories/".concat(category.id)
           }, category.name));
-        })); // return ( <ul className="category-ul"> 
-        //     { categories.slice(0,6).map((category) => 
-        //     { return (<li key={category.id}>
-        //                 <Link to={`/categories/${category.id}`}>
-        //                     {category.name}
-        //                 </Link>
-        //             </li>)})}</ul>)
+        }));
       };
 
       var loggedComponent = !loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_out_navbar__WEBPACK_IMPORTED_MODULE_3__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1789,7 +1783,7 @@ var mapStateToProps = function mapStateToProps(state) {
   var storeId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_7__["getStoreId"])(currentUser);
   var categories = Object.values(state.entities.categories) || [];
   return {
-    loggedIn: Boolean(state.session.currentUser),
+    loggedIn: Boolean(currentUser),
     storeId: storeId,
     categories: categories
   };
@@ -3001,6 +2995,7 @@ function (_React$Component) {
       formData.append('user[id]', this.state.id);
       formData.append('user[gender]', this.state.gender);
       formData.append('user[birthday]', this.state.birthday);
+      debugger;
 
       if (this.state.imageFile) {
         formData.append('user[profile_pic]', this.state.imageFile);
@@ -3187,6 +3182,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserProfileShow).call(this, props));
     _this.state = Object.assign({
+      id: '',
       dark_mode: false
     }, _this.props.user);
     _this.updateDarkMode = _this.updateDarkMode.bind(_assertThisInitialized(_this));
@@ -3210,22 +3206,23 @@ function (_React$Component) {
   }, {
     key: "updateDarkMode",
     value: function updateDarkMode() {
-      var _this2 = this;
-
-      debugger;
       event.preventDefault();
-      return function (event) {
-        _this2.props.user.dark_mode ? _this2.setState(_defineProperty({}, 'dark_mode', false)) : _this2.setState(_defineProperty({}, 'dark_mode', true));
-      };
+      var formData = new FormData();
+      var newState = !this.state.dark_mode;
+      this.setState(_defineProperty({}, 'dark_mode', newState));
+      formData.append('user[id]', this.props.user.id);
+      formData.append('user[dark_mode]', newState);
+      this.props.updateUser(formData);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var _this$props = this.props,
           user = _this$props.user,
-          store = _this$props.store;
+          store = _this$props.store,
+          currentUser = _this$props.currentUser;
       var storeLogo;
       debugger;
 
@@ -3235,13 +3232,41 @@ function (_React$Component) {
 
       ;
 
-      var darkMode = function darkMode() {
+      var isThisUser = function isThisUser() {
+        return currentUser && user.id === currentUser.id;
+      };
+
+      var profileOwnerButtons = function profileOwnerButtons() {
         var darkModeOn = Boolean(user.dark_mode);
         var buttonStateClass = darkModeOn ? "button-on" : "button-off";
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        Object(_utility__WEBPACK_IMPORTED_MODULE_2__["setDarkMode"])(darkModeOn);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-profile-owner-buttons-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/users/".concat(user.id, "/edit"),
+          className: "edit-button flex-row no-text-dec"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+          className: "no-text-dec",
+          icon: "pencil-alt"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "no-text-dec"
+        }, "Edit profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "dark-mode-button clickable ".concat(buttonStateClass),
-          onClick: _this3.updateDarkMode
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dark Mode ", darkModeOn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "On") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Off")));
+          onClick: _this2.updateDarkMode
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dark Mode: ", darkModeOn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "On") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Off"))));
+      };
+
+      var followButton = function followButton() {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "user-profile-button-follow clickable"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+          className: "align-self-center",
+          icon: "plus"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Follow"));
+      };
+
+      var profileButtonOptions = function profileButtonOptions() {
+        return isThisUser() ? profileOwnerButtons() : followButton();
       };
 
       if (Boolean(store)) {
@@ -3258,7 +3283,7 @@ function (_React$Component) {
           className: "profile-shop-name"
         }, store.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "visit-shop-wrapper flex-row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Visit your shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Visit ", isThisUser() ? "your" : "their", " shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
           className: "user-profile-visit-shop-caret",
           icon: "caret-right",
           size: "2x"
@@ -3282,17 +3307,7 @@ function (_React$Component) {
         className: "user-profile-show-edit-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex-row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "0 Following"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "0 Followers")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/users/".concat(user.id, "/edit"),
-        className: "edit-button flex-row no-text-dec"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-        className: "no-text-dec",
-        icon: "pencil-alt"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "no-text-dec"
-      }, "Edit profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "user-profile-dark-mode-container "
-      }, darkMode())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "0 Following"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "0 Followers")), profileButtonOptions()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-profile-about-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Joined ", user.createdDate), storeLogo)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "favorite-lists-navbar"
@@ -3336,17 +3351,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var users = state.entities.users;
   var user = state.entities.users[ownProps.match.params.userId];
   var storeId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["getStoreId"])(user);
   var store;
+  debugger;
 
   if (Boolean(storeId)) {
     store = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_3__["selectCurrentUserStore"])(state.entities.stores, storeId);
   }
 
-  debugger;
+  ;
   return {
+    currentUser: state.session.currentUser,
     user: state.entities.users[ownProps.match.params.userId],
     store: store
   };
@@ -3359,6 +3375,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchStores: function fetchStores() {
       return dispatch(Object(_actions_store_actions__WEBPACK_IMPORTED_MODULE_5__["fetchStores"])());
+    },
+    updateUser: function updateUser(formData) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["updateUser"])(formData));
     }
   };
 };
@@ -3371,13 +3390,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!*****************************************!*\
   !*** ./frontend/components/utility.jsx ***!
   \*****************************************/
-/*! exports provided: loading, noItemsFound */
+/*! exports provided: loading, noItemsFound, setDarkMode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loading", function() { return loading; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "noItemsFound", function() { return noItemsFound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDarkMode", function() { return setDarkMode; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -3391,6 +3411,73 @@ var noItemsFound = function noItemsFound() {
     className: "util-no-items"
   }, "No items found");
 };
+var setDarkMode = function setDarkMode(setEnabled) {
+  var appColorVars = {
+    pageA: '--app-bg-color-page',
+    pageB: '--app-bg-color-page-b',
+    header: '--app-bg-color-header',
+    footer: '--app-bg-color-footer',
+    search: '--app-bg-color-search',
+    borderA: '--app-border-color-a',
+    borderB: '--app-border-color-b',
+    fontPage: '--app-font-color-page',
+    fontFooter: '--app-font-color-footer',
+    fontNavOptions: '--app-font-color-nav-options',
+    fontCategories: '--app-font-color-categories'
+  };
+  var body = document.getElementById('main-body');
+
+  var enable = function enable() {
+    var colorDarkMode = {
+      pageA: 'rgba(73, 73, 73)',
+      pageB: 'rgb(137, 161, 187)',
+      header: 'rgba(73, 73, 73)',
+      footer: 'rgb(137, 161, 187)',
+      search: 'rgb(34, 34, 34)',
+      borderA: 'rgb(255, 255, 255)',
+      borderB: 'rgb(255, 255, 255)',
+      fontPage: 'rgb(255, 255, 255)',
+      fontFooter: 'rgb(255, 255, 255)',
+      fontNavOptions: 'rgb(255, 255, 255)',
+      fontCategories: 'rgb(255, 255, 255)'
+    };
+    Object.keys(appColorVars).forEach(function (key) {
+      debugger;
+      body.style.setProperty(appColorVars[key], colorDarkMode[key]);
+    });
+  };
+
+  var disable = function disable() {
+    var colorDefault = {
+      pageA: 'rgb(255, 255, 255)',
+      pageB: 'rgb(137, 161, 187)',
+      header: 'rgb(255, 255, 255)',
+      footer: 'rgb(137, 161, 187)',
+      search: 'rgb(34, 34, 34)',
+      borderA: 'rgba(34, 34, 34, 0.15)',
+      borderB: 'rgba(34, 34, 34, 0.15)',
+      fontPage: 'rgb(0, 0, 0)',
+      fontFooter: 'rgb(255, 255, 255)',
+      fontNavOptions: 'rgb(70, 70, 70)',
+      fontCategories: 'rgb(70, 70, 70)'
+    };
+    Object.keys(appColorVars).forEach(function (key) {
+      debugger;
+      body.style.setProperty(appColorVars[key], colorDefault[key]);
+    });
+  };
+
+  setEnabled ? enable() : disable();
+}; // export const setDarkMode = (on) =>{
+//   const dmBgColorPage = 'rgba(73, 73, 73)';
+//   const dmBgColorSearch = 'rgba(31, 31, 31)';
+//   const dmBgColorFontMain = 'rgba(70, 70, 70)';
+//   const dmBgColorFontNavOptions = 'rgba(70, 70, 70)';
+//   debugger
+//   const body = document.getElementById('main-body');
+//   // body.style.setProperty('--app-bg-color-page', dmBgColorPage);
+//   // body.style.setProperty('--app-bg-color-search', dmBgColorSearch);
+// }
 
 /***/ }),
 

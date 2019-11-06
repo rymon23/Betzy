@@ -52,7 +52,7 @@
     margin: 0px;
     padding-right: 10px;
   }
-  .edit-button {
+  .edit-button, .user-profile-button-follow{
     border: 1px solid grey;
     border-radius: 2px;
     padding: 6px;
@@ -69,6 +69,7 @@
     p{
       padding-left: 10px;
       padding-right: 0px;
+      margin: 0px;
     }
 
   }
@@ -150,19 +151,33 @@
     color: gray;
 }
 
-.user-profile-dark-mode-container {
-  margin: 0px;
+.user-profile-owner-buttons-container {
   padding: 0px;
-  padding-top: 25px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
 
   button {
-    padding: 5px;
-    border-radius: 100%;
     border: none;
+    border-radius: 2px;
+    padding: 6px;
+    margin: 0px;
+    width: max-content;
+    margin-top: 15px;
 
     p {
       padding-left: 10px;
-      padding-right: 10px;
+      padding-right: 6px;
+      margin: 0px;
+      width: max-content;
     }
-  }
+  }  
+}
+
+.user-profile-button-follow {
+    display: flex;
+    flex-direction: row;
+    img {
+      align-self: center;
+    }
 }

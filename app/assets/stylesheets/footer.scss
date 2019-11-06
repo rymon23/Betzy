@@ -1,20 +1,7 @@
 
-// .app-footer-ridge-top {
-//   border: 2px solid lightgrey;
-//   border-top-left-radius: 25px;
-//   border-top-right-radius: 25px;
-// }
-// .app-footer-ridge-bottom{
-//   border: 2px solid rgb(190, 93, 93);
-//   border-top-left-radius: 25px;
-//   border-top-right-radius: 25px;
-// }
-
-
 .app-footer-bar {
   height: 600px;
   width: 100%;
-  // float: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -26,12 +13,12 @@
   float: center;
   display: flex;
   justify-content: center;
-  background-color: var(--footer-primary-bg-color);
+  background-color: var(--app-bg-color-footer);
 
   .app-footer-content{
     height: 100%;
     width: 1400px;
-    color: var(--footer-text-color);
+    color: white;
   }
 }
 .app-footer-container ul {
@@ -48,7 +35,7 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  color: var(--footer-container-text-color);
+  color: white;
   h3 {
     font-size: 16px;
   }
@@ -72,10 +59,8 @@ footer {
     border-radius: 96px;
     border: 1px solid #eee;
     display: flex;
-    // flex-grow: 1;
     height: 48px;
     min-width: fit-content;
-    // width: 809px; 
     margin: 10px 0; 
   
     .subscribe-input {
@@ -134,7 +119,7 @@ footer {
         }
     }
     .subscribe-container, .subscribe-input, .subscribe-button {
-        background-color: var(--footer-primary-bg-color);
+        background-color: var(--app-bg-color-footer);
     } 
 }
 
@@ -171,7 +156,7 @@ footer {
 
 
   .app-social-media-download-button {
-    background-color: var(--footer-primary-bg-color);
+    background-color: var(--app-bg-color-footer);
     border: 2px solid white;
     border-radius: 40px;
     padding: 12px;
@@ -186,7 +171,7 @@ footer {
     justify-content: space-between;    
 
     button {
-      background-color: var(--footer-primary-bg-color);
+      background-color: var(--app-bg-color-footer);
       border: 2px solid white;
       border-radius: 40px;
       padding: 8px;
@@ -204,7 +189,7 @@ footer {
 footer {
   margin-bottom: -10px;
   height: 200px;
-  background-color:var(--footer-bg-color);
+  background-color:var(--app-bg-color-footer);
   align-content: center;
   flex-flow: wrap;
   color: white;
@@ -215,10 +200,10 @@ footer {
     border: none;
     color: white;
     border-radius: 40px;
-    background-color: var(--footer-bg-color);
+    background-color: var(--app-bg-color-footer);
     font-size: 13px;
     &:hover{
-        background-color:var(--footer-primary-bg-color);
+        background-color:var(--app-bg-color-footer);
         // color: #bb2a2a;
     }    
   }

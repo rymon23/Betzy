@@ -2,7 +2,7 @@
 header {
     width: 100%;
     margin-top: -2px;
-    border-bottom: 2.2px solid var(--navbar-border-color);
+    border-bottom: 2.2px solid var(--app-border-color-a);
     display: flex;
     justify-content: center;  
 
@@ -25,16 +25,7 @@ header {
     padding-top: 12px;
     padding: 0px;
 }
-// .navbar .category-ul {
-//     display: flex;
-//     justify-content: center;
-//     justify-content: space-between;
-//     font-size: 14px;
-//     color: gray;
-//     width: 100%;
-//     margin-top: 0px;
-//     margin-bottom: 12px;
-// }
+
 .navbar-top-container, .navbar-bottom-container{
     margin: 0px;
     display: flex;
@@ -49,9 +40,6 @@ header {
 .navbar-category {
     color: gray;
     font-size: 14px;
-    //text-transform: uppercase;
-    // text-decoration: none;
-    // letter-spacing: 0.15em;
 }
 
 .navbar-category, .gift-container {
@@ -74,35 +62,7 @@ header {
         left: 0; 
     }
 }
-// @media screen and (max-height: 300px) {
-// 	ul {
-// 		margin-top: 40px;
-// 	}
-// }
 
-// .logged-out-navbar-ul {
-//     height: 60.978px;
-//     display: flex;
-//     align-content: center;
-// }
-// .logged-out-navbar-ul > li {
-//     list-style: none;
-//     display: inline-block;
-//     padding-right: 15px;
-//     font-size: 14px;
-// }
-// .logged-out-navbar-ul .logo-nav {
-//     margin-left: 10px;
-//     padding-right: 55px;
-// }
-// .logged-out-navbar-ul .sell-on-betzy {
-//     margin-left: 30px;
-//     text-align: center;
-//     padding-top: 35px;
-//     height: 30px;
-//     padding-bottom: 50px;
-//     cursor: pointer;
-// }
 .login-signup > span > a {
     text-decoration: none;
     color: inherit;
@@ -166,22 +126,13 @@ header {
 
 
 .notification-nav {
-    // position: relative;
-    // padding-right: 25px;
-    // border-right: 1px solid rgba(34, 34, 34, 0.15);
-    // height: 40px;
-    // padding-top: 25px;
-    // margin-left: 30px;
-    // margin-top: 15px;
-
     position: relative;
     padding-right: 17px;
-    border-right: 1px solid rgba(34, 34, 34, 0.15);
+    border-right: 1px solid var(--app-border-color-a);
     height: 40px;
     padding-top: 18px;
     margin-left: 15px;
     margin-top: 15px;
-
 }
 
 .notification-nav,
@@ -203,7 +154,7 @@ header {
 .cart-container{
     display: flex;
     flex-direction: column;
-    border-left: 1px solid var(--navbar-border-color);
+    border-left: 1px solid var(--app-border-color-a);
     padding-left: 16px;
     margin-bottom: auto;
     margin-top: 18px;
@@ -231,7 +182,7 @@ header {
 }
 
 .nav-icon-link-container{
-    border-right: 1px solid var(--navbar-border-color);
+    border-right: 1px solid var(--app-border-color-a);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -301,7 +252,7 @@ header {
     width: max-content;
     min-height: 160px;
     min-width: 250px;
-    border: 1px solid rgba(34, 34, 34, 0.15);
+    border: 1px solid var(--app-border-color-a);
     background: white;
     right: -52px;
 }
@@ -341,7 +292,7 @@ header {
 }
 .dropdown-header {
     position: relative;
-    border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    border-bottom: 1px solid var(--app-border-color-a);
     height: max-content;
     padding-top: 12px;
     padding-bottom: 18px;
@@ -372,7 +323,7 @@ header {
 }
 .view-profile-wrapper {
     width: max-content;
-    border: 1px solid rgba(34, 34, 34, 0.15);
+    border: 1px solid var(--app-border-color-a);
     border-radius: 5px;
     padding: 8px;
     padding-bottom: 2px;

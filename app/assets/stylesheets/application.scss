@@ -15,28 +15,57 @@
  */
 
 :root {
+  //LOGO
   --logo-color: rgb(58, 118, 182);
   --logo-font-family: monospace;
+
+  //DEFUALT COLOR
+  --default-bg-color-page: rgb(255, 255, 255);
+  --default-bg-color-page-b: rgb(137, 161, 187);
+  --default-bg-color-header: rgb(255, 255, 255);
+  --default-bg-color-footer: rgb(137, 161, 187);
+  --default-bg-color-search:rgb(34, 34, 34);
+  --default-border-color-a: rgba(34, 34, 34, 0.15);
+  --default-border-color-b: rgba(34, 34, 34, 0.15);
+  --default-font-color-page:rgb(0, 0, 0);
+  --default-font-color-footer:rgb(0, 0, 0);
+  --default-font-color-nav-options:rgb(70, 70, 70);
+  --default-font-color-categories:rgb(70, 70, 70);
+  //DARK MODE COLOR
+  --dm-bg-color-page: rgba(73, 73, 73);
+  --dm-bg-color-page-b: rgb(137, 161, 187);
+  --dm-bg-color-header: rgba(73, 73, 73);
+  --dm-bg-color-footer: rgb(137, 161, 187);
+  --dm-bg-color-search:rgb(34, 34, 34);
+  --dm-border-color-a: white;
+  --dm-border-color-b: white;
+  --dm-font-color-page:rgb(0, 0, 0);
+  --dm-font-color-footer:rgb(0, 0, 0);
+  --dm-font-color-nav-options:rgb(70, 70, 70);
+  --dm-font-color-categories:rgb(70, 70, 70);
+
+  //APP STYLES
+  --app-bg-color-page: var(--default-bg-color-page);
+  --app-bg-color-page-b: var(--default-bg-color-page-b);
+  --app-bg-color-header: var(--default-bg-color-header);
+  --app-bg-color-footer: var(--default-bg-color-footer);
+  --app-bg-color-search: var(--default-bg-color-search);
+  --app-border-color-a: var(--default-border-color-a);
+  --app-border-color-b: var(--default-border-color-b);
+  --app-font-color-page: var(--default-font-color-page);
+  --app-font-color-footer: var(--default-font-color-footer);
+  --app-font-color-nav-options: var(--default-font-color-nav-options);
+  --app-font-color-categories: var(--default-font-color-categories);
   //
-  --app-bg-color-page: white;
-  --app-bg-color-main: rgb(137, 161, 187);
-  --app-bg-color-header: rgb(137, 161, 187);
-  --app-bg-color-footer: rgb(137, 161, 187);
-  --app-bg-color-container: rgb(137, 161, 187);
-  --app-bg-color-search: rgb(34, 34, 34);
+  --app-font-color-main: rgb(137, 161, 187);
+  --app-font-color-header: rgb(137, 161, 187);
+  --app-font-color-footer: rgb(137, 161, 187);
+  --app-font-color-container: rgb(137, 161, 187);
+  --app-font-family-main: serif;
+  --app-font-family-header: serif;
+  --app-font-family-footer: serif;
+  --app-font-family-container: serif;
   //
-  --app-text-color-main: rgb(137, 161, 187);
-  --app-text-color-header: rgb(137, 161, 187);
-  --app-text-color-footer: rgb(137, 161, 187);
-  --app-text-color-container: rgb(137, 161, 187);
-  //
-  --app-text-family-main: serif;
-  --app-text-family-header: serif;
-  --app-text-family-footer: serif;
-  --app-text-family-container: serif;
-  //
-  // --primary-bg-color: rgb(137, 161, 187);
-  --secondary-bg-color: black;
   --footer-primary-bg-color: rgb(106, 128, 152);
   --footer-secondary-bg-color: rgb(196, 173, 173);
   --footer-bg-color: rgb(50, 60, 72);
@@ -47,10 +76,6 @@
   --navbar-text-color: #222222;
   --navbar-border-color: rgba(34, 34, 34, 0.15);
 
-  --dark-mode-bg-color: rgba(73, 73, 73);
-  --dark-mode-bg-color-search:rgb(31, 31, 31);
-  --dark-mode-font-color-main:rgb(70, 70, 70);
-  --dark-mode-font-color-nav-options:rgb(70, 70, 70);
 }
 
 .popular-right-now-div {
@@ -89,6 +114,9 @@ a:visited{
 .align-items-center {
   align-items: center;
 }
+.align-self-center {
+  align-self: center;
+}
 
 .width-max-content {
   width: max-content;
@@ -124,5 +152,5 @@ body {
   background-color: rgb(184, 252, 184);
 }
 .button-off {
-  background-color: rgb(187, 187, 187);
+  background-color: rgb(199, 199, 199);
 }
