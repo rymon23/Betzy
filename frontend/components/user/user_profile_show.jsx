@@ -6,16 +6,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class UserProfileShow extends React.Component {
     constructor(props){
         super(props);
+        this.state = Object.assign({
+            dark_mode: false
+        }, this.props.user);
+        this.updateDarkMode = this.updateDarkMode.bind(this);
     }
+
     componentDidMount(){
         this.props.fetchAllUsers();
         this.props.fetchStores();
     }
+
     componentDidUpdate(prevProps){
         if (this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.fetchAllUsers();
             this.props.fetchStores();
         }
+    }
+
+    updateDarkMode() {
+        debugger
+        event.preventDefault();
+        return (event) => {
+            this.props.user.dark_mode? 
+                this.setState({['dark_mode']: false})
+                : this.setState({ ['dark_mode']: true });
+        };
     }
 
     render(){
@@ -25,7 +41,16 @@ class UserProfileShow extends React.Component {
 
         if (!user) {
             return <div>{loading()}</div>
-        }
+        };
+
+        const darkMode = () => {
+            const darkModeOn = Boolean(user.dark_mode);
+            const buttonStateClass = darkModeOn? "button-on" : "button-off";
+            return <button className={`dark-mode-button clickable ${buttonStateClass}`}
+                        onClick={this.updateDarkMode}> 
+                    <p>Dark Mode {darkModeOn ? <strong>On</strong> : <strong>Off</strong>}</p>
+                </button>
+        };
 
         if (Boolean(store)) {
             storeLogo = (
@@ -65,6 +90,12 @@ class UserProfileShow extends React.Component {
                             <FontAwesomeIcon className="no-text-dec" icon="pencil-alt" />
                             <p className="no-text-dec">Edit profile</p>
                         </Link>
+
+                        <div className="user-profile-dark-mode-container ">
+                            {/* <button className="dark-mode-button clickable"> */}
+                                {darkMode()}
+                            {/* </button> */}
+                        </div>
                     </div>
 
                     <div className="user-profile-about-container">

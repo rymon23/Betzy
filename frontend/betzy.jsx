@@ -8,9 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.currentUser){
       const preloadedState = { session: { currentUser: window.currentUser } };
       store = configureStore(preloadedState);
+      window.darkMode = window.currentUser.dark_mode;
+
+     // debugger
       delete window.currentUser;
   } else {
-    store = configureStore();
+      store = configureStore();
   }
 
   //TESTING ONLY

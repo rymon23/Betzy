@@ -149,3 +149,20 @@
     text-decoration: none;
     color: gray;
 }
+
+.user-profile-dark-mode-container {
+  margin: 0px;
+  padding: 0px;
+  padding-top: 25px;
+
+  button {
+    padding: 5px;
+    border-radius: 100%;
+    border: none;
+
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}

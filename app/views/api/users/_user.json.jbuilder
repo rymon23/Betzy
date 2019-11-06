@@ -4,7 +4,8 @@ json.extract! user,
     :email,
     :gender, 
     :birthday,
-    :created_at
+    :created_at,
+    :dark_mode
 
 if user
     if user.profile_image.attached?

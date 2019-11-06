@@ -540,6 +540,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])(preloadedState);
+    window.darkMode = window.currentUser.dark_mode; // debugger
+
     delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
@@ -3150,6 +3152,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -3158,9 +3162,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -3177,9 +3181,16 @@ function (_React$Component) {
   _inherits(UserProfileShow, _React$Component);
 
   function UserProfileShow(props) {
+    var _this;
+
     _classCallCheck(this, UserProfileShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(UserProfileShow).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserProfileShow).call(this, props));
+    _this.state = Object.assign({
+      dark_mode: false
+    }, _this.props.user);
+    _this.updateDarkMode = _this.updateDarkMode.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(UserProfileShow, [{
@@ -3197,8 +3208,21 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "updateDarkMode",
+    value: function updateDarkMode() {
+      var _this2 = this;
+
+      debugger;
+      event.preventDefault();
+      return function (event) {
+        _this2.props.user.dark_mode ? _this2.setState(_defineProperty({}, 'dark_mode', false)) : _this2.setState(_defineProperty({}, 'dark_mode', true));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           user = _this$props.user,
           store = _this$props.store;
@@ -3208,6 +3232,17 @@ function (_React$Component) {
       if (!user) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
+
+      ;
+
+      var darkMode = function darkMode() {
+        var darkModeOn = Boolean(user.dark_mode);
+        var buttonStateClass = darkModeOn ? "button-on" : "button-off";
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "dark-mode-button clickable ".concat(buttonStateClass),
+          onClick: _this3.updateDarkMode
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dark Mode ", darkModeOn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "On") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Off")));
+      };
 
       if (Boolean(store)) {
         storeLogo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3255,7 +3290,9 @@ function (_React$Component) {
         icon: "pencil-alt"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "no-text-dec"
-      }, "Edit profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Edit profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-profile-dark-mode-container "
+      }, darkMode())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-profile-about-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Joined ", user.createdDate), storeLogo)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "favorite-lists-navbar"
@@ -47235,7 +47272,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
