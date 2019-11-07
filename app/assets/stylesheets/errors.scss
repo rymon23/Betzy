@@ -1,5 +1,11 @@
 
+.errors {
+  color: red;
+  font-weight: bold;
+}
+
 .login-form-errors {
+  list-style: none;
   color: red;
   font-size: 14px;
 }

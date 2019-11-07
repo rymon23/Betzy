@@ -38,7 +38,7 @@ header {
     margin-top: 10px;
 }
 .navbar-category {
-    color: gray;
+    // color: gray;
     font-size: 14px;
 }
 
@@ -189,8 +189,6 @@ header {
     padding-left: 10px;
     padding-right: 10px;
 
-    // margin-bottom: auto;
-    // margin-top: 18px;
     p {
         color: black;
         align-self: center;
@@ -253,12 +251,9 @@ header {
     min-height: 160px;
     min-width: 250px;
     border: 1px solid var(--app-border-color-a);
-    background: white;
     right: -52px;
 }
-// .dropdown-header-container{
 
-// }
 .dropdown-option-icon-container{
     padding-right: 25px;
     padding-left: 10px;
@@ -269,9 +264,7 @@ header {
     }
 }
 .dropdown-option-container{
-    // margin-left: 10px;
-    // margin-right: 10px;
-    a , .dropdown-option-wrapper{
+    a, .dropdown-option-wrapper{
         padding-right: 25px;
         padding-left: 10px;
     }

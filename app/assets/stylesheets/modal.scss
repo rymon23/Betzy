@@ -1,33 +1,19 @@
 
-
-
 .modal-background {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(128, 127, 127, 0.7);
-    z-index: 10;
+  background: rgba(29, 29, 29, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
 }
-
 .modal-child {
     position: absolute;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-.modal-background {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(29, 29, 29, 0.7);
-  z-index: 10;
-}
-
 .login-form {
   display: flex;
   justify-content: center;
@@ -37,7 +23,7 @@
   margin-left: 20px;
 }
 .login-form-box {
-  background-color: #fefefe;
+  // background-color: var(--app-bg-color-page);
   margin: 5px auto;
   border: 1px solid #888;
   width: 340px;
@@ -49,9 +35,6 @@
     margin-top: -1px;
     font-size: 26px;  
   }
-  .login-form-terms-container{
-
-  }
 }
 .login-form-box label {
   font-weight: bold;
@@ -61,7 +44,6 @@
   font-weight: bold;
   font-size: 15px;
 }
-
 
 .credential-submit-submit {
   align-self: center;

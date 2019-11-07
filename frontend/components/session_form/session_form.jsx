@@ -64,7 +64,7 @@ class SessionForm extends React.Component {
     debugger
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+        <form onSubmit={this.handleSubmit} className="login-form-box bg-color-page-a">
           <h1 className="form-title" >{this.props.formTitle}</h1>
             <div className={`login-form-errors`}>
               {this.renderErrors()}

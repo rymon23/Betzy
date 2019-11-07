@@ -1015,7 +1015,7 @@ var Greeting = function Greeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
       icon: "caret-down"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dropdown-menu"
+      className: "dropdown-menu bg-color-page-a"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-header-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1208,6 +1208,12 @@ function (_React$Component) {
           currentUser = _this$props.currentUser,
           products = _this$props.products;
 
+      if (currentUser) {
+        Object(_utility__WEBPACK_IMPORTED_MODULE_3__["setDarkMode"])(currentUser.dark_mode);
+      }
+
+      ;
+
       var sampleProducts = function sampleProducts(products) {
         if (Object.keys(products).length === 0) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
@@ -1278,7 +1284,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "homepage-banner-head"
       }, "If it's handcrafted, vintage, custom, or unique, it's on ", _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-box flex-row clickable"
+        className: "homepage-banner-box bg-color-page-b flex-row clickable"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "homepage-banner-gifts-container flex-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2787,7 +2793,7 @@ function (_React$Component) {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
-        className: "login-form-box"
+        className: "login-form-box bg-color-page-a"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "form-title"
       }, this.props.formTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3416,7 +3422,8 @@ var setDarkMode = function setDarkMode(setEnabled) {
     pageA: '--app-bg-color-page',
     pageB: '--app-bg-color-page-b',
     header: '--app-bg-color-header',
-    footer: '--app-bg-color-footer',
+    footerA: '--app-bg-color-footer-a',
+    footerB: '--app-bg-color-footer-b',
     search: '--app-bg-color-search',
     borderA: '--app-border-color-a',
     borderB: '--app-border-color-b',
@@ -3430,10 +3437,11 @@ var setDarkMode = function setDarkMode(setEnabled) {
   var enable = function enable() {
     var colorDarkMode = {
       pageA: 'rgba(73, 73, 73)',
-      pageB: 'rgb(137, 161, 187)',
+      pageB: 'rgb(107, 107, 107)',
       header: 'rgba(73, 73, 73)',
-      footer: 'rgb(137, 161, 187)',
-      search: 'rgb(34, 34, 34)',
+      footerA: 'rgb(0, 0, 0)',
+      footerB: 'rgb(107, 107, 107)',
+      search: 'rgb(141, 134, 155)',
       borderA: 'rgb(255, 255, 255)',
       borderB: 'rgb(255, 255, 255)',
       fontPage: 'rgb(255, 255, 255)',
@@ -3452,7 +3460,8 @@ var setDarkMode = function setDarkMode(setEnabled) {
       pageA: 'rgb(255, 255, 255)',
       pageB: 'rgb(137, 161, 187)',
       header: 'rgb(255, 255, 255)',
-      footer: 'rgb(137, 161, 187)',
+      footerA: 'rgb(45, 53, 61)',
+      footerB: 'rgb(81, 96, 110)',
       search: 'rgb(34, 34, 34)',
       borderA: 'rgba(34, 34, 34, 0.15)',
       borderB: 'rgba(34, 34, 34, 0.15)',
@@ -3468,16 +3477,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
   };
 
   setEnabled ? enable() : disable();
-}; // export const setDarkMode = (on) =>{
-//   const dmBgColorPage = 'rgba(73, 73, 73)';
-//   const dmBgColorSearch = 'rgba(31, 31, 31)';
-//   const dmBgColorFontMain = 'rgba(70, 70, 70)';
-//   const dmBgColorFontNavOptions = 'rgba(70, 70, 70)';
-//   debugger
-//   const body = document.getElementById('main-body');
-//   // body.style.setProperty('--app-bg-color-page', dmBgColorPage);
-//   // body.style.setProperty('--app-bg-color-search', dmBgColorSearch);
-// }
+};
 
 /***/ }),
 

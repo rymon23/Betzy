@@ -13,7 +13,7 @@
   float: center;
   display: flex;
   justify-content: center;
-  background-color: var(--app-bg-color-footer);
+  background-color: var(--app-bg-color-footer-b);
 
   .app-footer-content{
     height: 100%;
@@ -25,11 +25,7 @@
   list-style: none;
 }
 
-footer {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
+
 
 .app-footer-subscribe-container {
   display: flex;
@@ -187,24 +183,25 @@ footer {
 }
 
 footer {
+  background-color: var(--app-bg-color-footer-a);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-bottom: -10px;
   height: 200px;
-  background-color:var(--app-bg-color-footer);
   align-content: center;
   flex-flow: wrap;
   color: white;
   font-size: 13px;
   button {
     padding: 10px;
-    // border: 2px solid white;
     border: none;
     color: white;
     border-radius: 40px;
-    background-color: var(--app-bg-color-footer);
+    background-color: var(--app-bg-color-footer-a);
     font-size: 13px;
     &:hover{
-        background-color:var(--app-bg-color-footer);
-        // color: #bb2a2a;
+        background-color:var(--app-bg-color-footer-a);
     }    
   }
 }

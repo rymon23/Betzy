@@ -32,7 +32,7 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                 </div>
             </button>
             
-            <div className="dropdown-menu">  
+            <div className="dropdown-menu bg-color-page-a">  
 
                 <div className="dropdown-header-container">
                     <div className="dropdown-header flex-row">

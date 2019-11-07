@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import { APP_NAME } from "../../util/config_util";
-import { loading } from "../utility";
+import { loading, setDarkMode} from "../utility";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class HomePage extends React.Component {
@@ -32,6 +32,11 @@ class HomePage extends React.Component {
 
     render() {
         let { currentUser, products } = this.props;
+
+
+        if (currentUser){
+            setDarkMode(currentUser.dark_mode);
+        };
 
         const sampleProducts = (products) => {
             if ( Object.keys(products).length === 0 ) {
@@ -146,7 +151,7 @@ class HomePage extends React.Component {
                             If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.
                         </h1>
 
-                        <div className="homepage-banner-box flex-row clickable">
+                        <div className="homepage-banner-box bg-color-page-b flex-row clickable">
                             <div className="homepage-banner-gifts-container flex-row">
                                 <div className="homepage-banner-gifts-text-container">
                                     <div className="homepage-banner-gifts-text">

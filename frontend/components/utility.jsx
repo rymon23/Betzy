@@ -20,7 +20,8 @@ export const setDarkMode = (setEnabled)=> {
     pageA: '--app-bg-color-page',
     pageB: '--app-bg-color-page-b',
     header: '--app-bg-color-header',
-    footer: '--app-bg-color-footer',
+    footerA: '--app-bg-color-footer-a',
+    footerB: '--app-bg-color-footer-b',
     search: '--app-bg-color-search',
     borderA: '--app-border-color-a',
     borderB: '--app-border-color-b',
@@ -34,10 +35,11 @@ export const setDarkMode = (setEnabled)=> {
   const enable = () => {
     const colorDarkMode = {
       pageA: 'rgba(73, 73, 73)',
-      pageB: 'rgb(137, 161, 187)',
+      pageB: 'rgb(107, 107, 107)',
       header: 'rgba(73, 73, 73)',
-      footer: 'rgb(137, 161, 187)',
-      search: 'rgb(34, 34, 34)',
+      footerA: 'rgb(0, 0, 0)',
+      footerB: 'rgb(107, 107, 107)',
+      search: 'rgb(141, 134, 155)',
       borderA: 'rgb(255, 255, 255)',
       borderB: 'rgb(255, 255, 255)',
       fontPage: 'rgb(255, 255, 255)',
@@ -56,7 +58,8 @@ export const setDarkMode = (setEnabled)=> {
       pageA: 'rgb(255, 255, 255)',
       pageB: 'rgb(137, 161, 187)',
       header: 'rgb(255, 255, 255)',
-      footer: 'rgb(137, 161, 187)',
+      footerA: 'rgb(45, 53, 61)',
+      footerB: 'rgb(81, 96, 110)',
       search: 'rgb(34, 34, 34)',
       borderA: 'rgba(34, 34, 34, 0.15)',
       borderB: 'rgba(34, 34, 34, 0.15)',
@@ -72,16 +75,4 @@ export const setDarkMode = (setEnabled)=> {
   };
 
   setEnabled? enable() : disable();
-}
-
-// export const setDarkMode = (on) =>{
-//   const dmBgColorPage = 'rgba(73, 73, 73)';
-//   const dmBgColorSearch = 'rgba(31, 31, 31)';
-//   const dmBgColorFontMain = 'rgba(70, 70, 70)';
-//   const dmBgColorFontNavOptions = 'rgba(70, 70, 70)';
-
-//   debugger
-//   const body = document.getElementById('main-body');
-//   // body.style.setProperty('--app-bg-color-page', dmBgColorPage);
-//   // body.style.setProperty('--app-bg-color-search', dmBgColorSearch);
-// }
+};

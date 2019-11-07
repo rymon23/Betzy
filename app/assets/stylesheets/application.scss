@@ -23,32 +23,35 @@
   --default-bg-color-page: rgb(255, 255, 255);
   --default-bg-color-page-b: rgb(137, 161, 187);
   --default-bg-color-header: rgb(255, 255, 255);
-  --default-bg-color-footer: rgb(137, 161, 187);
+  --default-bg-color-footer-a: rgb(45, 53, 61);
+  --default-bg-color-footer-b: rgb(81, 96, 110);
   --default-bg-color-search:rgb(34, 34, 34);
   --default-border-color-a: rgba(34, 34, 34, 0.15);
   --default-border-color-b: rgba(34, 34, 34, 0.15);
   --default-font-color-page:rgb(0, 0, 0);
   --default-font-color-footer:rgb(0, 0, 0);
   --default-font-color-nav-options:rgb(70, 70, 70);
-  --default-font-color-categories:rgb(70, 70, 70);
+  --default-font-color-categories:rgb(34, 34, 34);
   //DARK MODE COLOR
   --dm-bg-color-page: rgba(73, 73, 73);
-  --dm-bg-color-page-b: rgb(137, 161, 187);
+  --dm-bg-color-page-b: rgb(107, 107, 107);
   --dm-bg-color-header: rgba(73, 73, 73);
-  --dm-bg-color-footer: rgb(137, 161, 187);
-  --dm-bg-color-search:rgb(34, 34, 34);
+  --dm-bg-color-footer-a: rgb(137, 161, 187);
+  --dm-bg-color-footer-b: rgb(137, 161, 187);
+  --dm-bg-color-search:rgb(141, 134, 155);
   --dm-border-color-a: white;
   --dm-border-color-b: white;
-  --dm-font-color-page:rgb(0, 0, 0);
-  --dm-font-color-footer:rgb(0, 0, 0);
-  --dm-font-color-nav-options:rgb(70, 70, 70);
-  --dm-font-color-categories:rgb(70, 70, 70);
+  --dm-font-color-page:white;
+  --dm-font-color-footer:white;
+  --dm-font-color-nav-options:white;
+  --dm-font-color-categories:white;
 
   //APP STYLES
   --app-bg-color-page: var(--default-bg-color-page);
   --app-bg-color-page-b: var(--default-bg-color-page-b);
   --app-bg-color-header: var(--default-bg-color-header);
-  --app-bg-color-footer: var(--default-bg-color-footer);
+  --app-bg-color-footer-a: var(--default-bg-color-footer-a);
+  --app-bg-color-footer-b: var(--default-bg-color-footer-b);
   --app-bg-color-search: var(--default-bg-color-search);
   --app-border-color-a: var(--default-border-color-a);
   --app-border-color-b: var(--default-border-color-b);
@@ -127,9 +130,30 @@ a, .no-text-dec{
     text-decoration-line: inherit;
 }
 
+
+//
 body {
-  background-color: var(--app-bg-color-page);
+  header{
+    background-color: var(--app-bg-color-header);
+    .navbar-category{
+      color: var(--app-font-color-categories);
+    }
+  }
+  footer{
+    background-color: var(--app-bg-color-footer-a);
+    color: white;
+  }
 }
+body, .bg-color-page-a{
+  background-color: var(--app-bg-color-page);
+  color: var(--app-font-color-page);
+}
+.bg-color-page-b{
+  background-color: var(--app-bg-color-page-b);
+  color: var(--app-font-color-page);
+}
+
+
 
 .text-with-carot-right {
   display: flex;
