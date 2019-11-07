@@ -92,7 +92,7 @@ class HomePage extends React.Component {
 
         const whatIsBetzy = () => {
             return (
-                <div className="wob-container">
+                <div className="wob-container bg-color-page-b">
                     <div className="wob-content static-width">
                         <div className="wob-head-container">
                             <div className="wob-head">

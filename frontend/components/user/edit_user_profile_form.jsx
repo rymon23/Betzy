@@ -104,20 +104,18 @@ class EditUserProfleForm extends React.Component {
                         <div className="label">
                             Gender
                         </div>
-                        <div className="gender flex-row">
-                            <div>
-                                <label htmlFor="female">Female</label>
+                        <div className="gender-options-container flex-row">
+                            <div className="gender-div flex-row">
                                 <input type="radio" checked={this.state.gender === 'Female'} value='Male' value='Female' id="gender" onChange={this.update('gender')} />
+                                <label htmlFor="female">Female</label>
                             </div>
-
-                            <div>
-                                <label htmlFor="male">Male</label>
+                            <div className="gender-div flex-row">
                                 <input type="radio" checked={this.state.gender === 'Male'} value='Male' id="gender" onChange={this.update('gender')} />
+                                <label htmlFor="male">Male</label>
                             </div>
-
-                            <div>
-                                <label htmlFor="other">Other</label>
+                            <div className="gender-div flex-row">
                                 <input type="radio" checked={this.state.gender === 'Other'} value='Male' value='Other' id="gender" onChange={this.update('gender')} />
+                                <label htmlFor="other">Other</label>
                             </div>
                         </div>
                         
@@ -135,7 +133,6 @@ class EditUserProfleForm extends React.Component {
                             About
                         </div>
                         <textarea id="about" value={this.state.about} cols="50" rows="8" onChange={this.update('about')}>
-                            {/* {this.state.about} */}
                         </textarea>
                     </div>
                     <button className="clicky">Save Changes</button>
