@@ -40,6 +40,7 @@ class Api::UsersController < ApplicationController
         :dark_mode,
         :gender,
         :birthday,
+        :about
         )
   end
 end

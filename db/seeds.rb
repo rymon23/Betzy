@@ -12,6 +12,7 @@ User.destroy_all
 Category.delete_all
 Store.delete_all
 Product.destroy_all
+Review.destroy_all
 
 
 PLACEHOLDER_PICS = {

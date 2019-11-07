@@ -134,9 +134,10 @@ class EditUserProfleForm extends React.Component {
                         <div className="label">
                             About
                         </div>
-                        <input type="text" cols="50" rows="5" className="" value={this.state.about} onChange={this.update('about')} id="about" />
+                        <textarea id="about" value={this.state.about} cols="50" rows="8" onChange={this.update('about')}>
+                            {/* {this.state.about} */}
+                        </textarea>
                     </div>
-
                     <button className="clicky">Save Changes</button>
                 </form>
             </div>  

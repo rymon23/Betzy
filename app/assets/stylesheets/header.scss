@@ -204,11 +204,9 @@ header {
     }
 }
 
-.dropdown {
-    border: none;
-}
+
 .dropdown-btn{
-    background: white;
+    background: var(--app-bg-color-header);
     border: none;
     padding: 0px;
     margin-bottom: 4px;
@@ -218,24 +216,11 @@ header {
     }
 }
 
-.profile-icon{
-    margin-bottom: 0px;
-}
-.profile-pic-dropdown{
-    margin-bottom: -2px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    img {
-        width: 30px;
-        height: 25px;
-        border-radius: 50%;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-}
+
 
 
 .dropdown {
+    border: none;
     position: relative;
     display: inline-block;
 }
@@ -298,7 +283,21 @@ header {
     font-weight: bolder;
     font-size: 16px;
 }
-
+.profile-icon{
+    margin-bottom: 0px;
+}
+.profile-pic-dropdown{
+    margin-bottom: -2px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    img {
+        width: 30px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
 .dropdown-content {
     font-size: 14px;
 }

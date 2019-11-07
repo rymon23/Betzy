@@ -115,6 +115,7 @@ class UserProfileShow extends React.Component {
 
                     <div className="user-profile-about-container">
                         <h3>About</h3>
+                        <p>{user.about}</p>
                         <p>Joined {user.createdDate}</p>
                         {storeLogo}
                     </div>
