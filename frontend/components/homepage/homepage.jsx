@@ -10,19 +10,16 @@ class HomePage extends React.Component {
         this.recommendedOnClick = this.recommendedOnClick.bind(this);
         this.ProductPage = this.ProductPage.bind(this);
     }
-
     componentDidMount() {
         this.props.fetchCategories();
         this.props.fetchProducts();
         this.props.fetchStores();
         this.props.fetchAllUsers();
     }
-
     recommendedOnClick(e, categoryId){
         e.preventDefault();
         this.props.history.push(`/categories/${categoryId}`);
     }
-
     ProductPage(product) {
         return (e) => {
             e.preventDefault();
@@ -32,7 +29,6 @@ class HomePage extends React.Component {
 
     render() {
         let { currentUser, products } = this.props;
-
 
         if (currentUser){
             setDarkMode(currentUser.dark_mode);
