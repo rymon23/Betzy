@@ -1760,17 +1760,19 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "static-width navbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navbar-top-container"
+        className: "navbar-top-container flex-wrap"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "logo-nav"
-      }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), loggedComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flex-row flex-wrap"
+      }, loggedComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-container clickable",
         onClick: this.cartClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
         className: "navbar-cart",
         icon: "shopping-cart",
         size: "xs"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cart"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cart")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-bottom-container"
       }, categoryList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "gift-container clickable",
@@ -3069,19 +3071,19 @@ function (_React$Component) {
       }, "View Profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "section"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "label"
-      }, "Profile Picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "profile-pic"
-      }, preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-user-profile-pic-container flex-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Profile Picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-pic-input-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
         onChange: this.handleFile,
         id: "profile-picture"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-pic"
+      }, preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "normal-button",
         onClick: this.removeProfilePicture
-      }, "Remove picture")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Remove picture"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "label"

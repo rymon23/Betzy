@@ -158,6 +158,7 @@ header {
     padding-left: 16px;
     margin-bottom: auto;
     margin-top: 18px;
+    margin-left: 10px;
     p {
         color: black;
     }
@@ -217,12 +218,11 @@ header {
 }
 
 
-
-
 .dropdown {
     border: none;
     position: relative;
     display: inline-block;
+    padding-right: 0px; //Let the cart container handle spacing on right side
 }
 .dropdown:hover .dropdown-menu {
     display: block;

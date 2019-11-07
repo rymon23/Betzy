@@ -195,3 +195,30 @@
     align-self: baseline;
   }
 }
+
+.edit-user-profile-pic-container{
+
+  label {
+    padding-left: 10px;
+  };
+
+}
+
+    div.section {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+        width: 90%;
+        .label {
+            margin-right: 100px;
+            width: 100px;
+            font-weight: bold;
+
+            p {
+                font-weight: normal;
+            }
+        }
+
+    }

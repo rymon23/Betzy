@@ -80,17 +80,16 @@ class EditUserProfleForm extends React.Component {
                 </div>
                 <form onSubmit={this.handleSubmit} >
 
-                    <div className="section">
-                        <div className="label">
-                            Profile Picture
+                    <div className="edit-user-profile-pic-container flex-row">
+                        <label>Profile Picture</label>
+                        <div className="profile-pic-input-container">
+                            <input type="file" onChange={this.handleFile} id="profile-picture" />
+       
+                            <div className="profile-pic">
+                                {preview}
+                            </div>
+                            <button className="normal-button" onClick={this.removeProfilePicture}>Remove picture</button>
                         </div>
-                        
-                        <div className="profile-pic">
-                            {preview}
-                        </div>
-                        <input type="file" onChange={this.handleFile} id="profile-picture" />
-                        <button className="normal-button" onClick={this.removeProfilePicture}>Remove picture</button>
-                        
                     </div>
 
                     <div className="section">

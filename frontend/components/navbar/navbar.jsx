@@ -53,15 +53,15 @@ class Navbar extends React.Component{
         const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} />;
         return (
             <div className="static-width navbar">
-                <div className="navbar-top-container">
+                <div className="navbar-top-container flex-wrap">
                     <li className="logo-nav">{Logo()}</li>
                     <SearchBarContainer />
-                    {/* <div className="logged-bar-container"> */}
+                    <div className="flex-row flex-wrap">
                         {loggedComponent}
-                    {/* </div> */}
-                    <div className="cart-container clickable" onClick={this.cartClick}>
-                        <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />
-                        <p>Cart</p>
+                        <div className="cart-container clickable" onClick={this.cartClick}>
+                            <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />
+                            <p>Cart</p>
+                        </div>
                     </div>
                 </div>
                 <div className="navbar-bottom-container">
