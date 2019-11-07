@@ -2974,6 +2974,7 @@ function (_React$Component) {
       username: '',
       gender: '',
       birthday: '',
+      about: '',
       imageUrl: undefined,
       imageFile: undefined
     }, _this.props.user);
@@ -3001,7 +3002,7 @@ function (_React$Component) {
       formData.append('user[id]', this.state.id);
       formData.append('user[gender]', this.state.gender);
       formData.append('user[birthday]', this.state.birthday);
-      debugger;
+      formData.append('user[about]', this.state.about);
 
       if (this.state.imageFile) {
         formData.append('user[profile_pic]', this.state.imageFile);
@@ -3094,7 +3095,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "label"
       }, "Gender"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "gender"
+        className: "gender flex-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "female"
       }, "Female"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
@@ -3124,6 +3125,18 @@ function (_React$Component) {
         value: this.state.birthday,
         onChange: this.update('birthday'),
         id: "birthday"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "label"
+      }, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        cols: "50",
+        rows: "5",
+        className: "",
+        value: this.state.about,
+        onChange: this.update('about'),
+        id: "about"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "clicky"
       }, "Save Changes")));

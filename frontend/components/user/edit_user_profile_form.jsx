@@ -9,6 +9,7 @@ class EditUserProfleForm extends React.Component {
             username: '',
             gender: '',
             birthday: '',
+            about: '',
             imageUrl: undefined,
             imageFile: undefined,
         }, this.props.user);
@@ -31,12 +32,11 @@ class EditUserProfleForm extends React.Component {
         formData.append('user[id]', this.state.id);
         formData.append('user[gender]', this.state.gender);
         formData.append('user[birthday]', this.state.birthday);
+        formData.append('user[about]', this.state.about);
 
-        debugger
         if (this.state.imageFile){
             formData.append('user[profile_pic]', this.state.imageFile)
         }
-
         this.props.updateUser(formData);
         this.props.fetchAllUsers();
         this.props.history.push(`/users/${this.state.id}`);
@@ -50,7 +50,6 @@ class EditUserProfleForm extends React.Component {
                 imageFile: file,
                 imageUrl: fileReader.result
             })
-            
         };
         if (file) {
             fileReader.readAsDataURL(file);
@@ -105,7 +104,7 @@ class EditUserProfleForm extends React.Component {
                         <div className="label">
                             Gender
                         </div>
-                        <div className="gender">
+                        <div className="gender flex-row">
                             <div>
                                 <label htmlFor="female">Female</label>
                                 <input type="radio" checked={this.state.gender === 'Female'} value='Male' value='Female' id="gender" onChange={this.update('gender')} />
@@ -120,7 +119,6 @@ class EditUserProfleForm extends React.Component {
                                 <label htmlFor="other">Other</label>
                                 <input type="radio" checked={this.state.gender === 'Other'} value='Male' value='Other' id="gender" onChange={this.update('gender')} />
                             </div>
-
                         </div>
                         
                     </div>
@@ -130,6 +128,13 @@ class EditUserProfleForm extends React.Component {
                             Birthday
                         </div>
                         <input type="date" value={this.state.birthday} onChange={this.update('birthday')} id="birthday" />
+                    </div>
+
+                    <div className="section">
+                        <div className="label">
+                            About
+                        </div>
+                        <input type="text" cols="50" rows="5" className="" value={this.state.about} onChange={this.update('about')} id="about" />
                     </div>
 
                     <button className="clicky">Save Changes</button>
