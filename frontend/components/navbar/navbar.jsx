@@ -9,6 +9,7 @@ import { getStoreId } from "../../util/helpers_util";
 import Logo from "../logo/logo";
 import SearchBarContainer from '../search/search_bar_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { loading, setDarkMode } from "../utility";
 
 
 class Navbar extends React.Component{
@@ -36,7 +37,13 @@ class Navbar extends React.Component{
         // this.props.history.push('/cartItems');
     }
     render() {
-        let { loggedIn, storeId, categories } = this.props;
+        let { loggedIn, currentUser, storeId, categories } = this.props;
+
+        if (currentUser) {
+            setDarkMode(currentUser.dark_mode);
+        } else {
+            setDarkMode(false);
+        }
 
         const categoryList = () => {
             if (!categories.length) return null;
@@ -82,6 +89,7 @@ const mapStateToProps = (state) => {
     const categories = Object.values(state.entities.categories) || [];
     return {
         loggedIn: Boolean(currentUser),
+        currentUser,
         storeId,
         categories
     };

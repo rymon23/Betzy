@@ -1,87 +1,85 @@
 
 
-.search {
-    display: flex;
-}
-.search-input {
-  width: 100%;
-  height: 20px;
-  padding: 8px;
-}
-.search-container {
-    border-radius: 96px;
-    border: 1px solid #eee;
-    display: flex;
-    // flex-grow: 1;
-    height: 48px;
-    min-width: fit-content;
-    // width: 809px; 
-    margin: 10px 0; 
+// .search {
+//     display: flex;
+// }
+// .search-input {
+//   width: 100%;
+//   height: 20px;
+//   padding: 8px;
+// }
+// .search-container {
+//     border-radius: 96px;
+//     border: 1px solid #eee;
+//     display: flex;
+//     // flex-grow: 1;
+//     height: 48px;
+//     min-width: fit-content;
+//     // width: 809px; 
+//     margin: 10px 0; 
   
-    .search-input {
-        box-shadow: none; 
-        border-right: 0;
-        min-width: 400px;
-        width: 740px;
-        max-width: 740px;
-        height: auto; 
-        border-top-left-radius: 96px; 
-        border-bottom-left-radius: 96px; 
-        font-size: 23px; 
-        // background-color: rgba(239, 239, 239, 1);
-        box-shadow: none;
-        background: transparent;
-        transition: border 250ms ease-out, background 250ms ease-out;
-        border-color: rgba(34, 34, 34, 0.15);
-        // color: #222222;
-        color: white;
+//     .search-input {
+//         box-shadow: none; 
+//         border-right: 0;
+//         min-width: 400px;
+//         width: 740px;
+//         max-width: 740px;
+//         height: auto; 
+//         border-top-left-radius: 96px; 
+//         border-bottom-left-radius: 96px; 
+//         font-size: 23px; 
+//         // background-color: rgba(239, 239, 239, 1);
+//         box-shadow: none;
+//         background: transparent;
+//         transition: border 250ms ease-out, background 250ms ease-out;
+//         border-color: rgba(34, 34, 34, 0.15);
+//         // color: #222222;
+//         color: white;
 
-        &:focus {
-            // background-color: #ffffff; 
-            // background-color: black;
-            // color: white;
-            background-color: black;
-            color: #bb2a2a;
-        }
-    }
+//         &:focus {
+//             // background-color: #ffffff; 
+//             // background-color: black;
+//             // color: white;
+//             background-color: black;
+//             color: #bb2a2a;
+//         }
+//     }
 
-    .search-input::placeholder {
-    //   font-family: fantasy;
-      color: white;
-      opacity: 1;
-      &:focus-visible {
-          color: #bb2a2a;
-      }
-    }
-    .search-input :focus ::placeholder {
-      color: #bb2a2a;
-    }
-    .search-button{   
-        box-shadow: none;
-        cursor: pointer;
-        outline: none;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 96px;
-        border-bottom-right-radius: 96px;
-        height: 48px;
-        width: 61px; 
-        transition: all 200ms ease-out;
-        border-left: 0; 
-        border-color: rgba(34, 34, 34, 0.15);
+//     .search-input::placeholder {
+//     //   font-family: fantasy;
+//       color: white;
+//       opacity: 1;
+//       &:focus-visible {
+//           color: #bb2a2a;
+//       }
+//     }
+//     .search-input :focus ::placeholder {
+//       color: #bb2a2a;
+//     }
+//     .search-button{   
+//         box-shadow: none;
+//         cursor: pointer;
+//         outline: none;
+//         border-top-left-radius: 0;
+//         border-bottom-left-radius: 0;
+//         border-top-right-radius: 96px;
+//         border-bottom-right-radius: 96px;
+//         height: 48px;
+//         width: 61px; 
+//         transition: all 200ms ease-out;
+//         border-left: 0; 
+//         border-color: rgba(34, 34, 34, 0.15);
         
-        &:hover{
-            background-color: black;
-            color: #bb2a2a;
-            // color: white;
-        }
-    }
-    .search-container, .search-input, .search-button {
-        background-color: var(--app-bg-color-search);
-    } 
-}
-
-
+//         &:hover{
+//             background-color: black;
+//             color: #bb2a2a;
+//             // color: white;
+//         }
+//     }
+//     .search-container, .search-input, .search-button {
+//         background-color: var(--app-bg-color-search);
+//     } 
+// }
 
 
 .flexsearch--wrapper {

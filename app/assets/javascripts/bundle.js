@@ -769,7 +769,7 @@ function (_React$Component) {
       }
 
       if (!category || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
 
       var categoryProducts = products.map(function (product) {
@@ -1207,12 +1207,6 @@ function (_React$Component) {
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           products = _this$props.products;
-
-      if (currentUser) {
-        Object(_utility__WEBPACK_IMPORTED_MODULE_3__["setDarkMode"])(currentUser.dark_mode);
-      }
-
-      ;
 
       var sampleProducts = function sampleProducts(products) {
         if (Object.keys(products).length === 0) {
@@ -1670,6 +1664,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logo_logo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../logo/logo */ "./frontend/components/logo/logo.jsx");
 /* harmony import */ var _search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../search/search_bar_container */ "./frontend/components/search/search_bar_container.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1687,6 +1682,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1739,8 +1735,15 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           loggedIn = _this$props.loggedIn,
+          currentUser = _this$props.currentUser,
           storeId = _this$props.storeId,
           categories = _this$props.categories;
+
+      if (currentUser) {
+        Object(_utility__WEBPACK_IMPORTED_MODULE_11__["setDarkMode"])(currentUser.dark_mode);
+      } else {
+        Object(_utility__WEBPACK_IMPORTED_MODULE_11__["setDarkMode"])(false);
+      }
 
       var categoryList = function categoryList() {
         if (!categories.length) return null;
@@ -1792,6 +1795,7 @@ var mapStateToProps = function mapStateToProps(state) {
   var categories = Object.values(state.entities.categories) || [];
   return {
     loggedIn: Boolean(currentUser),
+    currentUser: currentUser,
     storeId: storeId,
     categories: categories
   };
@@ -3454,13 +3458,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var loading = function loading() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "util-loading"
-  }, "Loading...");
+    className: "loading-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "loading-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Loading..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "loading"
+  })));
 };
 var noItemsFound = function noItemsFound() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "util-no-items"
-  }, "No items found");
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "No items found"));
 };
 var setDarkMode = function setDarkMode(setEnabled) {
   var _appColorVars;

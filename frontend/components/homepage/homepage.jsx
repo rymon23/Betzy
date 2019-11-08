@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import { APP_NAME } from "../../util/config_util";
-import { loading, setDarkMode} from "../utility";
+import { loading } from "../utility";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class HomePage extends React.Component {
@@ -29,10 +29,6 @@ class HomePage extends React.Component {
 
     render() {
         let { currentUser, products } = this.props;
-
-        if (currentUser){
-            setDarkMode(currentUser.dark_mode);
-        };
 
         const sampleProducts = (products) => {
             if ( Object.keys(products).length === 0 ) {

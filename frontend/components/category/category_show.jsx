@@ -36,9 +36,11 @@ class CategoryShow extends React.Component {
                     <ul>{ noItemsFound() }</ul>
                     </div>  
         }
+        
         if (!category || Object.keys(products).length  === 0 || Object.keys(stores).length === 0 ){
-            return <div>{ loading() }</div>
+            return <section>{ loading() }</section>
         }
+
         const categoryProducts = products.map((product) => {
             if (product === undefined) return null;
             return (
