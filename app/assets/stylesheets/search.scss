@@ -82,9 +82,8 @@
 }
 
 
-/***********************
- * Essential Structure *
- ***********************/
+
+
 .flexsearch--wrapper {
 	height: auto;
 	width: auto;
@@ -96,27 +95,20 @@
     display: flex;
     flex-grow: 1;
 }
-	
 .flexsearch--form {
 	overflow: hidden;
     position: relative;
     display: flex;
     flex-grow: 1;
 }
-	
 .flexsearch--input-wrapper {
 	padding: 0 66px 0 0; /* Right padding for submit button width */
     overflow: hidden;
     flex-grow: 1;
 }
-
 .flexsearch--input {
   width: 100%;
 }
-
-/***********************
- * Configurable Styles *
- ***********************/
 .flexsearch {
     display: flex;
     flex-grow: 1;
@@ -131,9 +123,8 @@
     box-sizing: content-box;
     height: 48px;
     padding: 0 46px 0 10px;
-    border-radius: 35px; /* (height/2) + border-width */
+    border-radius: 35px;
     border: 1px solid #888;
-    color: #333;
     font-family: 'Helvetica', sans-serif;
     font-size: 18px;
 }
@@ -153,23 +144,28 @@
     font-family: 'Helvetica', sans-serif;
     font-size: 20px;
     line-height: 60px;
-    margin-right: 9px;
+    // margin-right: 9px;
 }
 .flexsearch--input:focus {
-  outline: none;
-  border-color: #333;
+    outline: none;
+    border-color: #333;
+    background-color: white;
 }
+
 .flexsearch--input:focus.flexsearch--submit {
  	color: #333; 
 }
 .flexsearch--submit:hover {
-    background-color: black;
-  color: #333;
-  cursor: pointer;
+    background-color: var(--app-bg-color-search-btn-hover);
+    // color: #333;
+    cursor: pointer;
+}
+.flexsearch--input:focus + #search-btn {
+    background-color: var(--app-bg-color-search-btn-focus);
 }
 ::-webkit-input-placeholder {
 	color: #888;  
 }
 input:-moz-placeholder {
-  color: #888
+    color: #888
 }

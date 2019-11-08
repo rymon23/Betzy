@@ -2572,15 +2572,14 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         "class": "flexsearch--form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "flexsearch--input-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         "class": "flexsearch--input",
         type: "search",
         placeholder: "Search for items or shops",
         onChange: this.update('query'),
         value: this.state.query
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "search-btn",
         className: "flexsearch--submit",
         type: "submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
@@ -3485,7 +3484,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
       header: 'rgba(73, 73, 73)',
       footerA: 'rgb(0, 0, 0)',
       footerB: 'rgb(107, 107, 107)',
-      search: 'rgb(74, 71, 82)',
+      search: 'rgb(54, 54, 54)',
       borderA: 'rgb(255, 255, 255)',
       borderB: 'rgb(255, 255, 255)',
       fontPage: 'rgb(255, 255, 255)',

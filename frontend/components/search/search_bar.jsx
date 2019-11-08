@@ -29,11 +29,11 @@ class SearchBar extends React.Component{
             <div class="flexsearch">
                 <div class="flexsearch--wrapper">
                     <form class="flexsearch--form" onSubmit={this.handleSubmit}>
-                        <div class="flexsearch--input-wrapper">
+                        {/* <div class="flexsearch--input-wrapper"> */}
                             <input class="flexsearch--input" type="search" placeholder="Search for items or shops"
                                 onChange={this.update('query')} value={this.state.query} />
-				        </div>
-                        <button className='flexsearch--submit' type="submit">
+				        {/* </div> */}
+                        <button id="search-btn" className='flexsearch--submit' type="submit">
                              <FontAwesomeIcon icon={faSearch} />
                         </button>
                         {/* <input class="flexsearch--submit" type="submit" value="&#10140;" /> */}

@@ -25,7 +25,9 @@
   --default-bg-color-header: rgb(255, 255, 255);
   --default-bg-color-footer-a: rgb(45, 53, 61);
   --default-bg-color-footer-b: rgb(81, 96, 110);
-  --default-bg-color-search:rgb(34, 34, 34);
+  --default-bg-color-search:rgb(236, 236, 236);
+  --default-bg-color-search-btn-hover:rgb(187, 185, 185);
+  --default-bg-color-search-btn-focus:rgb(0, 0, 0);
   --default-border-color-a: rgba(34, 34, 34, 0.15);
   --default-border-color-b: rgba(34, 34, 34, 0.15);
   --default-font-color-page:rgb(0, 0, 0);
@@ -38,7 +40,9 @@
   --dm-bg-color-header: rgba(73, 73, 73);
   --dm-bg-color-footer-a: rgb(137, 161, 187);
   --dm-bg-color-footer-b: rgb(137, 161, 187);
-  --dm-bg-color-search:rgb(74, 71, 82);
+  --dm-bg-color-search: rgb(26, 26, 26);
+  --dm-bg-color-search-btn-hover:rgb(58, 58, 58);
+  --dm-bg-color-search-btn-focus:rgb(58, 58, 58);
   --dm-border-color-a: white;
   --dm-border-color-b: white;
   --dm-font-color-page:white;
@@ -53,6 +57,8 @@
   --app-bg-color-footer-a: var(--default-bg-color-footer-a);
   --app-bg-color-footer-b: var(--default-bg-color-footer-b);
   --app-bg-color-search: var(--default-bg-color-search);
+  --app-bg-color-search-btn-hover:var(--default-bg-color-search-btn-hover);
+  --app-bg-color-search-btn-focus:var(--default-bg-color-search-btn-focus);
   --app-border-color-a: var(--default-border-color-a);
   --app-border-color-b: var(--default-border-color-b);
   --app-font-color-page: var(--default-font-color-page);
