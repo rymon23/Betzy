@@ -136,11 +136,12 @@
     width: 60px;
     height: 50px;
     padding: 0;
+    outline: none;
     border: none;
     border-top-right-radius: 35px;
     border-bottom-right-radius: 35px;       
 	background: transparent;
-    color: #888;
+    color: var(--app-font-color-page);
     font-family: 'Helvetica', sans-serif;
     font-size: 20px;
     line-height: 60px;
@@ -153,7 +154,7 @@
 }
 
 .flexsearch--input:focus.flexsearch--submit {
- 	color: #333; 
+ 	// color: #333; 
 }
 .flexsearch--submit:hover {
     background-color: var(--app-bg-color-search-btn-hover);
@@ -162,6 +163,7 @@
 }
 .flexsearch--input:focus + #search-btn {
     background-color: var(--app-bg-color-search-btn-focus);
+    color: white;
 }
 ::-webkit-input-placeholder {
 	color: #888;  

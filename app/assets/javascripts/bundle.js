@@ -3449,6 +3449,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDarkMode", function() { return setDarkMode; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 var loading = function loading() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3461,20 +3463,18 @@ var noItemsFound = function noItemsFound() {
   }, "No items found");
 };
 var setDarkMode = function setDarkMode(setEnabled) {
-  var appColorVars = {
+  var _appColorVars;
+
+  var appColorVars = (_appColorVars = {
     pageA: '--app-bg-color-page',
     pageB: '--app-bg-color-page-b',
     header: '--app-bg-color-header',
     footerA: '--app-bg-color-footer-a',
     footerB: '--app-bg-color-footer-b',
     search: '--app-bg-color-search',
-    borderA: '--app-border-color-a',
-    borderB: '--app-border-color-b',
-    fontPage: '--app-font-color-page',
-    fontFooter: '--app-font-color-footer',
-    fontNavOptions: '--app-font-color-nav-options',
-    fontCategories: '--app-font-color-categories'
-  };
+    searchBtnHover: '--app-bg-color-search-btn-hover',
+    searchBtnFocus: '--app-bg-color-search-btn-focus'
+  }, _defineProperty(_appColorVars, "search", '--app-bg-color-search'), _defineProperty(_appColorVars, "borderA", '--app-border-color-a'), _defineProperty(_appColorVars, "borderB", '--app-border-color-b'), _defineProperty(_appColorVars, "fontPage", '--app-font-color-page'), _defineProperty(_appColorVars, "fontFooter", '--app-font-color-footer'), _defineProperty(_appColorVars, "fontNavOptions", '--app-font-color-nav-options'), _defineProperty(_appColorVars, "fontCategories", '--app-font-color-categories'), _appColorVars);
   var body = document.getElementById('main-body');
 
   var enable = function enable() {
@@ -3484,7 +3484,9 @@ var setDarkMode = function setDarkMode(setEnabled) {
       header: 'rgba(73, 73, 73)',
       footerA: 'rgb(0, 0, 0)',
       footerB: 'rgb(107, 107, 107)',
-      search: 'rgb(54, 54, 54)',
+      search: 'rgb(26, 26, 26)',
+      searchBtnHover: 'rgb(48, 48, 48)',
+      searchBtnFocus: 'rgb(0, 0, 0)',
       borderA: 'rgb(255, 255, 255)',
       borderB: 'rgb(255, 255, 255)',
       fontPage: 'rgb(255, 255, 255)',
@@ -3505,7 +3507,9 @@ var setDarkMode = function setDarkMode(setEnabled) {
       header: 'rgb(255, 255, 255)',
       footerA: 'rgb(45, 53, 61)',
       footerB: 'rgb(81, 96, 110)',
-      search: 'rgb(34, 34, 34)',
+      search: 'rgb(236, 236, 236)',
+      searchBtnHover: 'rgb(187, 185, 185)',
+      searchBtnFocus: 'rgb(0, 0, 0)',
       borderA: 'rgba(34, 34, 34, 0.15)',
       borderB: 'rgba(34, 34, 34, 0.15)',
       fontPage: 'rgb(0, 0, 0)',
