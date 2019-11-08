@@ -3485,7 +3485,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
       header: 'rgba(73, 73, 73)',
       footerA: 'rgb(0, 0, 0)',
       footerB: 'rgb(107, 107, 107)',
-      search: 'rgb(141, 134, 155)',
+      search: 'rgb(74, 71, 82)',
       borderA: 'rgb(255, 255, 255)',
       borderB: 'rgb(255, 255, 255)',
       fontPage: 'rgb(255, 255, 255)',
