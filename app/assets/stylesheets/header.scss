@@ -209,7 +209,6 @@ header {
     }
 }
 
-
 .dropdown-btn{
     background: var(--app-bg-color-header);
     border: none;
@@ -220,7 +219,6 @@ header {
         padding-right: 6px;
     }
 }
-
 
 .dropdown {
     border: none;
@@ -262,7 +260,7 @@ header {
     .dropdown-option-container a, .dropdown-option-wrapper {
         text-decoration: none;
         display: block;
-        color: inherit;
+        // color: inherit;
         padding-bottom: 10px;
         padding-top: 10px;
 }
