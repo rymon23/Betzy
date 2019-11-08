@@ -25,16 +25,44 @@ class SearchBar extends React.Component{
     }
     render(){
         return(
-            <form className='search' onSubmit={this.handleSubmit}>
-                <div className='search-container'>
-                    <input className='search-input' type="text" onChange={this.update('query')} value={this.state.query}
-                        placeholder='Search for items or shops' />
-                        
-                    <button className='search-button' type="submit">
-                        <FontAwesomeIcon icon={faSearch} />
-                    </button>
-                </div>
-            </form>
+
+            <div class="flexsearch">
+                <div class="flexsearch--wrapper">
+                    <form class="flexsearch--form" onSubmit={this.handleSubmit}>
+                        <div class="flexsearch--input-wrapper">
+                            <input class="flexsearch--input" type="search" placeholder="Search for items or shops"
+                                onChange={this.update('query')} value={this.state.query} />
+				        </div>
+                        <button className='flexsearch--submit' type="submit">
+                             <FontAwesomeIcon icon={faSearch} />
+                        </button>
+                        {/* <input class="flexsearch--submit" type="submit" value="&#10140;" /> */}
+			        </form>
+		        </div>
+            </div>
+            // <div class="flexsearch">
+            //     <div class="flexsearch--wrapper">
+            //         <form class="flexsearch--form" action="#" method="post">
+            //             <div class="flexsearch--input-wrapper">
+            //                 <input class="flexsearch--input" type="search" placeholder="search"/>
+			// 	        </div>
+            //             <input class="flexsearch--submit" type="submit" value="&#10140;" />
+			//         </form>
+		    //     </div>
+            // </div>
+
+            // <div className="search-container">
+            //     <form className='search' onSubmit={this.handleSubmit}>
+            //         {/* <div className='search-container'> */}
+            //             <input className='search-input' type="text" onChange={this.update('query')} value={this.state.query}
+            //                 placeholder='Search for items or shops' />
+            //             <button className='search-button' type="submit">
+            //                 <FontAwesomeIcon icon={faSearch} />
+            //             </button>
+            //         {/* </div> */}
+            //     </form>
+            // </div>
+
         )
     }
 }

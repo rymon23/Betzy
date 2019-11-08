@@ -1,56 +1,5 @@
 
 
-// .search-form ul{
-// 	display: flex;
-// 	padding: 0px;
-// }
-// .search-submit {
-
-//   position: absolute;
-// 	right: 0;
-// 	top: 0;
-// 	display: block;
-// 	width: auto;
-// 	height: auto;
-//   padding: 0;
-//   border: none;
-// 	margin-top: 20px; /* margin-top + border-width */
-//   margin-right: 5px; /* border-width */
-// 	background: transparent;
-//   color: #888;
-//   font-family: 'Helvetica', sans-serif;
-//   font-size: 15px;
-//   line-height: 15px;
-// }
-// .search-submit:focus {
-//   outline: none;
-// }
-// .search-submit:hover {
-//   cursor: pointer;
-// }
-// .search-div input[type=text] {
-//   padding: 6px;
-//   margin-top: 8px;
-//   font-size: 20px;
-//   min-width: 200px;
-//   width: 100%;
-//   border: none;
-// }
-// .search-div button {
-//   float: right;
-//   padding: 6px 10px;
-//   margin-top: 8px;
-//   margin-right: 16px;
-//   background: #ddd;
-//   font-size: 17px;
-//   border: none;
-//   cursor: pointer;
-// }
-// .search-div button:hover {
-//   background: #ccc;
-// }
-
-//
 .search {
     display: flex;
 }
@@ -97,7 +46,7 @@
     }
 
     .search-input::placeholder {
-      font-family: fantasy;
+    //   font-family: fantasy;
       color: white;
       opacity: 1;
       &:focus-visible {
@@ -130,4 +79,106 @@
     .search-container, .search-input, .search-button {
         background-color: var(--app-bg-color-search);
     } 
+}
+
+
+/***********************
+ * Essential Structure *
+ ***********************/
+.flexsearch--wrapper {
+	height: auto;
+	width: auto;
+	max-width: 100%;
+	overflow: hidden;
+	background: transparent;
+	margin: 0;
+    position: static;
+    display: flex;
+    flex-grow: 1;
+}
+	
+.flexsearch--form {
+	overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+}
+	
+.flexsearch--input-wrapper {
+	padding: 0 66px 0 0; /* Right padding for submit button width */
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.flexsearch--input {
+  width: 100%;
+}
+
+/***********************
+ * Configurable Styles *
+ ***********************/
+.flexsearch {
+  //padding: 0 25px 0 200px; /* Padding for other horizontal elements */
+  display: flex;
+  flex-grow: 1;
+}
+
+.flexsearch--input {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;    
+    box-sizing: content-box;
+    // height: 60px;
+    height: 48px;
+    padding: 0 46px 0 10px;
+    border-radius: 35px; /* (height/2) + border-width */
+    // border-color: #888;
+    // border-style: solid;
+    // border-width: 1px;
+    border: 1px solid #888;
+    // margin-top: 15px;
+    color: #333;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 18px;
+}
+	
+.flexsearch--submit {
+  position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	width: 60px;
+	height: 60px;
+    padding: 0;
+    border: none;
+	// margin-top: 20px;
+    margin-right: 5px; /* border-width */
+	background: transparent;
+    color: #888;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 20px;
+    line-height: 60px;
+}
+
+.flexsearch--input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.flexsearch--input:focus.flexsearch--submit {
+ 	color: #333; 
+}
+
+.flexsearch--submit:hover {
+  color: #333;
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+	color: #888;  
+}
+
+input:-moz-placeholder {
+  color: #888
 }

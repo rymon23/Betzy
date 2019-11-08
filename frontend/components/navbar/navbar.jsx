@@ -56,7 +56,7 @@ class Navbar extends React.Component{
                 <div className="navbar-top-container flex-wrap">
                     <li className="logo-nav">{Logo()}</li>
                     <SearchBarContainer />
-                    <div className="flex-row flex-wrap">
+                    <div className="navbar-top-left-container flex-row flex-wrap">
                         {loggedComponent}
                         <div className="cart-container clickable" onClick={this.cartClick}>
                             <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />

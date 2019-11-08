@@ -16,13 +16,13 @@
 /* @import "font-awesome"; */
 
 /* Main body */
-body {
-    font-family: 'Roboto', sans-serif;
-}
+// body {
+//     font-family: 'Roboto', sans-serif;
+// }
 
-a {
-    cursor: pointer;
-}
+// a {
+//     cursor: pointer;
+// }
 
 .arrow-up {
     width: 0;
@@ -695,31 +695,6 @@ a.btn-block {
 .slider .image-slide {
     width: 100%;
     height: 100%;
-}
-
-
-
-#category-show {
-    font-weight: medium;
-    font-family: "Hepta";
-    font-size: 15px;
-
-    .category-shop-name {
-        color: gray;
-    }
-
-    ul {
-        li {
-            img {
-                opacity: 1;
-                -webkit-transition: 0.3s ease-in-out;
-                transition: 0.3s ease-in-out;
-            }
-        }
-    }
-    li:hover img {
-        opacity: 0.5;
-    }
 }
 
 

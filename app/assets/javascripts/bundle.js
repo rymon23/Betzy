@@ -1764,7 +1764,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "logo-nav"
       }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "flex-row flex-wrap"
+        className: "navbar-top-left-container flex-row flex-wrap"
       }, loggedComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-container clickable",
         onClick: this.cartClick
@@ -2565,23 +2565,48 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "search",
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "flexsearch"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "flexsearch--wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        "class": "flexsearch--form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-container"
+        "class": "flexsearch--input-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "search-input",
-        type: "text",
+        "class": "flexsearch--input",
+        type: "search",
+        placeholder: "Search for items or shops",
         onChange: this.update('query'),
-        value: this.state.query,
-        placeholder: "Search for items or shops"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "search-button",
+        value: this.state.query
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "flexsearch--submit",
         type: "submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faSearch"]
-      }))));
+      }))))) // <div class="flexsearch">
+      //     <div class="flexsearch--wrapper">
+      //         <form class="flexsearch--form" action="#" method="post">
+      //             <div class="flexsearch--input-wrapper">
+      //                 <input class="flexsearch--input" type="search" placeholder="search"/>
+      // 	        </div>
+      //             <input class="flexsearch--submit" type="submit" value="&#10140;" />
+      //         </form>
+      //     </div>
+      // </div>
+      // <div className="search-container">
+      //     <form className='search' onSubmit={this.handleSubmit}>
+      //         {/* <div className='search-container'> */}
+      //             <input className='search-input' type="text" onChange={this.update('query')} value={this.state.query}
+      //                 placeholder='Search for items or shops' />
+      //             <button className='search-button' type="submit">
+      //                 <FontAwesomeIcon icon={faSearch} />
+      //             </button>
+      //         {/* </div> */}
+      //     </form>
+      // </div>
+      ;
     }
   }]);
 

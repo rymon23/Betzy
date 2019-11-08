@@ -206,17 +206,7 @@ class HomePage extends React.Component {
                                     </ul>
                                 </div>                        
                             </div>
-
                         }
-                        {/* <ul className="category-images-ul">
-                            <li onClick={this.recommendedOnClick}>
-                                <div id="recommended"></div>
-        
-                                <ul>
-                                    {sampleProducts(products)}
-                                </ul>
-                            </li>
-                        </ul> */}
                     </div>                    
                 </div>
 

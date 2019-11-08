@@ -133,10 +133,14 @@ a, .no-text-dec{
     color: inherit;
     text-decoration-line: inherit;
 }
-
+a {
+    cursor: pointer;
+}
 
 //
 body {
+  //font-family: 'Roboto', 'Hepta', sans-serif;
+
   header{
     background-color: var(--app-bg-color-header);
     .navbar-category{
