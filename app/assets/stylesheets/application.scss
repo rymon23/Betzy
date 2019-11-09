@@ -127,8 +127,14 @@ a:visited{
 .align-items-center {
   align-items: center;
 }
+.align-items-flex-end {
+  align-items: flex-end;
+}
 .align-self-center {
   align-self: center;
+}
+.align-self-flex-end {
+  align-self: flex-end;
 }
 
 .width-max-content {
@@ -166,7 +172,13 @@ body, .bg-color-page-a{
   background-color: var(--app-bg-color-page-b);
   color: var(--app-font-color-page);
 }
-
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+.default-font-color{
+  color: var(--app-font-color-page);
+}
 
 .text-with-carot-right {
   display: flex;

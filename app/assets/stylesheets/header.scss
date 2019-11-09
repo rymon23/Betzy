@@ -1,7 +1,7 @@
 
 header {
     width: 100%;
-    margin-top: -2px;
+    margin-top: 12px;
     border-bottom: 2.2px solid var(--app-border-color-a);
     display: flex;
     justify-content: center;  
@@ -35,15 +35,17 @@ header {
 }
 .navbar-bottom-container{
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .navbar-top-left-container{
+    font-size: 14px;
     margin-left: 15px;
 }
 
 .navbar-category {
-    // color: gray;
-    font-size: 14px;
+    font-size: 15px;
+    font-family: var(--app-font-family-header);
+    // font-weight: bold;
 }
 
 .navbar-category, .gift-container {
@@ -148,23 +150,32 @@ header {
 .logged-bar-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    // align-items: center;
     justify-content: space-between;
     .sell-link:hover, .register:hover {
         text-decoration-line: underline;
     }
 }
+.logged-bar-container-logged {
+    align-items: flex-end;
+}
+.logged-bar-container-unlogged {
+    align-items: center;
+}
 
-.cart-container{
+.cart-container {
+    display: flex;
+}
+.cart-wrapper {
     display: flex;
     flex-direction: column;
     border-left: 1px solid var(--app-border-color-a);
     padding-left: 16px;
-    margin-bottom: auto;
-    margin-top: 18px;
+    // margin-bottom: auto;
+    // margin-top: 18px;
     margin-left: 10px;
     p {
-        color: black;
+        // color: black;
     }
     :hover{
         color: black;
@@ -195,7 +206,7 @@ header {
     padding-right: 10px;
 
     p {
-        color: black;
+        // color: black;
         align-self: center;
     }
     :hover{
@@ -213,7 +224,7 @@ header {
     background: var(--app-bg-color-header);
     border: none;
     padding: 0px;
-    margin-bottom: 4px;
+    // margin-bottom: 4px;
 
     .flex-row p {
         padding-right: 6px;
@@ -334,4 +345,14 @@ header {
     border-radius: 50%;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.logged-nav-options-font{
+    font-family: var(--app-font-family-header);
+    font-size: 14px;
+    // color: var(--navbar-text-color);
+}
+.logged-nav-options-icon{
+    font-size: 20px;
+    margin-bottom: 5px;
 }

@@ -6,7 +6,7 @@ const LoggedOutNavbar = (props) => {
     const alertText = 'Please log in or sign up'
     return (
         // <div className="logged-out-navbar-ul">
-        <div className="logged-bar-container">
+        <div className="logged-bar-container align-items-center">
             <a href="#" className="sell-link" onClick={() => alert(alertText)}>Sell on {APP_NAME}</a>
             <GreetingContainer/>
         </div>

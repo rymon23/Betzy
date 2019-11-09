@@ -1563,17 +1563,17 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "logged-bar-container"
+        className: "logged-bar-container align-items-flex-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "favorites-container clickable nav-icon-link-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-        className: "favorites",
+        className: "favorites logged-nav-options-icon",
         icon: "heart",
         size: "1x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Favorites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notifications-container clickable nav-icon-link-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-        className: "notifications",
+        className: "notifications logged-nav-options-icon",
         icon: "bell",
         size: "1x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1584,7 +1584,7 @@ function (_React$Component) {
         className: "shop-manager-container clickable nav-icon-link-container",
         onClick: this.redirectToTarget
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-        className: "shop-manager",
+        className: "shop-manager logged-nav-options-icon",
         icon: "store",
         size: "1x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -1621,7 +1621,7 @@ var LoggedOutNavbar = function LoggedOutNavbar(props) {
   var alertText = 'Please log in or sign up';
   return (// <div className="logged-out-navbar-ul">
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "logged-bar-container"
+      className: "logged-bar-container align-items-center"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#",
       className: "sell-link",
@@ -1767,22 +1767,28 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "logo-nav"
       }, Object(_logo_logo__WEBPACK_IMPORTED_MODULE_8__["default"])()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navbar-top-left-container flex-row flex-wrap"
+        className: "navbar-top-left-container flex-row flex-wrap logged-nav-options-font"
       }, loggedComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "cart-container clickable",
+        className: "cart-container ".concat(loggedIn ? 'align-self-flex-end' : 'align-self-center')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-wrapper clickable",
         onClick: this.cartClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
-        className: "navbar-cart",
+        className: "navbar-cart logged-nav-options-icon",
         icon: "shopping-cart",
         size: "xs"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cart")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "logged-nav-options-font"
+      }, "Cart"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-bottom-container"
       }, categoryList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "gift-container clickable",
         onClick: this.giftClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
         icon: "gift"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Gifts"))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "navbar-category"
+      }, "Gifts"))));
     }
   }]);
 

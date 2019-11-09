@@ -63,19 +63,23 @@ class Navbar extends React.Component{
                 <div className="navbar-top-container flex-wrap">
                     <li className="logo-nav">{Logo()}</li>
                     <SearchBarContainer />
-                    <div className="navbar-top-left-container flex-row flex-wrap">
+                    <div className="navbar-top-left-container flex-row flex-wrap logged-nav-options-font">
                         {loggedComponent}
-                        <div className="cart-container clickable" onClick={this.cartClick}>
-                            <FontAwesomeIcon className="navbar-cart" icon="shopping-cart" size="xs" />
-                            <p>Cart</p>
+
+                        <div className={`cart-container ${loggedIn ? 'align-self-flex-end' : 'align-self-center'}`}>
+                            <div className="cart-wrapper clickable" onClick={this.cartClick}>
+                                <FontAwesomeIcon className="navbar-cart logged-nav-options-icon" icon="shopping-cart" size="xs" />
+                                <p className="logged-nav-options-font">Cart</p>
+                            </div>                            
                         </div>
+
                     </div>
                 </div>
                 <div className="navbar-bottom-container">
                     {categoryList()}
                     <div className="gift-container clickable" onClick={this.giftClick}>
                         <FontAwesomeIcon icon="gift"/>
-                        <p>Gifts</p>
+                        <p className="navbar-category">Gifts</p>
                     </div>
                 </div>
             </div>

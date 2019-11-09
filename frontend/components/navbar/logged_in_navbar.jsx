@@ -21,14 +21,14 @@ class LoggedInNavbar extends React.Component {
     render(){
         return (
 
-            <div className="logged-bar-container">
+            <div className="logged-bar-container align-items-flex-end">
                 <div className="favorites-container clickable nav-icon-link-container">
-                    <FontAwesomeIcon className="favorites" icon="heart" size="1x" />
+                    <FontAwesomeIcon className="favorites logged-nav-options-icon" icon="heart" size="1x" />
                     <p>Favorites</p>
                 </div>
 
                 <div className="notifications-container clickable nav-icon-link-container">
-                    <FontAwesomeIcon className="notifications" icon="bell" size="1x" />
+                    <FontAwesomeIcon className="notifications logged-nav-options-icon" icon="bell" size="1x" />
                     <div className="flex-row align-items-center">
                         <p>Notifications</p>
                         <FontAwesomeIcon icon="caret-down"/>
@@ -36,7 +36,7 @@ class LoggedInNavbar extends React.Component {
                 </div>
 
                 <div className="shop-manager-container clickable nav-icon-link-container" onClick={this.redirectToTarget}>
-                    <FontAwesomeIcon className="shop-manager" icon="store" size="1x" />
+                    <FontAwesomeIcon className="shop-manager logged-nav-options-icon" icon="store" size="1x" />
                     <p className="width-max-content">Shop Manager</p>
                 </div>
 
