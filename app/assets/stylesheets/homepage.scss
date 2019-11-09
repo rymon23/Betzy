@@ -188,3 +188,20 @@
         }
     }
 }
+
+.popular-right-now-container {
+    display: flex;
+    flex-direction: column;
+}
+.popular-right-now {
+    align-self: center;
+    font-weight: bold;
+    font-size: 32px;
+    flex-wrap: 1;
+}
+// .sample-products-ul {
+//     display: flex;
+// }
+.sample-products-li {
+    // flex-wrap: 1;
+}

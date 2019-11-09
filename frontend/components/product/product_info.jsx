@@ -1,41 +1,11 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
-import { loading } from "../utility";
+import { withRouter } from 'react-router-dom';
 
-class ProductShow extends React.Component {
-    constructor(props) {
+
+class ProductInfo extends React.Component {
+    constructor(props){
         super(props);
-        this.state = {
-            product_id: this.props.match.params.productId,
-        };
-        this.handleEdit = this.handleEdit.bind(this);
-        this.AddToCart = this.AddToCart.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-    componentDidMount() {
-        this.props.fetchProduct(this.props.match.params.productId);
-        this.props.fetchStore(this.props.match.params.storeId);
-    }
-    componentDidUpdate(prevProps) {
-        if (this.props.match.params.productId !== prevProps.match.params.productId) {
-            this.props.fetchProduct(this.props.match.params.productId);
-            this.props.fetchStore(this.props.match.params.storeId);
-        }
-    }
 
-    handleEdit(e) {
-        e.preventDefault();
-        this.props.history.push(`/products/${this.props.product.id}/edit`);
-    }
-
-    AddToCart(e) {
-        e.preventDefault();
-        this.props.addToCart(this.state);
-        this.props.history.push('/cartItems');
-    }
-
-    handleChange(e) {
-        this.setState({ quantity: e });
     }
 
     render() {
@@ -51,7 +21,7 @@ class ProductShow extends React.Component {
             <div className="product-show">
                 {/* <div className="carousel"> */}
                 {/* <div className="product-image-container"> */}
-                    <img src={product.imageUrls[0]} />
+                <img src={product.imageUrls[0]} />
                 {/* </div> */}
                 <div className="product-info">
                     <ul>
@@ -66,14 +36,14 @@ class ProductShow extends React.Component {
                             <label className="quantity" htmlFor="quantity">Quantity</label>
                             <br />
                             {/* <NumericInput
-                                required
-                                value={this.state.quantity}
-                                id="quantity"
-                                min={1}
-                                max={product.quantity}
-                                onChange={this.handleChange} /> */}
+                                    required
+                                    value={this.state.quantity}
+                                    id="quantity"
+                                    min={1}
+                                    max={product.quantity}
+                                    onChange={this.handleChange} /> */}
                             {/* <span>Only
-                                in stock!</span> */}
+                                    in stock!</span> */}
                         </li>
                         <li>
                             {addToCartButton}
@@ -96,11 +66,13 @@ class ProductShow extends React.Component {
                 </div>
                 <div>
                     [reviews]
-                </div>
+                    </div>
 
             </div>
         )
     }
+
+
 }
 
-export default withRouter(ProductShow);
+export default withRouter(ProductInfo);

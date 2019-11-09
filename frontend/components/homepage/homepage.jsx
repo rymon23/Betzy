@@ -2,7 +2,8 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import { APP_NAME } from "../../util/config_util";
 import { loading } from "../utility";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { limitStringDisplay } from "../../util/helpers_util";
 
 class HomePage extends React.Component {
     constructor(props){
@@ -28,28 +29,27 @@ class HomePage extends React.Component {
     }
 
     render() {
-        let { currentUser, products } = this.props;
+        let { currentUser, products, stores } = this.props;
 
-        const sampleProducts = (products) => {
-            if ( Object.keys(products).length === 0 ) {
-                return <div>{ loading() }</div>
+        const sampleProducts = (products, stores) => {
+            if (Object.keys(products).length === 0 || Object.keys(stores).length === 0) { 
+                return <div>{ loading() }</div> 
             }
-            const sampleProducts = products.map((product) => {
+
+            const productsList = products.map((product) => {
                 if (product === undefined) return null;
                 return (
-                    <li key={product.id} onClick={this.ProductPage(product)}>
+                    <li className="sample-products-li" key={product.id} onClick={this.ProductPage(product)}>
                         <img src={product.imageUrls[0]} />
-                        <p>{product.name.slice(0, 35)}...</p>
-                        {/* <p className="category-shop-name">
-                        <Link to={`/stores/${product.store_id}`}>
-                            {stores[product.store_id].title}</Link>
-                    </p> */}
-                        {/* {<p className="category-shop-name">{stores[product.store_id].title}</p>} */}
-                        {<p>USD {product.price}</p>}
+                        <p>{ limitStringDisplay(product.name, 60) }</p>
+                        <p className="category-shop-name">
+                            { limitStringDisplay(stores[product.store_id].title, 60) }
+                        </p>
+                        <p><strong>${product.price}</strong></p>
                     </li>
                 )
             });
-            return sampleProducts;
+            return <ul className="sample-products-ul">{ productsList }</ul>;
         }
 
 
@@ -137,7 +137,18 @@ class HomePage extends React.Component {
 
         return (
             <div className="homepage">
-                <div className="static-width">
+                {/* <div className="static-width"> */}
+{/*                     
+                    <div className="test-container">
+                        <div className="flex-row flex-wrap">
+                            <div className="test">Test 1</div>
+                            <div className="test">Test 2</div>
+                            <div className="test">Test 3</div>
+                        </div>
+                    </div> */}
+
+                    <section className="app-flex-width">
+
                     <div className="homepage-banner-container">
                         <h1 className="homepage-banner-head">
                             If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.
@@ -186,25 +197,21 @@ class HomePage extends React.Component {
                     <div className="bottom-banner">
                         {
                         currentUser ? 
-                        <div className="welcome-back-div">
-                                <h3 className="welcome-back" >
-                                    Welcome back { currentUser.username }</h3>                           
-                        </div>
-    
+                            <div className="welcome-back-div">
+                                <h3 className="welcome-back" >Welcome back { currentUser.username }</h3>                           
+                            </div>
                             : 
-                            <div className="popular-right-now-div">
-                                <h2 className="popular-right-now">
-                                    Popular right now</h2> 
-                                <div className="products-listing" id="category-show">
-                                    {/* <h2>{category.name}</h2> */}
-                                    <ul>
-                                        {sampleProducts(products)}
-                                    </ul>
+                            <div className="popular-right-now-container">
+                                <h2 className="popular-right-now">Popular right now</h2> 
+                                <div className="products-listing">
+                                    { sampleProducts(products, stores) }
                                 </div>                        
                             </div>
                         }
-                    </div>                    
-                </div>
+                    </div> 
+                </section>
+
+                {/* </div> */}
 
                 { whatIsBetzy() }
             </div>

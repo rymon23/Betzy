@@ -24,6 +24,7 @@ class StoreShow extends React.Component {
     debugger
     let { currentUserId, store, products } = this.props;
     const CLASS_NAME_HEAD = "store-show";
+    
     const productList = products.map((product) => {
       return (
         <li key={product.id} className="prodict-li">

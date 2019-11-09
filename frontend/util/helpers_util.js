@@ -66,6 +66,10 @@ export const removeDups = (array) => {
   }
 }
 
+export const limitStringDisplay = (string, charsShown = 60) => {
+  if (!string || string.length === 0) return '';
+  return string.length <= charsShown ? string : string.slice(0, charsShown) + "...";
+}
 
 //STORE
 // export const getStoreCategories = (store) => {

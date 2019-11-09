@@ -1,9 +1,14 @@
 
+.product-no-image-background {
+    background-color: var(--app-bg-color-page-b);
+}
+
+
 .products-listing {
-    padding-left: 30px;
     font-size: 16px;
-    font-weight: bold;
-    padding-top: 30px;
+    font-weight: bold;    
+    // padding-left: 30px;
+    // padding-top: 30px;
 }
 .products-listing label {
     margin-left: 70px;
@@ -17,14 +22,14 @@
     margin: 30px auto;
 }
 .products-listing ul > li {
-    width: 250px;
+    width: 180px;
     font-weight: normal;
-    margin: 10px 30px;
+    margin: 10px 20px;
     cursor: pointer;
 }
 .products-listing ul > li img {
-    width: 250px;
-    height: 250px;
+    width: inherit;
+    height: 180px;
 }
 .products-listing ul > li p {
     margin-top: 5px;

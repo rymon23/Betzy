@@ -87,16 +87,16 @@
 
 }
 
-.popular-right-now-div {
-  display: flex;
-  justify-content: center;
-}
-.popular-right-now {
-  font-weight: bold;
-}
+
 .static-width {
   width: 1380px;
 }
+.app-flex-width{
+  width: -webkit-fill-available;
+  max-width: 1380px;
+  justify-content: center;
+}
+
 .app-switch-body-container {
   display: flex;
   justify-content: center;

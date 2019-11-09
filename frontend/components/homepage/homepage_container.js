@@ -9,10 +9,12 @@ import HomePage from './homepage';
 
 const mapStateToProps = (state) => {
     const currentUser = state.session.currentUser;
-    const products = sampleProducts(state.entities.products, 20);
+    const products = sampleProducts(state.entities.products, 6);
+    const stores = state.entities.stores;
     return {
       currentUser,
-      products
+      products,
+      stores
     };
 };
 

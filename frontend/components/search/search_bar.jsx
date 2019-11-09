@@ -26,11 +26,11 @@ class SearchBar extends React.Component{
     render(){
         return(
 
-            <div class="flexsearch">
-                <div class="flexsearch--wrapper">
-                    <form class="flexsearch--form" onSubmit={this.handleSubmit}>
-                        {/* <div class="flexsearch--input-wrapper"> */}
-                            <input class="flexsearch--input" type="search" placeholder="Search for items or shops"
+            <div className="flexsearch">
+                <div className="flexsearch--wrapper">
+                    <form className="flexsearch--form" onSubmit={this.handleSubmit}>
+                        {/* <div className="flexsearch--input-wrapper"> */}
+                            <input className="flexsearch--input" type="search" placeholder="Search for items or shops"
                                 onChange={this.update('query')} value={this.state.query} />
 				        {/* </div> */}
                         <button id="search-btn" className='flexsearch--submit' type="submit">
