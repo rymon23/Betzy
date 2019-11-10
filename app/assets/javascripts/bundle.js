@@ -895,45 +895,44 @@ __webpack_require__.r(__webpack_exports__);
       icon: ['fab', 'youtube'],
       size: "2x"
     }))));
-  };
+  }; // const subscribe = () => {
+  //   return (
+  //     <div className="app-footer-subscribe-container">
+  //       <h3>Get fresh {APP_NAME} trends and unique gift ideas delivered right to your inbox.</h3>
+  //       <div>
+  //         <form className='subscribe'>
+  //           <div className='subscribe-container'>
+  //             <input className='subscribe-input' type="text"
+  //               placeholder='Enter your email' />
+  //             <button className='subscribe-button' type="submit">
+  //               Subscribe
+  //                   </button>
+  //           </div>
+  //         </form>
+  //       </div>
+  //     </div>      
+  //   );
+  // }
 
-  var subscribe = function subscribe() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "app-footer-subscribe-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Get fresh ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], " trends and unique gift ideas delivered right to your inbox."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-      className: "subscribe"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "subscribe-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-      className: "subscribe-input",
-      type: "text",
-      placeholder: "Enter your email"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "subscribe-button",
-      type: "submit"
-    }, "Subscribe")))));
-  };
 
   var footer = function footer() {
-    return (// <div className="footer-container static-width">
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "app-flex-width"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "footer-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "footer-left-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "United States"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "footer-span-middle"
-      }, "English (US)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$ (USD)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "footer-links-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA9 2019 ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "Terms of Use"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "Privacy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "Interest-based ads"))))
-    );
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-flex-width"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "footer-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "footer-left-button"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "United States"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "footer-span-middle"
+    }, "English (US)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$ (USD)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "footer-links-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA9 2019 ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: ""
+    }, "Terms of Use"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: ""
+    }, "Privacy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: ""
+    }, "Interest-based ads"))));
   };
 
   var footerColumns = function footerColumns() {

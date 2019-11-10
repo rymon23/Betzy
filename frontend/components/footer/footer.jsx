@@ -26,28 +26,27 @@ export default () => {
     )
   }
 
-  const subscribe = () => {
-    return (
-      <div className="app-footer-subscribe-container">
-        <h3>Get fresh {APP_NAME} trends and unique gift ideas delivered right to your inbox.</h3>
-        <div>
-          <form className='subscribe'>
-            <div className='subscribe-container'>
-              <input className='subscribe-input' type="text"
-                placeholder='Enter your email' />
-              <button className='subscribe-button' type="submit">
-                Subscribe
-                    </button>
-            </div>
-          </form>
-        </div>
-      </div>      
-    );
-  }
+  // const subscribe = () => {
+  //   return (
+  //     <div className="app-footer-subscribe-container">
+  //       <h3>Get fresh {APP_NAME} trends and unique gift ideas delivered right to your inbox.</h3>
+  //       <div>
+  //         <form className='subscribe'>
+  //           <div className='subscribe-container'>
+  //             <input className='subscribe-input' type="text"
+  //               placeholder='Enter your email' />
+  //             <button className='subscribe-button' type="submit">
+  //               Subscribe
+  //                   </button>
+  //           </div>
+  //         </form>
+  //       </div>
+  //     </div>      
+  //   );
+  // }
 
   const footer = () => {
     return (
-      // <div className="footer-container static-width">
       <div className="app-flex-width">
         <div className="footer-container">
           <button className="footer-left-button">
@@ -96,8 +95,6 @@ export default () => {
             <li>Policies</li>
             <li>Investors</li>
             <li>Careers</li>
-            {/* <li>Press</li> */}
-            {/* <li>Impact</li> */}
           </ul>
         </div>
 
@@ -125,9 +122,7 @@ export default () => {
             </div> */}
 
             <div className="app-footer-container">
-              {/* <div className="app-footer-content"> */}
                 {footerColumns()}
-              {/* </div> */}
             </div>
 
           </div>
