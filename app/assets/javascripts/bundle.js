@@ -1258,7 +1258,7 @@ function (_React$Component) {
 
       var whatIsBetzy = function whatIsBetzy() {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "wob-container bg-color-page-b"
+          className: "wob-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wob-content app-flex-width"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
