@@ -1,6 +1,6 @@
 
 .app-footer-bar {
-  height: 600px;
+  background-color: var(--app-bg-color-footer-b);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -8,12 +8,11 @@
 }
 
 .app-footer-container {
-  height: 600px;
+  background-color: transparent;
+  height: max-content;
   width: 100%;
-  float: center;
   display: flex;
   justify-content: center;
-  background-color: var(--app-bg-color-footer-b);
 
   .app-footer-content{
     height: 100%;
@@ -119,17 +118,17 @@
     } 
 }
 
-.app-footer-content-column-container {
+.app-footer-column-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;  
+  flex-wrap: wrap;
 }
 .app-footer-column {
   display: flex;
   flex-direction: column;
   h3 {
     font-size: 16px;
-    text-align: center;
     padding-bottom: 0px;
   }
   div {
@@ -188,7 +187,7 @@ footer {
   flex-direction: row;
   justify-content: center;
   margin-bottom: -10px;
-  height: 200px;
+  height: max-content;
   align-content: center;
   flex-flow: wrap;
   color: white;
@@ -206,13 +205,16 @@ footer {
   }
 }
 .footer-container {
-  height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  margin-top: 25px;
 }
 .footer-links-container {
   width: 360px;
   display: flex;
-  justify-content: inherit;
+  align-items: center;
+  justify-content: space-between;
 }

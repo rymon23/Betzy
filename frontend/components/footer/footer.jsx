@@ -47,15 +47,18 @@ export default () => {
 
   const footer = () => {
     return (
-      <div className="footer-container static-width">
-        <button>
-          United States   |   English (US)   |   $ (USD)
-        </button>
-        <div className="footer-links-container">
-          <span>© 2019 {APP_NAME}, Inc.</span>
-          <a href="">Terms of Use</a>
-          <a href="">Privacy</a>
-          <a href="">Interest-based ads</a>
+      // <div className="footer-container static-width">
+      <div className="app-flex-width">
+        <div className="footer-container">
+          <button>
+            United States   |   English (US)   |   $ (USD)
+          </button>
+          <div className="footer-links-container">
+            <span>© 2019 {APP_NAME}, Inc.</span>
+            <a href="">Terms of Use</a>
+            <a href="">Privacy</a>
+            <a href="">Interest-based ads</a>
+          </div>
         </div>
       </div>
     )
@@ -63,67 +66,74 @@ export default () => {
   
   const footerColumns = () => {
     return (
-      <>
-      <div className="app-footer-column">
-        <div>
-          <h3>Shop</h3>
+      <div className="app-footer-column-container">
+        <div className="app-footer-column">
+          <div>
+            <h3>Shop</h3>
+            <ul>
+              <li>Gift cards</li>
+              <li>{APP_NAME} blog</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="app-footer-column">
+          <h3>Sell</h3>
           <ul>
-            <li>Gift cards</li>
-            <li>{APP_NAME} blog</li>
+            <li>Sell on {APP_NAME}</li>
+            <li>Teams</li>
+            <li>Forums</li>
+            <li>Affiliates</li>
           </ul>
         </div>
-      </div>
 
-      <div className="app-footer-column">
-        <h3>Sell</h3>
-        <ul>
-          <li>Sell on {APP_NAME}</li>
-          <li>Teams</li>
-          <li>Forums</li>
-          <li>Affiliates</li>
-        </ul>
-      </div>
+        <div className="app-footer-column">
+          <h3>About</h3>
+          <ul>
+            <li>{APP_NAME}, Inc.</li>
+            <li>Policies</li>
+            <li>Investors</li>
+            <li>Careers</li>
+            <li>Press</li>
+            <li>Impact</li>
+          </ul>
+        </div>
 
-      <div className="app-footer-column">
-        <h3>About</h3>
-        <ul>
-          <li>{APP_NAME}, Inc.</li>
-          <li>Policies</li>
-          <li>Investors</li>
-          <li>Careers</li>
-          <li>Press</li>
-          <li>Impact</li>
-        </ul>
+        <div className="app-footer-column">
+          <h3>Help</h3>
+          <ul>
+            <li>Help Center</li>
+          </ul>
+            {socialMediaContent() }
+        </div>
       </div>
-
-      <div className="app-footer-column">
-        <h3>Help</h3>
-        <ul>
-          <li>Help Center</li>
-        </ul>
-          {socialMediaContent() }
-      </div>
-      </>
     );
   }
 
   return (
     <div className="app-footer-bar" >
+
       <div className="app-footer-ridge-top"></div>
 
-        <div className="app-footer-container">
-          { subscribe() }
-        </div>
+        <div className="justify-center">
+          <div className="app-flex-width">
 
-      <div className="app-footer-ridge-bottom"></div>
+            <div className="app-footer-container">
+              {subscribe()}
+            </div>
 
-      <div className="app-footer-container">
-        <div className="app-footer-content">
-          <div className="app-footer-content-column-container">
-            {footerColumns()}
+            <div className="app-footer-container">
+              <div className="app-footer-content">
+                {/* <div className="app-footer-content-column-container"> */}
+                {footerColumns()}
+                {/* </div> */}
+              </div>
+            </div>
+
           </div>
+
         </div>
-      </div>
+
 
       <footer>{footer()}</footer>
     </div>

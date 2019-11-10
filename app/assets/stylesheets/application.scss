@@ -136,6 +136,10 @@ a:visited{
 .align-self-flex-end {
   align-self: flex-end;
 }
+.justify-center{
+  display: flex;
+  justify-content: center;
+}
 
 .width-max-content {
   width: max-content;

@@ -915,21 +915,27 @@ __webpack_require__.r(__webpack_exports__);
   };
 
   var footer = function footer() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "footer-container static-width"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "United States   |   English (US)   |   $ (USD)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "footer-links-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA9 2019 ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: ""
-    }, "Terms of Use"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: ""
-    }, "Privacy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: ""
-    }, "Interest-based ads")));
+    return (// <div className="footer-container static-width">
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-flex-width"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "United States   |   English (US)   |   $ (USD)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-links-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA9 2019 ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, "Terms of Use"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, "Privacy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, "Interest-based ads"))))
+    );
   };
 
   var footerColumns = function footerColumns() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "app-footer-column-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], " blog")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
@@ -945,16 +951,16 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app-footer-ridge-top"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "justify-center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "app-flex-width"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app-footer-container"
   }, subscribe()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-ridge-bottom"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app-footer-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app-footer-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-content-column-container"
-  }, footerColumns()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, footer()));
+  }, footerColumns())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, footer()));
 });
 
 /***/ }),
@@ -1255,7 +1261,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wob-container bg-color-page-b"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "wob-content static-width"
+          className: "wob-content app-flex-width"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wob-head-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
