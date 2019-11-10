@@ -920,7 +920,11 @@ __webpack_require__.r(__webpack_exports__);
         className: "app-flex-width"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "United States   |   English (US)   |   $ (USD)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "footer-left-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "United States"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "footer-span-middle"
+      }, "English (US)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$ (USD)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-links-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA9 2019 ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: ""
@@ -941,7 +945,7 @@ __webpack_require__.r(__webpack_exports__);
       className: "app-footer-column"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sell"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Teams"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Forums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Affiliates"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Policies"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Careers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Press"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Impact"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Policies"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Careers"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Help"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Help Center")), socialMediaContent()));
   };
@@ -956,11 +960,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "app-flex-width"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app-footer-container"
-  }, subscribe()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-content"
-  }, footerColumns())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, footer()));
+  }, footerColumns()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, footer()));
 });
 
 /***/ }),
@@ -3508,11 +3508,11 @@ var setDarkMode = function setDarkMode(setEnabled) {
 
   var enable = function enable() {
     var colorDarkMode = {
-      pageA: 'rgba(73, 73, 73)',
+      pageA: 'rgb(39, 39, 39)',
       pageB: 'rgb(107, 107, 107)',
-      header: 'rgba(73, 73, 73)',
+      header: 'rgb(39, 39, 39)',
       footerA: 'rgb(0, 0, 0)',
-      footerB: 'rgb(107, 107, 107)',
+      footerB: 'rgb(39, 39, 39)',
       search: 'rgb(26, 26, 26)',
       searchBtnHover: 'rgb(48, 48, 48)',
       searchBtnFocus: 'rgb(0, 0, 0)',

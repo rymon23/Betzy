@@ -40,11 +40,11 @@ export const setDarkMode = (setEnabled)=> {
 
   const enable = () => {
     const colorDarkMode = {
-      pageA: 'rgba(73, 73, 73)',
+      pageA: 'rgb(39, 39, 39)',
       pageB: 'rgb(107, 107, 107)',
-      header: 'rgba(73, 73, 73)',
+      header: 'rgb(39, 39, 39)',
       footerA: 'rgb(0, 0, 0)',
-      footerB: 'rgb(107, 107, 107)',
+      footerB: 'rgb(39, 39, 39)',
       search: 'rgb(26, 26, 26)',
       searchBtnHover: 'rgb(48, 48, 48)',
       searchBtnFocus: 'rgb(0, 0, 0)',

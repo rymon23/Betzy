@@ -50,8 +50,10 @@ export default () => {
       // <div className="footer-container static-width">
       <div className="app-flex-width">
         <div className="footer-container">
-          <button>
-            United States   |   English (US)   |   $ (USD)
+          <button className="footer-left-button">
+            <span>United States</span>
+            <span className="footer-span-middle">English (US)</span>
+            <span>$ (USD)</span>
           </button>
           <div className="footer-links-container">
             <span>© 2019 {APP_NAME}, Inc.</span>
@@ -94,8 +96,8 @@ export default () => {
             <li>Policies</li>
             <li>Investors</li>
             <li>Careers</li>
-            <li>Press</li>
-            <li>Impact</li>
+            {/* <li>Press</li> */}
+            {/* <li>Impact</li> */}
           </ul>
         </div>
 
@@ -118,16 +120,14 @@ export default () => {
         <div className="justify-center">
           <div className="app-flex-width">
 
-            <div className="app-footer-container">
+            {/* <div className="app-footer-container">
               {subscribe()}
-            </div>
+            </div> */}
 
             <div className="app-footer-container">
-              <div className="app-footer-content">
-                {/* <div className="app-footer-content-column-container"> */}
+              {/* <div className="app-footer-content"> */}
                 {footerColumns()}
-                {/* </div> */}
-              </div>
+              {/* </div> */}
             </div>
 
           </div>
