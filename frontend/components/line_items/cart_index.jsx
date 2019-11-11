@@ -46,25 +46,19 @@ class CartIndex extends React.Component {
 
         if (!this.state.isLoaded){
             return <div>
-                fetching data...
+                return <div>{loading()}</div>
+            </div>
+        }
+        let { lineItems, stores, products } = this.props;
+
+        if (lineItems &&  lineItems.length === 0 ){
+            return <div>
+                <h2>Your cart is empty</h2>
             </div>
         }
 
-        let { lineItems, stores, products } = this.props;
-
-        debugger
-
-        if (Object.keys(lineItems).length === 0 
-            || Object.keys(stores).length === 0 
-            || Object.keys(products).length === 0 ) {
-            return <div>{loading()}</div>
-        }
-
-        debugger
         const lineItemsListing = (lineItems, products, stores) => {
-            debugger
             const lineItemsList = lineItems.map((lineItem) => {
-                debugger
                 const product = products[lineItem.product_id];
                 const store = stores[product.store_id];
                 return (

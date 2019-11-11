@@ -1628,25 +1628,20 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (!this.state.isLoaded) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "fetching data...");
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "return ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])()));
       }
 
       var _this$props = this.props,
           lineItems = _this$props.lineItems,
           stores = _this$props.stores,
           products = _this$props.products;
-      debugger;
 
-      if (Object.keys(lineItems).length === 0 || Object.keys(stores).length === 0 || Object.keys(products).length === 0) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
+      if (lineItems && lineItems.length === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, "Your cart is empty"));
       }
 
-      debugger;
-
       var lineItemsListing = function lineItemsListing(lineItems, products, stores) {
-        debugger;
         var lineItemsList = lineItems.map(function (lineItem) {
-          debugger;
           var product = products[lineItem.product_id];
           var store = stores[product.store_id];
           return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
