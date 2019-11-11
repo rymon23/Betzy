@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :line_items, only: [:index, :create, :update, :destroy]
       resources :reviews, only: [:update, :destroy]
     end
-    
+
     resources :products, only: [:show, :update, :destroy, :index] do    
       resources :reviews, only: [:index, :create]
     end
@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     end
 
     resources :categories, only: [:show, :index]
-
     resources :search_results, only: [:index]
   end
 end
