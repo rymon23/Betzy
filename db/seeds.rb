@@ -6,7 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+require 'faker'
 require 'open-uri'
+
+Faker::UniqueGenerator.clear # Clears used values for all generators
 
 User.destroy_all
 Category.delete_all
@@ -143,6 +147,11 @@ categories = categories.select {|category| category.name != CATEGORY_ART_TITLE}
 
 # img_path = './app/assets/images/seeds/'
 
+
+def random_dark_mode
+  rand(0..1) == 1
+end
+
 def setup_user_profile_pic(user)
   pic = PROFILE_PICS.sample
   img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'user', pic)
@@ -157,11 +166,24 @@ def setup_store_logo(store)
   store.store_logo.attach(io: file, filename: pic)
 end
 
+def generate_users(amount = 23)
+  (0...amount).each do |n|
+
+    User.create!(
+      username: Faker::Internet.unique.username(specifier: 6..12),
+      password: 'password',
+      email: Faker::Internet.unique.email,
+      dark_mode: random_dark_mode(),
+      about: Faker::Hipster.sentence
+      )
+  end
+end
+
 user1=User.create!(username: 'Demo User',password: 'password',email:"demo@gmail.com")
 user2=User.create!(username: 'Bobdob',password: 'password',email:"bd@gmail.com")
 user3=User.create!(username: 'Debrah',password: 'password',email:"deb@gmail.com")
-user4=User.create!(username: 'Samantha',password: 'password',email:"sam@gmail.com")
-user5=User.create!(username: 'AmusedObzerver',password: 'password',email:"ao@gmail.com")
+user4=User.create!(username: Faker::Name.unique.name, password: 'password',email: Faker::Internet.unique.email)
+user5=User.create!(username: Faker::Name.unique.name, password: 'password',email: Faker::Internet.unique.email)
 
 setup_user_profile_pic(user1)
 setup_user_profile_pic(user2)
@@ -180,12 +202,14 @@ setup_store_logo(store3)
 
 stores = Store.all
 
+generate_users(23)
 
 (0...PRODUCT_SEED_IMG.count).each do |i|
   p = Product.create!(
-    name: "Product #{i}",
-    description: "product description",
+    name: Faker::Commerce.product_name, #"Product #{i}",
+    description: Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 7),
     price: PRODUCT_PRICES.sample,
+    quantity: rand(3..250),
     category_id: categories.sample.id,
     store_id: stores.sample.id)
 
@@ -200,10 +224,12 @@ end
   name = "Art Product #{i}"
   p = Product.create!(
     name: name,
-    description: "#{name} description",
+    description: Faker::Lorem.sentences(number: rand(1..3), supplemental: true),
     price: 999.99,
+    quantity: rand(1..3),
     category_id: category_art.id,
-    store_id: store1.id)
+    store_id: store1.id
+    )
 
   product_img = ART_PICS[i]
   img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'art', ART_PICS[i])

@@ -15,7 +15,9 @@
 
 class Product < ApplicationRecord
   validates :name, length: { minimum: 6 }, presence: true
-  validates :description, :price, :quantity, :store_id, :category_id, presence: true
+  validates :description, length: { minimum: 10 }, presence: true
+  validates :price, numericality: { greater_than: 0 }, presence: true
+  validates :quantity, :store_id, :category_id, presence: true
 
   has_many_attached :images
 
@@ -26,6 +28,10 @@ class Product < ApplicationRecord
   belongs_to :category,
     class_name: :Category,
     foreign_key: :category_id
+
+  has_many :line_items,
+    class_name: :LineItem,
+    foreign_key: :product_id
 
   has_many :reviews,
     class_name: :Review,

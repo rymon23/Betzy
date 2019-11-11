@@ -137,7 +137,7 @@ class StoreShow extends React.Component {
                 </div>
 
                 <div>
-                    <h2>All items</h2>
+                    <h3>All items</h3>
                     <ProductsList
                         products={products}
                         clickEvent={this.ProductPage}
