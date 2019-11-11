@@ -8,28 +8,30 @@ class ProductsList extends React.Component {
     // }
 
     render() {
-        let { products, stores = null, clickEvent } = this.props;
+        let { products, stores = null, clickEvent, editDeleteButton = null } = this.props;
 
-        const productsListing = (products, stores, clickEvent) => {
+        const productsListing = (products, stores, clickEvent, editDeleteButton) => {
             if (Object.keys(products).length === 0 || (stores && Object.keys(stores).length === 0)) {
                 return <div>{loading()}</div>
             }
             const productsList = products.map((product) => {
                 if (product === undefined) return null;
                 return (
-                    <li className="products-listing-li" 
-                        key={product.id} 
-                        onClick={ clickEvent(product) }>
-
-                        <img src={product.imageUrls[0]} />
-                        <p>{limitStringDisplay(product.name, 60)}</p>
-                        {
-                            stores ? 
-                            <p className="products-listing-store-name">{limitStringDisplay(stores[product.store_id].name, 60)}</p>
-                            : 
-                            null
-                        }
-                        <p><strong>${product.price}</strong></p>
+                    <li className="products-listing-li flex-column" 
+                        key={product.id} >
+                        <div className="products-listing-content" 
+                            onClick={ clickEvent(product) }>
+                            <img src={product.imageUrls[0]} />
+                            <p>{ limitStringDisplay(product.name, 60) }</p>
+                            {
+                                stores ? 
+                                <p className="products-listing-store-name">{limitStringDisplay(stores[product.store_id].name, 60)}</p>
+                                : 
+                                null
+                            }
+                            <p><strong>${product.price}</strong></p>
+                        </div>
+                        { editDeleteButton? editDeleteButton(product): null }
                     </li>)
             });
             return <div className="products-listing">
@@ -39,7 +41,7 @@ class ProductsList extends React.Component {
                     </div>;
         }
         return <div>
-                { productsListing(products, stores, clickEvent) }
+            {productsListing(products, stores, clickEvent, editDeleteButton) }
             </div>
     }
 }

@@ -1,14 +1,16 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { loading } from "../utility";
+import ProductsList from '../product/product_list';
 
 class StoreShow extends React.Component {
     constructor() {
         super();
         this.handleEdit = this.handleEdit.bind(this);
         this.handleStock = this.handleStock.bind(this);
-        this.toProductPage = this.toProductPage.bind(this);
+        this.ProductPage = this.ProductPage.bind(this);
         this.toUserProfile = this.toUserProfile.bind(this);
+        this.editDeleteButton = this.editDeleteButton.bind(this);
     }
     componentDidMount() {
         this.props.fetchStore(this.props.match.params.storeId);
@@ -32,12 +34,20 @@ class StoreShow extends React.Component {
         e.preventDefault();
         this.props.history.push(`/stores/${this.props.store.id}/products/new`);   
     }
-    toProductPage(productId){
+    // ProductPage(productId){
+    //     return (e) => {
+    //         e.preventDefault();
+    //         this.props.history.push(`/stores/${this.props.store.id}/products/${productId}`);
+    //     }
+    // }
+
+    ProductPage(product) {
         return (e) => {
             e.preventDefault();
-            this.props.history.push(`/stores/${this.props.store.id}/products/${productId}`);
+            this.props.history.push(`/stores/${product.store_id}/products/${product.id}`)
         }
     }
+
     toUserProfile(userId) {
         return (e) => {
             e.preventDefault();
@@ -87,7 +97,7 @@ class StoreShow extends React.Component {
         const productLi = products.map((product) => {
                 return (
                     <li key={product.id}>
-                        <div onClick={this.toProductPage(product.id)}>
+                        <div onClick={this.ProductPage(product.id)}>
                             <img src={product.imageUrls[0]} />
                             <p className="product-name">{product.name.slice(0, 27)}...</p>
                             <p><strong>USD {product.price}</strong></p>
@@ -126,12 +136,22 @@ class StoreShow extends React.Component {
                     
                 </div>
 
-                <div className="products-listing">
+                <div>
+                    <h2>All items</h2>
+                    <ProductsList
+                        products={products}
+                        clickEvent={this.ProductPage}
+                        editDeleteButton={this.editDeleteButton} />
+                </div>
+
+                    
+                {/* <div className="products-listing">
                     <label>All items</label>
+
                     <ul>
                         {productLi}
                     </ul>
-                </div>
+                </div> */}
 
             </div>
         );
