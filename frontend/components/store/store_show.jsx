@@ -24,7 +24,7 @@ class StoreShow extends React.Component {
     debugger
     let { currentUserId, store, products } = this.props;
     const CLASS_NAME_HEAD = "store-show";
-    
+
     const productList = products.map((product) => {
       return (
         <li key={product.id} className="prodict-li">
@@ -39,7 +39,7 @@ class StoreShow extends React.Component {
     return (
       <div className={`${CLASS_NAME_HEAD}-container`}>
         <div className={`${CLASS_NAME_HEAD}-head`}>
-          <h2>{ store.title }</h2> 
+          <h2>{ store.name }</h2> 
           <h3>Owner: { store.owner.username }</h3>
         </div>
         <div className={`${CLASS_NAME_HEAD}-product-div`} >

@@ -31,6 +31,6 @@ class Api::StoresController < ApplicationController
 
   private
   def store_params
-    params.require(:store).permit(:title, :id, :owner_id)
+    params.require(:store).permit(:name, :id, :owner_id)
   end
 end

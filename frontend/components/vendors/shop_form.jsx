@@ -12,7 +12,7 @@ class StoreForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('store[title]', this.state.title);
+        formData.append('store[name]', this.state.name);
         formData.append('store[owner_id]', this.state.owner.id);
 
         if (this.state.id){
@@ -70,9 +70,9 @@ class StoreForm extends React.Component {
                         <input
                             required
                             type="text"
-                            value={this.state.title}
+                            value={this.state.name}
                             id="name"
-                            onChange={this.update('title')} />
+                            onChange={this.update('name')} />
                     </div>
                    
                 </div>

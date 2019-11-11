@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 class StoreForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "" };
+    this.state = { name: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
@@ -45,8 +45,8 @@ class StoreForm extends React.Component {
             <label>Store Title
               <br />
               <input type="text"
-                value={this.state.title}
-                onChange={this.update('title')}
+                value={this.state.name}
+                onChange={this.update('name')}
                 className="credential-input" />
             </label>
 

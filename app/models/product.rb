@@ -10,11 +10,13 @@
 #  category_id :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  quantity    :integer          default(1), not null
 #
 
 class Product < ApplicationRecord
-  validates :name, :description, :price, :store_id, :category_id, presence: true
-  
+  validates :name, length: { minimum: 6 }, presence: true
+  validates :description, :price, :quantity, :store_id, :category_id, presence: true
+
   has_many_attached :images
 
   belongs_to :store,

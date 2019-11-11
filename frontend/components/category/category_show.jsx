@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { categoryHasProducts } from "../../util/helpers_util";
 import { loading, noItemsFound } from "../utility";
-import { Link } from 'react-router-dom';
+import ProductsList from '../product/product_list';
 
 class CategoryShow extends React.Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class CategoryShow extends React.Component {
                 <li key={product.id} onClick={this.ProductPage(product)} >
                     <img src={product.imageUrls[0]} />
                     <p>{product.name.slice(0, 35)}...</p>
-                    { <p className="category-shop-name">{stores[product.store_id].title}</p> }
+                    { <p className="category-shop-name">{stores[product.store_id].name}</p> }
                     { <p>USD {product.price}</p> }
                 </li>
             )
@@ -55,9 +56,14 @@ class CategoryShow extends React.Component {
         return (
             <div className="products-listing" id="category-show">
                 <h2>{ category.name }</h2>
-                <ul>
+                {/* <ul>
                     {categoryProducts}
-                </ul>
+                </ul> */}
+                <ProductsList
+                    products={products}
+                    stores={stores}
+                    clickEvent={this.ProductPage} />
+
             </div>
         )
     }

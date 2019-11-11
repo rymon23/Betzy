@@ -3,14 +3,15 @@
 # Table name: stores
 #
 #  id         :bigint(8)        not null, primary key
-#  title      :string           not null
+#  name       :string           not null
 #  owner_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Store < ApplicationRecord
-  validates :title, :owner_id, presence: true
+  validates :name, uniqueness: true, length: { minimum: 2 }
+  validates :owner_id, presence: true
 
   has_one_attached :store_logo
 

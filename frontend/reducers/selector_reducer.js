@@ -78,23 +78,47 @@ export const sampleProducts = (allProducts, amount = 18) => {
 
 //SELECT ALL *
 export const selectAllStores = (allStores) => {
-    return Object.keys(allStores)
+  return Object.keys(allStores)
         .map(id => allStores[id]);
 }
 export const selectAllUsers = (allUsers) => {
-    return Object.keys(allUsers)
+  return Object.keys(allUsers)
         .map(id => allUsers[id]);
 }
 export const selectAllProducts = (allProducts) => {
-    return Object.keys(allProducts)
+  return Object.keys(allProducts)
         .map(id => allProducts[id]);
 };
 export const selectAllCategories = (allCategories) => {
-    return Object.keys(allCategories)
+  return Object.keys(allCategories)
         .map(id => allCategories[id]);
 };
 export const selectAllReviews = (allReviews) => {
-    return Object.keys(allReviews)
+  return Object.keys(allReviews)
         .map(id => allReviews[id]);
 };
+export const selectAllSearchResults = (allResults) => {
+  return Object.keys(allResults)
+    .map(id => allResults[id]);
+}
 
+export const searchAutoComplete = (query = "", allProducts, allStores) => {
+  if (query.length < 1 || Object.keys(allProducts).length === 0
+    || Object.keys(allStores).length === 0) return [];
+  debugger
+  query = query.toLowerCase();
+  const suggestions = [];
+  const allItems = Object.values(allProducts)
+    .slice(0)
+    .concat(Object.values(allStores)
+      .slice(0))
+
+  for (i = 0; i < allItems.length && suggestions.length < 10; i++) {
+    const str = allItems[i].name.toLowerCase();
+    if (str.includes(query)) {
+      suggestions.push(str);
+    };
+  };
+  debugger
+  return suggestions;
+}

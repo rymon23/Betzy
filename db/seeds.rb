@@ -170,9 +170,9 @@ setup_user_profile_pic(user4)
 setup_user_profile_pic(user5)
 
 
-store1 = Store.create!(title: "Demo Store", owner_id: user1.id)
-store2 = Store.create!(title: "#{user2.username}'s Store", owner_id: user2.id)
-store3 = Store.create!(title: "#{user3.username}'s Store", owner_id: user3.id)
+store1 = Store.create!(name: "Demo Store", owner_id: user1.id)
+store2 = Store.create!(name: "#{user2.username}'s Store", owner_id: user2.id)
+store3 = Store.create!(name: "#{user3.username}'s Store", owner_id: user3.id)
 
 setup_store_logo(store1)
 setup_store_logo(store2)

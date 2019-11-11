@@ -1,10 +1,11 @@
-import SearchBar from './search_bar';
+import SearchBar from './search_bar3';
 import { connect } from 'react-redux';
-// import { searchProducts } from '../../actions/product_actions';
+import { fetchSearchResults } from '../../actions/search_actions';
+import { fetchStores } from '../../actions/store_actions';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // searchProducts: (query) => dispatch(searchProducts(query))
+        fetchSearchResults: (searchQuery) => dispatch(fetchSearchResults(searchQuery)),
     }
 }
 

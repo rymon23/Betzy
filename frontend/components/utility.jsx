@@ -56,7 +56,7 @@ export const setDarkMode = (setEnabled)=> {
       fontCategories: 'rgb(255, 255, 255)',
     };
     Object.keys(appColorVars).forEach((key) => {
-      debugger
+      // debugger
       body.style.setProperty(appColorVars[key], colorDarkMode[key]);
     });
   };
@@ -79,7 +79,7 @@ export const setDarkMode = (setEnabled)=> {
       fontCategories: 'rgb(70, 70, 70)',
     };
     Object.keys(appColorVars).forEach((key) => {
-      debugger
+      // debugger
       body.style.setProperty(appColorVars[key], colorDefault[key]);
     });
   };

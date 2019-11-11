@@ -46,7 +46,8 @@ class Api::ProductsController < ApplicationController
     params.require(:product).permit(
       :name, 
       :description, 
-      :price, 
+      :price,
+      :quantity, 
       :category_id,
       :store_id)
   end

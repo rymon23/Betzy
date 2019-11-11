@@ -81,7 +81,7 @@ class UserProfileShow extends React.Component {
                     <img src={store.imageUrl} />
                     <div className="enter-shop flex-row">
                         <Link to={`/stores/${store.id}`} className="user-profile-visit-shop-wrapper">
-                            <span className="profile-shop-name">{store.title}</span>
+                            <span className="profile-shop-name">{store.name}</span>
                             <div className="visit-shop-wrapper flex-row">
                                 <span>Visit {isThisUser()? "your" : "their"} shop</span>
                                 <FontAwesomeIcon className="user-profile-visit-shop-caret" icon="caret-right" size="2x"/>

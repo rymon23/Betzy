@@ -26,7 +26,7 @@ class ProductInfo extends React.Component {
                 <div className="product-info">
                     <ul>
                         <li>
-                            <Link to={`/stores/${store.id}`}>{store.title}</Link>
+                            <Link to={`/stores/${store.id}`}>{store.name}</Link>
                         </li>
                         <li>{product.name}</li>
                         <li className="price">

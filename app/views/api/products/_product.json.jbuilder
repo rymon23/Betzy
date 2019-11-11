@@ -1,10 +1,13 @@
 json.extract! product, 
   :id, 
   :name, 
-  :description, 
+  :description,
   :price, 
+  :quantity,
   :store_id,
   :category_id
+
+json.inStock = product.quantity >= 1
 
 if product.images.attached?
     json.imageUrls product.images.map { |file| url_for(file) }

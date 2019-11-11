@@ -109,7 +109,7 @@ class StoreShow extends React.Component {
 
                     <div className="shop-info">
                         <div className="shop-name-show">
-                            {store.title}
+                            {store.name}
                         </div>
                     </div>
 

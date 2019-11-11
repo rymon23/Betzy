@@ -4,6 +4,8 @@ import { APP_NAME } from "../../util/config_util";
 import { loading } from "../utility";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { limitStringDisplay } from "../../util/helpers_util";
+import ProductsList from '../product/product_list';
+
 
 class HomePage extends React.Component {
     constructor(props){
@@ -43,7 +45,7 @@ class HomePage extends React.Component {
                         <img src={product.imageUrls[0]} />
                         <p>{ limitStringDisplay(product.name, 60) }</p>
                         <p className="category-shop-name">
-                            { limitStringDisplay(stores[product.store_id].title, 60) }
+                            { limitStringDisplay(stores[product.store_id].name, 60) }
                         </p>
                         <p><strong>${product.price}</strong></p>
                     </li>
@@ -51,7 +53,6 @@ class HomePage extends React.Component {
             });
             return <ul className="sample-products-ul">{ productsList }</ul>;
         }
-
 
         const middleBanner = () => {
             if ( currentUser ) return null;
@@ -204,9 +205,14 @@ class HomePage extends React.Component {
                             : 
                             <div className="popular-right-now-container">
                                 <h2 className="popular-right-now">Popular right now</h2> 
-                                <div className="products-listing">
-                                    { sampleProducts(products, stores) }
-                                </div>                        
+                                {/* <div className="products-listing"> */}
+                                    <ProductsList 
+                                        products={products} 
+                                        stores={stores} 
+                                        clickEvent={this.ProductPage} />
+                                        
+                                    {/* { sampleProducts(products, stores) } */}
+                                {/* </div>                         */}
                             </div>
                         }
                     </div> 
