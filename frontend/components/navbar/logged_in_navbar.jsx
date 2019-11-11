@@ -6,16 +6,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class LoggedInNavbar extends React.Component {
     constructor(props){
         super(props);
-        this.redirectToTarget = this.redirectToTarget.bind(this);
+        this.toStorePage = this.toStorePage.bind(this);
+        this.toCartPage = this.toCartPage.bind(this);
         // this.cartClick = this.cartClick.bind(this);
     }
 
-    redirectToTarget(e){
+    toStorePage(e){
         e.preventDefault();
         debugger
         let { storeId } = this.props;
         const shopManagerLink = storeId ? `/stores/${storeId}` : "/stores/new";
         this.props.history.push(shopManagerLink);
+    }
+
+    toCartPage(e){
+        e.preventDefault();
+        debugger
+        let { currentUser } = this.props;
+        const cartLink = currentUser ? `/users/${currentUser.id}/line_items` : "/";
+        this.props.history.push(cartLink);
     }
 
     render(){
@@ -35,7 +44,7 @@ class LoggedInNavbar extends React.Component {
                     </div>
                 </div>
 
-                <div className="shop-manager-container clickable nav-icon-link-container" onClick={this.redirectToTarget}>
+                <div className="shop-manager-container clickable nav-icon-link-container" onClick={this.toStorePage}>
                     <FontAwesomeIcon className="shop-manager logged-nav-options-icon" icon="store" size="1x" />
                     <p className="width-max-content">Shop Manager</p>
                 </div>

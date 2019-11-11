@@ -33,26 +33,26 @@ class HomePage extends React.Component {
     render() {
         let { currentUser, products, stores } = this.props;
 
-        const sampleProducts = (products, stores) => {
-            if (Object.keys(products).length === 0 || Object.keys(stores).length === 0) { 
-                return <div>{ loading() }</div> 
-            }
+        // const sampleProducts = (products, stores) => {
+        //     if (Object.keys(products).length === 0 || Object.keys(stores).length === 0) { 
+        //         return <div>{ loading() }</div> 
+        //     }
 
-            const productsList = products.map((product) => {
-                if (product === undefined) return null;
-                return (
-                    <li className="sample-products-li" key={product.id} onClick={this.ProductPage(product)}>
-                        <img src={product.imageUrls[0]} />
-                        <p>{ limitStringDisplay(product.name, 60) }</p>
-                        <p className="category-shop-name">
-                            { limitStringDisplay(stores[product.store_id].name, 60) }
-                        </p>
-                        <p><strong>${product.price}</strong></p>
-                    </li>
-                )
-            });
-            return <ul className="sample-products-ul">{ productsList }</ul>;
-        }
+        //     const productsList = products.map((product) => {
+        //         if (product === undefined) return null;
+        //         return (
+        //             <li className="sample-products-li" key={product.id} onClick={this.ProductPage(product)}>
+        //                 <img src={product.imageUrls[0]} />
+        //                 <p>{ limitStringDisplay(product.name, 60) }</p>
+        //                 <p className="category-shop-name">
+        //                     { limitStringDisplay(stores[product.store_id].name, 60) }
+        //                 </p>
+        //                 <p><strong>${product.price}</strong></p>
+        //             </li>
+        //         )
+        //     });
+        //     return <ul className="sample-products-ul">{ productsList }</ul>;
+        // }
 
         const middleBanner = () => {
             if ( currentUser ) return null;

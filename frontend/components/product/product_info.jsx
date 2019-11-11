@@ -66,13 +66,11 @@ class ProductInfo extends React.Component {
                 </div>
                 <div>
                     [reviews]
-                    </div>
+                </div>
 
             </div>
         )
     }
-
-
 }
 
 export default withRouter(ProductInfo);

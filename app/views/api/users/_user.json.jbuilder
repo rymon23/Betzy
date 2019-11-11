@@ -20,6 +20,7 @@ if user
     end
     if user == current_user
         json.store user.store
+        json.hasLineItems user.line_items.length > 0
     end
     json.createdDate user.created_at.to_date
 end

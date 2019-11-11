@@ -5,7 +5,7 @@ import LoggedOutNavbar from './logged_out_navbar';
 import {withRouter, Link} from 'react-router-dom'; 
 import { fetchAllUsers } from '../../actions/user_actions';
 import { fetchCategories } from '../../actions/category_actions';
-import { getStoreId } from "../../util/helpers_util";
+import { objectValuesArray, getStoreId } from "../../util/helpers_util";
 import Logo from "../logo/logo";
 import SearchBarContainer from '../search/search_bar_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +15,7 @@ import { loading, setDarkMode } from "../utility";
 class Navbar extends React.Component{
     constructor(props){
         super(props);
+
         this.cartClick = this.cartClick.bind(this);
         this.giftClick = this.giftClick.bind(this);
     }
@@ -22,13 +23,17 @@ class Navbar extends React.Component{
         this.props.fetchAllUsers();
         this.props.fetchCategories();
     }
+
     cartClick(e) {
         e.preventDefault();
-        (!this.props || !this.props.loggedIn) ? 
-            alert('Please log in or sign up') 
-            : alert('Go to cart items');
-        // this.props.history.push('/cartItems');
+        if (!this.props || !this.props.loggedIn || !this.props.currentUser) {
+            alert('Please log in or sign up');
+        } else {
+            const cartLink = `/users/${this.props.currentUser.id}/line_items`;
+            this.props.history.push(cartLink);
+        };
     }
+
     giftClick(e) {
         e.preventDefault();
         (!this.props || !this.props.loggedIn) ? 
@@ -36,6 +41,7 @@ class Navbar extends React.Component{
             : alert('Go to gift items');
         // this.props.history.push('/cartItems');
     }
+
     render() {
         let { loggedIn, currentUser, storeId, categories } = this.props;
 
@@ -57,7 +63,7 @@ class Navbar extends React.Component{
                 })}</>);
         };
         
-        const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} />;
+        const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} currentUser={currentUser}/>;
         return (
             <div className="static-width navbar">
                 <div className="navbar-top-container flex-wrap">
@@ -90,7 +96,7 @@ class Navbar extends React.Component{
 const mapStateToProps = (state) => {
     const currentUser = state.session.currentUser; 
     const storeId = getStoreId(currentUser);
-    const categories = Object.values(state.entities.categories) || [];
+    const categories = objectValuesArray(state.entities.categories);
     return {
         loggedIn: Boolean(currentUser),
         currentUser,

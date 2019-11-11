@@ -40,7 +40,7 @@ class Api::LineItemsController < ApplicationController
 
   def line_item_params
     params.require(:line_items).permit(
-      :quantity
+      :quantity,
       :user_id,
       :product_id
       )

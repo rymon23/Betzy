@@ -1,4 +1,8 @@
 
+export const objectValuesArray = (obj) => {
+  return Object.values(obj) || [];
+};
+
 //CURRENT USER
 export const getCurrentUser = (state) => {
   return state.session.currentUser;

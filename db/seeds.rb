@@ -17,7 +17,7 @@ Category.delete_all
 Store.delete_all
 Product.destroy_all
 Review.destroy_all
-
+LineItem.destroy_all
 
 PLACEHOLDER_PICS = {
   user: "ph_profile_pic.jpg",
@@ -114,16 +114,18 @@ BANNER_PICS = [
 
 PRODUCT_PRICES = [
   9.99,
-  99.9,
-  999.9,
-  0.99,
+  99.99,
+  999.50,
+  4.99,
   50.99,
   25.99,
   12.99,
   14.99,
   5.99,
-  2.99,
-  10099
+  8.99,
+  5.00,
+  7.00,
+  600.00,
 ].freeze
 
 CATEGORY_ART_TITLE = "Art & Collectibles"
@@ -236,3 +238,9 @@ end
   file = File.open(img_path)
   p.images.attach(io: file, filename: ART_PICS[i])
 end
+
+line_item1 = LineItem.create!(
+  quantity: 1,
+  user_id: user1.id,
+  product_id: store2.products.sample.id
+)

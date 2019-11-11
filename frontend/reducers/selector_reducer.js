@@ -11,11 +11,7 @@ export const currentUserHasStore = (currentUser) => {
   if (!currentUser) return false;
   return currentUser.store_id;
 };
-// export const currentUserHasStore = (sessionId, allUsers) => {
-//   const user = allUsers[sessionId];
-//   const storeId = user.store_id;
-//   return storeId;
-// };
+
 
 //JOINS SELECT
 export const selectProductsByCategory = (allProducts, categoryId) => {
@@ -27,15 +23,30 @@ export const selectProductsByCategory = (allProducts, categoryId) => {
   });
   return selectedProducts;
 };
+
 export const selectProductsByStore = (allProducts, storeId) => {
-  const selectedProducts = [];
+  const selected = [];
   Object.keys(allProducts).forEach(id => {
     if (allProducts[id].store_id == storeId) {
-      selectedProducts.push(allProducts[id]);
+      selected.push(allProducts[id]);
     }
   });
-  return selectedProducts;
+  return selected;
 };
+
+export const selectProductsByLineItems = (products, allLineItems) => {
+  if (!allLineItems) return [];
+  const productIds = [];
+  Object.values(allLineItems).forEach((lineItem) => {
+    if (productIds.includes(lineItem.product_id)) return;
+    productIds.push(lineItem.product_id);
+  })
+  const selected = Object.values(products)
+        .filter(product => productIds
+        .includes(product.id)) || [];
+  return selected;
+};
+
 export const selectCategoriesByProducts = (allCategories, products) => {
   const catagoryIds = [];
   Object.values(products).forEach((product) => {
@@ -88,6 +99,10 @@ export const selectAllUsers = (allUsers) => {
 export const selectAllProducts = (allProducts) => {
   return Object.keys(allProducts)
         .map(id => allProducts[id]);
+};
+export const selectAllLineItems = (allLineItems) => {
+  return Object.keys(allLineItems)
+        .map(id => allLineItems[id]);
 };
 export const selectAllCategories = (allCategories) => {
   return Object.keys(allCategories)

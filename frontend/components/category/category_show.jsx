@@ -42,23 +42,9 @@ class CategoryShow extends React.Component {
             return <section>{ loading() }</section>
         }
 
-        // const categoryProducts = products.map((product) => {
-        //     if (product === undefined) return null;
-        //     return (
-        //         <li key={product.id} onClick={this.ProductPage(product)} >
-        //             <img src={product.imageUrls[0]} />
-        //             <p>{product.name.slice(0, 35)}...</p>
-        //             { <p className="category-shop-name">{stores[product.store_id].name}</p> }
-        //             { <p>USD {product.price}</p> }
-        //         </li>
-        //     )
-        // });
         return (
             <div className="products-listing" id="category-show">
                 <h2>{ category.name }</h2>
-                {/* <ul>
-                    {categoryProducts}
-                </ul> */}
                 <ProductsList
                     products={products}
                     stores={stores}

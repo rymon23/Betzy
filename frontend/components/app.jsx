@@ -24,6 +24,7 @@ import EditProductForm from './product/edit_product_container';
 import ProductShowContainer from './product/product_show_container';
 import EditUserProfileContainer from './user/edit_user_profile_container';
 import UserProfileShowContainer from './user/user_profile_show_container';
+import CartIndexContainer from './line_items/cart_index_container';
 import SearchProductsContainer from './search/search_index_container';
 import Footer from "./footer/footer";
 
@@ -53,11 +54,13 @@ const App = () => {
 
               <Route exact path='/users/:userId' component={UserProfileShowContainer} />
               <ProtectedRoute exact path='/users/:userId/edit' component={EditUserProfileContainer} />
+              <ProtectedRoute exact path='/users/:userId/line_items' component={CartIndexContainer} />
 
               <Route exact path='/categories/:categoryId' component={CategoryShowContainer} />
 
               <ProtectedRoute exact path='/stores/:storeId/products/new' component={CreateProductContainer} />
               <ProtectedRoute exact path='/products/:productId/edit' component={EditProductForm} />
+              
               <Route exact path='/stores/:storeId/products/:productId' component={ProductShowContainer} />
 
               <Route exact path='/search/:searchQuery' component={SearchProductsContainer} />

@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const loading = () => {
   return (
@@ -17,6 +18,44 @@ export const noItemsFound = () => {
     </div>
   );
 };
+
+export const imgProductCart = (imgSrc) => {
+  return (
+    <div className="img-wrapper">
+      <img className="img-product img-product-cart" src={imgSrc} />
+    </div>
+  );
+};
+export const imgProductIndex = (imgSrc) => {
+  return (
+    <div className="img-wrapper">
+      <img className=" img-product img-product-index" src={imgSrc} />
+    </div>
+  );
+};
+export const imgProductShow = (imgSrc) => {
+  return (
+    <div className="img-wrapper">
+      <img className="img-product img-product-show" src={imgSrc} />
+    </div>
+  );
+};
+export const imgIcon = (imgSrc) => {
+  return (
+    <div className="img-wrapper">
+      <img className="img-icon img-icon-small" src={imgSrc} />
+    </div>
+  );
+};
+export const itemQuantity = (quantity) => {
+  return (
+    <div className="item-quantity-wrapper flex-row">
+      <span className="">{ quantity }</span>
+      <FontAwesomeIcon icon="caret-down" size="1x" />
+    </div>
+  );
+};
+
 
 export const setDarkMode = (setEnabled)=> {
   const appColorVars = {
