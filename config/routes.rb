@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
 
     resource :session, only: [:create, :new, :destroy]
-    resources :users, only: [:create, :show, :update, :index]  
 
-    resources :categories, only: [:show, :index]
-
+    resources :users, only: [:create, :show, :update, :index] do 
+      resources :line_items, only: [:index, :create, :update, :destroy]
+      resources :reviews, only: [:update, :destroy]
+    end
+    
     resources :products, only: [:show, :update, :destroy, :index] do    
       resources :reviews, only: [:index, :create]
     end
@@ -24,11 +26,9 @@ Rails.application.routes.draw do
     resources :stores, only: [:show, :index, :create, :update] do
       resources :products, only: [:create]
     end
-    
-    resources :reviews, only: [:update, :destroy]
 
-    # get :search, controller: :main
-    # resources :search_products, only: [:index]
+    resources :categories, only: [:show, :index]
+
     resources :search_results, only: [:index]
   end
 end
