@@ -226,7 +226,7 @@ end
   name = "Art Product #{i}"
   p = Product.create!(
     name: name,
-    description: Faker::Lorem.sentences(number: rand(1..3), supplemental: true),
+    description: Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 7),
     price: 999.99,
     quantity: rand(1..3),
     category_id: category_art.id,

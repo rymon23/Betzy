@@ -43,12 +43,10 @@ class CartIndex extends React.Component {
     // }
 
     render() {
-
         if (!this.state.isLoaded){
-            return <div>
-                return <div>{loading()}</div>
-            </div>
+            return <div>{loading()}</div>
         }
+
         let { lineItems, stores, products } = this.props;
 
         if (lineItems &&  lineItems.length === 0 ){

@@ -1628,7 +1628,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (!this.state.isLoaded) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "return ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])()));
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
       }
 
       var _this$props = this.props,
@@ -2930,6 +2930,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProductShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3002,9 +3003,7 @@ function (_React$Component) {
       }, "Add to cart");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-show"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: product.imageUrls[0]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["imgProductShow"])(product.imageUrls[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(store.id)

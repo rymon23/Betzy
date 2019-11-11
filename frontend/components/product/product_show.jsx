@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { loading } from "../utility";
+import { imgProductShow, imgIcon, itemQuantity } from '../../components/utility'
 
 class ProductShow extends React.Component {
     constructor(props) {
@@ -51,7 +52,8 @@ class ProductShow extends React.Component {
             <div className="product-show">
                 {/* <div className="carousel"> */}
                 {/* <div className="product-image-container"> */}
-                    <img src={product.imageUrls[0]} />
+                { imgProductShow(product.imageUrls[0]) }
+                    {/* <img src={product.imageUrls[0]} /> */}
                 {/* </div> */}
                 <div className="product-info">
                     <ul>
