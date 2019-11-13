@@ -23,6 +23,10 @@ class Store < ApplicationRecord
     class_name: :Product,
     foreign_key: :store_id
 
+  has_many :product_reviews,
+    through: :products,
+    source: :reviews
+
   has_many :categories,
     through: :products,
     source: :category

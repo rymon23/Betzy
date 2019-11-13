@@ -3886,8 +3886,10 @@ function (_React$Component) {
       }, "View Profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "edit-user-profile-pic-container flex-row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Profile Picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section edit-user-profile-pic-container flex-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "label"
+      }, "Profile Picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-pic-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
@@ -3895,10 +3897,7 @@ function (_React$Component) {
         id: "profile-picture"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-pic"
-      }, preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "normal-button",
-        onClick: this.removeProfilePicture
-      }, "Remove picture"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, preview))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "label"

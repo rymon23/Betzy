@@ -110,6 +110,13 @@ ul {
 a:visited{
     color: inherit;
 }
+a, .no-text-dec{
+    color: inherit;
+    text-decoration-line: inherit;
+}
+a {
+    cursor: pointer;
+}
 
 .clickable:hover{
     cursor: pointer;
@@ -147,14 +154,6 @@ a:visited{
 
 .width-max-content {
   width: max-content;
-}
-
-a, .no-text-dec{
-    color: inherit;
-    text-decoration-line: inherit;
-}
-a {
-    cursor: pointer;
 }
 
 //

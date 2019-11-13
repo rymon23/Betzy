@@ -2,7 +2,7 @@ json.extract! review,
   :id, 
   :author_id,
   :product_id,
-  :stars,
+  :rating,
   :body
 
 json.userName review.author.username
