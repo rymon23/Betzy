@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :new, :destroy]
 
     resources :users, only: [:create, :show, :update, :index] do 
-      resources :line_items, only: [:index, :create, :update, :destroy]
+      resources :line_items, only: [:index, :show, :create, :update, :destroy]
       resources :reviews, only: [:update, :destroy]
     end
 
     resources :products, only: [:show, :update, :destroy, :index] do
-      resources :line_items, only: [:create]  
+      # resources :line_items, only: [:create]  
       resources :reviews, only: [:create]
     end
 

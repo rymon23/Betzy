@@ -139,7 +139,7 @@ var fetchCategory = function fetchCategory(id) {
 /*!***********************************************!*\
   !*** ./frontend/actions/line_item_actions.js ***!
   \***********************************************/
-/*! exports provided: RECEIVE_ALL_LINE_ITEMS, RECEIVE_LINE_ITEM, REMOVE_LINE_ITEM, fetchLineItems, createLineItem, updateLineItem, deleteLineItem */
+/*! exports provided: RECEIVE_ALL_LINE_ITEMS, RECEIVE_LINE_ITEM, REMOVE_LINE_ITEM, fetchLineItems, fetchLineItem, createLineItem, updateLineItem, deleteLineItem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -148,6 +148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LINE_ITEM", function() { return RECEIVE_LINE_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_LINE_ITEM", function() { return REMOVE_LINE_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLineItems", function() { return fetchLineItems; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLineItem", function() { return fetchLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLineItem", function() { return createLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateLineItem", function() { return updateLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteLineItem", function() { return deleteLineItem; });
@@ -177,10 +178,17 @@ var removeLineItem = function removeLineItem() {
   };
 };
 
-var fetchLineItems = function fetchLineItems() {
+var fetchLineItems = function fetchLineItems(userId) {
   return function (dispatch) {
-    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchLineItems"]().then(function (lineItems) {
+    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchLineItems"](userId).then(function (lineItems) {
       return dispatch(receiveAllLineItems(lineItems));
+    });
+  };
+};
+var fetchLineItem = function fetchLineItem(userId, productId) {
+  return function (dispatch) {
+    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchLineItem"](userId, productId).then(function (lineItem) {
+      return dispatch(receiveLineItem(lineItem));
     });
   };
 };
@@ -2984,6 +2992,10 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchProduct(this.props.match.params.productId);
       this.props.fetchStore(this.props.match.params.storeId);
+
+      if (this.props.currentUserId) {
+        this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
+      }
     }
   }, {
     key: "componentDidUpdate",
@@ -2991,6 +3003,11 @@ function (_React$Component) {
       if (this.props.match.params.productId !== prevProps.match.params.productId) {
         this.props.fetchProduct(this.props.match.params.productId);
         this.props.fetchStore(this.props.match.params.storeId);
+        this.props.fetchLineItem(this.props.match.params.storeId);
+
+        if (this.props.currentUserId) {
+          this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
+        }
       }
     }
   }, {
@@ -3008,16 +3025,17 @@ function (_React$Component) {
       if (!this.props || !this.props.currentUserId) {
         alert('Please log in or sign up');
       } else {
-        var lineItem = {
-          quantity: 1,
-          product_id: this.state.product_id,
-          user_id: this.props.currentUserId
-        }; // const formData = new FormData();
-        // formData.append('lineItem[quantity]', this.state.productLineItemQuantity);
-        // formData.append('lineItem[product_id]', this.state.product_id);
-        // formData.append('lineItem[user_id]', this.props.currentUserId);
+        if (!this.props.lineItem) {
+          var lineItem = {
+            quantity: 1,
+            product_id: this.state.product_id,
+            user_id: this.props.currentUserId
+          };
+          this.props.createLineItem(lineItem);
+        } else {
+          alert('You already have this item in your cart!');
+        }
 
-        this.props.createLineItem(lineItem);
         this.props.history.push("/users/".concat(this.props.currentUserId, "/line_items"));
       }
 
@@ -3109,12 +3127,13 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   debugger;
   var product = state.entities.products[ownProps.match.params.productId];
   var store = state.entities.stores[ownProps.match.params.storeId];
+  var lineItem = state.entities.lineItems[ownProps.match.params.lineItemId];
   var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUser"])(state);
   var currentUserId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUserId"])(currentUser);
-  debugger;
   return {
     product: product,
     store: store,
+    lineItem: lineItem,
     currentUserId: currentUserId
   };
 };
@@ -3129,6 +3148,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createLineItem: function createLineItem(lineItem) {
       return dispatch(Object(_actions_line_item_actions__WEBPACK_IMPORTED_MODULE_4__["createLineItem"])(lineItem));
+    },
+    fetchLineItem: function fetchLineItem(userId, productId) {
+      return dispatch(Object(_actions_line_item_actions__WEBPACK_IMPORTED_MODULE_4__["fetchLineItem"])(userId, productId));
     }
   };
 };
@@ -5844,12 +5866,13 @@ var limitStringDisplay = function limitStringDisplay(string) {
 /*!**********************************************!*\
   !*** ./frontend/util/line_items_api_util.js ***!
   \**********************************************/
-/*! exports provided: fetchLineItems, deleteLineItem, createLineItem, updateLineItem */
+/*! exports provided: fetchLineItems, fetchLineItem, deleteLineItem, createLineItem, updateLineItem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLineItems", function() { return fetchLineItems; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLineItem", function() { return fetchLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteLineItem", function() { return deleteLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLineItem", function() { return createLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateLineItem", function() { return updateLineItem; });
@@ -5857,6 +5880,12 @@ var fetchLineItems = function fetchLineItems(userId) {
   return $.ajax({
     method: "GET",
     url: "api/users/".concat(userId, "/line_items")
+  });
+};
+var fetchLineItem = function fetchLineItem(userId, productId) {
+  return $.ajax({
+    method: "GET",
+    url: "api/users/".concat(userId, "/line_items/").concat(productId)
   });
 };
 var deleteLineItem = function deleteLineItem(userId, lineItemId) {
@@ -5868,7 +5897,7 @@ var deleteLineItem = function deleteLineItem(userId, lineItemId) {
 var createLineItem = function createLineItem(line_item) {
   return $.ajax({
     method: "POST",
-    url: "api/products/".concat(line_item.product_id, "/line_items"),
+    url: "api/users/".concat(line_item.user_id, "/line_items"),
     data: {
       line_item: line_item
     }

@@ -1,9 +1,23 @@
 class Api::LineItemsController < ApplicationController
-  before_action :require_login, only: [:index, :create, :update, :destroy]
+  before_action :require_login, only: [:index, :show, :create, :update, :destroy]
+
+  def show
+    # debugger
+    @line_item = LineItem.find_by(params[:user_id], params[:id])  #:id is product_id not line_item.id
+    # debugger
+  end
 
   def index
-    @line_items = LineItem.all 
-    render :index
+    # debugger
+    if current_user
+      @line_items = LineItem.all
+      @line_items.select {|line_item| line_item.user_id == current_user.id }
+      # debugger
+      render :index
+    else
+      @line_items = []
+      render :index
+    end
   end
 
   def create

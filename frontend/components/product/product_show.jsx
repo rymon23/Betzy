@@ -17,11 +17,20 @@ class ProductShow extends React.Component {
     componentDidMount() {
         this.props.fetchProduct(this.props.match.params.productId);
         this.props.fetchStore(this.props.match.params.storeId);
+
+        if (this.props.currentUserId){
+            this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
+        }
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.productId !== prevProps.match.params.productId) {
             this.props.fetchProduct(this.props.match.params.productId);
             this.props.fetchStore(this.props.match.params.storeId);
+            this.props.fetchLineItem(this.props.match.params.storeId);
+
+            if (this.props.currentUserId) {
+                this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
+            }
         }
     }
 
@@ -36,17 +45,16 @@ class ProductShow extends React.Component {
         if (!this.props || !this.props.currentUserId) {
             alert('Please log in or sign up');
         } else {
-
-            const lineItem = {
-                quantity: 1,
-                product_id: this.state.product_id,
-                user_id: this.props.currentUserId
-            };
-            // const formData = new FormData();
-            // formData.append('lineItem[quantity]', this.state.productLineItemQuantity);
-            // formData.append('lineItem[product_id]', this.state.product_id);
-            // formData.append('lineItem[user_id]', this.props.currentUserId);
-            this.props.createLineItem(lineItem);
+            if (!this.props.lineItem) {
+                const lineItem = {
+                    quantity: 1,
+                    product_id: this.state.product_id,
+                    user_id: this.props.currentUserId
+                };
+                this.props.createLineItem(lineItem);
+            }else{
+                alert('You already have this item in your cart!');
+            }
             this.props.history.push(`/users/${this.props.currentUserId}/line_items`);
         };
     }

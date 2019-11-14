@@ -4,6 +4,12 @@ export const fetchLineItems = (userId) => {
         url: `api/users/${userId}/line_items`
     })
 }
+export const fetchLineItem = (userId, productId) => {
+    return $.ajax({
+        method: "GET",
+        url: `api/users/${userId}/line_items/${productId}`
+    });
+}
 export const deleteLineItem = (userId, lineItemId) => {
     return $.ajax({
         method: "DELETE",
@@ -13,7 +19,7 @@ export const deleteLineItem = (userId, lineItemId) => {
 export const createLineItem = (line_item) => {
     return $.ajax({
         method: "POST",
-        url: `api/products/${line_item.product_id}/line_items`,
+        url: `api/users/${line_item.user_id}/line_items`,
         data: { line_item }
     });
 }

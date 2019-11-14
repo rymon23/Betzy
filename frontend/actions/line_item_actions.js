@@ -23,9 +23,13 @@ const removeLineItem = () => {
     }
 };
 
-export const fetchLineItems = () => (dispatch) => {
-    return APIUtil.fetchLineItems()
+export const fetchLineItems = (userId) => (dispatch) => {
+    return APIUtil.fetchLineItems(userId)
         .then((lineItems) => dispatch(receiveAllLineItems(lineItems)))
+};
+export const fetchLineItem = (userId, productId) => (dispatch) => {
+    return APIUtil.fetchLineItem(userId, productId)
+        .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };
 export const createLineItem = (lineItem) => (dispatch) => {
     return APIUtil.createLineItem(lineItem);
