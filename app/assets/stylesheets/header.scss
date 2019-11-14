@@ -178,15 +178,15 @@ header {
     // margin-top: 18px;
     margin-left: 10px;
     p {
-        // color: black;
+        color: var(--app-font-color-hover);
     }
     :hover{
-        color: black;
+        color: var(--app-font-color-hover);
     }
 }
 
 .navbar-cart {
-    color: grey;
+    color: var(--app-font-color-categories);
     height: 20px;
     align-self: center;
     font-size: 18px;
@@ -207,13 +207,13 @@ header {
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
-
+    color: var(--app-font-color-categories);
     p {
         // color: black;
         align-self: center;
     }
     :hover{
-        color: black;
+        color: var(--app-font-color-hover);
     }
 }
 
@@ -227,10 +227,13 @@ header {
     background: var(--app-bg-color-header);
     border: none;
     padding: 0px;
-    // margin-bottom: 4px;
+    color: var(--app-font-color-categories);
 
     .flex-row p {
         padding-right: 6px;
+    }
+    &:hover{
+        color: var(--app-font-color-hover);
     }
 }
 
@@ -274,9 +277,9 @@ header {
     .dropdown-option-container a, .dropdown-option-wrapper {
         text-decoration: none;
         display: block;
-        // color: inherit;
         padding-bottom: 10px;
         padding-top: 10px;
+        color: var(--app-font-color-page);
 }
 .dropdown-menu .dropdown-option-container a:hover, .dropdown-option-wrapper:hover {
     background: lightgray;
@@ -328,6 +331,10 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    color: var(--app-font-color-page);
+    &:hover{
+        color: var(--app-font-color-page);
+    }
 }
 .view-profile-wrapper {
     width: max-content;

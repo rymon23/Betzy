@@ -38,8 +38,7 @@ class Navbar extends React.Component{
         e.preventDefault();
         (!this.props || !this.props.loggedIn) ? 
             alert('Please log in or sign up') 
-            : alert('Go to gift items');
-        // this.props.history.push('/cartItems');
+            : alert('The Gifts page is currently under construction');
     }
 
     render() {

@@ -2279,7 +2279,7 @@ function (_React$Component) {
     key: "giftClick",
     value: function giftClick(e) {
       e.preventDefault();
-      !this.props || !this.props.loggedIn ? alert('Please log in or sign up') : alert('Go to gift items'); // this.props.history.push('/cartItems');
+      !this.props || !this.props.loggedIn ? alert('Please log in or sign up') : alert('The Gifts page is currently under construction');
     }
   }, {
     key: "render",
@@ -4367,7 +4367,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
     search: '--app-bg-color-search',
     searchBtnHover: '--app-bg-color-search-btn-hover',
     searchBtnFocus: '--app-bg-color-search-btn-focus'
-  }, _defineProperty(_appColorVars, "search", '--app-bg-color-search'), _defineProperty(_appColorVars, "borderA", '--app-border-color-a'), _defineProperty(_appColorVars, "borderB", '--app-border-color-b'), _defineProperty(_appColorVars, "whatIsBetsy", '--app-bg-color-wib'), _defineProperty(_appColorVars, "fontPage", '--app-font-color-page'), _defineProperty(_appColorVars, "fontFooter", '--app-font-color-footer'), _defineProperty(_appColorVars, "fontNavOptions", '--app-font-color-nav-options'), _defineProperty(_appColorVars, "fontCategories", '--app-font-color-categories'), _appColorVars);
+  }, _defineProperty(_appColorVars, "search", '--app-bg-color-search'), _defineProperty(_appColorVars, "borderA", '--app-border-color-a'), _defineProperty(_appColorVars, "borderB", '--app-border-color-b'), _defineProperty(_appColorVars, "whatIsBetsy", '--app-bg-color-wib'), _defineProperty(_appColorVars, "fontPage", '--app-font-color-page'), _defineProperty(_appColorVars, "fontFooter", '--app-font-color-footer'), _defineProperty(_appColorVars, "fontNavOptions", '--app-font-color-nav-options'), _defineProperty(_appColorVars, "fontCategories", '--app-font-color-categories'), _defineProperty(_appColorVars, "fontHover", '--app-font-color-hover'), _appColorVars);
   var body = document.getElementById('main-body');
 
   var enable = function enable() {
@@ -4386,7 +4386,8 @@ var setDarkMode = function setDarkMode(setEnabled) {
       fontPage: 'rgb(255, 255, 255)',
       fontFooter: 'rgb(255, 255, 255)',
       fontNavOptions: 'rgb(255, 255, 255)',
-      fontCategories: 'rgb(255, 255, 255)'
+      fontCategories: 'rgb(255, 255, 255)',
+      fontHover: 'rgb(255, 255, 255)'
     };
     Object.keys(appColorVars).forEach(function (key) {
       // debugger
@@ -4410,7 +4411,8 @@ var setDarkMode = function setDarkMode(setEnabled) {
       fontPage: 'rgb(0, 0, 0)',
       fontFooter: 'rgb(255, 255, 255)',
       fontNavOptions: 'rgb(70, 70, 70)',
-      fontCategories: 'rgb(70, 70, 70)'
+      fontCategories: 'rgb(70, 70, 70)',
+      fontHover: 'rgb(0, 0, 0)'
     };
     Object.keys(appColorVars).forEach(function (key) {
       // debugger

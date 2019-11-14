@@ -215,10 +215,10 @@ a.btn-block {
 
 
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-    z-index: 1;
-}
+// .dropdown:hover .dropdown-menu {
+//     display: block;
+//     z-index: 1;
+// }
 
 .user-icon {
     font-size: x-large;
@@ -379,7 +379,7 @@ a.btn-block {
 .owner-info {
     margin-left: 539px;
     text-align: center;
-    color: var(--app-border-color-a);
+    color: var(--app-font-color-categories);
     margin-top: 20px;
     margin-bottom: 10px;
     // width: 360px;
@@ -396,7 +396,7 @@ a.btn-block {
 }
 
 .owner-info > p {
-    color: var(--app-border-color-a);
+    color: var(--app-font-color-categories);
     font-weight: bold;
 }
 

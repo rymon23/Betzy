@@ -75,6 +75,7 @@ export const setDarkMode = (setEnabled)=> {
     fontFooter: '--app-font-color-footer',
     fontNavOptions: '--app-font-color-nav-options',
     fontCategories: '--app-font-color-categories',
+    fontHover: '--app-font-color-hover',
   }
   const body = document.getElementById('main-body');
 
@@ -95,6 +96,8 @@ export const setDarkMode = (setEnabled)=> {
       fontFooter: 'rgb(255, 255, 255)',
       fontNavOptions: 'rgb(255, 255, 255)',
       fontCategories: 'rgb(255, 255, 255)',
+      fontHover: 'rgb(255, 255, 255)',
+
     };
     Object.keys(appColorVars).forEach((key) => {
       // debugger
@@ -119,6 +122,7 @@ export const setDarkMode = (setEnabled)=> {
       fontFooter: 'rgb(255, 255, 255)',
       fontNavOptions: 'rgb(70, 70, 70)',
       fontCategories: 'rgb(70, 70, 70)',
+      fontHover: 'rgb(0, 0, 0)',
     };
     Object.keys(appColorVars).forEach((key) => {
       // debugger

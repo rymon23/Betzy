@@ -36,6 +36,7 @@
   --default-font-color-nav-options:rgb(70, 70, 70);
   --default-font-color-categories:rgb(34, 34, 34);
   --default-font-color-creator-links: rgb(255, 255, 224);
+  --default-font-color-hover: rgb(0, 0, 0);
   //DARK MODE COLOR
   --dm-bg-color-page: rgba(73, 73, 73);
   --dm-bg-color-page-b: rgb(107, 107, 107);
@@ -53,6 +54,7 @@
   --dm-font-color-nav-options:white;
   --dm-font-color-categories:white;
   --dm-font-color-creator-links:white;
+  --dm-font-color-hover:white;
 
   //APP STYLES
   --app-bg-color-page: var(--default-bg-color-page);
@@ -71,6 +73,7 @@
   --app-font-color-nav-options: var(--default-font-color-nav-options);
   --app-font-color-categories: var(--default-font-color-categories);
   --app-font-color-creator-links: var(--default-font-color-creator-links);
+  --app-font-color-hover: var(--default-font-color-hover);
 
   //
   --app-font-color-main: rgb(137, 161, 187);
