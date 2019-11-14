@@ -149,7 +149,7 @@ class HomePage extends React.Component {
                         <div className="wob-help-container">
                             <div className="wob-help">
                                 <h2>Have a question? Well, we’ve got some answers.</h2>
-                                <button>Go to Help Center</button>
+                                <button onClick={() => alert("Help Center is currently under construction")}>Go to Help Center</button>
                             </div>                       
                         </div>
 

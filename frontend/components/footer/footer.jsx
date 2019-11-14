@@ -1,10 +1,35 @@
 import React from "react";
+import {withRouter, Link} from 'react-router-dom'; 
 import { APP_NAME } from "../../util/config_util";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, } from '@fortawesome/free-solid-svg-icons'
 
 //FOOTER
 export default () => {
+
+
+  const creatorLinks = () => {
+    return (
+      <div className="creator-links-container">
+        <a href="https://rymon23.github.io/" target="_blank">
+          <h3 className="created-by">Created by Ryan Monaghan</h3>
+        </a>
+        <div className="creator-link-icon-container">
+          <ul className="creator-link-icons">
+            <li>
+              <a target="_blank" href="https://github.com/rymon23"><FontAwesomeIcon className="sm-link" icon={['fab', 'github']} size="2x" /></a>
+            </li>
+            <li>
+                <a target="_blank" href="https://www.linkedin.com/in/ryan-monaghan-027a4167/"><FontAwesomeIcon className="sm-link" icon={['fab', 'linkedin']} size="2x"/></a>
+            </li>
+            <li>
+              <a target="_blank" href="https://angel.co/ryan-monaghan-4"><FontAwesomeIcon className="sm-link" icon={['fab', 'angellist']} size="2x" /></a>
+            </li>
+          </ul>
+        </div>
+      </div>      
+    )
+  }
 
   const socialMediaContent = () => {
     return (
@@ -121,8 +146,10 @@ export default () => {
               {subscribe()}
             </div> */}
 
-            <div className="app-footer-container">
-                {footerColumns()}
+            <div className="app-footer-container justify-center">
+              {/* {footerColumns()} */}
+              {creatorLinks()}
+
             </div>
 
           </div>

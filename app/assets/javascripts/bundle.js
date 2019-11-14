@@ -963,15 +963,53 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _util_config_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/config_util */ "./frontend/util/config_util.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_config_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/config_util */ "./frontend/util/config_util.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+
 
 
 
  //FOOTER
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
+  var creatorLinks = function creatorLinks() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "creator-links-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "https://rymon23.github.io/",
+      target: "_blank"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      className: "created-by"
+    }, "Created by Ryan Monaghan")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "creator-link-icon-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "creator-link-icons"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      target: "_blank",
+      href: "https://github.com/rymon23"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+      className: "sm-link",
+      icon: ['fab', 'github'],
+      size: "2x"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      target: "_blank",
+      href: "https://www.linkedin.com/in/ryan-monaghan-027a4167/"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+      className: "sm-link",
+      icon: ['fab', 'linkedin'],
+      size: "2x"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      target: "_blank",
+      href: "https://angel.co/ryan-monaghan-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+      className: "sm-link",
+      icon: ['fab', 'angellist'],
+      size: "2x"
+    }))))));
+  };
+
   var socialMediaContent = function socialMediaContent() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-social-media-container"
@@ -979,25 +1017,25 @@ __webpack_require__.r(__webpack_exports__);
       className: "app-social-media-content"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "app-social-media-download-button"
-    }, "Download the ".concat(_util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], " App")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Download the ".concat(_util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], " App")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-social-media-tags"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
       className: "sm-link",
       icon: ['fab', 'instagram'],
       size: "2x"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
       className: "sm-link",
       icon: ['fab', 'facebook-square'],
       size: "2x"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
       className: "sm-link",
       icon: ['fab', 'pinterest'],
       size: "2x"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
       className: "sm-link",
       icon: ['fab', 'twitter'],
       size: "2x"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
       className: "sm-link",
       icon: ['fab', 'youtube'],
       size: "2x"
@@ -1033,7 +1071,7 @@ __webpack_require__.r(__webpack_exports__);
       className: "footer-span-middle"
     }, "English (US)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$ (USD)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "footer-links-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA9 2019 ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA9 2019 ", _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: ""
     }, "Terms of Use"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: ""
@@ -1047,11 +1085,11 @@ __webpack_require__.r(__webpack_exports__);
       className: "app-footer-column-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], " blog")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Gift cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], " blog")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sell"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Teams"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Forums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Affiliates"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sell"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sell on ", _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Teams"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Forums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Affiliates"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Policies"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Careers"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], ", Inc."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Policies"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Careers"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "app-footer-column"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Help"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Help Center")), socialMediaContent()));
   };
@@ -1065,8 +1103,8 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app-flex-width"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "app-footer-container"
-  }, footerColumns()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, footer()));
+    className: "app-footer-container justify-center"
+  }, creatorLinks()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, footer()));
 });
 
 /***/ }),
@@ -1408,7 +1446,11 @@ function (_React$Component) {
           className: "wob-help-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wob-help"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Have a question? Well, we\u2019ve got some answers."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Go to Help Center")))));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Have a question? Well, we\u2019ve got some answers."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return alert("Help Center is currently under construction");
+          }
+        }, "Go to Help Center")))));
       };
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3031,7 +3073,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-envelope-o",
         "aria-hidden": "true"
-      }), store.ownerEmail))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "[reviews]"));
+      }), store.ownerEmail))));
     }
   }]);
 

@@ -113,9 +113,9 @@ class ProductShow extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     [reviews]
-                </div>
+                </div> */}
 
             </div>
         )

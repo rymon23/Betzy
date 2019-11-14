@@ -103,12 +103,19 @@
     button {
         width: fit-content;
         padding: 12px;
-        border: 2px solid black;
+        border: 2px solid var(--app-font-color-page);
+        color: var(--app-font-color-page);
         border-radius: 40px;
         align-self: center;
         font-weight: bold;
         font-size: 16px;
-        background-color: var(--app-bg-color-container);
+        background-color: transparent;
+        &:hover{
+            background-color: black;
+            border-color: black;
+            color: white;
+            cursor: pointer;
+        }
     }
 }
 
