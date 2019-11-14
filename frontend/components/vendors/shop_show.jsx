@@ -123,13 +123,13 @@ class StoreShow extends React.Component {
                         </div>
                     </div>
 
-                    <div className="owner-info" 
+                    <div className="owner-info clickable" 
                         onClick={this.toUserProfile(store.owner_id)} >
                         <p>Shop owner</p>
                         <img src={store.ownerImgUrl} id="owner-info-image" />
                         <div className="shop-owner-name">{ users[store.owner_id].username }</div>
                         <div className="shop-owner-email">
-                            <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                            {/* <i className="fa fa-envelope-o" aria-hidden="true"></i> */}
                             { users[store.owner_id].email }
                         </div>
                     </div>

@@ -104,13 +104,17 @@ class ProductShow extends React.Component {
                         {product.description}
                     </div>
                     <div className="owner-info">
-                        <p>Meet {store.ownerName}</p>
-                        <img id="owner-info-image" src={store.ownerImgUrl} />
-                        <div className="shop-owner-name">{store.ownerName}</div>
-                        <div className="shop-owner-email">
-                            <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                            {store.ownerEmail}
+                        <div className="owner-info-wrapper clickable">
+                            <p>Meet {store.ownerName}</p>
+                            <img id="owner-info-image" src={store.ownerImgUrl} />
+                            <div className="shop-owner-name">{store.ownerName}</div>
+                            <div className="shop-owner-email">
+                                {/* <i className="fa fa-envelope-o" aria-hidden="true"></i> */}
+                                {store.ownerEmail}
+                            </div>
+
                         </div>
+
                     </div>
                 </div>
                 {/* <div>

@@ -379,14 +379,24 @@ a.btn-block {
 .owner-info {
     margin-left: 539px;
     text-align: center;
-    color: gray;
+    color: var(--app-border-color-a);
     margin-top: 20px;
     margin-bottom: 10px;
-    width: 360px;
+    // width: 360px;
+    // display: flex;
+    // justify-content: center;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.owner-info-wrapper {
+    width: fit-content;
 }
 
 .owner-info > p {
-    color: black;
+    color: var(--app-border-color-a);
     font-weight: bold;
 }
 

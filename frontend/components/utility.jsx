@@ -84,7 +84,7 @@ export const setDarkMode = (setEnabled)=> {
       pageB: 'rgb(107, 107, 107)',
       header: 'rgb(39, 39, 39)',
       footerA: 'rgb(0, 0, 0)',
-      footerB: 'rgb(39, 39, 39)',
+      footerB: 'rgb(17, 17, 17)',
       search: 'rgb(26, 26, 26)',
       searchBtnHover: 'rgb(48, 48, 48)',
       searchBtnFocus: 'rgb(0, 0, 0)',

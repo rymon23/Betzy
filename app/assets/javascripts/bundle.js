@@ -3063,6 +3063,8 @@ function (_React$Component) {
         htmlFor: "details"
       }, "Item details"), product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "owner-info-wrapper clickable"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "owner-info-image",
         src: store.ownerImgUrl
@@ -3070,10 +3072,7 @@ function (_React$Component) {
         className: "shop-owner-name"
       }, store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-envelope-o",
-        "aria-hidden": "true"
-      }), store.ownerEmail))));
+      }, store.ownerEmail)))));
     }
   }]);
 
@@ -4377,7 +4376,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
       pageB: 'rgb(107, 107, 107)',
       header: 'rgb(39, 39, 39)',
       footerA: 'rgb(0, 0, 0)',
-      footerB: 'rgb(39, 39, 39)',
+      footerB: 'rgb(17, 17, 17)',
       search: 'rgb(26, 26, 26)',
       searchBtnHover: 'rgb(48, 48, 48)',
       searchBtnFocus: 'rgb(0, 0, 0)',
@@ -4926,7 +4925,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-name-show"
       }, store.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "owner-info",
+        className: "owner-info clickable",
         onClick: this.toUserProfile(store.owner_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Shop owner"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: store.ownerImgUrl,
@@ -4935,10 +4934,7 @@ function (_React$Component) {
         className: "shop-owner-name"
       }, users[store.owner_id].username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-envelope-o",
-        "aria-hidden": "true"
-      }), users[store.owner_id].email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All items"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, users[store.owner_id].email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All items"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         products: products,
         clickEvent: this.ProductPage,
         editDeleteButton: this.editDeleteButton
