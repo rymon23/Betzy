@@ -54,6 +54,9 @@
         list-style: none;
     }
 }
+.line-item-content-container {
+    padding-bottom: 20px;
+}
 .line-item-content {
     display: flex;
     flex-direction: row;
@@ -66,7 +69,9 @@
     }
 }
 .line-item-container {
-    padding-right: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--app-border-color-a);
 }
 .line-item-store-link-container {
     align-items: center;
@@ -81,4 +86,8 @@
     height: fit-content;
     font-weight: bold;
     margin: 0px;
+}
+.line-item-content-middle{
+    width: 300px;
+    margin-left: 10px;
 }

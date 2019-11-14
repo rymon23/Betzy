@@ -19,12 +19,14 @@ Rails.application.routes.draw do
       resources :reviews, only: [:update, :destroy]
     end
 
-    resources :products, only: [:show, :update, :destroy, :index] do    
-      resources :reviews, only: [:index, :create]
+    resources :products, only: [:show, :update, :destroy, :index] do
+      resources :line_items, only: [:create]  
+      resources :reviews, only: [:create]
     end
 
     resources :stores, only: [:show, :index, :create, :update] do
       resources :products, only: [:create]
+      resources :reviews, only: [:index]
     end
 
     resources :categories, only: [:show, :index]

@@ -9,9 +9,9 @@ class Api::LineItemsController < ApplicationController
   def create
     @line_item = LineItem.new(line_item_params)
     if @line_item.save
-      render :index
+      # render :index
     else
-        render json: @line_item.errors.full_messages
+      render json: ["Something went wrong"], status: 422
     end
   end
 
@@ -39,7 +39,7 @@ class Api::LineItemsController < ApplicationController
   end
 
   def line_item_params
-    params.require(:line_items).permit(
+    params.require(:line_item).permit(
       :quantity,
       :user_id,
       :product_id

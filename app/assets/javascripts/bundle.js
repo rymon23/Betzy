@@ -186,9 +186,7 @@ var fetchLineItems = function fetchLineItems() {
 };
 var createLineItem = function createLineItem(lineItem) {
   return function (dispatch) {
-    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["createLineItem"](lineItem).then(function (lineItem) {
-      return dispatch(receiveLineItem(lineItem));
-    });
+    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["createLineItem"](lineItem); // .then((lineItem) => dispatch(receiveLineItem(lineItem)))
   };
 };
 var updateLineItem = function updateLineItem(lineItem) {
@@ -1323,25 +1321,51 @@ function (_React$Component) {
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           products = _this$props.products,
-          stores = _this$props.stores; // const sampleProducts = (products, stores) => {
-      //     if (Object.keys(products).length === 0 || Object.keys(stores).length === 0) { 
-      //         return <div>{ loading() }</div> 
-      //     }
-      //     const productsList = products.map((product) => {
-      //         if (product === undefined) return null;
-      //         return (
-      //             <li className="sample-products-li" key={product.id} onClick={this.ProductPage(product)}>
-      //                 <img src={product.imageUrls[0]} />
-      //                 <p>{ limitStringDisplay(product.name, 60) }</p>
-      //                 <p className="category-shop-name">
-      //                     { limitStringDisplay(stores[product.store_id].name, 60) }
-      //                 </p>
-      //                 <p><strong>${product.price}</strong></p>
-      //             </li>
-      //         )
-      //     });
-      //     return <ul className="sample-products-ul">{ productsList }</ul>;
-      // }
+          stores = _this$props.stores;
+
+      var topBanner = function topBanner() {
+        if (currentUser) return null;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-box bg-color-page-b flex-row clickable"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-gifts-container flex-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-gifts-text-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-gifts-text"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "One-of-a-kind... just", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "like them."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-with-carot-right"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Shop gifts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+          icon: "caret-right",
+          size: "1x"
+        })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-img-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "contained-img",
+          src: window.pagePics.banners[0]
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-section-2-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-section-2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage-banner-shop-holidays"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "contained-img",
+          src: window.pagePics.banners[3]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Cheerful gatherings, with a twist"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-with-carot-right"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Shop Thanksgiving"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+          icon: "caret-right",
+          size: "1x"
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "explore-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-with-carot-right"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Explore 5-star finds"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+          icon: "caret-right",
+          size: "1x"
+        }))))));
+      };
 
       var middleBanner = function middleBanner() {
         if (currentUser) return null;
@@ -1393,54 +1417,15 @@ function (_React$Component) {
         className: "app-flex-width"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "homepage-banner-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, currentUser ? null : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "homepage-banner-head"
-      }, "If it's handcrafted, vintage, custom, or unique, it's on ", _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-box bg-color-page-b flex-row clickable"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-gifts-container flex-row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-gifts-text-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-gifts-text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "One-of-a-kind... just", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "like them."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "text-with-carot-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Shop gifts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-        icon: "caret-right",
-        size: "1x"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-img-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "contained-img",
-        src: window.pagePics.banners[0]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-section-2-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-section-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "homepage-banner-shop-holidays"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "contained-img",
-        src: window.pagePics.banners[3]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Cheerful gatherings, with a twist"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "text-with-carot-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Shop Thanksgiving"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-        icon: "caret-right",
-        size: "1x"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "explore-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "text-with-carot-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Explore 5-star finds"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-        icon: "caret-right",
-        size: "1x"
-      })))))), middleBanner()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "If it's handcrafted, vintage, custom, or unique, it's on ", _util_config_util__WEBPACK_IMPORTED_MODULE_2__["APP_NAME"], "."), currentUser ? null : topBanner(), middleBanner()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bottom-banner"
       }, currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "welcome-back-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "welcome-back"
-      }, "Welcome back ", currentUser.username)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Welcome back ", currentUser.username)) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "popular-right-now-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "popular-right-now"
@@ -2943,7 +2928,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductShow).call(this, props));
     _this.state = {
-      product_id: _this.props.match.params.productId
+      product_id: _this.props.match.params.productId,
+      productLineItemQuantity: 1
     };
     _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
     _this.AddToCart = _this.AddToCart.bind(_assertThisInitialized(_this));
@@ -2975,8 +2961,25 @@ function (_React$Component) {
     key: "AddToCart",
     value: function AddToCart(e) {
       e.preventDefault();
-      this.props.addToCart(this.state);
-      this.props.history.push('/cartItems');
+      debugger;
+
+      if (!this.props || !this.props.currentUserId) {
+        alert('Please log in or sign up');
+      } else {
+        var lineItem = {
+          quantity: 1,
+          product_id: this.state.product_id,
+          user_id: this.props.currentUserId
+        }; // const formData = new FormData();
+        // formData.append('lineItem[quantity]', this.state.productLineItemQuantity);
+        // formData.append('lineItem[product_id]', this.state.product_id);
+        // formData.append('lineItem[user_id]', this.props.currentUserId);
+
+        this.props.createLineItem(lineItem);
+        this.props.history.push("/users/".concat(this.props.currentUserId, "/line_items"));
+      }
+
+      ;
     }
   }, {
     key: "handleChange",
@@ -3052,7 +3055,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_show */ "./frontend/components/product/product_show.jsx");
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _actions_store_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/store_actions */ "./frontend/actions/store_actions.js");
-/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
+/* harmony import */ var _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/line_item_actions */ "./frontend/actions/line_item_actions.js");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
+
 
 
 
@@ -3060,10 +3065,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   var product = state.entities.products[ownProps.match.params.productId];
   var store = state.entities.stores[ownProps.match.params.storeId];
-  var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["getCurrentUser"])(state);
-  var currentUserId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["getCurrentUserId"])(currentUser);
+  var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUser"])(state);
+  var currentUserId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUserId"])(currentUser);
   debugger;
   return {
     product: product,
@@ -3079,6 +3085,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchStore: function fetchStore(id) {
       return dispatch(Object(_actions_store_actions__WEBPACK_IMPORTED_MODULE_3__["fetchStore"])(id));
+    },
+    createLineItem: function createLineItem(lineItem) {
+      return dispatch(Object(_actions_line_item_actions__WEBPACK_IMPORTED_MODULE_4__["createLineItem"])(lineItem));
     }
   };
 };
@@ -4317,7 +4326,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
     search: '--app-bg-color-search',
     searchBtnHover: '--app-bg-color-search-btn-hover',
     searchBtnFocus: '--app-bg-color-search-btn-focus'
-  }, _defineProperty(_appColorVars, "search", '--app-bg-color-search'), _defineProperty(_appColorVars, "borderA", '--app-border-color-a'), _defineProperty(_appColorVars, "borderB", '--app-border-color-b'), _defineProperty(_appColorVars, "fontPage", '--app-font-color-page'), _defineProperty(_appColorVars, "fontFooter", '--app-font-color-footer'), _defineProperty(_appColorVars, "fontNavOptions", '--app-font-color-nav-options'), _defineProperty(_appColorVars, "fontCategories", '--app-font-color-categories'), _appColorVars);
+  }, _defineProperty(_appColorVars, "search", '--app-bg-color-search'), _defineProperty(_appColorVars, "borderA", '--app-border-color-a'), _defineProperty(_appColorVars, "borderB", '--app-border-color-b'), _defineProperty(_appColorVars, "whatIsBetsy", '--app-bg-color-wib'), _defineProperty(_appColorVars, "fontPage", '--app-font-color-page'), _defineProperty(_appColorVars, "fontFooter", '--app-font-color-footer'), _defineProperty(_appColorVars, "fontNavOptions", '--app-font-color-nav-options'), _defineProperty(_appColorVars, "fontCategories", '--app-font-color-categories'), _appColorVars);
   var body = document.getElementById('main-body');
 
   var enable = function enable() {
@@ -4332,6 +4341,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
       searchBtnFocus: 'rgb(0, 0, 0)',
       borderA: 'rgb(255, 255, 255)',
       borderB: 'rgb(255, 255, 255)',
+      whatIsBetsy: 'rgb(107, 107, 107)',
       fontPage: 'rgb(255, 255, 255)',
       fontFooter: 'rgb(255, 255, 255)',
       fontNavOptions: 'rgb(255, 255, 255)',
@@ -4355,6 +4365,7 @@ var setDarkMode = function setDarkMode(setEnabled) {
       searchBtnFocus: 'rgb(0, 0, 0)',
       borderA: 'rgba(34, 34, 34, 0.15)',
       borderB: 'rgba(34, 34, 34, 0.15)',
+      whatIsBetsy: 'rgb(245, 222, 179)',
       fontPage: 'rgb(0, 0, 0)',
       fontFooter: 'rgb(255, 255, 255)',
       fontNavOptions: 'rgb(70, 70, 70)',
@@ -5085,6 +5096,7 @@ var lineItemsReducer = function lineItemsReducer() {
       return Object.assign({}, action.lineItems);
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LINE_ITEM"]:
+      debugger;
       return Object.assign({}, state, _defineProperty({}, action.lineItem.id, action.lineItem));
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_LINE_ITEM"]:
@@ -5813,18 +5825,22 @@ var deleteLineItem = function deleteLineItem(userId, lineItemId) {
     url: "api/users/".concat(userId, "/line_items/").concat(lineItemId)
   });
 };
-var createLineItem = function createLineItem(userId, lineItem) {
+var createLineItem = function createLineItem(line_item) {
   return $.ajax({
     method: "POST",
-    url: "api/users/".concat(userId, "/line_items"),
-    lineItem: lineItem
+    url: "api/products/".concat(line_item.product_id, "/line_items"),
+    data: {
+      line_item: line_item
+    }
   });
 };
-var updateLineItem = function updateLineItem(userId, lineItem) {
+var updateLineItem = function updateLineItem(lineItem) {
   return $.ajax({
     method: "PATCH",
-    url: "api/users/".concat(userId, "/line_items/").concat(lineItem.id),
-    lineItem: lineItem
+    url: "api/users/".concat(lineItem.user_id, "/line_items/").concat(lineItem.id),
+    data: {
+      line_item: line_item
+    }
   });
 };
 

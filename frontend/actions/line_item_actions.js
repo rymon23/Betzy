@@ -28,8 +28,8 @@ export const fetchLineItems = () => (dispatch) => {
         .then((lineItems) => dispatch(receiveAllLineItems(lineItems)))
 };
 export const createLineItem = (lineItem) => (dispatch) => {
-    return APIUtil.createLineItem(lineItem)
-        .then((lineItem) => dispatch(receiveLineItem(lineItem)))
+    return APIUtil.createLineItem(lineItem);
+        // .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };
 export const updateLineItem = (lineItem) => (dispatch) => {
     return APIUtil.updateLineItem(lineItem)

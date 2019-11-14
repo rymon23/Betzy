@@ -115,7 +115,7 @@ BANNER_PICS = [
 PRODUCT_PRICES = [
   9.99,
   99.99,
-  999.50,
+  999.99,
   4.99,
   50.99,
   25.99,
@@ -123,9 +123,9 @@ PRODUCT_PRICES = [
   14.99,
   5.99,
   8.99,
-  5.00,
-  7.00,
-  600.00,
+  5.99,
+  7.99,
+  600.99,
 ].freeze
 
 CATEGORY_ART_TITLE = "Art & Collectibles"

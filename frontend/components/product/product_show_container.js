@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 import ProductShow from './product_show';
 import { fetchProduct } from "../../actions/product_actions";
 import { fetchStore } from '../../actions/store_actions';
+import { createLineItem } from '../../actions/line_item_actions';
 import { getCurrentUser, getCurrentUserId } from "../../util/helpers_util";
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
     const product = state.entities.products[ownProps.match.params.productId];
     const store = state.entities.stores[ownProps.match.params.storeId];
     const currentUser = getCurrentUser(state);
@@ -14,13 +16,14 @@ const mapStateToProps = (state, ownProps) => {
     return {
         product,
         store,
-        currentUserId
+        currentUserId,
     }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     fetchProduct: (id) => dispatch(fetchProduct(id)),
     fetchStore: (id) => dispatch(fetchStore(id)),
+    createLineItem: (lineItem) => dispatch(createLineItem(lineItem))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductShow);

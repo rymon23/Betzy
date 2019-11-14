@@ -8,6 +8,7 @@ class ProductShow extends React.Component {
         super(props);
         this.state = {
             product_id: this.props.match.params.productId,
+            productLineItemQuantity: 1,
         };
         this.handleEdit = this.handleEdit.bind(this);
         this.AddToCart = this.AddToCart.bind(this);
@@ -31,8 +32,23 @@ class ProductShow extends React.Component {
 
     AddToCart(e) {
         e.preventDefault();
-        this.props.addToCart(this.state);
-        this.props.history.push('/cartItems');
+        debugger
+        if (!this.props || !this.props.currentUserId) {
+            alert('Please log in or sign up');
+        } else {
+
+            const lineItem = {
+                quantity: 1,
+                product_id: this.state.product_id,
+                user_id: this.props.currentUserId
+            };
+            // const formData = new FormData();
+            // formData.append('lineItem[quantity]', this.state.productLineItemQuantity);
+            // formData.append('lineItem[product_id]', this.state.product_id);
+            // formData.append('lineItem[user_id]', this.props.currentUserId);
+            this.props.createLineItem(lineItem);
+            this.props.history.push(`/users/${this.props.currentUserId}/line_items`);
+        };
     }
 
     handleChange(e) {
@@ -48,6 +64,7 @@ class ProductShow extends React.Component {
         const addToCartButton = (currentUserId === product.ownerId)
             ? ''
             : <button className="clicky" onClick={this.AddToCart}>Add to cart</button>;
+
         return (
             <div className="product-show">
                 {/* <div className="carousel"> */}
@@ -78,7 +95,7 @@ class ProductShow extends React.Component {
                                 in stock!</span> */}
                         </li>
                         <li>
-                            {addToCartButton}
+                            { addToCartButton }
                         </li>
 
                     </ul>

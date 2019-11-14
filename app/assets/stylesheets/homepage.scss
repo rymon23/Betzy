@@ -59,7 +59,7 @@
     height: fit-content;
     display: flex;
     justify-content: center;
-    background-color: wheat;
+    background-color: var(--app-bg-color-wib);
 
     .wob-content {
         display: flex;
@@ -214,4 +214,6 @@
     font-weight: bold;
     font-size: 32px;
     flex-wrap: 1;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

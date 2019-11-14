@@ -32,27 +32,48 @@ class HomePage extends React.Component {
 
     render() {
         let { currentUser, products, stores } = this.props;
+        
+        const topBanner = () => {
+            if ( currentUser ) return null;
+            return (
+                <div className="homepage-banner-box bg-color-page-b flex-row clickable">
+                    <div className="homepage-banner-gifts-container flex-row">
+                        <div className="homepage-banner-gifts-text-container">
+                            <div className="homepage-banner-gifts-text">
+                                <h2>One-of-a-kind... just<br />like them.</h2>
+                                <div className="text-with-carot-right">
+                                    <span>Shop gifts</span>
+                                    <FontAwesomeIcon icon="caret-right" size="1x" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="homepage-banner-img-container">
+                            <img className="contained-img" src={window.pagePics.banners[0]} />
+                        </div>
+                    </div>
 
-        // const sampleProducts = (products, stores) => {
-        //     if (Object.keys(products).length === 0 || Object.keys(stores).length === 0) { 
-        //         return <div>{ loading() }</div> 
-        //     }
+                    <div className="homepage-banner-section-2-container">
+                        <div className="homepage-banner-section-2">
+                            <div className="homepage-banner-shop-holidays">
+                                <img className="contained-img" src={window.pagePics.banners[3]} />
+                                <h2>Cheerful gatherings, with a twist</h2>
+                                <div className="text-with-carot-right">
+                                    <span>Shop Thanksgiving</span>
+                                    <FontAwesomeIcon icon="caret-right" size="1x" />
+                                </div>
+                            </div>
+                            <div className="explore-container">
+                                <div className="text-with-carot-right">
+                                    <span>Explore 5-star finds</span>
+                                    <FontAwesomeIcon icon="caret-right" size="1x" />
+                                </div>
+                            </div>
+                        </div>
 
-        //     const productsList = products.map((product) => {
-        //         if (product === undefined) return null;
-        //         return (
-        //             <li className="sample-products-li" key={product.id} onClick={this.ProductPage(product)}>
-        //                 <img src={product.imageUrls[0]} />
-        //                 <p>{ limitStringDisplay(product.name, 60) }</p>
-        //                 <p className="category-shop-name">
-        //                     { limitStringDisplay(stores[product.store_id].name, 60) }
-        //                 </p>
-        //                 <p><strong>${product.price}</strong></p>
-        //             </li>
-        //         )
-        //     });
-        //     return <ul className="sample-products-ul">{ productsList }</ul>;
-        // }
+                    </div>
+                </div>
+            )
+        }
 
         const middleBanner = () => {
             if ( currentUser ) return null;
@@ -140,22 +161,19 @@ class HomePage extends React.Component {
         return (
             <div className="homepage">
                 {/* <div className="static-width"> */}
-{/*                     
-                    <div className="test-container">
-                        <div className="flex-row flex-wrap">
-                            <div className="test">Test 1</div>
-                            <div className="test">Test 2</div>
-                            <div className="test">Test 3</div>
-                        </div>
-                    </div> */}
 
-                    <section className="app-flex-width">
+                <section className="app-flex-width">
 
                     <div className="homepage-banner-container">
-                        <h1 className="homepage-banner-head">
-                            If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.
-                        </h1>
-
+                        { currentUser? 
+                            null
+                        :
+                            <h1 className="homepage-banner-head">
+                                If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.
+                            </h1>
+                        }
+                        { currentUser? null : topBanner() }
+{/* 
                         <div className="homepage-banner-box bg-color-page-b flex-row clickable">
                             <div className="homepage-banner-gifts-container flex-row">
                                 <div className="homepage-banner-gifts-text-container">
@@ -171,7 +189,6 @@ class HomePage extends React.Component {
                                     <img className="contained-img" src={window.pagePics.banners[0]}/>
                                 </div>
                             </div>
-
                             <div className="homepage-banner-section-2-container">
                                 <div className="homepage-banner-section-2">
                                     <div className="homepage-banner-shop-holidays">
@@ -189,9 +206,8 @@ class HomePage extends React.Component {
                                         </div>                             
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
+                        </div> */}
 
                         { middleBanner() }
                     </div>
@@ -202,7 +218,8 @@ class HomePage extends React.Component {
                             <div className="welcome-back-div">
                                 <h3 className="welcome-back" >Welcome back { currentUser.username }</h3>                           
                             </div>
-                            : 
+                            : null
+                        }
                             <div className="popular-right-now-container">
                                 <h2 className="popular-right-now">Popular right now</h2> 
                                 {/* <div className="products-listing"> */}
@@ -214,7 +231,7 @@ class HomePage extends React.Component {
                                     {/* { sampleProducts(products, stores) } */}
                                 {/* </div>                         */}
                             </div>
-                        }
+                        
                     </div> 
                 </section>
 

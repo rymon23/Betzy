@@ -10,17 +10,17 @@ export const deleteLineItem = (userId, lineItemId) => {
         url: `api/users/${userId}/line_items/${lineItemId}`
     });
 }
-export const createLineItem = (userId, lineItem) => {
+export const createLineItem = (line_item) => {
     return $.ajax({
         method: "POST",
-        url: `api/users/${userId}/line_items`,
-        lineItem: lineItem,
+        url: `api/products/${line_item.product_id}/line_items`,
+        data: { line_item }
     });
 }
-export const updateLineItem = (userId, lineItem) => {
+export const updateLineItem = (lineItem) => {
     return $.ajax({
         method: "PATCH",
-        url: `api/users/${userId}/line_items/${lineItem.id}`,
-        lineItem: lineItem,
+        url: `api/users/${lineItem.user_id}/line_items/${lineItem.id}`,
+        data: { line_item }
     });
 }
