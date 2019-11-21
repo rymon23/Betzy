@@ -11,6 +11,8 @@ const mapStateToProps = (state, ownProps) => {
     const lineItems = objectValuesArray(state.entities.lineItems);
     const products = state.entities.products;
     const stores = state.entities.stores;
+    debugger
+    
     return {
         lineItems,
         stores,

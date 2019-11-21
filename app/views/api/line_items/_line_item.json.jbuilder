@@ -1,8 +1,8 @@
 json.extract! line_item, 
   :id, 
-  :quantity,
   :product_id,
-  :user_id
+  :user_id,
+  :quantity
 
 json.name = line_item.product.name
 json.store_id = line_item.product.store_id

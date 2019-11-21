@@ -17,7 +17,6 @@ class ProductShow extends React.Component {
     componentDidMount() {
         this.props.fetchProduct(this.props.match.params.productId);
         this.props.fetchStore(this.props.match.params.storeId);
-
         if (this.props.currentUserId){
             this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
         }
@@ -26,8 +25,6 @@ class ProductShow extends React.Component {
         if (this.props.match.params.productId !== prevProps.match.params.productId) {
             this.props.fetchProduct(this.props.match.params.productId);
             this.props.fetchStore(this.props.match.params.storeId);
-            this.props.fetchLineItem(this.props.match.params.storeId);
-
             if (this.props.currentUserId) {
                 this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
             }

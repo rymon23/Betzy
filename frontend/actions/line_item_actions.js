@@ -28,6 +28,7 @@ export const fetchLineItems = (userId) => (dispatch) => {
         .then((lineItems) => dispatch(receiveAllLineItems(lineItems)))
 };
 export const fetchLineItem = (userId, productId) => (dispatch) => {
+    debugger
     return APIUtil.fetchLineItem(userId, productId)
         .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };

@@ -12,19 +12,15 @@ class StoreForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData();
+        
         formData.append('store[name]', this.state.name);
-        formData.append('store[owner_id]', this.state.owner.id);
-
+        formData.append('store[owner_id]', this.state.owner_id);
         if (this.state.id){
             formData.append('store[id]', this.state.id);
         }
-
-        formData.append('store[owner_id]', this.state.owner.id);
-
         if (this.state.imageFile) {
             formData.append('store[store_logo]', this.state.imageFile);
         }
-
         this.props.action(formData).then(action => {
             this.props.history.push(`/stores/${action.store.id}`)
         }).then(() => this.props.fetchAllUsers());
@@ -51,6 +47,7 @@ class StoreForm extends React.Component {
         const preview = this.state.imageUrl
             ? <img src={this.state.imageUrl}/>
             : null;
+
         let { errors } = this.props;
 
         return (
@@ -89,7 +86,6 @@ class StoreForm extends React.Component {
                 </div>
 
                 <button className="clicky" id="save-shop">Save and continue</button>
-
             </form>
         )
     }

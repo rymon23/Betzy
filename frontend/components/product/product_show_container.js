@@ -6,12 +6,14 @@ import { createLineItem, fetchLineItem } from '../../actions/line_item_actions';
 import { getCurrentUser, getCurrentUserId } from "../../util/helpers_util";
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
-    const product = state.entities.products[ownProps.match.params.productId];
+    const productId = ownProps.match.params.productId;
+    const product = state.entities.products[productId];
     const store = state.entities.stores[ownProps.match.params.storeId];
-    const lineItem = state.entities.lineItems[ownProps.match.params.lineItemId];
+    const lineItem = state.entities.lineItems[productId];
     const currentUser = getCurrentUser(state);
     const currentUserId = getCurrentUserId(currentUser);
+
+    debugger
 
     return {
         product,

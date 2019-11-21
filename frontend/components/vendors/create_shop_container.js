@@ -4,14 +4,13 @@ import StoreForm from './shop_form';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
-    const ownerId = state.session.currentUser.id;
+    const currentUser = state.session.currentUser;
     const store = { 
-            title: '',
-            owner: {id: ownerId},
-            imageFile: undefined, 
-            imageUrl: undefined
-        };
-
+        name: `${currentUser.username}'s Shop`,
+        owner_id: currentUser.id,
+        imageFile: undefined, 
+        imageUrl: undefined
+    };
     const errors = state.errors.store;
     return {
         store,
@@ -21,7 +20,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        action: store => dispatch(createStore(store)),
+        action: (store) => dispatch(createStore(store)),
     }
 };
 

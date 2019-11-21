@@ -27,8 +27,7 @@ class CartIndex extends React.Component {
                 this.setState({
                     isLoaded: true,
                 })
-            }
-            );
+            });
     }
 
     componentDidMount() {

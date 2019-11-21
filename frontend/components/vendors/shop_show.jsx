@@ -76,6 +76,8 @@ class StoreShow extends React.Component {
             return <div>{loading()}</div>
         }
 
+        debugger
+
         let stockItemButton;
         if ( currentUserId === store.owner_id ){
             stockItemButton = (
@@ -114,7 +116,7 @@ class StoreShow extends React.Component {
                 <div className="shop-show-header">
                     <div className="shop-logo">
                         <img src={store.imageUrl} />
-                        {/* {stockItemButton} */}
+                        { stockItemButton }
                     </div>
 
                     <div className="shop-info">

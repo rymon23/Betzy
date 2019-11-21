@@ -3,21 +3,35 @@ class Api::LineItemsController < ApplicationController
 
   def show
     # debugger
-    @line_item = LineItem.find_by(params[:user_id], params[:id])  #:id is product_id not line_item.id
-    # debugger
+    if current_user
+      # debugger
+      @line_item = current_user.line_items.select {|line_item| line_item.product_id == params[:id].to_i}.first
+      # debugger
+      # @line_item
+      render :show
+    else
+      @line_item = nil
+      render :show
+    end
   end
 
   def index
-    # debugger
     if current_user
-      @line_items = LineItem.all
-      @line_items.select {|line_item| line_item.user_id == current_user.id }
+      # debugger
+      # @line_items = LineItem.where(`user_id = #{current_user.id}`).find(current_user.line_items)
+      @line_items = current_user.line_items
       # debugger
       render :index
     else
       @line_items = []
       render :index
     end
+  end
+
+  def index_all
+    debugger
+    @line_items = LineItem.all
+    render :index_all
   end
 
   def create
@@ -56,7 +70,6 @@ class Api::LineItemsController < ApplicationController
     params.require(:line_item).permit(
       :quantity,
       :user_id,
-      :product_id
-      )
+      :product_id)
   end
 end

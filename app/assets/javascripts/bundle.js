@@ -187,6 +187,7 @@ var fetchLineItems = function fetchLineItems(userId) {
 };
 var fetchLineItem = function fetchLineItem(userId, productId) {
   return function (dispatch) {
+    debugger;
     return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchLineItem"](userId, productId).then(function (lineItem) {
       return dispatch(receiveLineItem(lineItem));
     });
@@ -636,6 +637,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
+/* harmony import */ var _client_database__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./client_database */ "./frontend/client_database.js");
+
 
 
 
@@ -659,11 +662,231 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   window.getState = store.getState;
+  window.betzyClientDB = new _client_database__WEBPACK_IMPORTED_MODULE_4__["default"]("betzyClientDB");
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__["default"], {
     store: store
   }), root);
 });
+
+/***/ }),
+
+/***/ "./frontend/client_database.js":
+/*!*************************************!*\
+  !*** ./frontend/client_database.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var REQUEST_INIT = "INIT";
+var REQUEST_GET = "GET";
+var REQUEST_CREATE = "CREATE";
+var REQUEST_UPDATE = "UPDATE";
+var REQUEST_DESTROY = "DELETE";
+
+var ClientDatabase =
+/*#__PURE__*/
+function () {
+  function ClientDatabase(dataBaseName) {
+    _classCallCheck(this, ClientDatabase);
+
+    this.dataBaseName = dataBaseName;
+    this.requestPromise = this.requestPromise.bind(this);
+    this.action = this.action.bind(this);
+    this.init = this.init.bind(this);
+    this.get = this.get.bind(this);
+    this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
+  }
+
+  _createClass(ClientDatabase, [{
+    key: "action",
+    value: function action(actionType) {
+      var _this = this;
+
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var callBack = arguments.length > 2 ? arguments[2] : undefined;
+      //actionType: create, get, update
+      debugger;
+
+      var doDbTransaction = function doDbTransaction(actionType, data, cb) {
+        var openRequest = window.indexedDB.open(_this.dataBaseName);
+        var db;
+
+        openRequest.onerror = function (e) {
+          //    alert("Open Request error");
+          console.log("There was an error: " + e.target.errorCode);
+        };
+
+        openRequest.onupgradeneeded = function (e) {
+          //    alert("request upgrade called");
+          db = e.target.result;
+          db.createObjectStore("data", {
+            keyPath: "gen"
+          }); // store.createIndex("gen", "gen", { unique: false });
+        };
+
+        openRequest.onsuccess = function (e) {
+          //   alert("Open Request Successful");
+          db = e.target.result;
+
+          db.onerror = function (e) {
+            console.log("ERROR" + e.target.errorCode);
+          };
+
+          var openAction = function openAction(actionType, newData, cb) {
+            debugger;
+            var myRecord = null;
+            var tx = db.transaction("data", "readwrite");
+            var store = tx.objectStore("data");
+            var objectStoreRequest;
+
+            if (actionType === "INIT" || actionType === "GET" || actionType === "UPDATE") {
+              objectStoreRequest = store.getAll();
+            } else if (actionType === "CREATE") {
+              objectStoreRequest = store.add(newData);
+            } else if (actionType === "DELETE") {
+              objectStoreRequest = store.clear();
+            }
+
+            ;
+
+            tx.oncomplete = function (event) {
+              console.log("Transaction Completed");
+              cb(myRecord);
+            };
+
+            tx.onerror = function (event) {
+              //   alert("Transaction Error:" + event.target.errorCode)
+              console.log.length("Transaction Error:" + event.target.errorCode);
+            };
+
+            objectStoreRequest.onsuccess = function (event) {
+              console.log("object store request successful");
+              debugger;
+              var requestUpdate = {};
+
+              if (actionType === "UPDATE") {
+                var currentData = objectStoreRequest.result;
+                currentData.gen = newData.gen;
+                currentData.bots = newData.bots;
+                currentData.settings = newData.settings;
+                requestUpdate = store.put(currentData);
+              } else {
+                myRecord = objectStoreRequest.result;
+              }
+
+              requestUpdate.onerror = function (event) {
+                //    alert("Transaction Error:" + event.target.errorCode);
+                console.log.length("Transaction Error:" + event.target.errorCode);
+              };
+
+              requestUpdate.onsuccess = function (event) {
+                console.log("update request successful");
+                myRecord = requestUpdate.result;
+              };
+            };
+          };
+
+          var result = {
+            actionType: actionType,
+            resultData: null
+          };
+
+          if (!actionType) {
+            cd(result);
+          } else {
+            var actionPromise = new Promise(function (resolve, reject) {
+              var myRecord = openAction(actionType, data, function (record) {
+                debugger;
+                resolve(record);
+              });
+            });
+            result.actionType = actionType;
+            actionPromise.then(function (resultData) {
+              debugger;
+              console.log("".concat(actionType, ": ").concat(resultData, " / ").concat(!resultData));
+              result.resultData = resultData;
+              cb(result);
+            });
+          }
+        };
+      };
+
+      var doAction = new Promise(function (resolve, reject) {
+        var myTransaction = doDbTransaction(actionType, data, function (thisTransaction) {
+          debugger;
+          resolve(thisTransaction);
+        });
+      });
+      doAction.then(function (result) {
+        debugger;
+        if (!result) return null;
+        var actionType = result.actionType,
+            resultData = result.resultData;
+        callBack(resultData);
+      });
+    }
+  }, {
+    key: "init",
+    value: function init(cb) {
+      return this.requestPromise(REQUEST_INIT, null, cb); // const that = this;
+      // return new Promise(function (resolve, reject) {
+      //     const myResult = that.action(REQUEST_INIT, cb, (response) => {
+      //         debugger
+      //         resolve(response)
+      //     });
+      // })
+      // this.action(REQUEST_INIT);
+    }
+  }, {
+    key: "get",
+    value: function get(data, cb) {
+      return this.requestPromise(REQUEST_GET, null, cb);
+    }
+  }, {
+    key: "create",
+    value: function create(data, cb) {
+      return this.requestPromise(REQUEST_CREATE, data, cb);
+    }
+  }, {
+    key: "update",
+    value: function update(data, cb) {
+      return this.requestPromise(REQUEST_UPDATE, data, cb);
+    }
+  }, {
+    key: "destroy",
+    value: function destroy(cb) {
+      return this.requestPromise(REQUEST_DESTROY, null, cb);
+    }
+  }, {
+    key: "requestPromise",
+    value: function requestPromise() {
+      var requestType = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var cb = arguments.length > 2 ? arguments[2] : undefined;
+      var that = this;
+      return new Promise(function (resolve, reject) {
+        var myResult = that.action(requestType, data, function (response) {
+          debugger;
+          resolve(response);
+        });
+      });
+    }
+  }]);
+
+  return ClientDatabase;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (ClientDatabase);
 
 /***/ }),
 
@@ -1752,6 +1975,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var lineItems = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_6__["objectValuesArray"])(state.entities.lineItems);
   var products = state.entities.products;
   var stores = state.entities.stores;
+  debugger;
   return {
     lineItems: lineItems,
     stores: stores,
@@ -3003,7 +3227,6 @@ function (_React$Component) {
       if (this.props.match.params.productId !== prevProps.match.params.productId) {
         this.props.fetchProduct(this.props.match.params.productId);
         this.props.fetchStore(this.props.match.params.storeId);
-        this.props.fetchLineItem(this.props.match.params.storeId);
 
         if (this.props.currentUserId) {
           this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
@@ -3124,12 +3347,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
-  var product = state.entities.products[ownProps.match.params.productId];
+  var productId = ownProps.match.params.productId;
+  var product = state.entities.products[productId];
   var store = state.entities.stores[ownProps.match.params.storeId];
-  var lineItem = state.entities.lineItems[ownProps.match.params.lineItemId];
+  var lineItem = state.entities.lineItems[productId];
   var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUser"])(state);
   var currentUserId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUserId"])(currentUser);
+  debugger;
   return {
     product: product,
     store: store,
@@ -4466,12 +4690,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  var ownerId = state.session.currentUser.id;
+  var currentUser = state.session.currentUser;
   var store = {
-    title: '',
-    owner: {
-      id: ownerId
-    },
+    name: "".concat(currentUser.username, "'s Shop"),
+    owner_id: currentUser.id,
     imageFile: undefined,
     imageUrl: undefined
   };
@@ -4660,13 +4882,11 @@ function (_React$Component) {
       event.preventDefault();
       var formData = new FormData();
       formData.append('store[name]', this.state.name);
-      formData.append('store[owner_id]', this.state.owner.id);
+      formData.append('store[owner_id]', this.state.owner_id);
 
       if (this.state.id) {
         formData.append('store[id]', this.state.id);
       }
-
-      formData.append('store[owner_id]', this.state.owner.id);
 
       if (this.state.imageFile) {
         formData.append('store[store_logo]', this.state.imageFile);
@@ -4909,6 +5129,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
 
+      debugger;
       var stockItemButton;
 
       if (currentUserId === store.owner_id) {
@@ -4944,7 +5165,7 @@ function (_React$Component) {
         className: "shop-logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: store.imageUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), stockItemButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-name-show"
@@ -5158,8 +5379,7 @@ var lineItemsReducer = function lineItemsReducer() {
       return Object.assign({}, action.lineItems);
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LINE_ITEM"]:
-      debugger;
-      return Object.assign({}, state, _defineProperty({}, action.lineItem.id, action.lineItem));
+      return Object.assign({}, state, _defineProperty({}, action.lineItem.product_id, action.lineItem));
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_LINE_ITEM"]:
       var newState = Object.assign({}, state);

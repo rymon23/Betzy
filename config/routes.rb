@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, defaults: { format: :json } do
-
     resource :session, only: [:create, :new, :destroy]
 
     resources :users, only: [:create, :show, :update, :index] do 
@@ -20,7 +19,6 @@ Rails.application.routes.draw do
     end
 
     resources :products, only: [:show, :update, :destroy, :index] do
-      # resources :line_items, only: [:create]  
       resources :reviews, only: [:create]
     end
 
@@ -31,5 +29,12 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:show, :index]
     resources :search_results, only: [:index]
+    
+    # resources :line_items do
+    #   collection do
+    #     get :index_all
+    #   end
+    # end
+
   end
 end
