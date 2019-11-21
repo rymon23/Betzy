@@ -17,9 +17,10 @@ const receiveLineItem = (lineItem) => {
         lineItem
     }
 };
-const removeLineItem = () => {
+const removeLineItem = (lineItemId) => {
     return {
         type: REMOVE_LINE_ITEM,
+        lineItemId
     }
 };
 
@@ -28,7 +29,6 @@ export const fetchLineItems = (userId) => (dispatch) => {
         .then((lineItems) => dispatch(receiveAllLineItems(lineItems)))
 };
 export const fetchLineItem = (userId, productId) => (dispatch) => {
-    debugger
     return APIUtil.fetchLineItem(userId, productId)
         .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };
@@ -40,7 +40,8 @@ export const updateLineItem = (lineItem) => (dispatch) => {
     return APIUtil.updateLineItem(lineItem)
         .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };
-export const deleteLineItem = (lineItemId) => (dispatch) => {
-    return APIUtil.deleteLineItem(lineItemId)
-        .then((lineItem) => dispatch(removeLineItem()))
+export const deleteLineItem = (lineItem) => (dispatch) => {
+    debugger
+    return APIUtil.deleteLineItem(lineItem)
+        .then((lineItem) => dispatch(removeLineItem(lineItem.id)))
 };

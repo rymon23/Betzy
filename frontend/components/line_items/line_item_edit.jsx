@@ -10,37 +10,28 @@ class LineItemEdit extends React.Component {
         super(props);
 
         debugger
+        this.state = Object.assign({}, {}, this.props.lineItem);
 
-        this.state = Object.assign({}, {
-            quantity: 1,
-        }, this.props.lineItem);
-
-        this.update = this.update.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
     }
 
-    update(field) {
-        event.preventDefault();
-        return event => {
-            this.setState({ [field]: event.target.value })
-            this.props.updateLineItem(this.state.quantity)
-        };
-    }
-    handleUpdate(lineItem) {
-        event.preventDefault();
-        return (event) => {
-            this.props.updateLineItem({
-                id: lineItem.id,
-                quantity: event.target.value,
-            });
-        }
+    handleUpdate(e) {
+        e.preventDefault();
+        const { lineItem } = this.props;
+        lineItem.quantity = e.target.value;
+        this.setState({ 
+            quantity: lineItem.quantity, 
+        });
+        this.props.updateLineItem(lineItem);
     };
-    handleRemove(lineItemId) {
-        event.preventDefault();
-        return (event) => {
-            this.props.deleteLineItem(lineItemId);
-        }
+
+    handleRemove(e) {
+        e.preventDefault();
+        const { lineItem } = this.props;
+        this.props.deleteLineItem(lineItem).then(()=> {
+            this.props.removeCartItem(lineItem.id);
+        });
     };
 
     render() {
@@ -70,15 +61,13 @@ class LineItemEdit extends React.Component {
                             <h5>{product.name}</h5>
                             <p>{product.description}</p>
                             <div className="line-item-remove-button-container">
-                                <p onClick={this.handleRemove}>Remove</p>
+                                <button className="line-item-remove-button clickable" 
+                                    onClick={this.handleRemove}>
+                                    Remove
+                                </button>
                             </div>
                         </div>
-                        {itemQuantity(lineItem.quantity)}
-                        {/* <div className="line-item-quantity-container flex-row">
-                            <span>{lineItem.quantity}</span>
-                            <FontAwesomeIcon icon="caret-down" size="2x" />
-                        </div> */}
-
+                        { itemQuantity(product, lineItem, this.handleUpdate) }
                         <p className="line-item-price">${product.price}</p>                        
                     </div>
 
@@ -93,13 +82,12 @@ class LineItemEdit extends React.Component {
 //     const lineItems = ownProps.lineItem;
 
 //     debugger
-
 //     return { lineItems };
 // };
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteLineItem: (lineItem) => dispatch(deleteLineItem(lineItem)),
-        updateLineItem: (lineItemId) => dispatch(updateLineItem(lineItemId)),
+        updateLineItem: (lineItem) => dispatch(updateLineItem(lineItem)),
     };
 };
 

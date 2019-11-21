@@ -10,12 +10,6 @@ export const fetchLineItem = (userId, productId) => {
         url: `api/users/${userId}/line_items/${productId}`
     });
 }
-export const deleteLineItem = (userId, lineItemId) => {
-    return $.ajax({
-        method: "DELETE",
-        url: `api/users/${userId}/line_items/${lineItemId}`
-    });
-}
 export const createLineItem = (line_item) => {
     return $.ajax({
         method: "POST",
@@ -23,10 +17,17 @@ export const createLineItem = (line_item) => {
         data: { line_item }
     });
 }
-export const updateLineItem = (lineItem) => {
+export const updateLineItem = (line_item) => {
     return $.ajax({
         method: "PATCH",
-        url: `api/users/${lineItem.user_id}/line_items/${lineItem.id}`,
+        url: `api/users/${line_item.user_id}/line_items/${line_item.id}`,
         data: { line_item }
+    });
+}
+export const deleteLineItem = (line_item) => {
+    debugger
+    return $.ajax({
+        method: "DELETE",
+        url: `api/users/${line_item.user_id}/line_items/${line_item.id}`,
     });
 }

@@ -172,9 +172,10 @@ var receiveLineItem = function receiveLineItem(lineItem) {
   };
 };
 
-var removeLineItem = function removeLineItem() {
+var removeLineItem = function removeLineItem(lineItemId) {
   return {
-    type: REMOVE_LINE_ITEM
+    type: REMOVE_LINE_ITEM,
+    lineItemId: lineItemId
   };
 };
 
@@ -187,7 +188,6 @@ var fetchLineItems = function fetchLineItems(userId) {
 };
 var fetchLineItem = function fetchLineItem(userId, productId) {
   return function (dispatch) {
-    debugger;
     return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchLineItem"](userId, productId).then(function (lineItem) {
       return dispatch(receiveLineItem(lineItem));
     });
@@ -205,10 +205,11 @@ var updateLineItem = function updateLineItem(lineItem) {
     });
   };
 };
-var deleteLineItem = function deleteLineItem(lineItemId) {
+var deleteLineItem = function deleteLineItem(lineItem) {
   return function (dispatch) {
-    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteLineItem"](lineItemId).then(function (lineItem) {
-      return dispatch(removeLineItem());
+    debugger;
+    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteLineItem"](lineItem).then(function (lineItem) {
+      return dispatch(removeLineItem(lineItem.id));
     });
   };
 };
@@ -1831,10 +1832,12 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CartIndex).call(this));
     _this.state = {
       error: null,
-      isLoaded: false
+      isLoaded: false,
+      cartItems: []
     };
     _this.isFetching = false;
     _this.fetchers = _this.fetchers.bind(_assertThisInitialized(_this));
+    _this.removeCartItem = _this.removeCartItem.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1852,7 +1855,8 @@ function (_React$Component) {
               case 0:
                 return _context.abrupt("return", Promise.allSettled([this.props.fetchLineItems(), this.props.fetchStores(), this.props.fetchProducts()]).then(function (result) {
                   _this2.setState({
-                    isLoaded: true
+                    isLoaded: true,
+                    cartItems: _this2.props.lineItems
                   });
                 }));
 
@@ -1883,20 +1887,36 @@ function (_React$Component) {
     // }
 
   }, {
+    key: "removeCartItem",
+    value: function removeCartItem(lineItemId, e) {
+      // e.preventDefault();
+      debugger;
+      this.setState({
+        cartItems: this.props.lineItems.filter(function (lineItem) {
+          return lineItem.id != lineItemId;
+        })
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       if (!this.state.isLoaded) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
-      }
+      } // let { lineItems, stores, products } = this.props;
+
 
       var _this$props = this.props,
-          lineItems = _this$props.lineItems,
           stores = _this$props.stores,
           products = _this$props.products;
+      var lineItems = this.state.cartItems;
 
       if (lineItems && lineItems.length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, "Your cart is empty"));
       }
+
+      debugger;
 
       var lineItemsListing = function lineItemsListing(lineItems, products, stores) {
         var lineItemsList = lineItems.map(function (lineItem) {
@@ -1908,7 +1928,8 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_line_item_edit__WEBPACK_IMPORTED_MODULE_4__["default"], {
             lineItem: lineItem,
             product: product,
-            productStore: store
+            productStore: store,
+            removeCartItem: _this3.removeCartItem
           }));
         });
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -1928,15 +1949,7 @@ function (_React$Component) {
         className: "cart-content-container flex-row"
       }, lineItemsListing(lineItems, products, stores), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "cart-checkout-container flex-column"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, "How you'll pay"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "checkout-input-container flex-row"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        type: "radio"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", null, "Vista")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "checkout-input-container flex-row"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        type: "radio"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", null, "Paypal")))))));
+      }))));
     }
   }]);
 
@@ -2019,8 +2032,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_utility__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/utility */ "./frontend/components/utility.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -2056,49 +2067,33 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LineItemEdit).call(this, props));
     debugger;
-    _this.state = Object.assign({}, {
-      quantity: 1
-    }, _this.props.lineItem);
-    _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.state = Object.assign({}, {}, _this.props.lineItem);
     _this.handleRemove = _this.handleRemove.bind(_assertThisInitialized(_this));
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(LineItemEdit, [{
-    key: "update",
-    value: function update(field) {
-      var _this2 = this;
-
-      event.preventDefault();
-      return function (event) {
-        _this2.setState(_defineProperty({}, field, event.target.value));
-
-        _this2.props.updateLineItem(_this2.state.quantity);
-      };
-    }
-  }, {
     key: "handleUpdate",
-    value: function handleUpdate(lineItem) {
-      var _this3 = this;
-
-      event.preventDefault();
-      return function (event) {
-        _this3.props.updateLineItem({
-          id: lineItem.id,
-          quantity: event.target.value
-        });
-      };
+    value: function handleUpdate(e) {
+      e.preventDefault();
+      var lineItem = this.props.lineItem;
+      lineItem.quantity = e.target.value;
+      this.setState({
+        quantity: lineItem.quantity
+      });
+      this.props.updateLineItem(lineItem);
     }
   }, {
     key: "handleRemove",
-    value: function handleRemove(lineItemId) {
-      var _this4 = this;
+    value: function handleRemove(e) {
+      var _this2 = this;
 
-      event.preventDefault();
-      return function (event) {
-        _this4.props.deleteLineItem(lineItemId);
-      };
+      e.preventDefault();
+      var lineItem = this.props.lineItem;
+      this.props.deleteLineItem(lineItem).then(function () {
+        _this2.props.removeCartItem(lineItem.id);
+      });
     }
   }, {
     key: "render",
@@ -2128,9 +2123,10 @@ function (_React$Component) {
         className: "line-item-content-middle flex-column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "line-item-remove-button-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "line-item-remove-button clickable",
         onClick: this.handleRemove
-      }, "Remove"))), Object(_components_utility__WEBPACK_IMPORTED_MODULE_5__["itemQuantity"])(lineItem.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "Remove"))), Object(_components_utility__WEBPACK_IMPORTED_MODULE_5__["itemQuantity"])(product, lineItem, this.handleUpdate), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "line-item-price"
       }, "$", product.price))));
     }
@@ -2149,8 +2145,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteLineItem: function deleteLineItem(lineItem) {
       return dispatch(Object(_actions_line_item_actions__WEBPACK_IMPORTED_MODULE_3__["deleteLineItem"])(lineItem));
     },
-    updateLineItem: function updateLineItem(lineItemId) {
-      return dispatch(Object(_actions_line_item_actions__WEBPACK_IMPORTED_MODULE_3__["updateLineItem"])(lineItemId));
+    updateLineItem: function updateLineItem(lineItem) {
+      return dispatch(Object(_actions_line_item_actions__WEBPACK_IMPORTED_MODULE_3__["updateLineItem"])(lineItem));
     }
   };
 };
@@ -3206,8 +3202,9 @@ function (_React$Component) {
       productLineItemQuantity: 1
     };
     _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
-    _this.AddToCart = _this.AddToCart.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.AddToCart = _this.AddToCart.bind(_assertThisInitialized(_this));
+    _this.toUserProfile = _this.toUserProfile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3234,10 +3231,36 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "toUserProfile",
+    value: function toUserProfile(userId) {
+      var _this2 = this;
+
+      debugger;
+      return function (e) {
+        e.preventDefault();
+
+        _this2.props.history.push("/users/".concat(userId));
+      };
+    }
+  }, {
     key: "handleEdit",
     value: function handleEdit(e) {
       e.preventDefault();
       this.props.history.push("/products/".concat(this.props.product.id, "/edit"));
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      debugger; // return (e) => {
+      //     e.preventDefault();
+      //     this.setState({ productLineItemQuantity: e });
+      //     // this.setState({ quantity: e });
+      // }
+
+      e.preventDefault();
+      this.setState({
+        productLineItemQuantity: e.target.value
+      });
     }
   }, {
     key: "AddToCart",
@@ -3250,7 +3273,7 @@ function (_React$Component) {
       } else {
         if (!this.props.lineItem) {
           var lineItem = {
-            quantity: 1,
+            quantity: this.state.productLineItemQuantity,
             product_id: this.state.product_id,
             user_id: this.props.currentUserId
           };
@@ -3265,23 +3288,52 @@ function (_React$Component) {
       ;
     }
   }, {
-    key: "handleChange",
-    value: function handleChange(e) {
-      this.setState({
-        quantity: e
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           product = _this$props.product,
           store = _this$props.store,
-          currentUserId = _this$props.currentUserId;
+          currentUserId = _this$props.currentUserId,
+          lineItem = _this$props.lineItem;
 
       if (!product || !store) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
+
+      var quantityOptions = function quantityOptions(product, lineItem) {
+        if (product.quantity <= 0) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "This product is currently sold out");
+        } else {
+          var options = [];
+          var preSelected = null;
+
+          if (lineItem && lineItem.quantity > 0) {
+            preSelected = lineItem.quantity;
+          }
+
+          for (var i = 1; i < product.quantity; i++) {
+            preSelected === i ? options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+              key: i,
+              value: i,
+              selected: true
+            }, i)) : options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+              key: i,
+              value: i
+            }, i));
+          }
+
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "quantity-options-container"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+            className: "quantity-options-selector",
+            onChange: _this3.handleChange
+          }, options));
+        }
+
+        ;
+      };
 
       var addToCartButton = currentUserId === product.ownerId ? '' : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "clicky",
@@ -3293,19 +3345,22 @@ function (_React$Component) {
         className: "product-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(store.id)
-      }, store.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, product.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "price"
+      }, store.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "product-show-name"
+      }, product.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "product-show-price"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", product.price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "quantity",
+        className: "product-info-name",
         htmlFor: "quantity"
-      }, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, addToCartButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Quantity"), Object(_utility__WEBPACK_IMPORTED_MODULE_2__["itemQuantity"])(product, lineItem, this.handleChange)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, addToCartButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "details"
       }, "Item details"), product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "owner-info"
+        className: "product-show-owner-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "owner-info-wrapper clickable"
+        className: "product-show-owner-info-wrapper clickable",
+        onClick: this.toUserProfile(store.owner_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Meet ", store.ownerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "owner-info-image",
         src: store.ownerImgUrl
@@ -4591,16 +4646,41 @@ var imgIcon = function imgIcon(imgSrc) {
     src: imgSrc
   }));
 };
-var itemQuantity = function itemQuantity(quantity) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "item-quantity-wrapper flex-row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: ""
-  }, quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: "caret-down",
-    size: "1x"
-  }));
-};
+var itemQuantity = function itemQuantity(product, lineItem, callBack) {
+  if (product.quantity <= 0) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "This product is currently sold out");
+  } else {
+    var options = [];
+    var preSelected = lineItem && lineItem.quantity > 0 ? lineItem.quantity : 1;
+
+    for (var i = 1; i <= product.quantity; i++) {
+      options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        key: i,
+        value: i
+      }, i));
+    }
+
+    ;
+    debugger;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "quantity-options-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      className: "quantity-options-selector",
+      onChange: callBack,
+      defaultValue: preSelected
+    }, options));
+  }
+
+  ;
+}; // export const itemQuantity = (quantity) => {
+//   return (
+//     <div className="item-quantity-wrapper flex-row">
+//       <span className="">{ quantity }</span>
+//       <FontAwesomeIcon icon="caret-down" size="1x" />
+//     </div>
+//   );
+// };
+
 var setDarkMode = function setDarkMode(setEnabled) {
   var _appColorVars;
 
@@ -5382,6 +5462,7 @@ var lineItemsReducer = function lineItemsReducer() {
       return Object.assign({}, state, _defineProperty({}, action.lineItem.product_id, action.lineItem));
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_LINE_ITEM"]:
+      debugger;
       var newState = Object.assign({}, state);
       delete newState[action.lineItemId];
       return newState;
@@ -6086,16 +6167,16 @@ var limitStringDisplay = function limitStringDisplay(string) {
 /*!**********************************************!*\
   !*** ./frontend/util/line_items_api_util.js ***!
   \**********************************************/
-/*! exports provided: fetchLineItems, fetchLineItem, deleteLineItem, createLineItem, updateLineItem */
+/*! exports provided: fetchLineItems, fetchLineItem, createLineItem, updateLineItem, deleteLineItem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLineItems", function() { return fetchLineItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLineItem", function() { return fetchLineItem; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteLineItem", function() { return deleteLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLineItem", function() { return createLineItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateLineItem", function() { return updateLineItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteLineItem", function() { return deleteLineItem; });
 var fetchLineItems = function fetchLineItems(userId) {
   return $.ajax({
     method: "GET",
@@ -6108,12 +6189,6 @@ var fetchLineItem = function fetchLineItem(userId, productId) {
     url: "api/users/".concat(userId, "/line_items/").concat(productId)
   });
 };
-var deleteLineItem = function deleteLineItem(userId, lineItemId) {
-  return $.ajax({
-    method: "DELETE",
-    url: "api/users/".concat(userId, "/line_items/").concat(lineItemId)
-  });
-};
 var createLineItem = function createLineItem(line_item) {
   return $.ajax({
     method: "POST",
@@ -6123,13 +6198,20 @@ var createLineItem = function createLineItem(line_item) {
     }
   });
 };
-var updateLineItem = function updateLineItem(lineItem) {
+var updateLineItem = function updateLineItem(line_item) {
   return $.ajax({
     method: "PATCH",
-    url: "api/users/".concat(lineItem.user_id, "/line_items/").concat(lineItem.id),
+    url: "api/users/".concat(line_item.user_id, "/line_items/").concat(line_item.id),
     data: {
       line_item: line_item
     }
+  });
+};
+var deleteLineItem = function deleteLineItem(line_item) {
+  debugger;
+  return $.ajax({
+    method: "DELETE",
+    url: "api/users/".concat(line_item.user_id, "/line_items/").concat(line_item.id)
   });
 };
 

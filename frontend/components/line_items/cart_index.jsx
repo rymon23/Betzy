@@ -6,14 +6,15 @@ import LineItemEdit from "./line_item_edit";
 class CartIndex extends React.Component {
     constructor() {
         super();
-    
         this.state = {
             error: null,
-            isLoaded: false
+            isLoaded: false,
+            cartItems: [],
         };
 
         this.isFetching = false;
         this.fetchers = this.fetchers.bind(this);
+        this.removeCartItem = this.removeCartItem.bind(this);
     }
 
     async fetchers(callBacks){
@@ -26,7 +27,8 @@ class CartIndex extends React.Component {
             ]).then((result) => {
                 this.setState({
                     isLoaded: true,
-                })
+                    cartItems: this.props.lineItems,
+                });         
             });
     }
 
@@ -41,18 +43,29 @@ class CartIndex extends React.Component {
     //     // }
     // }
 
+    removeCartItem(lineItemId, e) {
+        // e.preventDefault();
+        debugger
+        this.setState({
+            cartItems: this.props.lineItems.filter(lineItem => lineItem.id != lineItemId) 
+        });
+    };
+
     render() {
         if (!this.state.isLoaded){
             return <div>{loading()}</div>
         }
-
-        let { lineItems, stores, products } = this.props;
+        // let { lineItems, stores, products } = this.props;
+        let { stores, products } = this.props;
+        let lineItems = this.state.cartItems;
 
         if (lineItems &&  lineItems.length === 0 ){
             return <div>
                 <h2>Your cart is empty</h2>
             </div>
         }
+
+        debugger
 
         const lineItemsListing = (lineItems, products, stores) => {
             const lineItemsList = lineItems.map((lineItem) => {
@@ -63,7 +76,8 @@ class CartIndex extends React.Component {
                         <LineItemEdit
                             lineItem={lineItem}
                             product={product}
-                            productStore={store}/>
+                            productStore={store}
+                            removeCartItem={this.removeCartItem}/>
                     </li>
                     )
             });
@@ -82,11 +96,10 @@ class CartIndex extends React.Component {
                             <span>Keep shopping</span>
                         </div>
                         <div className="cart-content-container flex-row">
-
                             {lineItemsListing(lineItems, products, stores)}
 
                             <div className="cart-checkout-container flex-column">
-                                <h4>How you'll pay</h4>
+                                {/* <h4>How you'll pay</h4>
                                 <div>
                                     <div className="checkout-input-container flex-row">
                                         <input type="radio" />
@@ -96,7 +109,7 @@ class CartIndex extends React.Component {
                                         <input type="radio" />
                                         <label>Paypal</label>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

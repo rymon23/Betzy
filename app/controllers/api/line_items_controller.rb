@@ -4,7 +4,6 @@ class Api::LineItemsController < ApplicationController
   def show
     # debugger
     if current_user
-      # debugger
       @line_item = current_user.line_items.select {|line_item| line_item.product_id == params[:id].to_i}.first
       # debugger
       # @line_item
@@ -17,10 +16,7 @@ class Api::LineItemsController < ApplicationController
 
   def index
     if current_user
-      # debugger
-      # @line_items = LineItem.where(`user_id = #{current_user.id}`).find(current_user.line_items)
       @line_items = current_user.line_items
-      # debugger
       render :index
     else
       @line_items = []
@@ -29,7 +25,6 @@ class Api::LineItemsController < ApplicationController
   end
 
   def index_all
-    debugger
     @line_items = LineItem.all
     render :index_all
   end
@@ -46,16 +41,16 @@ class Api::LineItemsController < ApplicationController
   def update
     set_line_item
     if @line_item.update(line_item_params)
-        render :index
+      render :show
     else
-        render json: @line_item.errors.full_messages
+      render json: @line_item.errors.full_messages
     end
   end
 
   def destroy
     set_line_item
     if @line_item.destroy
-        render :index
+        render :show
     else
         render json: @line_item.errors.full_messages, status: 422
     end

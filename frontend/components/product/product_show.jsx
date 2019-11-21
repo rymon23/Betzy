@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { loading } from "../utility";
-import { imgProductShow, imgIcon, itemQuantity } from '../../components/utility'
+import { imgProductShow, itemQuantity } from '../../components/utility'
 
 class ProductShow extends React.Component {
     constructor(props) {
@@ -11,8 +11,9 @@ class ProductShow extends React.Component {
             productLineItemQuantity: 1,
         };
         this.handleEdit = this.handleEdit.bind(this);
-        this.AddToCart = this.AddToCart.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.AddToCart = this.AddToCart.bind(this);
+        this.toUserProfile = this.toUserProfile.bind(this);
     }
     componentDidMount() {
         this.props.fetchProduct(this.props.match.params.productId);
@@ -31,10 +32,32 @@ class ProductShow extends React.Component {
         }
     }
 
+    toUserProfile(userId) {
+        debugger
+        return (e) => {
+            e.preventDefault();
+            this.props.history.push(`/users/${userId}`);
+        }
+    }
+
     handleEdit(e) {
         e.preventDefault();
         this.props.history.push(`/products/${this.props.product.id}/edit`);
     }
+
+    handleChange(e) {
+        debugger
+        // return (e) => {
+        //     e.preventDefault();
+        //     this.setState({ productLineItemQuantity: e });
+        //     // this.setState({ quantity: e });
+        // }
+        e.preventDefault();
+        this.setState({
+            productLineItemQuantity: e.target.value
+        });
+    }
+
 
     AddToCart(e) {
         e.preventDefault();
@@ -44,7 +67,7 @@ class ProductShow extends React.Component {
         } else {
             if (!this.props.lineItem) {
                 const lineItem = {
-                    quantity: 1,
+                    quantity: this.state.productLineItemQuantity,
                     product_id: this.state.product_id,
                     user_id: this.props.currentUserId
                 };
@@ -56,14 +79,35 @@ class ProductShow extends React.Component {
         };
     }
 
-    handleChange(e) {
-        this.setState({ quantity: e });
-    }
-
     render() {
-        let { product, store, currentUserId } = this.props;
+        let { product, store, currentUserId, lineItem } = this.props;
         if (!product || !store) {
             return <div>{loading()}</div>
+        }
+
+        const quantityOptions = (product, lineItem) => {
+            if (product.quantity <= 0){
+                return <div>
+                       This product is currently sold out
+                    </div>;
+            }else {
+                const options = [];
+                let preSelected = null;
+                if (lineItem && lineItem.quantity > 0){
+                    preSelected = lineItem.quantity;
+                }
+                for (let i = 1; i < product.quantity; i++) {
+                    preSelected === i ? 
+                        options.push(<option key={i} value={i} selected>{i}</option>)
+                        : options.push(<option key={i} value={i}>{i}</option>)
+                }    
+                return <div className="quantity-options-container">
+                            <select className="quantity-options-selector"
+                                onChange={this.handleChange}>
+                                { options }
+                            </select>
+                        </div>;   
+            };
         }
 
         const addToCartButton = (currentUserId === product.ownerId)
@@ -82,34 +126,26 @@ class ProductShow extends React.Component {
                         <li>
                             <Link to={`/stores/${store.id}`}>{store.name}</Link>
                         </li>
-                        <li>{product.name}</li>
-                        <li className="price">
+                        <li className="product-show-name">{product.name}</li>
+                        <li className="product-show-price">
                             <strong>${product.price}</strong>
                         </li>
                         <li>
-                            <label className="quantity" htmlFor="quantity">Quantity</label>
-                            <br />
-                            {/* <NumericInput
-                                required
-                                value={this.state.quantity}
-                                id="quantity"
-                                min={1}
-                                max={product.quantity}
-                                onChange={this.handleChange} /> */}
-                            {/* <span>Only
-                                in stock!</span> */}
+                            <label className="product-info-name" htmlFor="quantity">Quantity</label>
+                            {/* { quantityOptions(product) } */}
+                            { itemQuantity(product, lineItem, this.handleChange)}
                         </li>
                         <li>
                             { addToCartButton }
                         </li>
-
                     </ul>
                     <div className="product-details">
                         <label htmlFor="details">Item details</label>
                         {product.description}
                     </div>
-                    <div className="owner-info">
-                        <div className="owner-info-wrapper clickable">
+                    <div className="product-show-owner-info">
+                        <div className="product-show-owner-info-wrapper clickable" 
+                            onClick={this.toUserProfile(store.owner_id)}>
                             <p>Meet {store.ownerName}</p>
                             <img id="owner-info-image" src={store.ownerImgUrl} />
                             <div className="shop-owner-name">{store.ownerName}</div>
@@ -117,9 +153,7 @@ class ProductShow extends React.Component {
                                 {/* <i className="fa fa-envelope-o" aria-hidden="true"></i> */}
                                 {store.ownerEmail}
                             </div>
-
                         </div>
-
                     </div>
                 </div>
                 {/* <div>

@@ -26,6 +26,7 @@
 
 }
 .cart-content-container {
+    min-width: 950px;
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -90,4 +91,13 @@
 .line-item-content-middle{
     width: 300px;
     margin-left: 10px;
+}
+.line-item-remove-button{
+    background-color: transparent;
+    color: var(--app-font-color-page);
+    border: none;
+    outline: none;
+}
+.line-item-remove-button:hover {
+    text-decoration-line: underline;
 }
