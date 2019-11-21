@@ -110,7 +110,8 @@
 .app-switch-body-container {
   display: flex;
   justify-content: center;
-  min-height: 500px;
+  // min-height: 500px;
+  min-height: -webkit-fill-available;
 }
 
 ul {
@@ -167,12 +168,21 @@ a {
   width: max-content;
 }
 
-
+html, body {
+  height: 100%;
+}
 html{
   font-family: var(--app-font-family-main);
 }
 //
 body {
+  display: flex;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // height: -webkit-fill-available; 
+
+
   border-color: transparent;
   padding: 0px;
   margin: 0px;
