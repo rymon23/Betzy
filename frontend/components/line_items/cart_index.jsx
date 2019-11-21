@@ -93,7 +93,12 @@ class CartIndex extends React.Component {
                     <div className="cart-index" >
                         <div className="cart-header-container flex-row">
                             <h2>{lineItems.length === 1 ? '1 item' : `${lineItems.length} items` } in your cart</h2>
-                            <span>Keep shopping</span>
+                            <span>
+                                <Link to="/" 
+                                    className='cart-keep-shopping hover-underline'>
+                                    Keep shopping
+                                </Link>    
+                            </span>
                         </div>
                         <div className="cart-content-container flex-row">
                             {lineItemsListing(lineItems, products, stores)}

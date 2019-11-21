@@ -120,18 +120,25 @@ ul {
 }
 
 a:visited{
-    color: inherit;
+  color: inherit;
 }
 a, .no-text-dec{
-    color: inherit;
-    text-decoration-line: inherit;
+  color: inherit;
+  text-decoration-line: inherit;
 }
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .clickable:hover{
-    cursor: pointer;
+  cursor: pointer;
+}
+.hover-underline{
+  text-decoration-line: none;
+}
+.hover-underline:hover{
+  cursor: pointer;
+  text-decoration-line: underline;
 }
 
 .flex-row {

@@ -1945,7 +1945,10 @@ function (_React$Component) {
         className: "cart-index"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "cart-header-container flex-row"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, lineItems.length === 1 ? '1 item' : "".concat(lineItems.length, " items"), " in your cart"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, "Keep shopping")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, lineItems.length === 1 ? '1 item' : "".concat(lineItems.length, " items"), " in your cart"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/",
+        className: "cart-keep-shopping hover-underline"
+      }, "Keep shopping"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "cart-content-container flex-row"
       }, lineItemsListing(lineItems, products, stores), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "cart-checkout-container flex-column"

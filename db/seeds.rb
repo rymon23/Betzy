@@ -186,6 +186,7 @@ user2=User.create!(username: 'Bobdob',password: 'password',email:"bd@gmail.com")
 user3=User.create!(username: 'Debrah',password: 'password',email:"deb@gmail.com")
 user4=User.create!(username: Faker::Name.unique.name, password: 'password',email: Faker::Internet.unique.email)
 user5=User.create!(username: Faker::Name.unique.name, password: 'password',email: Faker::Internet.unique.email)
+user6=User.create!(username: 'Tester', password: 'password',email: 'tester@gmail.com')
 
 setup_user_profile_pic(user1)
 setup_user_profile_pic(user2)
