@@ -60,7 +60,7 @@
 }
 
 .shop-name-input {
-    border: 1px solid lightgray;
+    // border: 1px solid lightgray;
     border-radius: 5px;
     margin: 0 auto;
     padding: 0;
@@ -123,11 +123,19 @@
     margin-bottom: 10px;
 }
 
+.shop-info {
+    margin-left: 15px;
+}
 .shop-name-show {
-    margin-top: 30px;
-    margin-left: 41px;
+    // margin-top: 30px;
+    // margin-left: 41px;
     font-size: 25px;
-    width: 178px;
+    max-width: 180px;
+}
+.stock-edit-button {
+    // margin-top: 20px;
+    // margin-left: 15px;
+    font-size: 10px;
 }
 
 .favorite-shop {

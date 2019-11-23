@@ -44,7 +44,7 @@ class SearchBar extends React.Component {
             <div className="flexsearch">
                 <div className="flexsearch--wrapper">
                     <form className="flexsearch--form" onSubmit={this.handleSubmit}>
-                        <input className="flexsearch--input" type="search" placeholder="Search for items or shops"
+                        <input className="flexsearch--input" type="search" placeholder="Search for items"
                             onChange={this.update} value={this.state.searchQuery} />
                         <button id="search-btn" className='flexsearch--submit' type="submit">
                             <FontAwesomeIcon icon={faSearch} />

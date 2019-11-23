@@ -8,12 +8,14 @@ import { selectProductsByLineItems } from "../../reducers/selector_reducer";
 import { objectValuesArray } from "../../util/helpers_util";
 
 const mapStateToProps = (state, ownProps) => {
+    const currentUser = state.session.currentUser;
     const lineItems = objectValuesArray(state.entities.lineItems);
     const products = state.entities.products;
     const stores = state.entities.stores;
     debugger
     
     return {
+        currentUser,
         lineItems,
         stores,
         products
@@ -23,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchLineItems: () => dispatch(fetchLineItems()),
         fetchStores: () => dispatch(fetchStores()),
-        fetchProducts: () => dispatch(fetchProducts())
+        fetchProducts: (filter) => dispatch(fetchProducts(filter))
     }
 };
 

@@ -89,10 +89,10 @@ class ProductForm extends React.Component {
 
     render(){
 
-        let { categories } = this.props;
+        let { categories, errors } = this.props;
 
+        debugger
 
-        let {errors} = this.props;
         const previews = this.state.imageUrls.map(url => {
             return (
                 <img key={url} src={url}/>
@@ -123,102 +123,91 @@ class ProductForm extends React.Component {
                     )}
                 </select>)}
 
-        // const development = (
-        //     <select value={this.state.categoryId || ''} id="category" onChange={this.update('categoryId')}>
-        //         {/* Development category id */}
-        //         <option disabled hidden value=''>--Select a category--</option>
-        //         <option value='56'>Jewelry & Accessories</option>
-        //         <option value='57'>Clothing & Shoes</option>
-        //         <option value='58'>Home & Living</option>
-        //         <option value='59'>Wedding & Party</option>
-        //         <option value='60'>Toys & Entertainment</option>
-        //         <option value='61'>Art & Collectibles</option>
-        //         <option value='62'>Craft Supplies & Tools</option>
-        //         <option value='63'>Vintage</option>
-        //     </select>
-        // );
-
         return (
-            <form onSubmit={this.handleSubmit} className="product-form">
+            <div>
+                <h2>Create New Product</h2>
+                <form onSubmit={this.handleSubmit} className="product-form">
 
-                <div className="product-images">
-                    <h3>Photos</h3>
+                    <div className="product-images">
+                        <h3>Photos</h3>
 
-                    <div className="images-input-button">
-                        <button onClick={this.handleClearAll}>Clear all</button>
-                        <input type="file" onChange={this.handleFile} multiple />
-                        <p>Upload images</p>
-                    </div>
-                </div>
-
-                <div className="listing-details">
-                    <h3>Listing details</h3>
-
-                    <div className="product-errors">
-                        <ul>
-                            {errorsLi}
-                        </ul> 
-                    </div>
-                    <br/>
-
-                    <div className="title">
-                        <div className="label-description">
-                            <label htmlFor="title">Title *</label>
+                        <div className="images-input-button">
+                            <button onClick={this.handleClearAll}>Clear all</button>
+                            <input type="file" onChange={this.handleFile} multiple />
+                            <p>Upload images</p>
                         </div>
-                        
-                        <input required type="text" value={this.state.name || ''} id="title" onChange={this.update('name')} />
                     </div>
 
-                    <div className="description">
+                    <div className="listing-details">
+                        <h3>Listing details</h3>
 
-                        <div className="label-description">
-                            <label htmlFor="description">Description *</label>
-                            <p>
-                                product description...
-                            </p>
+                        <div className="product-errors">
+                            <ul>
+                                {errorsLi}
+                            </ul> 
                         </div>
-                        
-                        <textarea id="description" value={this.state.description || ''} onChange={this.update('description')} cols="30" rows="10"></textarea>
-                    </div>
+                        <br/>
 
-                   <div className="category">
-
-                       <div className="label-description">
-                            <label htmlFor="category">Category *</label>
-                            <p>Pick a category for your product</p>
-                       </div>
-                        
-                        {categoryOptions()}
-                   </div>
-                </div>
-               
-
-                <div className="inventory-pricing">
-                    <h3>Inventory and pricing</h3>
-
-                    <div className="price">
-
-                        <div className="label-description">
-                            <label htmlFor="price">Price *</label>
+                        <div className="title">
+                            <div className="label-description">
+                                <label htmlFor="title">Title *</label>
+                            </div>
+                            
+                            <input required type="text" value={this.state.name || ''} id="title" onChange={this.update('name')} />
                         </div>
 
-                        <input required type="number" 
-                            id="price" 
-                            value={this.state.price || ''} 
-                            onChange={this.update('price')} 
-                            min="0.00" />
+                        <div className="description">
+
+                            <div className="label-description">
+                                <label htmlFor="description">Description *</label>
+                                <p>
+                                    product description...
+                                </p>
+                            </div>
+                            
+                            <textarea id="description" value={this.state.description || ''} onChange={this.update('description')} cols="30" rows="10"></textarea>
+                        </div>
+
+                    <div className="category">
+
+                        <div className="label-description">
+                                <label htmlFor="category">Category *</label>
+                                <p>Pick a category for your product</p>
+                        </div>
+                            
+                            {categoryOptions()}
+                    </div>
+                    </div>
+                
+
+                    <div className="inventory-pricing">
+                        <h3>Inventory and pricing</h3>
+
+                        <div className="price">
+
+                            <div className="label-description">
+                                <label htmlFor="price">Price *</label>
+                            </div>
+
+                            <input required type="number" 
+                                id="price" 
+                                value={this.state.price || ''} 
+                                onChange={this.update('price')} 
+                                min="0.00" />
+                        </div>
+                    </div>
+
+                    <div className="sticky-bar">
+                        <Link to={`/stores/${this.state.storeId}`}
+                            className="clicky">
+                            Cancel
+                        </Link>
+                        <button className="clicky">Save and continue</button>
                     </div>
                     
-                </div>
-                <div className="sticky-bar">
-                    <Link to={`/stores/${this.state.storeId}`}
-                        className="clicky">
-                        Cancel
-                    </Link>
-                    <button className="clicky">Save and continue</button>
-                </div>
-                
-            </form>
+                </form>
+            </div>
+
         );
     }
 };

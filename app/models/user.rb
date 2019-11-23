@@ -37,6 +37,10 @@ class User < ApplicationRecord
     through: :store,
     source: :products 
 
+  has_many :carted_products,
+    through: :line_items,
+    source: :product 
+
   has_many :authored_reviews,
     class_name: :Review,
     foreign_key: :author_id

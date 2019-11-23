@@ -1,7 +1,8 @@
-export const fetchProducts = () => {
+export const fetchProducts = (filter = { user_id: '', search_query: ''}) => {
   return $.ajax({
     method: "GET",
-    url: `api/products`
+    url: `api/products`, 
+    data: filter
   })
 }
 export const fetchProduct = (id) => {

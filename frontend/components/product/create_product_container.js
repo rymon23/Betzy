@@ -3,24 +3,26 @@ import ProductForm from "./product_form";
 import { createProduct } from "../../actions/product_actions";
 
 const mapStateToProps = (state, ownProps) => {    
-    const storeId = ownProps.match.params.storeId;
-    const product = { 
-            title: '',
-            description: '', 
-            price: '',
-            categoryId: '', 
-            storeId: storeId 
-        };
+    const store_id = ownProps.match.params.storeId;
     const errors = state.errors.product;
+    const product = { 
+        name: '',
+        description: '', 
+        price: '',
+        category_Id: '', 
+        store_id 
+    };
+    debugger
+
     return {
         product,
-        errors
+        categories,
+        errors,
     };
 };
-
 const mapDispatchToProps = dispatch => {
     return {
-        action: formData => dispatch(createProduct(formData))
+        action: (formData) => dispatch(createProduct(formData))
     }
 };
 

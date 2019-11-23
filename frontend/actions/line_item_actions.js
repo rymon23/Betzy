@@ -33,15 +33,14 @@ export const fetchLineItem = (userId, productId) => (dispatch) => {
         .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };
 export const createLineItem = (lineItem) => (dispatch) => {
-    return APIUtil.createLineItem(lineItem);
-        // .then((lineItem) => dispatch(receiveLineItem(lineItem)))
+    return APIUtil.createLineItem(lineItem)
+        .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };
 export const updateLineItem = (lineItem) => (dispatch) => {
     return APIUtil.updateLineItem(lineItem)
         .then((lineItem) => dispatch(receiveLineItem(lineItem)))
 };
 export const deleteLineItem = (lineItem) => (dispatch) => {
-    debugger
     return APIUtil.deleteLineItem(lineItem)
         .then((lineItem) => dispatch(removeLineItem(lineItem.id)))
 };

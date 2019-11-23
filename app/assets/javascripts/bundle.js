@@ -195,7 +195,9 @@ var fetchLineItem = function fetchLineItem(userId, productId) {
 };
 var createLineItem = function createLineItem(lineItem) {
   return function (dispatch) {
-    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["createLineItem"](lineItem); // .then((lineItem) => dispatch(receiveLineItem(lineItem)))
+    return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["createLineItem"](lineItem).then(function (lineItem) {
+      return dispatch(receiveLineItem(lineItem));
+    });
   };
 };
 var updateLineItem = function updateLineItem(lineItem) {
@@ -207,7 +209,6 @@ var updateLineItem = function updateLineItem(lineItem) {
 };
 var deleteLineItem = function deleteLineItem(lineItem) {
   return function (dispatch) {
-    debugger;
     return _util_line_items_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteLineItem"](lineItem).then(function (lineItem) {
       return dispatch(removeLineItem(lineItem.id));
     });
@@ -282,15 +283,17 @@ var receiveProduct = function receiveProduct(product) {
   };
 };
 
-var removeProduct = function removeProduct() {
+var removeProduct = function removeProduct(productId) {
+  debugger;
   return {
-    type: REMOVE_PRODUCT
+    type: REMOVE_PRODUCT,
+    productId: productId
   };
 };
 
-var fetchProducts = function fetchProducts() {
+var fetchProducts = function fetchProducts(filter) {
   return function (dispatch) {
-    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchProducts"]().then(function (products) {
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchProducts"](filter).then(function (products) {
       return dispatch(receiveAllProducts(products));
     });
   };
@@ -319,7 +322,7 @@ var updateProduct = function updateProduct(product) {
 var deleteProduct = function deleteProduct(productId) {
   return function (dispatch) {
     return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteProduct"](productId).then(function (product) {
-      return dispatch(removeProduct());
+      return dispatch(removeProduct(product.id));
     });
   };
 };
@@ -1853,7 +1856,10 @@ function (_React$Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                return _context.abrupt("return", Promise.allSettled([this.props.fetchLineItems(), this.props.fetchStores(), this.props.fetchProducts()]).then(function (result) {
+                return _context.abrupt("return", Promise.allSettled([this.props.fetchLineItems(), this.props.fetchStores(), this.props.fetchProducts({
+                  carted: true,
+                  user_id: this.props.currentUser.id
+                })]).then(function (result) {
                   _this2.setState({
                     isLoaded: true,
                     cartItems: _this2.props.lineItems
@@ -1988,11 +1994,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var currentUser = state.session.currentUser;
   var lineItems = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_6__["objectValuesArray"])(state.entities.lineItems);
   var products = state.entities.products;
   var stores = state.entities.stores;
   debugger;
   return {
+    currentUser: currentUser,
     lineItems: lineItems,
     stores: stores,
     products: products
@@ -2007,8 +2015,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchStores: function fetchStores() {
       return dispatch(Object(_actions_store_actions__WEBPACK_IMPORTED_MODULE_3__["fetchStores"])());
     },
-    fetchProducts: function fetchProducts() {
-      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_4__["fetchProducts"])());
+    fetchProducts: function fetchProducts(filter) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_4__["fetchProducts"])(filter));
     }
   };
 };
@@ -2622,17 +2630,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var storeId = ownProps.match.params.storeId;
+  var store_id = ownProps.match.params.storeId;
+  var errors = state.errors.product;
   var product = {
-    title: '',
+    name: '',
     description: '',
     price: '',
-    categoryId: '',
-    storeId: storeId
+    category_Id: '',
+    store_id: store_id
   };
-  var errors = state.errors.product;
+  debugger;
   return {
     product: product,
+    categories: categories,
     errors: errors
   };
 };
@@ -2663,6 +2673,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _product_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_form */ "./frontend/components/product/product_form.jsx");
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2686,12 +2698,17 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var productId = ownProps.match.params.productId;
   var product = state.entities.products[productId];
+  var categories = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["objectValuesArray"])(state.entities.categories);
   var errors = state.errors.product;
+  debugger;
   return {
     product: product,
+    categories: categories,
     errors: errors
   };
 };
@@ -2740,15 +2757,18 @@ function (_React$Component) {
       var _this$props = this.props,
           product = _this$props.product,
           action = _this$props.action,
+          categories = _this$props.categories,
           errors = _this$props.errors;
 
       if (!product) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_4__["loading"])());
       }
 
+      ;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         action: action,
         product: product,
+        categories: categories,
         errors: errors
       });
     }
@@ -2931,8 +2951,10 @@ function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      var categories = this.props.categories;
-      var errors = this.props.errors;
+      var _this$props = this.props,
+          categories = _this$props.categories,
+          errors = _this$props.errors;
+      debugger;
       var previews = this.state.imageUrls.map(function (url) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           key: url,
@@ -2959,23 +2981,9 @@ function (_React$Component) {
             value: category.id
           }, category.name);
         }));
-      }; // const development = (
-      //     <select value={this.state.categoryId || ''} id="category" onChange={this.update('categoryId')}>
-      //         {/* Development category id */}
-      //         <option disabled hidden value=''>--Select a category--</option>
-      //         <option value='56'>Jewelry & Accessories</option>
-      //         <option value='57'>Clothing & Shoes</option>
-      //         <option value='58'>Home & Living</option>
-      //         <option value='59'>Wedding & Party</option>
-      //         <option value='60'>Toys & Entertainment</option>
-      //         <option value='61'>Art & Collectibles</option>
-      //         <option value='62'>Craft Supplies & Tools</option>
-      //         <option value='63'>Vintage</option>
-      //     </select>
-      // );
+      };
 
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create New Product"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "product-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3044,7 +3052,7 @@ function (_React$Component) {
         className: "clicky"
       }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "clicky"
-      }, "Save and continue")));
+      }, "Save and continue"))));
     }
   }]);
 
@@ -3571,7 +3579,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "flexsearch--input",
         type: "search",
-        placeholder: "Search for items or shops",
+        placeholder: "Search for items",
         onChange: this.update,
         value: this.state.searchQuery
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -5174,6 +5182,7 @@ function (_React$Component) {
   }, {
     key: "editDeleteButton",
     value: function editDeleteButton(product) {
+      debugger;
       var _this$props = this.props,
           store = _this$props.store,
           currentUserId = _this$props.currentUserId,
@@ -5182,7 +5191,7 @@ function (_React$Component) {
 
       if (currentUserId === store.owner_id) {
         editDeleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "edit-delete-button"
+          className: "edit-delete-button default-font-color"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/products/".concat(product.id, "/edit"),
           className: "clicky"
@@ -5199,8 +5208,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
-
       var _this$props2 = this.props,
           store = _this$props2.store,
           currentUserId = _this$props2.currentUserId,
@@ -5217,7 +5224,7 @@ function (_React$Component) {
 
       if (currentUserId === store.owner_id) {
         stockItemButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "stock-edit-button"
+          className: "stock-edit-button flex-row"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "clicky stock-your-shop-button",
           onClick: this.handleStock
@@ -5227,19 +5234,20 @@ function (_React$Component) {
         }, "Edit your store"));
       } else {
         stockItemButton = '';
-      }
+      } // const productLi = products.map((product) => {
+      //         return (
+      //             <li key={product.id}>
+      //                 <div onClick={this.ProductPage(product.id)}>
+      //                     <img src={product.imageUrls[0]} />
+      //                     <p className="product-name">{product.name.slice(0, 27)}...</p>
+      //                     <p><strong>USD {product.price}</strong></p>
+      //                 </div>
+      //                 {this.editDeleteButton(product)}
+      //             </li>
+      //         )
+      // });
 
-      var productLi = products.map(function (product) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: product.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          onClick: _this4.ProductPage(product.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: product.imageUrls[0]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "product-name"
-        }, product.name.slice(0, 27), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "USD ", product.price))), _this4.editDeleteButton(product));
-      });
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -5248,11 +5256,13 @@ function (_React$Component) {
         className: "shop-logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: store.imageUrl
-      }), stockItemButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-name-show"
-      }, store.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, store.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flex-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "0 Sales")), stockItemButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-info clickable",
         onClick: this.toUserProfile(store.owner_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Shop owner"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -6235,9 +6245,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProduct", function() { return createProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProduct", function() { return updateProduct; });
 var fetchProducts = function fetchProducts() {
+  var filter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    user_id: '',
+    search_query: ''
+  };
   return $.ajax({
     method: "GET",
-    url: "api/products"
+    url: "api/products",
+    data: filter
   });
 };
 var fetchProduct = function fetchProduct(id) {

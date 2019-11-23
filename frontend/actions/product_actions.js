@@ -16,14 +16,16 @@ const receiveProduct = (product) => {
     product
   }
 };
-const removeProduct = () => {
+const removeProduct = (productId) => {
+  debugger
   return {
     type: REMOVE_PRODUCT,
+    productId
   }
 };
 
-export const fetchProducts = () => (dispatch) => {
-  return APIUtil.fetchProducts()
+export const fetchProducts = (filter) => (dispatch) => {
+  return APIUtil.fetchProducts(filter)
     .then((products) => dispatch(receiveAllProducts(products)))
 };
 export const fetchProduct = (id) => (dispatch) => {
@@ -40,5 +42,5 @@ export const updateProduct = (product) => (dispatch) => {
 };
 export const deleteProduct = (productId) => (dispatch) => {
   return APIUtil.deleteProduct(productId)
-    .then((product) => dispatch(removeProduct()))
+    .then((product) => dispatch(removeProduct(product.id)))
 };

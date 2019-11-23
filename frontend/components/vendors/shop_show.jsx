@@ -55,11 +55,12 @@ class StoreShow extends React.Component {
         }
     }
     editDeleteButton(product){
+        debugger
         let { store, currentUserId, deleteProduct } = this.props;
         let editDeleteButton;
         if (currentUserId === store.owner_id) {
             editDeleteButton = (
-                <div className="edit-delete-button">
+                <div className="edit-delete-button default-font-color">
                     <Link to={`/products/${product.id}/edit`} className="clicky">Edit item</Link>
                     <button onClick={() => deleteProduct(product.id)} className="clicky">Delete</button>
                 </div>
@@ -81,7 +82,7 @@ class StoreShow extends React.Component {
         let stockItemButton;
         if ( currentUserId === store.owner_id ){
             stockItemButton = (
-                <div className="stock-edit-button">
+                <div className="stock-edit-button flex-row">
                     <button className="clicky stock-your-shop-button" onClick={this.handleStock}>
                         Stock your store
                     </button>
@@ -96,33 +97,37 @@ class StoreShow extends React.Component {
             stockItemButton = '';
         }
 
-        const productLi = products.map((product) => {
-                return (
-                    <li key={product.id}>
-                        <div onClick={this.ProductPage(product.id)}>
-                            <img src={product.imageUrls[0]} />
-                            <p className="product-name">{product.name.slice(0, 27)}...</p>
-                            <p><strong>USD {product.price}</strong></p>
-                        </div>
+        // const productLi = products.map((product) => {
+        //         return (
+        //             <li key={product.id}>
+        //                 <div onClick={this.ProductPage(product.id)}>
+        //                     <img src={product.imageUrls[0]} />
+        //                     <p className="product-name">{product.name.slice(0, 27)}...</p>
+        //                     <p><strong>USD {product.price}</strong></p>
+        //                 </div>
 
-                        {this.editDeleteButton(product)}
-                    </li>
-                )
+        //                 {this.editDeleteButton(product)}
+        //             </li>
+        //         )
             
-        });
+        // });
 
         return (
             <div className="shop-show">
                 <div className="shop-show-header">
                     <div className="shop-logo">
                         <img src={store.imageUrl} />
-                        { stockItemButton }
+                        {/* { stockItemButton } */}
                     </div>
 
                     <div className="shop-info">
                         <div className="shop-name-show">
                             {store.name}
                         </div>
+                        <div className="flex-row">
+                            <p>0 Sales</p>
+                        </div>
+                        {stockItemButton}
                     </div>
 
                     <div className="owner-info clickable" 

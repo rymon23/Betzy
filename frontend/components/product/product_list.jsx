@@ -31,7 +31,7 @@ class ProductsList extends React.Component {
                             }
                             <p><strong>${product.price}</strong></p>
                         </div>
-                        { editDeleteButton? editDeleteButton(product): null }
+                        { editDeleteButton? editDeleteButton(product) : null }
                     </li>)
             });
             return <div className="products-listing">

@@ -22,8 +22,7 @@ class CartIndex extends React.Component {
             [
                 this.props.fetchLineItems(),
                 this.props.fetchStores(),
-                this.props.fetchProducts()
-
+                this.props.fetchProducts({ carted: true, user_id: this.props.currentUser.id })
             ]).then((result) => {
                 this.setState({
                     isLoaded: true,

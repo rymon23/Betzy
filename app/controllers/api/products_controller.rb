@@ -6,7 +6,35 @@ class Api::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all 
+    if params[:store_id]
+      store = Store.find(params[:store_id])
+      if store
+        @products = []
+        search_query = params[:search_query].split
+        store_products = store.products
+        substrings = {}
+        store_products.each do |product|
+          substrings[product.id] = substring(product.name.downcase)
+        end
+        search_query.each do |query|
+            substrings.each do |key, value|
+                if value.include?(query.downcase)
+                    @products << Product.find(key)
+                end
+            end
+        end
+        @products
+      else
+        @products = Product.all 
+      end
+      @products
+    # elsif params[:carted] && current_user && params[:user_id].to_i == current_user.id
+    #   @products = current_user.carted_products
+    else
+      @products = Product.all 
+    end
+    # debugger
+
     render :index
   end
 
@@ -40,6 +68,16 @@ class Api::ProductsController < ApplicationController
   private
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def substring(string)
+      subs = []
+      (0...string.length).each do |start_index|
+          (start_index...string.length).each do |end_index|
+              subs << string[start_index..end_index]
+          end
+      end
+      subs
   end
 
   def product_params
