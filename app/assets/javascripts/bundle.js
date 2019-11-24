@@ -5494,8 +5494,7 @@ var lineItemsReducer = function lineItemsReducer() {
       return Object.assign({}, action.lineItems);
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LINE_ITEM"]:
-      debugger;
-      return Object.assign({}, state, _defineProperty({}, action.lineItem.product_id, action.lineItem));
+      return Object.assign({}, state, _defineProperty({}, action.lineItem.id, action.lineItem));
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_LINE_ITEM"]:
       debugger;
