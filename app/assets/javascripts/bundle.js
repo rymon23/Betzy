@@ -1924,11 +1924,11 @@ function (_React$Component) {
       var _this3 = this;
 
       debugger;
-      var promises = [];
-      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.lineItem)) promises.push(this.props.fetchLineItems());
-      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores()); // if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
+      var promises = []; // if (!isDataFetched(this.props.lineItem)) promises.push(this.props.fetchLineItems());
 
-      promises.push(this.props.fetchProducts());
+      promises.push(this.props.fetchLineItems());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.products)) promises.push(this.props.fetchProducts());
       debugger;
       var that = this;
       Promise.allSettled(promises).then(function (result) {
