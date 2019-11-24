@@ -1793,6 +1793,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
 /* harmony import */ var _line_item_edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./line_item_edit */ "./frontend/components/line_items/line_item_edit.jsx");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1816,6 +1817,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1849,29 +1851,34 @@ function (_React$Component) {
     value: function () {
       var _fetchers = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(callBacks) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(promises) {
         var _this2 = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                return _context.abrupt("return", Promise.allSettled([this.props.fetchLineItems(), this.props.fetchStores(), this.props.fetchProducts({
-                  carted: true,
-                  user_id: this.props.currentUser.id
-                })]).then(function (result) {
+                debugger; // const promises = [];
+                // if (!isDataFetched(this.props.lineItem)) promises.push(new Promise((resolve, reject) => this.props.fetchLineItems()) );
+                // if (!isDataFetched(this.props.stores)) promises.push(new Promise((resolve, reject) => this.props.fetchStores()) );
+                // if (!isDataFetched(this.props.products)) promises.push(new Promise((resolve, reject) => this.props.fetchProducts()) );
+                // debugger
+
+                return _context.abrupt("return", Promise.allSettled(promises).then(function (result) {
+                  debugger;
+
                   _this2.setState({
                     isLoaded: true,
                     cartItems: _this2.props.lineItems
                   });
                 }));
 
-              case 1:
+              case 2:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee);
       }));
 
       function fetchers(_x) {
@@ -1883,7 +1890,22 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.fetchers();
+      var _this3 = this;
+
+      debugger;
+      var promises = [];
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.lineItem)) promises.push(this.props.fetchLineItems());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.products)) promises.push(this.props.fetchProducts());
+      debugger;
+      var that = this;
+      Promise.allSettled(promises).then(function (result) {
+        debugger;
+        that.setState({
+          isLoaded: true,
+          cartItems: _this3.props.lineItems
+        });
+      });
     } // componentDidUpdate(prevProps) {
     //     // if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
     //         this.props.fetchLineItems();
@@ -1906,7 +1928,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (!this.state.isLoaded) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
@@ -1935,7 +1957,7 @@ function (_React$Component) {
             lineItem: lineItem,
             product: product,
             productStore: store,
-            removeCartItem: _this3.removeCartItem
+            removeCartItem: _this4.removeCartItem
           }));
         });
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -6073,12 +6095,13 @@ var DEMO_USER = {
 /*!***************************************!*\
   !*** ./frontend/util/helpers_util.js ***!
   \***************************************/
-/*! exports provided: objectValuesArray, getCurrentUser, getCurrentUserId, hasStore, getStore, getStoreId, categoryHasProducts, arrayShuffle, sample, removeDups, limitStringDisplay */
+/*! exports provided: objectValuesArray, isDataFetched, getCurrentUser, getCurrentUserId, hasStore, getStore, getStoreId, categoryHasProducts, arrayShuffle, sample, removeDups, limitStringDisplay */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "objectValuesArray", function() { return objectValuesArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDataFetched", function() { return isDataFetched; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentUser", function() { return getCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentUserId", function() { return getCurrentUserId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasStore", function() { return hasStore; });
@@ -6089,8 +6112,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sample", function() { return sample; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeDups", function() { return removeDups; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "limitStringDisplay", function() { return limitStringDisplay; });
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var objectValuesArray = function objectValuesArray(obj) {
   return Object.values(obj) || [];
+};
+var isDataFetched = function isDataFetched(obj) {
+  if (obj instanceof Array) {
+    debugger;
+    return obj.length > 0;
+  }
+
+  ;
+
+  if (_typeof(obj) === "object") {
+    debugger;
+    return Object.keys(obj).length > 0;
+  }
+
+  ;
+  debugger;
+  return Boolean(obj);
 }; //CURRENT USER
 
 var getCurrentUser = function getCurrentUser(state) {

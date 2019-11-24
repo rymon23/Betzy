@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { loading } from "../utility";
 import LineItemEdit from "./line_item_edit";
+import { isDataFetched } from "../../util/helpers_util";
 
 class CartIndex extends React.Component {
     constructor() {
@@ -13,27 +14,73 @@ class CartIndex extends React.Component {
         };
 
         this.isFetching = false;
+
         this.fetchers = this.fetchers.bind(this);
         this.removeCartItem = this.removeCartItem.bind(this);
     }
 
-    async fetchers(callBacks){
-        return Promise.allSettled(
-            [
-                this.props.fetchLineItems(),
-                this.props.fetchStores(),
-                this.props.fetchProducts({ carted: true, user_id: this.props.currentUser.id })
-            ]).then((result) => {
-                this.setState({
-                    isLoaded: true,
-                    cartItems: this.props.lineItems,
-                });         
-            });
+    async fetchers(promises){
+        debugger
+        // const promises = [];
+        // if (!isDataFetched(this.props.lineItem)) promises.push(new Promise((resolve, reject) => this.props.fetchLineItems()) );
+        // if (!isDataFetched(this.props.stores)) promises.push(new Promise((resolve, reject) => this.props.fetchStores()) );
+        // if (!isDataFetched(this.props.products)) promises.push(new Promise((resolve, reject) => this.props.fetchProducts()) );
+        // debugger
+        return Promise.allSettled(promises).then((result) => {
+            debugger
+            this.setState({
+                isLoaded: true,
+                cartItems: this.props.lineItems,
+            })
+        });
+
+            // .then((result) => {
+            //     this.setState({
+            //         isLoaded: true,
+            //         cartItems: this.props.lineItems,
+            //     });         
+            // });
+
+        // debugger
+        // const that = this;
+        // return new Promise(function (resolve, reject) {
+        //     debugger
+        //     if (!isDataFetched(that.props.lineItem)) that.props.fetchLineItems();
+        //     if (!isDataFetched(that.props.stores)) that.props.fetchStores();
+        //     if (!isDataFetched(that.props.products)) that.props.fetchProducts();
+        // });
+
+        // return Promise.allSettled(
+        //     [
+        //         this.props.fetchLineItems(),
+        //         this.props.fetchStores(),
+        //         this.props.fetchProducts({ carted: true, user_id: this.props.currentUser.id })
+        //     ])
+            // .then((result) => {
+            //     this.setState({
+            //         isLoaded: true,
+            //         cartItems: this.props.lineItems,
+            //     });         
+            // });
     }
 
     componentDidMount() {
-        this.fetchers();
+        debugger
+        const promises = [];
+        if (!isDataFetched(this.props.lineItem)) promises.push(this.props.fetchLineItems());
+        if (!isDataFetched(this.props.stores)) promises.push(this.props.fetchStores());
+        if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
+        debugger
+        const that = this;
+        Promise.allSettled(promises).then((result) => {
+            debugger
+            that.setState({
+                isLoaded: true,
+                cartItems: this.props.lineItems,
+            })
+        });
     }
+
     // componentDidUpdate(prevProps) {
     //     // if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
     //         this.props.fetchLineItems();

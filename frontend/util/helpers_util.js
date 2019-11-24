@@ -3,6 +3,19 @@ export const objectValuesArray = (obj) => {
   return Object.values(obj) || [];
 };
 
+export const isDataFetched = (obj) => {  
+  if (obj instanceof Array){
+    debugger
+    return obj.length > 0;
+  };
+  if (typeof obj === "object"){
+    debugger
+    return Object.keys(obj).length > 0;  
+  };
+  debugger
+  return Boolean(obj);
+};
+
 //CURRENT USER
 export const getCurrentUser = (state) => {
   return state.session.currentUser;
