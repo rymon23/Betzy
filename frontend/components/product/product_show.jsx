@@ -71,11 +71,14 @@ class ProductShow extends React.Component {
                     product_id: this.state.product_id,
                     user_id: this.props.currentUserId
                 };
-                this.props.createLineItem(lineItem);
+                const that = this;
+                this.props.createLineItem(lineItem).then((result)=>{
+                    debugger
+                    that.props.history.push(`/users/${that.props.currentUserId}/line_items`);
+                });
             }else{
                 alert('You already have this item in your cart!');
             }
-            this.props.history.push(`/users/${this.props.currentUserId}/line_items`);
         };
     }
 
