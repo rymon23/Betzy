@@ -9,11 +9,11 @@ export const receiveAllUsers = (users) => {
     }
 };
 
-export const fetchAllUsers = () => dispatch => {
+export const fetchAllUsers = () => (dispatch) => {
     return APIUtil.fetchAllUsers()
         .then((users) => dispatch(receiveAllUsers(users)))
 }
-export const updateUser = (formData) => dispatch => {
+export const updateUser = (formData) => (dispatch) => {
     return APIUtil.updateUser(formData)
         .then((user) => dispatch(receiveCurrentUser(user)))
 }

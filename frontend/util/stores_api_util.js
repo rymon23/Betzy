@@ -4,14 +4,12 @@ export const fetchStores = () => {
     url: `api/stores`
   })
 }
-
 export const fetchStore = (id) => {
   return $.ajax({
     method: "GET",
     url: `api/stores/${id}`
   });
 }
-
 export const createStore = (formData) => {
   return $.ajax({
     method: "POST",
@@ -21,7 +19,6 @@ export const createStore = (formData) => {
     processData: false
   });
 }
-
 export const updateStore = (formData) => {
   return $.ajax({
     method: "PATCH",
@@ -29,5 +26,11 @@ export const updateStore = (formData) => {
     data: formData,
     contentType: false,
     processData: false
+  });
+}
+export const deleteStore = (storeId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `api/stores/${storeId}`
   });
 }

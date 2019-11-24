@@ -4,26 +4,19 @@ class Api::LineItemsController < ApplicationController
   def show
     if current_user
       @line_item = current_user.line_items.select {|line_item| line_item.product_id == params[:id].to_i}.first
-      render :show
     else
       @line_item = nil
-      render :show
-    end
+    end  
+    render :show
   end
 
   def index
     if current_user
-      @line_items = current_user.line_items #.sort_by { |line_item| line_item.id }.reverse
-      render :index
+      @line_items = current_user.line_items
     else
       @line_items = []
-      render :index
     end
-  end
-
-  def index_all
-    @line_items = LineItem.all
-    render :index_all
+    render :index
   end
 
   def create
@@ -47,9 +40,9 @@ class Api::LineItemsController < ApplicationController
   def destroy
     set_line_item
     if @line_item.destroy
-        render :show
+      render :show
     else
-        render json: @line_item.errors.full_messages, status: 422
+      render json: @line_item.errors.full_messages, status: 422
     end
   end
 

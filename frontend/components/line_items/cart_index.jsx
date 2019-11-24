@@ -92,9 +92,17 @@ class CartIndex extends React.Component {
     removeCartItem(lineItemId, e) {
         // e.preventDefault();
         debugger
-        this.setState({
-            cartItems: this.props.lineItems.filter(lineItem => lineItem.id != lineItemId) 
+        const that = this;
+        this.props.fetchLineItems().then((result) => {
+            debugger
+            that.setState({
+                // isLoaded: true,
+                cartItems: this.props.lineItems,
+            })
         });
+        // this.setState({
+        //     cartItems: this.props.lineItems.filter(lineItem => lineItem.id != lineItemId) 
+        // });
     };
 
     render() {
@@ -107,25 +115,33 @@ class CartIndex extends React.Component {
 
         if (lineItems &&  lineItems.length === 0 ){
             return <div>
-                <h2>Your cart is empty</h2>
-            </div>
+                    <h2>Your cart is empty</h2>
+                </div>
         }
-
         debugger
 
         const lineItemsListing = (lineItems, products, stores) => {
-            const lineItemsList = lineItems.map((lineItem) => {
+            const lineItemsList = lineItems.sort((a, b) => {
+                if (a.id < b.id) {
+                    return 1;
+                } else if (a.id > b.id) {
+                    return -1;
+                } else {
+                    return 0;
+                };
+            }).map((lineItem) => {
                 const product = products[lineItem.product_id];
                 const store = stores[product.store_id];
                 return (
-                    <li className="line-items-listing-li" key={product.id}>
+                    <li className="line-items-listing-li" key={lineItem.id}>
                         <LineItemEdit
                             lineItem={lineItem}
                             product={product}
                             productStore={store}
                             removeCartItem={this.removeCartItem}/>
                     </li>)
-            }).reverse();
+            });
+
             return <div className="line-items-listing-container">
                 <ul className="line-items-listing-ul">
                     {lineItemsList}

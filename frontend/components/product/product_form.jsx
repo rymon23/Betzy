@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 class ProductForm extends React.Component {
     constructor(props){
         super(props);
+        
         this.state = Object.assign({}, {
             imageUrls: [],
             imageFiles: [],
