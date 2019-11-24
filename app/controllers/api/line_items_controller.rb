@@ -2,11 +2,8 @@ class Api::LineItemsController < ApplicationController
   before_action :require_login, only: [:index, :show, :create, :update, :destroy]
 
   def show
-    # debugger
     if current_user
       @line_item = current_user.line_items.select {|line_item| line_item.product_id == params[:id].to_i}.first
-      # debugger
-      # @line_item
       render :show
     else
       @line_item = nil
@@ -16,7 +13,7 @@ class Api::LineItemsController < ApplicationController
 
   def index
     if current_user
-      @line_items = current_user.line_items
+      @line_items = current_user.line_items #.sort_by { |line_item| line_item.id }.reverse
       render :index
     else
       @line_items = []
@@ -32,7 +29,7 @@ class Api::LineItemsController < ApplicationController
   def create
     @line_item = LineItem.new(line_item_params)
     if @line_item.save
-      # render :index
+      render :show
     else
       render json: ["Something went wrong"], status: 422
     end

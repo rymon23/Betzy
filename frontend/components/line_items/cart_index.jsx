@@ -124,9 +124,8 @@ class CartIndex extends React.Component {
                             product={product}
                             productStore={store}
                             removeCartItem={this.removeCartItem}/>
-                    </li>
-                    )
-            });
+                    </li>)
+            }).reverse();
             return <div className="line-items-listing-container">
                 <ul className="line-items-listing-ul">
                     {lineItemsList}

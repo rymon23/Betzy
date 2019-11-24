@@ -1959,7 +1959,7 @@ function (_React$Component) {
             productStore: store,
             removeCartItem: _this4.removeCartItem
           }));
-        });
+        }).reverse();
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "line-items-listing-container"
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
@@ -5494,6 +5494,7 @@ var lineItemsReducer = function lineItemsReducer() {
       return Object.assign({}, action.lineItems);
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LINE_ITEM"]:
+      debugger;
       return Object.assign({}, state, _defineProperty({}, action.lineItem.product_id, action.lineItem));
 
     case _actions_line_item_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_LINE_ITEM"]:
