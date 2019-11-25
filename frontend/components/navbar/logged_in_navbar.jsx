@@ -31,7 +31,7 @@ class LoggedInNavbar extends React.Component {
 
         const notificationsDropDown = () => {
             return (
-                    <div className="dropdown-menu-notify bg-color-page-a">
+                    <div className="dropdown-container dropdown-menu-notify bg-color-page-a">
 
                         <div className="dropdown-header-notify-container">
                             <h4 className="dropdown-header-notify">Notifications</h4>
@@ -55,12 +55,13 @@ class LoggedInNavbar extends React.Component {
                     <p>Favorites</p>
                 </div>
 
-                <div className="notifications-container clickable nav-icon-link-container">
+                <div className="dropdown-trigger notifications-container clickable nav-icon-link-container">
                     <FontAwesomeIcon className="notifications logged-nav-options-icon" icon="bell" size="1x" />
                     <div className="flex-row align-items-center">
                         <p>Notifications</p>
                         <FontAwesomeIcon icon="caret-down"/>
                     </div>
+                    <div className="dropdown-bridge"></div>
                     {notificationsDropDown()}
                 </div>
 

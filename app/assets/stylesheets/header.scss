@@ -255,9 +255,21 @@ header {
     min-height: 160px;
     min-width: 250px;
     border: 1px solid var(--app-border-color-a);
-    right: -52px;
-    top: 52px;
+    right: -30px;
+    top: 60px;
     border-radius: 5px;
+}
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: -28px;
+    left: 81%;
+    border-top: 1px solid var(--app-border-color-a);
+    border-left: 1px solid var(--app-border-color-a);
+    background-color: inherit;
+    transform: translateX(-50%) translateY(16px) rotate(45deg);
 }
 
 .dropdown-option-icon-container{

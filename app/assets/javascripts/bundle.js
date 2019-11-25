@@ -1468,7 +1468,7 @@ var Greeting = function Greeting(_ref) {
 
   var personalGreeting = function personalGreeting() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dropdown nav-icon-link-container clickable"
+      className: "dropdown-trigger user-nav-dropdown dropdown nav-icon-link-container clickable"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "dropdown-btn clickable"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1480,7 +1480,9 @@ var Greeting = function Greeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
       icon: "caret-down"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dropdown-menu bg-color-page-a"
+      className: "dropdown-bridge"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dropdown-container dropdown-menu bg-color-page-a"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dropdown-header-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2466,7 +2468,7 @@ function (_React$Component) {
     value: function render() {
       var notificationsDropDown = function notificationsDropDown() {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "dropdown-menu-notify bg-color-page-a"
+          className: "dropdown-container dropdown-menu-notify bg-color-page-a"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "dropdown-header-notify-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
@@ -2487,7 +2489,7 @@ function (_React$Component) {
         icon: "heart",
         size: "1x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Favorites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "notifications-container clickable nav-icon-link-container"
+        className: "dropdown-trigger notifications-container clickable nav-icon-link-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         className: "notifications logged-nav-options-icon",
         icon: "bell",
@@ -2496,7 +2498,9 @@ function (_React$Component) {
         className: "flex-row align-items-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         icon: "caret-down"
-      })), notificationsDropDown()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-bridge"
+      }), notificationsDropDown()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-manager-container clickable nav-icon-link-container",
         onClick: this.toStorePage
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {

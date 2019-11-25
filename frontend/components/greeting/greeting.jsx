@@ -19,7 +19,7 @@ const Greeting = ({currentUser, logout, enableModal}) => {
     );
 
     const personalGreeting = () => (
-        <div className="dropdown nav-icon-link-container clickable">
+        <div className="dropdown-trigger user-nav-dropdown dropdown nav-icon-link-container clickable">
             <button className="dropdown-btn clickable">
 
                 <div className="profile-pic-dropdown">
@@ -31,8 +31,9 @@ const Greeting = ({currentUser, logout, enableModal}) => {
                     <FontAwesomeIcon icon="caret-down"/>
                 </div>
             </button>
-            
-            <div className="dropdown-menu bg-color-page-a">  
+            <div className="dropdown-bridge"></div>
+
+            <div className="dropdown-container dropdown-menu bg-color-page-a">  
 
                 <div className="dropdown-header-container">
                     <div className="dropdown-header flex-row">
