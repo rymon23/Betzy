@@ -14,21 +14,29 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :new, :destroy]
 
     resources :users, only: [:create, :show, :update, :index] do 
+      
       resources :line_items, only: [:index, :show, :create, :update, :destroy]
       resources :reviews, only: [:update, :destroy]
     end
 
     resources :products, only: [:show, :update, :destroy, :index] do
+
       resources :reviews, only: [:create]
+      resources :product_keywords, only: [:index]
     end
 
     resources :stores, only: [:show, :index, :create, :update] do
-      resources :products, only: [:create]
+
+      resources :products, only: [:create] do
+        resources :product_keywords, only: [:create, :destroy]
+      end
+
       resources :reviews, only: [:index]
     end
 
     resources :categories, only: [:show, :index]
     resources :search_results, only: [:index]
+    resources :keywords, only: [:index]
     
     # resources :line_items do
     #   collection do

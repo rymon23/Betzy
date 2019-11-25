@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_231220) do
+ActiveRecord::Schema.define(version: 2019_11_24_215722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2019_11_12_231220) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "keywords", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_keywords_on_name", unique: true
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.integer "user_id", null: false
@@ -50,6 +57,15 @@ ActiveRecord::Schema.define(version: 2019_11_12_231220) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_line_items_on_product_id"
     t.index ["user_id"], name: "index_line_items_on_user_id"
+  end
+
+  create_table "product_keywords", force: :cascade do |t|
+    t.integer "keyword_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["keyword_id"], name: "index_product_keywords_on_keyword_id"
+    t.index ["product_id"], name: "index_product_keywords_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|

@@ -33,6 +33,14 @@ class Product < ApplicationRecord
     class_name: :LineItem,
     foreign_key: :product_id
 
+  has_many :product_keywords,
+    class_name: :ProductKeyword,
+    foreign_key: :product_id
+
+  has_many :keywords,
+    through: :product_keywords,
+    source: :keyword
+
   has_many :reviews,
     class_name: :Review,
     foreign_key: :product_id   

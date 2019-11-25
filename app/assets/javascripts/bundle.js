@@ -135,6 +135,55 @@ var fetchCategory = function fetchCategory(id) {
 
 /***/ }),
 
+/***/ "./frontend/actions/keyword_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/keyword_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_ALL_KEYWORDS, RECEIVE_KEYWORD, fetchKeywords, fetchKeyword */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_KEYWORDS", function() { return RECEIVE_ALL_KEYWORDS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_KEYWORD", function() { return RECEIVE_KEYWORD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchKeywords", function() { return fetchKeywords; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchKeyword", function() { return fetchKeyword; });
+/* harmony import */ var _util_keywords_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/keywords_api_util */ "./frontend/util/keywords_api_util.js");
+
+var RECEIVE_ALL_KEYWORDS = "RECEIVE_ALL_KEYWORDS";
+var RECEIVE_KEYWORD = "RECEIVE_KEYWORD";
+
+var receiveAllKeywords = function receiveAllKeywords(keywords) {
+  return {
+    type: RECEIVE_ALL_KEYWORDS,
+    keywords: keywords
+  };
+};
+
+var receiveKeyword = function receiveKeyword(keyword) {
+  return {
+    type: RECEIVE_KEYWORD,
+    keyword: keyword
+  };
+};
+
+var fetchKeywords = function fetchKeywords() {
+  return function (dispatch) {
+    return _util_keywords_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchKeywords"]().then(function (keywords) {
+      return dispatch(receiveAllKeywords(keywords));
+    });
+  };
+};
+var fetchKeyword = function fetchKeyword(id) {
+  return function (dispatch) {
+    return _util_keywords_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchKeyword"](id).then(function (keyword) {
+      return dispatch(receiveKeyword(keyword));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/line_item_actions.js":
 /*!***********************************************!*\
   !*** ./frontend/actions/line_item_actions.js ***!
@@ -5481,7 +5530,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _categories_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./categories_reducer */ "./frontend/reducers/categories_reducer.js");
 /* harmony import */ var _reviews_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reviews_reducer */ "./frontend/reducers/reviews_reducer.js");
 /* harmony import */ var _line_items_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./line_items_reducer */ "./frontend/reducers/line_items_reducer.js");
-/* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+/* harmony import */ var _keywords_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./keywords_reducer */ "./frontend/reducers/keywords_reducer.js");
+/* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+
 
 
 
@@ -5497,7 +5548,8 @@ __webpack_require__.r(__webpack_exports__);
   products: _products_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   reviews: _reviews_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
   lineItems: _line_items_reducer__WEBPACK_IMPORTED_MODULE_6__["default"],
-  searchResults: _search_reducer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  keywords: _keywords_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
+  searchResults: _search_reducer__WEBPACK_IMPORTED_MODULE_8__["default"]
 }));
 
 /***/ }),
@@ -5524,6 +5576,41 @@ __webpack_require__.r(__webpack_exports__);
   store: _product_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   product: _store_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
+
+/***/ }),
+
+/***/ "./frontend/reducers/keywords_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/keywords_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_keyword_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/keyword_actions */ "./frontend/actions/keyword_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var keywordsReducer = function keywordsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_keyword_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_KEYWORDS"]:
+      return Object.assign({}, action.keywords);
+
+    case _actions_keyword_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_KEYWORD"]:
+      return Object.assign({}, state, _defineProperty({}, action.keyword.id, action.keyword));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (keywordsReducer);
 
 /***/ }),
 
@@ -6338,6 +6425,32 @@ var limitStringDisplay = function limitStringDisplay(string) {
 //   if (!store || store === undefined) return [];
 //   return store.categories;
 // };
+
+/***/ }),
+
+/***/ "./frontend/util/keywords_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/keywords_api_util.js ***!
+  \********************************************/
+/*! exports provided: fetchKeywords, fetchKeyword */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchKeywords", function() { return fetchKeywords; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchKeyword", function() { return fetchKeyword; });
+var fetchKeywords = function fetchKeywords() {
+  return $.ajax({
+    method: "GET",
+    url: "api/keywords"
+  });
+};
+var fetchKeyword = function fetchKeyword(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/keywords/".concat(id)
+  });
+};
 
 /***/ }),
 

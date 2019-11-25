@@ -14,8 +14,10 @@ Faker::UniqueGenerator.clear # Clears used values for all generators
 
 User.destroy_all
 Category.delete_all
+Keyword.delete_all
 Store.delete_all
 Product.destroy_all
+ProductKeyword.destroy_all
 Review.destroy_all
 LineItem.destroy_all
 
@@ -149,6 +151,62 @@ categories = categories.select {|category| category.name != CATEGORY_ART_TITLE}
 
 # img_path = './app/assets/images/seeds/'
 
+KEYWORDS = [
+  "Art",
+  "Clothing",
+  "Toy",
+  "Tool",
+  "Gear",
+  "Hat",
+  "Glove",
+  "Shoe",
+  "Sock",
+  "Pants",
+  "Shirts",
+  "Dress",
+  "Men",
+  "Women",
+  "Kids",
+  "Sculpture",
+  "Paint",
+  "Game",
+  "Office",
+  "Craft",
+  "Furniture",
+  "Decoration",
+  "Computer",
+  "Technology",
+  "Vintage",
+  "Ball",
+  "Misc",
+  "Glass",
+  "Metal",
+  "Wood",
+  "Silk",
+  "Party",
+  "Card",
+  "Home",
+  "Holiday",
+  "Gift",
+  "Jewelry",
+  "Bag",
+  "Unique"
+].freeze
+
+KEYWORDS.each_with_index do |keyword, ix|
+  Keyword.create!(name: KEYWORDS[ix])
+end
+keywords = Keyword.all
+keyword_art = nil
+keyword_sculpture = nil
+keyword_metal= nil
+
+keywords.each do |keyword|
+  keyword_art = keyword if keyword.name == "Art"
+  keyword_sculpture = keyword if keyword.name == "Sculpture"
+  keyword_metal = keyword if keyword.name == "Metal"
+end
+
 
 def random_dark_mode
   rand(0..1) == 1
@@ -238,6 +296,10 @@ end
   img_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'art', ART_PICS[i])
   file = File.open(img_path)
   p.images.attach(io: file, filename: ART_PICS[i])
+
+  ProductKeyword.create!(product_id: p.id, keyword_id: keyword_art.id ) if keyword_art
+  ProductKeyword.create!(product_id: p.id, keyword_id: keyword_sculpture.id ) if keyword_sculpture
+  ProductKeyword.create!(product_id: p.id, keyword_id: keyword_metal.id ) if keyword_metal
 end
 
 line_item1 = LineItem.create!(

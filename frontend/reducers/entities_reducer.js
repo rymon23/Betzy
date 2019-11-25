@@ -6,6 +6,7 @@ import stores from './stores_reducer';
 import categories from './categories_reducer';
 import reviews from './reviews_reducer';
 import lineItems from './line_items_reducer';
+import keywords from './keywords_reducer';
 import searchResults from './search_reducer';
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   products,
   reviews,
   lineItems,
+  keywords,
   searchResults
 });
