@@ -17,46 +17,22 @@ class Navbar extends React.Component{
     constructor(props){
         super(props);
 
+        this.state = {
+            isLoaded: false,
+            cartItems: [],
+        };
+
         this.cartClick = this.cartClick.bind(this);
         this.giftClick = this.giftClick.bind(this);
     }
+
     componentDidMount(){
         this.props.fetchAllUsers();
         this.props.fetchCategories();
         if (this.props.loggedIn){
             this.props.fetchLineItems();
-            // .then((result) => {
-            //     const { lineItems } = this.props;
-            //     if (lineItems && lineItems.length > 0){
-            //         const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-            //         const cartItemsCounter = document.getElementById("cart-nav-counter");
-            //         cartItemsCounter.innerHTML = `${lineItems.length}`
-            //         cartItemsDiv.style.display = "block";
-            //     }
-            // });
         }
-        // else {
-        //     const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-        //     cartItemsDiv.style.display = "none";
-        // }
     }
-
-    // componentDidUpdate() {
-    //     if (this.props.loggedIn) {
-    //         this.props.fetchLineItems().then((result) => {
-    //             const { lineItems } = this.props;
-    //             if (lineItems && lineItems.length > 0) {
-    //                 const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-    //                 const cartItemsCounter = document.getElementById("cart-nav-counter");
-    //                 cartItemsCounter.innerHTML = `${lineItems.length}`
-    //                 cartItemsDiv.style.display = "block";
-    //             }
-    //         });
-    //     } else {
-    //         const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-    //         cartItemsDiv.style.display = "none";
-    //     }
-    // }
 
     cartClick(e) {
         e.preventDefault();

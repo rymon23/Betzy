@@ -20,11 +20,17 @@ class Api::LineItemsController < ApplicationController
   end
 
   def create
-    @line_item = LineItem.new(line_item_params)
-    if @line_item.save
+    #If user has a line_item already with the product_id don't make new one
+    @line_item = current_user.line_items.select {|line_item| line_item.product_id == params[:product_id].to_i}.first
+    if @line_item
       render :show
-    else
-      render json: ["Something went wrong"], status: 422
+    else     
+      @line_item = LineItem.new(line_item_params)
+      if @line_item.save
+        render :show
+      else
+        render json: ["Something went wrong"], status: 422
+      end
     end
   end
 

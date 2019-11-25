@@ -1975,8 +1975,7 @@ function (_React$Component) {
       var _this3 = this;
 
       debugger;
-      var promises = []; // if (!isDataFetched(this.props.lineItem)) promises.push(this.props.fetchLineItems());
-
+      var promises = [];
       promises.push(this.props.fetchLineItems());
       if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores());
       if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["isDataFetched"])(this.props.products)) promises.push(this.props.fetchProducts());
@@ -2629,6 +2628,10 @@ function (_React$Component) {
     _classCallCheck(this, Navbar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
+    _this.state = {
+      isLoaded: false,
+      cartItems: []
+    };
     _this.cartClick = _this.cartClick.bind(_assertThisInitialized(_this));
     _this.giftClick = _this.giftClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -2641,37 +2644,9 @@ function (_React$Component) {
       this.props.fetchCategories();
 
       if (this.props.loggedIn) {
-        this.props.fetchLineItems(); // .then((result) => {
-        //     const { lineItems } = this.props;
-        //     if (lineItems && lineItems.length > 0){
-        //         const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-        //         const cartItemsCounter = document.getElementById("cart-nav-counter");
-        //         cartItemsCounter.innerHTML = `${lineItems.length}`
-        //         cartItemsDiv.style.display = "block";
-        //     }
-        // });
-      } // else {
-      //     const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-      //     cartItemsDiv.style.display = "none";
-      // }
-
-    } // componentDidUpdate() {
-    //     if (this.props.loggedIn) {
-    //         this.props.fetchLineItems().then((result) => {
-    //             const { lineItems } = this.props;
-    //             if (lineItems && lineItems.length > 0) {
-    //                 const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-    //                 const cartItemsCounter = document.getElementById("cart-nav-counter");
-    //                 cartItemsCounter.innerHTML = `${lineItems.length}`
-    //                 cartItemsDiv.style.display = "block";
-    //             }
-    //         });
-    //     } else {
-    //         const cartItemsDiv = document.getElementById("cart-nav-counter-display");
-    //         cartItemsDiv.style.display = "none";
-    //     }
-    // }
-
+        this.props.fetchLineItems();
+      }
+    }
   }, {
     key: "cartClick",
     value: function cartClick(e) {
@@ -3415,22 +3390,18 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProduct(this.props.match.params.productId);
-      this.props.fetchStore(this.props.match.params.storeId);
-
-      if (this.props.currentUserId) {
-        this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
-      }
+      this.props.fetchStore(this.props.match.params.storeId); // if (this.props.currentUserId){
+      //     this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
+      // }
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (this.props.match.params.productId !== prevProps.match.params.productId) {
         this.props.fetchProduct(this.props.match.params.productId);
-        this.props.fetchStore(this.props.match.params.storeId);
-
-        if (this.props.currentUserId) {
-          this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
-        }
+        this.props.fetchStore(this.props.match.params.storeId); // if (this.props.currentUserId) {
+        //     this.props.fetchLineItem(this.props.currentUserId, this.props.match.params.productId);
+        // }
       }
     }
   }, {

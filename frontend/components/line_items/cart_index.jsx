@@ -67,7 +67,6 @@ class CartIndex extends React.Component {
     componentDidMount() {
         debugger
         const promises = [];
-        // if (!isDataFetched(this.props.lineItem)) promises.push(this.props.fetchLineItems());
         promises.push(this.props.fetchLineItems());
         if (!isDataFetched(this.props.stores)) promises.push(this.props.fetchStores());
         if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
