@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 class ProductForm extends React.Component {
     constructor(props){
         super(props);
-        
+
         this.state = Object.assign({}, {
             imageUrls: [],
             imageFiles: [],
@@ -194,7 +194,8 @@ class ProductForm extends React.Component {
                                 id="price" 
                                 value={this.state.price || ''} 
                                 onChange={this.update('price')} 
-                                min="0.00" />
+                                min="0.00" 
+                                step="0.01"/>
                         </div>
                     </div>
 

@@ -3164,7 +3164,8 @@ function (_React$Component) {
         id: "price",
         value: this.state.price || '',
         onChange: this.update('price'),
-        min: "0.00"
+        min: "0.00",
+        step: "0.01"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sticky-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
