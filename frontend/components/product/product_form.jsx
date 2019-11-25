@@ -199,7 +199,8 @@ class ProductForm extends React.Component {
                         </div>
                     </div>
 
-                    <div className="sticky-bar">
+                    {/* <div className="sticky-bar"> */}
+                    <div className="flex-row">
                         <Link to={`/stores/${this.state.storeId}`}
                             className="clicky">
                             Cancel

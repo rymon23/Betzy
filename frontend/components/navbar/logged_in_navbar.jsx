@@ -28,6 +28,25 @@ class LoggedInNavbar extends React.Component {
     }
 
     render(){
+
+        const notificationsDropDown = () => {
+            return (
+                    <div className="dropdown-menu-notify bg-color-page-a">
+
+                        <div className="dropdown-header-notify-container">
+                            <h4 className="dropdown-header-notify">Notifications</h4>
+                        </div>
+                        <div className="dropdown-content-notify-container">
+                            <div className="dropdown-content-notify">
+                                <h3>No notifications</h3>
+                                <p>
+                            This is where you'll see updates on your favorite items and shops, like sales, new products, and more
+                                </p>
+                            </div>
+                        </div>
+                    </div>)
+        }
+
         return (
 
             <div className="logged-bar-container align-items-flex-end">
@@ -42,6 +61,7 @@ class LoggedInNavbar extends React.Component {
                         <p>Notifications</p>
                         <FontAwesomeIcon icon="caret-down"/>
                     </div>
+                    {notificationsDropDown()}
                 </div>
 
                 <div className="shop-manager-container clickable nav-icon-link-container" onClick={this.toStorePage}>

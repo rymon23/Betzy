@@ -2464,6 +2464,20 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var notificationsDropDown = function notificationsDropDown() {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dropdown-menu-notify bg-color-page-a"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dropdown-header-notify-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+          className: "dropdown-header-notify"
+        }, "Notifications")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dropdown-content-notify-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dropdown-content-notify"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This is where you'll see updates on your favorite items and shops, like sales, new products, and more"))));
+      };
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logged-bar-container align-items-flex-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2482,7 +2496,7 @@ function (_React$Component) {
         className: "flex-row align-items-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         icon: "caret-down"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), notificationsDropDown()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-manager-container clickable nav-icon-link-container",
         onClick: this.toStorePage
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
@@ -3167,7 +3181,7 @@ function (_React$Component) {
         min: "0.00",
         step: "0.01"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sticky-bar"
+        className: "flex-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(this.state.storeId),
         className: "clicky"
