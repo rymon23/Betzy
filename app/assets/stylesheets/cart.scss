@@ -1,4 +1,28 @@
 
+
+#cart-nav-counter-display {  
+    display: block;
+
+    .cart-nav-counter-container {    
+        position: absolute;
+        background-color: orange;
+        height: 16px;
+        width: 16px;
+        z-index: 1;
+        border-radius: 100%;
+        right: -7px;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        #cart-nav-counter {
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+        } 
+    }
+}
 .cart-index-container {
     display: flex;
     justify-content: center;

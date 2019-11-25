@@ -5,6 +5,7 @@ import LoggedOutNavbar from './logged_out_navbar';
 import {withRouter, Link} from 'react-router-dom'; 
 import { fetchAllUsers } from '../../actions/user_actions';
 import { fetchCategories } from '../../actions/category_actions';
+import { fetchLineItems } from '../../actions/line_item_actions';
 import { objectValuesArray, getStoreId } from "../../util/helpers_util";
 import Logo from "../logo/logo";
 import SearchBarContainer from '../search/search_bar_container';
@@ -22,7 +23,40 @@ class Navbar extends React.Component{
     componentDidMount(){
         this.props.fetchAllUsers();
         this.props.fetchCategories();
+        if (this.props.loggedIn){
+            this.props.fetchLineItems();
+            // .then((result) => {
+            //     const { lineItems } = this.props;
+            //     if (lineItems && lineItems.length > 0){
+            //         const cartItemsDiv = document.getElementById("cart-nav-counter-display");
+            //         const cartItemsCounter = document.getElementById("cart-nav-counter");
+            //         cartItemsCounter.innerHTML = `${lineItems.length}`
+            //         cartItemsDiv.style.display = "block";
+            //     }
+            // });
+        }
+        // else {
+        //     const cartItemsDiv = document.getElementById("cart-nav-counter-display");
+        //     cartItemsDiv.style.display = "none";
+        // }
     }
+
+    // componentDidUpdate() {
+    //     if (this.props.loggedIn) {
+    //         this.props.fetchLineItems().then((result) => {
+    //             const { lineItems } = this.props;
+    //             if (lineItems && lineItems.length > 0) {
+    //                 const cartItemsDiv = document.getElementById("cart-nav-counter-display");
+    //                 const cartItemsCounter = document.getElementById("cart-nav-counter");
+    //                 cartItemsCounter.innerHTML = `${lineItems.length}`
+    //                 cartItemsDiv.style.display = "block";
+    //             }
+    //         });
+    //     } else {
+    //         const cartItemsDiv = document.getElementById("cart-nav-counter-display");
+    //         cartItemsDiv.style.display = "none";
+    //     }
+    // }
 
     cartClick(e) {
         e.preventDefault();
@@ -42,7 +76,7 @@ class Navbar extends React.Component{
     }
 
     render() {
-        let { loggedIn, currentUser, storeId, categories } = this.props;
+        let { loggedIn, currentUser, storeId, categories , lineItems } = this.props;
 
         if (currentUser) {
             setDarkMode(currentUser.dark_mode);
@@ -61,8 +95,18 @@ class Navbar extends React.Component{
                     </div>)
                 })}</>);
         };
-        
+        const cartItemsCounter = (lineItems) => {
+            if (loggedIn && lineItems && lineItems.length > 0) {
+                debugger
+                return ( <div id="cart-nav-counter-display">
+                            <div className="cart-nav-counter-container">
+                                <span id="cart-nav-counter">{lineItems.length}</span>
+                            </div>
+                        </div>)      
+            }
+        }
         const loggedComponent = !loggedIn ? <LoggedOutNavbar/> : <LoggedInNavbar storeId={storeId} currentUser={currentUser}/>;
+
         return (
             <div className="static-width navbar">
                 <div className="navbar-top-container flex-wrap">
@@ -75,7 +119,14 @@ class Navbar extends React.Component{
                             <div className="cart-wrapper clickable" onClick={this.cartClick}>
                                 <FontAwesomeIcon className="navbar-cart logged-nav-options-icon" icon="shopping-cart" size="xs" />
                                 <p className="logged-nav-options-font">Cart</p>
-                            </div>                            
+                            </div>
+                            {cartItemsCounter(lineItems)}
+                            {/* <div id="cart-nav-counter-display">
+                                <div className="cart-nav-counter-container">
+                                    <span id="cart-nav-counter">1</span>
+                                </div>                                 
+                            </div> */}
+                       
                         </div>
 
                     </div>
@@ -96,17 +147,20 @@ const mapStateToProps = (state) => {
     const currentUser = state.session.currentUser; 
     const storeId = getStoreId(currentUser);
     const categories = objectValuesArray(state.entities.categories);
+    const lineItems = objectValuesArray(state.entities.lineItems);
     return {
         loggedIn: Boolean(currentUser),
         currentUser,
         storeId,
-        categories
+        categories,
+        lineItems,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchAllUsers: () => dispatch(fetchAllUsers()),
         fetchCategories: () => dispatch(fetchCategories()),
+        fetchLineItems: () => dispatch(fetchLineItems()),
     };
 };
 

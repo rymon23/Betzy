@@ -11,7 +11,12 @@ const lineItemsReducer = (state = {}, action) => {
             return Object.assign({}, action.lineItems);
 
         case RECEIVE_LINE_ITEM:
-            return Object.assign({}, state, { [action.lineItem.id]: action.lineItem });
+            debugger
+            if (action.lineItem.id){
+                return Object.assign({}, state, { [action.lineItem.id]: action.lineItem });
+            }else {
+                return state;
+            }
 
         case REMOVE_LINE_ITEM:
             debugger
