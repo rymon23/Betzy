@@ -14,7 +14,7 @@ class Api::SearchResultsController < ApplicationController
 
       # debugger
 
-      if params[:search_query].length <= 0
+      if !params[:search_query] || params[:search_query].length <= 0
           @results = Product.all
       else
         all_products = Product.all 
