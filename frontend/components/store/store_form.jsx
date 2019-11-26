@@ -21,10 +21,13 @@ class StoreForm extends React.Component {
   }
 
   renderErrors() {
-    const errors = this.props.errors.map((err, ix) => {
-      return (<li key={`error-${ix}`}>{err}</li>)
-    });
-    return (<ul>{errors}</ul>)
+    const { errors } = this.props;
+    if (errors) {
+      const errors = this.props.errors.map((err, ix) => {
+        return (<li key={`error-${ix}`}>{err}</li>)
+      });
+      return (<ul>{errors}</ul>)
+    }
   }
 
   render() {
