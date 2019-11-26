@@ -5,6 +5,7 @@ class SessionForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {username: "", email: "", password: ""};
+    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
@@ -55,6 +56,7 @@ class SessionForm extends React.Component {
   renderErrors(){
     const { errors } = this.props;
     if ( errors ){
+      debugger
       const errors = this.props.errors.map((err, ix)=> {
         return (<li key={`error-${ix}`}>{err}</li>)
       });
