@@ -14,7 +14,6 @@ class CartIndex extends React.Component {
         };
         this.totalCost = 0;
 
-        this.ProductPage = this.ProductPage.bind(this);
         this.removeCartItem = this.removeCartItem.bind(this);
     }
 
@@ -42,14 +41,6 @@ class CartIndex extends React.Component {
                     cartItems: this.props.lineItems,
                 })
             });
-    }
-
-    ProductPage(product) {
-        event.preventDefault();
-        return (event) => {
-            event.preventDefault();
-            this.props.history.push(`/stores/${product.store_id}/products/${product.id}`)
-        }
     }
 
     removeCartItem(lineItemId, e) {
@@ -107,7 +98,7 @@ class CartIndex extends React.Component {
                             product={product}
                             productStore={store}
                             removeCartItem={this.removeCartItem}
-                            clickEvent={this.ProductPage}/>
+                            />
                     </li>)
             });
 
@@ -149,7 +140,7 @@ class CartIndex extends React.Component {
                                 </div>
                                 <div className="cart-total-container">
                                     <span>Item(s) total</span>
-                                    <span>${this.totalCost}</span>
+                                    <span>${this.totalCost.toFixed(2)}</span>
                                 </div>
                             </div>
                         </div>

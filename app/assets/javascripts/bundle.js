@@ -1916,7 +1916,6 @@ function (_React$Component) {
       cartItems: []
     };
     _this.totalCost = 0;
-    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
     _this.removeCartItem = _this.removeCartItem.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -1949,21 +1948,9 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "ProductPage",
-    value: function ProductPage(product) {
-      var _this3 = this;
-
-      event.preventDefault();
-      return function (event) {
-        event.preventDefault();
-
-        _this3.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
-      };
-    }
-  }, {
     key: "removeCartItem",
     value: function removeCartItem(lineItemId, e) {
-      var _this4 = this;
+      var _this3 = this;
 
       // e.preventDefault();
       debugger;
@@ -1972,7 +1959,7 @@ function (_React$Component) {
         debugger;
         that.setState({
           // isLoaded: true,
-          cartItems: _this4.props.lineItems
+          cartItems: _this3.props.lineItems
         });
       }); // this.setState({
       //     cartItems: this.props.lineItems.filter(lineItem => lineItem.id != lineItemId) 
@@ -1981,7 +1968,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       if (!this.state.isLoaded) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
@@ -2000,8 +1987,8 @@ function (_React$Component) {
       debugger;
 
       var lineItemsListing = function lineItemsListing(lineItems, products, stores) {
-        _this5.totalCost = 0.00;
-        var that = _this5;
+        _this4.totalCost = 0.00;
+        var that = _this4;
         var lineItemsList = lineItems.sort(function (a, b) {
           if (a.id < b.id) {
             return 1;
@@ -2024,8 +2011,7 @@ function (_React$Component) {
             lineItem: lineItem,
             product: product,
             productStore: store,
-            removeCartItem: _this5.removeCartItem,
-            clickEvent: _this5.ProductPage
+            removeCartItem: _this4.removeCartItem
           }));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2070,7 +2056,7 @@ function (_React$Component) {
         alt: "Merchant Equipment Store Credit Card Logos"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-total-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Item(s) total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", this.totalCost))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Item(s) total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", this.totalCost.toFixed(2)))))));
     }
   }]);
 
