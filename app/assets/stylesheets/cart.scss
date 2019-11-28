@@ -126,3 +126,17 @@
 .line-item-remove-button:hover {
     text-decoration-line: underline;
 }
+
+.cart-checkout-pay-options-container {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    .cart-checkout-payment-option {
+        display: flex;
+        align-items: center;
+    }
+}
+.cart-total-container {
+    display: flex;
+    justify-content: space-between;
+}

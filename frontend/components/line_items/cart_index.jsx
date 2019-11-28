@@ -12,56 +12,9 @@ class CartIndex extends React.Component {
             isLoaded: false,
             cartItems: [],
         };
+        this.totalCost = 0;
 
-        this.isFetching = false;
-
-        this.fetchers = this.fetchers.bind(this);
         this.removeCartItem = this.removeCartItem.bind(this);
-    }
-
-    async fetchers(promises){
-        debugger
-        // const promises = [];
-        // if (!isDataFetched(this.props.lineItem)) promises.push(new Promise((resolve, reject) => this.props.fetchLineItems()) );
-        // if (!isDataFetched(this.props.stores)) promises.push(new Promise((resolve, reject) => this.props.fetchStores()) );
-        // if (!isDataFetched(this.props.products)) promises.push(new Promise((resolve, reject) => this.props.fetchProducts()) );
-        // debugger
-        return Promise.allSettled(promises).then((result) => {
-            debugger
-            this.setState({
-                isLoaded: true,
-                cartItems: this.props.lineItems,
-            })
-        });
-
-            // .then((result) => {
-            //     this.setState({
-            //         isLoaded: true,
-            //         cartItems: this.props.lineItems,
-            //     });         
-            // });
-
-        // debugger
-        // const that = this;
-        // return new Promise(function (resolve, reject) {
-        //     debugger
-        //     if (!isDataFetched(that.props.lineItem)) that.props.fetchLineItems();
-        //     if (!isDataFetched(that.props.stores)) that.props.fetchStores();
-        //     if (!isDataFetched(that.props.products)) that.props.fetchProducts();
-        // });
-
-        // return Promise.allSettled(
-        //     [
-        //         this.props.fetchLineItems(),
-        //         this.props.fetchStores(),
-        //         this.props.fetchProducts({ carted: true, user_id: this.props.currentUser.id })
-        //     ])
-            // .then((result) => {
-            //     this.setState({
-            //         isLoaded: true,
-            //         cartItems: this.props.lineItems,
-            //     });         
-            // });
     }
 
     componentDidMount() {
@@ -72,22 +25,23 @@ class CartIndex extends React.Component {
         if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
         debugger
         const that = this;
-        Promise.allSettled(promises).then((result) => {
-            debugger
-            that.setState({
-                isLoaded: true,
-                cartItems: this.props.lineItems,
-            })
-        });
-    }
+        // Promise.allSettled(promises).then((result) => {
+        //     debugger
+        //     that.setState({
+        //         isLoaded: true,
+        //         cartItems: this.props.lineItems,
+        //     })
+        // });
 
-    // componentDidUpdate(prevProps) {
-    //     // if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
-    //         this.props.fetchLineItems();
-    //         this.props.fetchStores();
-    //         this.props.fetchProducts();
-    //     // }
-    // }
+        Promise.all(promises)
+            .then((result) => {
+                debugger
+                that.setState({
+                    isLoaded: true,
+                    cartItems: this.props.lineItems,
+                })
+            });
+    }
 
     removeCartItem(lineItemId, e) {
         // e.preventDefault();
@@ -121,6 +75,8 @@ class CartIndex extends React.Component {
         debugger
 
         const lineItemsListing = (lineItems, products, stores) => {
+            this.totalCost = 0.00;
+            const that = this;
             const lineItemsList = lineItems.sort((a, b) => {
                 if (a.id < b.id) {
                     return 1;
@@ -132,6 +88,9 @@ class CartIndex extends React.Component {
             }).map((lineItem) => {
                 const product = products[lineItem.product_id];
                 const store = stores[product.store_id];
+                debugger
+                that.totalCost += parseFloat(product.price);
+
                 return (
                     <li className="line-items-listing-li" key={lineItem.id}>
                         <LineItemEdit
@@ -165,17 +124,23 @@ class CartIndex extends React.Component {
                             {lineItemsListing(lineItems, products, stores)}
 
                             <div className="cart-checkout-container flex-column">
-                                {/* <h4>How you'll pay</h4>
-                                <div>
-                                    <div className="checkout-input-container flex-row">
-                                        <input type="radio" />
-                                        <label>Vista</label>
-                                    </div>
-                                    <div className="checkout-input-container flex-row">
-                                        <input type="radio" />
-                                        <label>Paypal</label>
-                                    </div>
-                                </div> */}
+                                <h4>How you'll pay</h4>
+                                <div className="cart-checkout-pay-options-container">
+                                    <span className="cart-checkout-payment-option">
+                                        <input type="radio" name="payment" value="vista" />
+                                        <img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=32" 
+                                            alt="Merchant Equipment Store Credit Card Logos" />
+                                    </span>
+                                    <span className="cart-checkout-payment-option">
+                                        <input type="radio" name="payment" value="paypal"/>
+                                        <img src="https://www.merchantequip.com/image/?logos=p&height=32" 
+                                            alt="Merchant Equipment Store Credit Card Logos" />                               
+                                    </span>                                     
+                                </div>
+                                <div className="cart-total-container">
+                                    <span>Item(s) total</span>
+                                    <span>${this.totalCost}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

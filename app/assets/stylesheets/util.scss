@@ -1,4 +1,27 @@
 
+.loading-fullpage-background {
+  background: var(--app-bg-color-page);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 12;
+}
+.loading-fullpage-container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .loading-text {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        color: var(--app-font-color-page);
+    }
+}
+
 .loading-container {
     display: flex;
     justify-content: center;
@@ -10,6 +33,13 @@
     flex-direction: column;
     width: fit-content;
     text-align: center;
+
+    .loading-text {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        color: var(--app-font-color-page);
+    }
 }
 .loading {
   border: 16px solid #dddddd;

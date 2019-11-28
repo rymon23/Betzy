@@ -1,15 +1,26 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const loading = () => {
-  return (
-    <div className="loading-container"> 
-      <div className="loading-wrapper">
-        <h2>Loading...</h2>
-        <div className="loading"></div>
+export const loading = (fullpage = false) => {
+  if (fullpage){
+    return (
+      <div className="loading-fullpage-background">
+        <div className="loading-fullpage-container">
+          <h2 className="loading-text">Loading...</h2>
+          <div className="loading"></div>
+        </div>
       </div>
-    </div>
-  );
+    );   
+  }else {
+    return (
+      <div className="loading-container"> 
+        <div className="loading-wrapper">
+          <h2 className="loading-text">Loading...</h2>
+          <div className="loading"></div>
+        </div>
+      </div>
+    );    
+  }
 };
 export const noItemsFound = () => {
   return (

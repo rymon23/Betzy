@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class LoggedInNavbar extends React.Component {
     constructor(props){
         super(props);
+        
         this.toStorePage = this.toStorePage.bind(this);
         this.toCartPage = this.toCartPage.bind(this);
-        // this.cartClick = this.cartClick.bind(this);
     }
 
     toStorePage(e){

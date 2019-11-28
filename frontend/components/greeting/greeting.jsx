@@ -2,7 +2,8 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Greeting = ({currentUser, logout, enableModal}) => {
+const Greeting = ({ currentUser, logout, enableModal }) => {
+    debugger
     const sessionLinks = () => (
         <div className="login-signup">
             <span className="register">

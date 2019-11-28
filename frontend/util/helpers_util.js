@@ -3,6 +3,16 @@ export const objectValuesArray = (obj) => {
   return Object.values(obj) || [];
 };
 
+
+export const calculateCartCost = (products) => {
+  let totalCost = 0;
+  products.forEach((product) => {
+    totalCost += products.price
+  });
+  return totalCost;
+};
+
+
 export const isDataFetched = (obj) => {  
   if (obj instanceof Array){
     debugger
@@ -15,6 +25,7 @@ export const isDataFetched = (obj) => {
   debugger
   return Boolean(obj);
 };
+
 
 //CURRENT USER
 export const getCurrentUser = (state) => {
