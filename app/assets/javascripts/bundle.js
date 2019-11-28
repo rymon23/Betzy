@@ -1916,6 +1916,7 @@ function (_React$Component) {
       cartItems: []
     };
     _this.totalCost = 0;
+    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
     _this.removeCartItem = _this.removeCartItem.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -1948,9 +1949,21 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "ProductPage",
+    value: function ProductPage(product) {
+      var _this3 = this;
+
+      event.preventDefault();
+      return function (event) {
+        event.preventDefault();
+
+        _this3.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
+      };
+    }
+  }, {
     key: "removeCartItem",
     value: function removeCartItem(lineItemId, e) {
-      var _this3 = this;
+      var _this4 = this;
 
       // e.preventDefault();
       debugger;
@@ -1959,7 +1972,7 @@ function (_React$Component) {
         debugger;
         that.setState({
           // isLoaded: true,
-          cartItems: _this3.props.lineItems
+          cartItems: _this4.props.lineItems
         });
       }); // this.setState({
       //     cartItems: this.props.lineItems.filter(lineItem => lineItem.id != lineItemId) 
@@ -1968,7 +1981,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (!this.state.isLoaded) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
@@ -1987,8 +2000,8 @@ function (_React$Component) {
       debugger;
 
       var lineItemsListing = function lineItemsListing(lineItems, products, stores) {
-        _this4.totalCost = 0.00;
-        var that = _this4;
+        _this5.totalCost = 0.00;
+        var that = _this5;
         var lineItemsList = lineItems.sort(function (a, b) {
           if (a.id < b.id) {
             return 1;
@@ -2011,7 +2024,8 @@ function (_React$Component) {
             lineItem: lineItem,
             product: product,
             productStore: store,
-            removeCartItem: _this4.removeCartItem
+            removeCartItem: _this5.removeCartItem,
+            clickEvent: _this5.ProductPage
           }));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2175,7 +2189,6 @@ function (_React$Component) {
     _classCallCheck(this, LineItemEdit);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LineItemEdit).call(this, props));
-    debugger;
     _this.state = Object.assign({}, {}, _this.props.lineItem);
     _this.handleRemove = _this.handleRemove.bind(_assertThisInitialized(_this));
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
@@ -2211,7 +2224,8 @@ function (_React$Component) {
           lineItem = _this$props.lineItem,
           product = _this$props.product,
           productStore = _this$props.productStore;
-      var store = productStore; // if (!lineItem || !product || !store) {
+      var store = productStore;
+      var productLink = "/stores/".concat(product.store_id, "/products/").concat(product.id); // if (!lineItem || !product || !store) {
       //     return <div>{loading()}</div>
       // }
 
@@ -2226,11 +2240,17 @@ function (_React$Component) {
         className: "line-item-store-link-container flex-row"
       }, Object(_components_utility__WEBPACK_IMPORTED_MODULE_5__["imgIcon"])(store.imageUrl), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, store.name)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "line-item-content-container flex-row"
-      }, Object(_components_utility__WEBPACK_IMPORTED_MODULE_5__["imgProductCart"])(product.imageUrls[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: productLink
+      }, Object(_components_utility__WEBPACK_IMPORTED_MODULE_5__["imgProductCart"])(product.imageUrls[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "line-item-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "line-item-content-middle flex-column"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: productLink
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "hover-underline"
+      }, product.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "line-item-remove-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "line-item-remove-button clickable",

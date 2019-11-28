@@ -9,7 +9,6 @@ class LineItemEdit extends React.Component {
     constructor(props) {
         super(props);
 
-        debugger
         this.state = Object.assign({}, {}, this.props.lineItem);
 
         this.handleRemove = this.handleRemove.bind(this);
@@ -37,6 +36,7 @@ class LineItemEdit extends React.Component {
     render() {
         let { lineItem, product, productStore} = this.props;
         const store = productStore;
+        const productLink = `/stores/${product.store_id}/products/${product.id}`
         // if (!lineItem || !product || !store) {
         //     return <div>{loading()}</div>
         // }
@@ -54,11 +54,16 @@ class LineItemEdit extends React.Component {
                     </Link>
                 </div>
                 <div className="line-item-content-container flex-row">
-                    { imgProductCart(product.imageUrls[0]) }
+                    <Link to={productLink}>
+                        { imgProductCart(product.imageUrls[0]) }
+                    </Link>
 
                     <div className="line-item-content">
                         <div className="line-item-content-middle flex-column">
-                            <h5>{product.name}</h5>
+                            <Link to={productLink}>
+                                <h5 className="hover-underline">{product.name}</h5>
+                            </Link>
+
                             <p>{product.description}</p>
                             <div className="line-item-remove-button-container">
                                 <button className="line-item-remove-button clickable" 
