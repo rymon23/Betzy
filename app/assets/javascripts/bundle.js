@@ -2630,10 +2630,8 @@ function (_React$Component) {
       }
 
       ;
-      debugger;
       var that = this;
       Promise.all(promises).then(function (result) {
-        debugger;
         that.setState({
           isLoaded: true,
           cartItems: _this2.props.lineItems
@@ -2643,8 +2641,6 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      debugger;
-
       if (!this.state.isLoggedIn && this.props.loggedIn) {
         var that = this;
         this.props.fetchLineItems().then(function () {
@@ -4604,6 +4600,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -4629,6 +4626,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var UserProfileShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -4644,22 +4642,38 @@ function (_React$Component) {
       id: '',
       dark_mode: false
     }, _this.props.user);
+    _this.state.isLoaded = false;
+    _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
     _this.updateDarkMode = _this.updateDarkMode.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(UserProfileShow, [{
+    key: "updateFetches",
+    value: function updateFetches() {
+      debugger;
+      var promises = [];
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.user)) promises.push(this.props.fetchAllUsers());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.store)) promises.push(this.props.fetchStores());
+      var that = this;
+      Promise.all(promises).then(function (result) {
+        that.setState({
+          isLoaded: true
+        });
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchAllUsers();
-      this.props.fetchStores();
+      this.updateFetches(); // this.props.fetchAllUsers();
+      // this.props.fetchStores();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (this.props.match.params.userId !== prevProps.match.params.userId) {
-        this.props.fetchAllUsers();
-        this.props.fetchStores();
+        this.updateFetches(); // this.props.fetchAllUsers();
+        // this.props.fetchStores();
       }
     }
   }, {
@@ -4685,7 +4699,7 @@ function (_React$Component) {
       var storeLogo;
       debugger;
 
-      if (!user) {
+      if (!user || !this.state.isLoaded) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
       }
 
@@ -5411,7 +5425,7 @@ function (_React$Component) {
     _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
     _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
     _this.handleStock = _this.handleStock.bind(_assertThisInitialized(_this));
-    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
+    _this.toProductPage = _this.toProductPage.bind(_assertThisInitialized(_this));
     _this.toUserProfile = _this.toUserProfile.bind(_assertThisInitialized(_this));
     _this.editDeleteButton = _this.editDeleteButton.bind(_assertThisInitialized(_this));
     return _this;
@@ -5462,8 +5476,8 @@ function (_React$Component) {
       this.props.history.push("/stores/".concat(this.props.store.id, "/products/new"));
     }
   }, {
-    key: "ProductPage",
-    value: function ProductPage(product) {
+    key: "toProductPage",
+    value: function toProductPage(product) {
       var _this2 = this;
 
       return function (e) {
@@ -5569,7 +5583,7 @@ function (_React$Component) {
         className: "shop-owner-email"
       }, users[store.owner_id].email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All items ", products ? "(".concat(products.length, ")") : null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         products: products,
-        clickEvent: this.ProductPage,
+        clickEvent: this.toProductPage,
         editDeleteButton: this.editDeleteButton
       })));
     }

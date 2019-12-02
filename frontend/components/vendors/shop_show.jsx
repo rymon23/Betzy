@@ -15,7 +15,7 @@ class StoreShow extends React.Component {
         this.updateFetches = this.updateFetches.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleStock = this.handleStock.bind(this);
-        this.ProductPage = this.ProductPage.bind(this);
+        this.toProductPage = this.toProductPage.bind(this);
         this.toUserProfile = this.toUserProfile.bind(this);
         this.editDeleteButton = this.editDeleteButton.bind(this);
     }
@@ -58,7 +58,7 @@ class StoreShow extends React.Component {
         this.props.history.push(`/stores/${this.props.store.id}/products/new`);   
     }
 
-    ProductPage(product) {
+    toProductPage(product) {
         return (e) => {
             e.preventDefault();
             this.props.history.push(`/stores/${product.store_id}/products/${product.id}`)
@@ -147,7 +147,7 @@ class StoreShow extends React.Component {
                     <h3>All items {products ? `(${products.length})`: null} </h3>
                     <ProductsList
                         products={products}
-                        clickEvent={this.ProductPage}
+                        clickEvent={this.toProductPage}
                         editDeleteButton={this.editDeleteButton} />
                 </div>
 

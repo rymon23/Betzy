@@ -40,11 +40,9 @@ class Navbar extends React.Component{
         if (this.props.loggedIn) {
             promises.push(this.props.fetchLineItems());
         };
-        debugger
         const that = this;
         Promise.all(promises)
         .then((result) => {
-            debugger
             that.setState({
                 isLoaded: true,
                 cartItems: this.props.lineItems,
@@ -53,7 +51,6 @@ class Navbar extends React.Component{
     }
 
     componentDidUpdate(){
-        debugger
         if (!this.state.isLoggedIn && this.props.loggedIn) {
             const that = this;
             this.props.fetchLineItems().then(() => {

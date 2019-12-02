@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import { loading, setDarkMode } from "../utility";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { isDataFetched } from "../../util/helpers_util";
 
 class UserProfileShow extends React.Component {
     constructor(props){
@@ -10,18 +11,38 @@ class UserProfileShow extends React.Component {
             id: '',
             dark_mode: false
         }, this.props.user);
+        this.state.isLoaded = false;
 
+        this.updateFetches = this.updateFetches.bind(this);
         this.updateDarkMode = this.updateDarkMode.bind(this);
     }
 
+    updateFetches() {
+        debugger
+        const promises = [];
+        if (!isDataFetched(this.props.user)) promises.push(this.props.fetchAllUsers());
+        if (!isDataFetched(this.props.store)) promises.push(this.props.fetchStores());
+        const that = this;
+        Promise.all(promises)
+            .then((result) => {
+                that.setState({
+                    isLoaded: true,
+                });
+            });
+    }
+
     componentDidMount(){
-        this.props.fetchAllUsers();
-        this.props.fetchStores();
+        this.updateFetches();
+
+        // this.props.fetchAllUsers();
+        // this.props.fetchStores();
     }
     componentDidUpdate(prevProps){
         if (this.props.match.params.userId !== prevProps.match.params.userId){
-            this.props.fetchAllUsers();
-            this.props.fetchStores();
+            this.updateFetches();
+
+            // this.props.fetchAllUsers();
+            // this.props.fetchStores();
         }
     }
 
@@ -40,7 +61,7 @@ class UserProfileShow extends React.Component {
         let storeLogo;
         debugger
 
-        if (!user) {
+        if (!user || !this.state.isLoaded) {
             return <div>{loading()}</div>
         };
 
