@@ -35,12 +35,6 @@ class StoreShow extends React.Component {
         e.preventDefault();
         this.props.history.push(`/stores/${this.props.store.id}/products/new`);   
     }
-    // ProductPage(productId){
-    //     return (e) => {
-    //         e.preventDefault();
-    //         this.props.history.push(`/stores/${this.props.store.id}/products/${productId}`);
-    //     }
-    // }
 
     ProductPage(product) {
         return (e) => {
@@ -55,6 +49,7 @@ class StoreShow extends React.Component {
             this.props.history.push(`/users/${userId}`);
         }
     }
+    
     editDeleteButton(product){
         debugger
         let { store, currentUserId, deleteProduct } = this.props;
@@ -71,13 +66,11 @@ class StoreShow extends React.Component {
     }
 
     render() {
-        
         let { store, currentUserId, products, categories ,users } = this.props;
         
         if (!store || products.length === 0 || categories.length === 0 || Object.keys(users).length === 0) {
             return <div>{loading()}</div>
         }
-
         debugger
 
         let stockItemButton;
@@ -87,13 +80,10 @@ class StoreShow extends React.Component {
                     <button className="clicky stock-your-shop-button" onClick={this.handleStock}>
                         Stock your store
                     </button>
-
                     <button className="clicky edit-your-shop-button" onClick={this.handleEdit}>
                         Edit your store
                     </button>
-                </div>
-                
-            );
+                </div>);
         } else {
             stockItemButton = '';
         }

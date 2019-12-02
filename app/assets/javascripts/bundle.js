@@ -5411,13 +5411,7 @@ function (_React$Component) {
     value: function handleStock(e) {
       e.preventDefault();
       this.props.history.push("/stores/".concat(this.props.store.id, "/products/new"));
-    } // ProductPage(productId){
-    //     return (e) => {
-    //         e.preventDefault();
-    //         this.props.history.push(`/stores/${this.props.store.id}/products/${productId}`);
-    //     }
-    // }
-
+    }
   }, {
     key: "ProductPage",
     value: function ProductPage(product) {
