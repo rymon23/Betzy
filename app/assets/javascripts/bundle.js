@@ -1139,6 +1139,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var CategoryShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1150,29 +1151,47 @@ function (_React$Component) {
     _classCallCheck(this, CategoryShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CategoryShow).call(this, props));
-    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
+    _this.state = {
+      isLoaded: false
+    };
+    _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
+    _this.toProductPage = _this.toProductPage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CategoryShow, [{
+    key: "updateFetches",
+    value: function updateFetches() {
+      var promises = [];
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(this.props.category)) promises.push(this.props.fetchCategory(this.props.match.params.categoryId));
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(this.props.products)) promises.push(this.props.fetchProducts());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores());
+      var that = this;
+      Promise.all(promises).then(function (result) {
+        that.setState({
+          isLoaded: true
+        });
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCategory(this.props.match.params.categoryId);
-      this.props.fetchStores();
-      this.props.fetchProducts();
+      this.updateFetches(); // this.props.fetchCategory(this.props.match.params.categoryId);
+      // this.props.fetchStores();
+      // this.props.fetchProducts();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (this.props.match.params.categoryId !== prevProps.match.params.categoryId) {
-        this.props.fetchCategory(this.props.match.params.categoryId);
-        this.props.fetchStores();
-        this.props.fetchProducts();
+        this.updateFetches(); // this.props.fetchCategory(this.props.match.params.categoryId);
+        // this.props.fetchStores();
+        // this.props.fetchProducts();
       }
     }
   }, {
-    key: "ProductPage",
-    value: function ProductPage(product) {
+    key: "toProductPage",
+    value: function toProductPage(product) {
       var _this2 = this;
 
       event.preventDefault();
@@ -1189,6 +1208,11 @@ function (_React$Component) {
           category = _this$props.category,
           stores = _this$props.stores,
           products = _this$props.products;
+      debugger;
+
+      if (!category || !this.state.isLoaded || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
+      }
 
       if (category && Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["categoryHasProducts"])(category)) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1197,17 +1221,13 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["noItemsFound"])()));
       }
 
-      if (!category || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
-      }
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "products-listing",
         id: "category-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_4__["default"], {
         products: products,
         stores: stores,
-        clickEvent: this.ProductPage
+        clickEvent: this.toProductPage
       }));
     }
   }]);

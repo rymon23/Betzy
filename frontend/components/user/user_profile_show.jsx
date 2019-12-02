@@ -62,7 +62,7 @@ class UserProfileShow extends React.Component {
         debugger
 
         if (!user || !this.state.isLoaded) {
-            return <div>{loading()}</div>
+            return <div>{ loading() }</div>
         };
 
         const isThisUser = () => {
