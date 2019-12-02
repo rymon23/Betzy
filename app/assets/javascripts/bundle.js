@@ -5495,19 +5495,7 @@ function (_React$Component) {
         }, "Edit your store"));
       } else {
         stockItemButton = '';
-      } // const productLi = products.map((product) => {
-      //         return (
-      //             <li key={product.id}>
-      //                 <div onClick={this.ProductPage(product.id)}>
-      //                     <img src={product.imageUrls[0]} />
-      //                     <p className="product-name">{product.name.slice(0, 27)}...</p>
-      //                     <p><strong>USD {product.price}</strong></p>
-      //                 </div>
-      //                 {this.editDeleteButton(product)}
-      //             </li>
-      //         )
-      // });
-
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-show"
@@ -5533,7 +5521,7 @@ function (_React$Component) {
         className: "shop-owner-name"
       }, users[store.owner_id].username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shop-owner-email"
-      }, users[store.owner_id].email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All items"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, users[store.owner_id].email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All items ", products ? "(".concat(products.length, ")") : null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         products: products,
         clickEvent: this.ProductPage,
         editDeleteButton: this.editDeleteButton

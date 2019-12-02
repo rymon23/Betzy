@@ -6,6 +6,7 @@ import ProductsList from '../product/product_list';
 class StoreShow extends React.Component {
     constructor() {
         super();
+
         this.handleEdit = this.handleEdit.bind(this);
         this.handleStock = this.handleStock.bind(this);
         this.ProductPage = this.ProductPage.bind(this);
@@ -97,21 +98,6 @@ class StoreShow extends React.Component {
             stockItemButton = '';
         }
 
-        // const productLi = products.map((product) => {
-        //         return (
-        //             <li key={product.id}>
-        //                 <div onClick={this.ProductPage(product.id)}>
-        //                     <img src={product.imageUrls[0]} />
-        //                     <p className="product-name">{product.name.slice(0, 27)}...</p>
-        //                     <p><strong>USD {product.price}</strong></p>
-        //                 </div>
-
-        //                 {this.editDeleteButton(product)}
-        //             </li>
-        //         )
-            
-        // });
-
         return (
             <div className="shop-show">
                 <div className="shop-show-header">
@@ -140,25 +126,15 @@ class StoreShow extends React.Component {
                             { users[store.owner_id].email }
                         </div>
                     </div>
-                    
                 </div>
 
                 <div>
-                    <h3>All items</h3>
+                    <h3>All items {products ? `(${products.length})`: null} </h3>
                     <ProductsList
                         products={products}
                         clickEvent={this.ProductPage}
                         editDeleteButton={this.editDeleteButton} />
                 </div>
-
-                    
-                {/* <div className="products-listing">
-                    <label>All items</label>
-
-                    <ul>
-                        {productLi}
-                    </ul>
-                </div> */}
 
             </div>
         );
