@@ -2,31 +2,53 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { loading } from "../utility";
 import ProductsList from '../product/product_list';
+import { isDataFetched } from "../../util/helpers_util";
 
 class StoreShow extends React.Component {
     constructor() {
         super();
 
+        this.state = {
+            isLoaded: false,
+        };
+
+        this.updateFetches = this.updateFetches.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleStock = this.handleStock.bind(this);
         this.ProductPage = this.ProductPage.bind(this);
         this.toUserProfile = this.toUserProfile.bind(this);
         this.editDeleteButton = this.editDeleteButton.bind(this);
     }
+
+    updateFetches() {
+        const promises = [];
+        if (!isDataFetched(this.props.store)) promises.push(this.props.fetchStore(this.props.match.params.storeId));
+        if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
+        if (!isDataFetched(this.props.users)) promises.push(this.props.fetchAllUsers());
+        if (!isDataFetched(this.props.categories)) promises.push(this.props.fetchCategories());
+        const that = this;
+        Promise.all(promises)
+            .then((result) => {
+                that.setState({
+                    isLoaded: true,
+                });
+            });        
+    }
+
     componentDidMount() {
-        this.props.fetchStore(this.props.match.params.storeId);
-        this.props.fetchProducts();
-        this.props.fetchCategories();
-        this.props.fetchAllUsers();
+        this.updateFetches();
+
+        // this.props.fetchStore(this.props.match.params.storeId);
+        // this.props.fetchProducts();
+        // this.props.fetchCategories();
+        // this.props.fetchAllUsers();
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
-            this.props.fetchStore(this.props.match.params.storeId);
-            this.props.fetchProducts();
-            this.props.fetchCategories();
-            this.props.fetchAllUsers();
-        }
+            this.updateFetches();
+        };
     }
+
     handleEdit(e){
         e.preventDefault();
         this.props.history.push(`/stores/${this.props.store.id}/edit`);  
@@ -51,7 +73,6 @@ class StoreShow extends React.Component {
     }
 
     editDeleteButton(product){
-        debugger
         let { store, currentUserId, deleteProduct } = this.props;
         let editDeleteButton;
         if (currentUserId === store.owner_id) {
@@ -66,6 +87,10 @@ class StoreShow extends React.Component {
     }
 
     render() {
+        if (!this.state.isLoaded) {
+            return <div>{loading(true)}</div>
+        }
+
         let { store, currentUserId, products, categories ,users } = this.props;
         
         if (!store || products.length === 0 || categories.length === 0 || Object.keys(users).length === 0) {

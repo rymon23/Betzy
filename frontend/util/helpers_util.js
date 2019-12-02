@@ -15,16 +15,47 @@ export const calculateCartCost = (products) => {
 
 export const isDataFetched = (obj) => {  
   if (obj instanceof Array){
-    debugger
     return obj.length > 0;
   };
   if (typeof obj === "object"){
-    debugger
     return Object.keys(obj).length > 0;  
   };
-  debugger
   return Boolean(obj);
 };
+
+export const fetchDataIfUnfetched = (dataSets = {}, callback) => {
+  const keys = Object.keys(dataSets);
+  if (keys.length <= 0) return;
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    debugger
+    if (key && dataSets[key]) {
+      debugger
+      const dataKey = this.props[key];
+      const fetchAction = dataSets[key];
+
+      debugger
+      if (!isDataFetched(dataKey)) promises.push(fetchAction());
+    };
+  };
+
+  debugger
+  const that = this;
+  const promises = [];
+  Object.keys(dataSets).forEach((key) => {
+    const that = this;
+    debugger
+    if (key && dataSets[key]) {
+      debugger
+      if (!isDataFetched(that.props.key)) promises.push(that.props.dataSets[key]());
+    };
+  }, this);
+  debugger
+  return Promise.all(promises).then((result) => {
+    callback(that);
+  });
+}
 
 
 //CURRENT USER

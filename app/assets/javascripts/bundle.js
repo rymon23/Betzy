@@ -5369,6 +5369,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
 /* harmony import */ var _product_product_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../product/product_list */ "./frontend/components/product/product_list.jsx");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5392,6 +5393,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var StoreShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -5403,6 +5405,10 @@ function (_React$Component) {
     _classCallCheck(this, StoreShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(StoreShow).call(this));
+    _this.state = {
+      isLoaded: false
+    };
+    _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
     _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
     _this.handleStock = _this.handleStock.bind(_assertThisInitialized(_this));
     _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
@@ -5412,22 +5418,36 @@ function (_React$Component) {
   }
 
   _createClass(StoreShow, [{
+    key: "updateFetches",
+    value: function updateFetches() {
+      var promises = [];
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.store)) promises.push(this.props.fetchStore(this.props.match.params.storeId));
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.products)) promises.push(this.props.fetchProducts());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.users)) promises.push(this.props.fetchAllUsers());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.categories)) promises.push(this.props.fetchCategories());
+      var that = this;
+      Promise.all(promises).then(function (result) {
+        that.setState({
+          isLoaded: true
+        });
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchStore(this.props.match.params.storeId);
-      this.props.fetchProducts();
-      this.props.fetchCategories();
-      this.props.fetchAllUsers();
+      this.updateFetches(); // this.props.fetchStore(this.props.match.params.storeId);
+      // this.props.fetchProducts();
+      // this.props.fetchCategories();
+      // this.props.fetchAllUsers();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (this.props.match.params.storeId !== prevProps.match.params.storeId) {
-        this.props.fetchStore(this.props.match.params.storeId);
-        this.props.fetchProducts();
-        this.props.fetchCategories();
-        this.props.fetchAllUsers();
+        this.updateFetches();
       }
+
+      ;
     }
   }, {
     key: "handleEdit",
@@ -5466,7 +5486,6 @@ function (_React$Component) {
   }, {
     key: "editDeleteButton",
     value: function editDeleteButton(product) {
-      debugger;
       var _this$props = this.props,
           store = _this$props.store,
           currentUserId = _this$props.currentUserId,
@@ -5492,6 +5511,10 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      if (!this.state.isLoaded) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])(true));
+      }
+
       var _this$props2 = this.props,
           store = _this$props2.store,
           currentUserId = _this$props2.currentUserId,
@@ -6461,7 +6484,7 @@ var DEMO_USER = {
 /*!***************************************!*\
   !*** ./frontend/util/helpers_util.js ***!
   \***************************************/
-/*! exports provided: objectValuesArray, calculateCartCost, isDataFetched, getCurrentUser, getCurrentUserId, hasStore, getStore, getStoreId, categoryHasProducts, arrayShuffle, sample, removeDups, limitStringDisplay */
+/*! exports provided: objectValuesArray, calculateCartCost, isDataFetched, fetchDataIfUnfetched, getCurrentUser, getCurrentUserId, hasStore, getStore, getStoreId, categoryHasProducts, arrayShuffle, sample, removeDups, limitStringDisplay */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6469,6 +6492,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "objectValuesArray", function() { return objectValuesArray; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateCartCost", function() { return calculateCartCost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDataFetched", function() { return isDataFetched; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDataIfUnfetched", function() { return fetchDataIfUnfetched; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentUser", function() { return getCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentUserId", function() { return getCurrentUserId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasStore", function() { return hasStore; });
@@ -6479,6 +6503,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sample", function() { return sample; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeDups", function() { return removeDups; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "limitStringDisplay", function() { return limitStringDisplay; });
+var _this = undefined;
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var objectValuesArray = function objectValuesArray(obj) {
@@ -6493,20 +6519,58 @@ var calculateCartCost = function calculateCartCost(products) {
 };
 var isDataFetched = function isDataFetched(obj) {
   if (obj instanceof Array) {
-    debugger;
     return obj.length > 0;
   }
 
   ;
 
   if (_typeof(obj) === "object") {
-    debugger;
     return Object.keys(obj).length > 0;
   }
 
   ;
-  debugger;
   return Boolean(obj);
+};
+var fetchDataIfUnfetched = function fetchDataIfUnfetched() {
+  var dataSets = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var callback = arguments.length > 1 ? arguments[1] : undefined;
+  var keys = Object.keys(dataSets);
+  if (keys.length <= 0) return;
+
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    debugger;
+
+    if (key && dataSets[key]) {
+      debugger;
+      var dataKey = _this.props[key];
+      var fetchAction = dataSets[key];
+      debugger;
+      if (!isDataFetched(dataKey)) promises.push(fetchAction());
+    }
+
+    ;
+  }
+
+  ;
+  debugger;
+  var that = _this;
+  var promises = [];
+  Object.keys(dataSets).forEach(function (key) {
+    var that = _this;
+    debugger;
+
+    if (key && dataSets[key]) {
+      debugger;
+      if (!isDataFetched(that.props.key)) promises.push(that.props.dataSets[key]());
+    }
+
+    ;
+  }, _this);
+  debugger;
+  return Promise.all(promises).then(function (result) {
+    callback(that);
+  });
 }; //CURRENT USER
 
 var getCurrentUser = function getCurrentUser(state) {
