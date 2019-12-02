@@ -2947,7 +2947,9 @@ function (_React$Component) {
           product = _this$props.product,
           action = _this$props.action,
           categories = _this$props.categories,
-          errors = _this$props.errors;
+          errors = _this$props.errors,
+          keywords = _this$props.keywords;
+      debugger;
 
       if (!product) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_5__["loading"])());

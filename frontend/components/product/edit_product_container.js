@@ -44,7 +44,8 @@ class EditProductForm extends React.Component {
     }
     
     render(){
-        const { product, action, categories, errors } = this.props;
+        const { product, action, categories, errors, keywords } = this.props;
+        debugger
         if (!product){
             return <div>{loading()}</div>
         };
