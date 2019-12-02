@@ -3267,9 +3267,9 @@ function (_React$Component) {
         className: "flex-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(this.state.store_id),
-        className: "clicky"
+        className: "clickable button-save-cancel"
       }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "clicky"
+        className: "clickable button-save-cancel"
       }, "Save and continue"))));
     }
   }]);

@@ -230,10 +230,10 @@ class ProductForm extends React.Component {
                     {/* <div className="sticky-bar"> */}
                     <div className="flex-row">
                         <Link to={`/stores/${this.state.store_id}`}
-                            className="clicky">
+                            className="clickable button-save-cancel">
                             Cancel
                         </Link>
-                        <button className="clicky">Save and continue</button>
+                        <button className="clickable button-save-cancel">Save and continue</button>
                     </div>
                     
                 </form>
