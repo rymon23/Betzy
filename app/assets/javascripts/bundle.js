@@ -5402,8 +5402,8 @@ function (_React$Component) {
     }
   }, {
     key: "handleEdit",
-    value: function handleEdit(event) {
-      event.preventDefault();
+    value: function handleEdit(e) {
+      e.preventDefault();
       this.props.history.push("/stores/".concat(this.props.store.id, "/edit"));
     }
   }, {

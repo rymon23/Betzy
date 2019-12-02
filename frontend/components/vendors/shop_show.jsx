@@ -26,8 +26,8 @@ class StoreShow extends React.Component {
             this.props.fetchAllUsers();
         }
     }
-    handleEdit(event){
-        event.preventDefault();
+    handleEdit(e){
+        e.preventDefault();
         this.props.history.push(`/stores/${this.props.store.id}/edit`);  
     }
     handleStock(e){
