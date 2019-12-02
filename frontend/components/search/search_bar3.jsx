@@ -34,7 +34,11 @@ class SearchBar extends React.Component {
 
     update(event) {
         event.preventDefault();
-        this.setState({ searchQuery: event.target.value });
+        const searchQuery = event.target.value;
+        this.setState({ searchQuery });
+        // if (this.state.keywordsFetched){
+
+        // }
     }
 
     handleSubmit(event) {

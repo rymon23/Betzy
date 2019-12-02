@@ -3764,9 +3764,11 @@ function (_React$Component) {
     key: "update",
     value: function update(event) {
       event.preventDefault();
+      var searchQuery = event.target.value;
       this.setState({
-        searchQuery: event.target.value
-      });
+        searchQuery: searchQuery
+      }); // if (this.state.keywordsFetched){
+      // }
     }
   }, {
     key: "handleSubmit",
