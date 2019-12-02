@@ -2983,6 +2983,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _components_utility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/utility */ "./frontend/components/utility.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -3014,6 +3015,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProductForm =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3024,11 +3026,17 @@ function (_React$Component) {
 
     _classCallCheck(this, ProductForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductForm).call(this, props));
-    _this.state = Object.assign({}, {
-      imageUrls: [],
-      imageFiles: []
-    }, _this.props.product);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductForm).call(this, props)); // this.state = Object.assign({}, {
+    //     imageUrls: [],
+    //     imageFiles: [],
+    //     store_id,
+    //     category_id,
+    // }, this.props.product);
+
+    _this.state = _this.props.product;
+    _this.state.imageUrls = [];
+    _this.state.imageFiles = [];
+    debugger;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     _this.handleClearAll = _this.handleClearAll.bind(_assertThisInitialized(_this));
@@ -3044,8 +3052,8 @@ function (_React$Component) {
       var formData = new FormData();
       formData.append('product[name]', this.state.name);
       formData.append('product[description]', this.state.description);
-      formData.append('product[category_id]', this.state.categoryId);
-      formData.append('product[store_id]', this.state.storeId);
+      formData.append('product[category_id]', this.state.category_id);
+      formData.append('product[store_id]', this.state.store_id);
       formData.append('product[price]', this.state.price);
 
       if (this.state.id) {
@@ -3061,7 +3069,7 @@ function (_React$Component) {
       }
 
       this.props.action(formData).then(function (action) {
-        _this2.props.history.push("/stores/".concat(_this2.state.storeId, "/products/").concat(action.product.id));
+        _this2.props.history.push("/stores/".concat(_this2.state.store_id, "/products/").concat(action.product.id));
       });
     }
   }, {
@@ -3124,6 +3132,8 @@ function (_React$Component) {
       var _this4 = this;
 
       return function (event) {
+        debugger;
+
         _this4.setState(_defineProperty({}, field, event.target.value));
       };
     }
@@ -3159,27 +3169,28 @@ function (_React$Component) {
 
       var errorsLi = errors.map(function (error) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, error);
-      });
-
-      var categoryOptions = function categoryOptions() {
-        if (!categories.length) return null;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-          value: _this5.state.categoryId || '',
-          id: "category",
-          onChange: _this5.update('categoryId')
-        }, categories.map(function (category) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-            value: category.id
-          }, category.name);
-        }));
-      };
+      }); // const categoryOptions = () => {
+      //     if (!categories.length) return null;
+      //     return (
+      //         <select value={this.state.categoryId || ''} 
+      //             id="category" 
+      //             onChange={this.update('category_id')}>
+      //             {categories.map((category) => {
+      //                 return (
+      //                   <option value={category.id}>
+      //                     {category.name}
+      //                   </option>
+      //                 )}
+      //             )}
+      //         </select>)
+      //     }
 
       var keywordOptions = function keywordOptions() {
         if (!keywords.length) return null;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
           value: _this5.state.categoryId || '',
           id: "category",
-          onChange: _this5.update('categoryId')
+          onChange: _this5.update('category_id')
         }, categories.map(function (category) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
             value: category.id
@@ -3234,7 +3245,7 @@ function (_React$Component) {
         className: "label-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "category"
-      }, "Category *"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Pick a category for your product")), categoryOptions())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Category *"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Pick a category for your product")), Object(_components_utility__WEBPACK_IMPORTED_MODULE_2__["categoryOptions"])(categories, this.update('category_id'), null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inventory-pricing"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Inventory and pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "price"
@@ -3253,7 +3264,7 @@ function (_React$Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/stores/".concat(this.state.storeId),
+        to: "/stores/".concat(this.state.store_id),
         className: "clicky"
       }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "clicky"
@@ -3513,7 +3524,7 @@ function (_React$Component) {
           lineItem = _this$props.lineItem;
 
       if (!product || !store) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null); //<div>{loading()}</div>
       }
 
       var quantityOptions = function quantityOptions(product, lineItem) {
@@ -4836,7 +4847,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!*****************************************!*\
   !*** ./frontend/components/utility.jsx ***!
   \*****************************************/
-/*! exports provided: loading, noItemsFound, imgProductCart, imgProductIndex, imgProductShow, imgIcon, itemQuantity, setDarkMode */
+/*! exports provided: loading, noItemsFound, imgProductCart, imgProductIndex, imgProductShow, imgIcon, itemQuantity, categoryOptions, setDarkMode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4848,6 +4859,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imgProductShow", function() { return imgProductShow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imgIcon", function() { return imgIcon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "itemQuantity", function() { return itemQuantity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categoryOptions", function() { return categoryOptions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDarkMode", function() { return setDarkMode; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -4933,7 +4945,6 @@ var itemQuantity = function itemQuantity(product, lineItem, callBack) {
     }
 
     ;
-    debugger;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "quantity-options-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -4944,15 +4955,31 @@ var itemQuantity = function itemQuantity(product, lineItem, callBack) {
   }
 
   ;
-}; // export const itemQuantity = (quantity) => {
-//   return (
-//     <div className="item-quantity-wrapper flex-row">
-//       <span className="">{ quantity }</span>
-//       <FontAwesomeIcon icon="caret-down" size="1x" />
-//     </div>
-//   );
-// };
+};
+var categoryOptions = function categoryOptions(categories, callBack) {
+  var preSelected = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  if (!categories || categories.length < 1) return null;
+  var options = [];
 
+  for (var i = 0; i < categories.length; i++) {
+    var category = categories[i];
+    if (!preSelected) preSelected = category.name;
+    options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: i,
+      value: category.id
+    }, category.name));
+  }
+
+  ;
+  debugger;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "quantity-options-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "quantity-options-selector",
+    onChange: callBack,
+    defaultValue: preSelected
+  }, options));
+};
 var setDarkMode = function setDarkMode(setEnabled) {
   var _appColorVars;
 

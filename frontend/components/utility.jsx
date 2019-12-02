@@ -58,6 +58,7 @@ export const imgIcon = (imgSrc) => {
     </div>
   );
 };
+
 export const itemQuantity = (product, lineItem, callBack) => {
   if (product.quantity <= 0) {
     return <div>This product is currently sold out</div>;
@@ -68,7 +69,6 @@ export const itemQuantity = (product, lineItem, callBack) => {
     for (let i = 1; i <= product.quantity; i++) {
         options.push(<option key={i} value={i}>{i}</option>)
     };
-    debugger
     return <div className="quantity-options-container">
       <select className="quantity-options-selector"
         onChange={callBack} defaultValue={preSelected}>
@@ -78,14 +78,22 @@ export const itemQuantity = (product, lineItem, callBack) => {
   };
 };
 
-// export const itemQuantity = (quantity) => {
-//   return (
-//     <div className="item-quantity-wrapper flex-row">
-//       <span className="">{ quantity }</span>
-//       <FontAwesomeIcon icon="caret-down" size="1x" />
-//     </div>
-//   );
-// };
+export const categoryOptions = (categories, callBack, preSelected = null) => {
+  if (!categories || categories.length < 1) return null;
+    const options = [];
+    for (let i = 0; i < categories.length; i++) {
+      const category = categories[i];
+      if (!preSelected) preSelected = category.name;
+      options.push(<option key={i} value={category.id}>{category.name}</option>)
+    };
+    debugger
+    return <div className="quantity-options-container">
+      <select className="quantity-options-selector"
+        onChange={callBack} defaultValue={preSelected}>
+        {options}
+      </select>
+    </div>;
+};
 
 
 export const setDarkMode = (setEnabled)=> {

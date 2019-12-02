@@ -85,7 +85,7 @@ class ProductShow extends React.Component {
     render() {
         let { product, store, currentUserId, lineItem } = this.props;
         if (!product || !store) {
-            return <div>{loading()}</div>
+            return <div></div>//<div>{loading()}</div>
         }
 
         const quantityOptions = (product, lineItem) => {

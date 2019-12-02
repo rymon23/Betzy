@@ -1,14 +1,21 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { categoryOptions } from '../../components/utility'
 
 class ProductForm extends React.Component {
     constructor(props){
         super(props);
 
-        this.state = Object.assign({}, {
-            imageUrls: [],
-            imageFiles: [],
-        }, this.props.product);
+        // this.state = Object.assign({}, {
+        //     imageUrls: [],
+        //     imageFiles: [],
+        //     store_id,
+        //     category_id,
+        // }, this.props.product);
+        this.state = this.props.product;
+        this.state.imageUrls = [];
+        this.state.imageFiles = [];
+        debugger
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -20,8 +27,8 @@ class ProductForm extends React.Component {
         const formData = new FormData();
         formData.append('product[name]', this.state.name);
         formData.append('product[description]', this.state.description);
-        formData.append('product[category_id]', this.state.categoryId);
-        formData.append('product[store_id]', this.state.storeId);
+        formData.append('product[category_id]', this.state.category_id);
+        formData.append('product[store_id]', this.state.store_id);
         formData.append('product[price]', this.state.price);
 
         if (this.state.id){
@@ -36,7 +43,7 @@ class ProductForm extends React.Component {
         }
         
         this.props.action(formData).then(action => {
-            this.props.history.push(`/stores/${this.state.storeId}/products/${action.product.id}`)
+            this.props.history.push(`/stores/${this.state.store_id}/products/${action.product.id}`)
         });
     }
 
@@ -79,6 +86,7 @@ class ProductForm extends React.Component {
 
     update(field) {
         return (event) => {
+            debugger
             this.setState({[field]: event.target.value});
         }
     }
@@ -108,29 +116,29 @@ class ProductForm extends React.Component {
             return <li>{error}</li>
         })
 
-        const categoryOptions = () => {
-            if (!categories.length) return null;
-            return (
-                <select value={this.state.categoryId || ''} 
-                    id="category" 
-                    onChange={this.update('categoryId')}>
+        // const categoryOptions = () => {
+        //     if (!categories.length) return null;
+        //     return (
+        //         <select value={this.state.categoryId || ''} 
+        //             id="category" 
+        //             onChange={this.update('category_id')}>
 
-                    {categories.map((category) => {
-                        return (
-                          <option value={category.id}>
-                            {category.name}
-                          </option>
-                        )}
-                    )}
-                </select>)
-            }
+        //             {categories.map((category) => {
+        //                 return (
+        //                   <option value={category.id}>
+        //                     {category.name}
+        //                   </option>
+        //                 )}
+        //             )}
+        //         </select>)
+        //     }
 
         const keywordOptions = () => {
             if (!keywords.length) return null;
             return (
                 <select value={this.state.categoryId || ''} 
                     id="category" 
-                    onChange={this.update('categoryId')}>
+                    onChange={this.update('category_id')}>
 
                     {categories.map((category) => {
                         return (
@@ -194,18 +202,10 @@ class ProductForm extends React.Component {
                                     <p>Pick a category for your product</p>
                             </div>
                                 
-                            {categoryOptions()}
+                            {/* {categoryOptions()} */}
+                            {categoryOptions(categories, this.update('category_id') ,null) }
                         </div>
                         
-                        {/* <div className="category">
-
-                            <div className="label-description">
-                                    <label htmlFor="category">Category *</label>
-                                    <p>Pick some keywords for your product</p>
-                            </div>
-                                
-                            {categoryOptions()}
-                        </div> */}
                     </div>
                 
 
@@ -229,7 +229,7 @@ class ProductForm extends React.Component {
 
                     {/* <div className="sticky-bar"> */}
                     <div className="flex-row">
-                        <Link to={`/stores/${this.state.storeId}`}
+                        <Link to={`/stores/${this.state.store_id}`}
                             className="clicky">
                             Cancel
                         </Link>

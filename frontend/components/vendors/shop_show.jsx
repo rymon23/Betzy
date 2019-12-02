@@ -49,7 +49,7 @@ class StoreShow extends React.Component {
             this.props.history.push(`/users/${userId}`);
         }
     }
-    
+
     editDeleteButton(product){
         debugger
         let { store, currentUserId, deleteProduct } = this.props;
