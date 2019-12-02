@@ -1,8 +1,7 @@
 class Api::KeywordsController < ApplicationController
   def index
     @keywords = Keyword.all
-    debugger
+    # debugger
     render :index
   end
-  
 end

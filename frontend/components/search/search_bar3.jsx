@@ -3,15 +3,34 @@ import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { searchAutoComplete } from '../../reducers/selector_reducer'
+import { isDataFetched } from "../../util/helpers_util";
 
 class SearchBar extends React.Component {
-    constructor() {
-        super();
-        this.state = { searchQuery: '' };
+    constructor(props) {
+        super(props);
+        debugger
+        this.state = { 
+            searchQuery: '',
+            keywordsFetched: isDataFetched(this.props.keywords),
+         };
 
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     };
+
+    componentDidMount() {
+        const promises = [];
+        if (!isDataFetched(this.props.keywords)) promises.push(this.props.fetchKeywords());
+        debugger
+        const that = this;
+        Promise.all(promises)
+            .then((result) => {
+                debugger
+                that.setState({
+                    keywordsFetched: isDataFetched(this.props.keywords),
+                });
+            });        
+    }
 
     update(event) {
         event.preventDefault();

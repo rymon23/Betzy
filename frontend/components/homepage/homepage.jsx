@@ -84,7 +84,7 @@ class HomePage extends React.Component {
                             <h3>
                                 <i className="fa fa-check" aria-hidden="true"></i>
                                 Unique everything
-                                </h3>
+                            </h3>
                             <p>We have millions of one-of-a-kind items, so you can find whatever you need
                                     (or really, really want).</p>
                         </li>

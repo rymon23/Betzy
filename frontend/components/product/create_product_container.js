@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
 import ProductForm from "./product_form";
 import { createProduct } from "../../actions/product_actions";
+import { objectValuesArray } from "../../util/helpers_util";
 
 const mapStateToProps = (state, ownProps) => {    
     const store_id = ownProps.match.params.storeId;
+    const categories = objectValuesArray(state.entities.categories);
     const errors = state.errors.product;
     const product = { 
         name: '',

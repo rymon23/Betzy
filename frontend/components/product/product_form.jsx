@@ -90,7 +90,7 @@ class ProductForm extends React.Component {
 
     render(){
 
-        let { categories, errors } = this.props;
+        let { categories, errors, keywords } = this.props;
 
         debugger
 
@@ -122,7 +122,25 @@ class ProductForm extends React.Component {
                           </option>
                         )}
                     )}
-                </select>)}
+                </select>)
+            }
+
+        const keywordOptions = () => {
+            if (!keywords.length) return null;
+            return (
+                <select value={this.state.categoryId || ''} 
+                    id="category" 
+                    onChange={this.update('categoryId')}>
+
+                    {categories.map((category) => {
+                        return (
+                          <option value={category.id}>
+                            {category.name}
+                          </option>
+                        )}
+                    )}
+                </select>)
+            }
 
         return (
             <div>
@@ -169,15 +187,25 @@ class ProductForm extends React.Component {
                             <textarea id="description" value={this.state.description || ''} onChange={this.update('description')} cols="30" rows="10"></textarea>
                         </div>
 
-                    <div className="category">
+                        <div className="category">
 
-                        <div className="label-description">
-                                <label htmlFor="category">Category *</label>
-                                <p>Pick a category for your product</p>
-                        </div>
-                            
+                            <div className="label-description">
+                                    <label htmlFor="category">Category *</label>
+                                    <p>Pick a category for your product</p>
+                            </div>
+                                
                             {categoryOptions()}
-                    </div>
+                        </div>
+                        
+                        {/* <div className="category">
+
+                            <div className="label-description">
+                                    <label htmlFor="category">Category *</label>
+                                    <p>Pick some keywords for your product</p>
+                            </div>
+                                
+                            {categoryOptions()}
+                        </div> */}
                     </div>
                 
 
