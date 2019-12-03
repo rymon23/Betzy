@@ -18,21 +18,11 @@ class CartIndex extends React.Component {
     }
 
     componentDidMount() {
-        debugger
         const promises = [];
         promises.push(this.props.fetchLineItems());
         if (!isDataFetched(this.props.stores)) promises.push(this.props.fetchStores());
         if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
-        debugger
         const that = this;
-        // Promise.allSettled(promises).then((result) => {
-        //     debugger
-        //     that.setState({
-        //         isLoaded: true,
-        //         cartItems: this.props.lineItems,
-        //     })
-        // });
-
         Promise.all(promises)
             .then((result) => {
                 debugger
@@ -50,13 +40,9 @@ class CartIndex extends React.Component {
         this.props.fetchLineItems().then((result) => {
             debugger
             that.setState({
-                // isLoaded: true,
                 cartItems: this.props.lineItems,
             })
         });
-        // this.setState({
-        //     cartItems: this.props.lineItems.filter(lineItem => lineItem.id != lineItemId) 
-        // });
     };
 
     render() {

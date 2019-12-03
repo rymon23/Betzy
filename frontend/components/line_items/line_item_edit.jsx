@@ -37,11 +37,6 @@ class LineItemEdit extends React.Component {
         let { lineItem, product, productStore} = this.props;
         const store = productStore;
         const productLink = `/stores/${product.store_id}/products/${product.id}`
-        // if (!lineItem || !product || !store) {
-        //     return <div>{loading()}</div>
-        // }
-
-        debugger
 
         return (
             <div className="line-item-container flex-column">
@@ -83,12 +78,6 @@ class LineItemEdit extends React.Component {
     }
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//     const lineItems = ownProps.lineItem;
-
-//     debugger
-//     return { lineItems };
-// };
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteLineItem: (lineItem) => dispatch(deleteLineItem(lineItem)),

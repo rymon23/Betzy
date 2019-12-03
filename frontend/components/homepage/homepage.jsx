@@ -3,27 +3,50 @@ import {withRouter} from 'react-router-dom';
 import { APP_NAME } from "../../util/config_util";
 import { loading } from "../utility";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { limitStringDisplay } from "../../util/helpers_util";
 import ProductsList from '../product/product_list';
+import { isDataFetched } from "../../util/helpers_util";
 
 
 class HomePage extends React.Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            isLoaded: false,
+        };
+
+        this.updateFetches = this.updateFetches.bind(this);
         this.recommendedOnClick = this.recommendedOnClick.bind(this);
-        this.ProductPage = this.ProductPage.bind(this);
+        this.toProductPage = this.toProductPage.bind(this);
     }
+
+    updateFetches() {
+        const promises = [];
+        if (!isDataFetched(this.props.users)) promises.push(this.props.fetchAllUsers());
+        if (!isDataFetched(this.props.stores)) promises.push(this.props.fetchStores());
+        if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
+        const that = this;
+        Promise.all(promises)
+            .then((result) => {
+                that.setState({
+                    isLoaded: true,
+                });
+            });        
+    }
+
     componentDidMount() {
-        this.props.fetchCategories();
-        this.props.fetchProducts();
-        this.props.fetchStores();
-        this.props.fetchAllUsers();
+        this.updateFetches();
+        // this.props.fetchProducts();
+        // this.props.fetchStores();
+        // this.props.fetchAllUsers();
     }
+
     recommendedOnClick(e, categoryId){
         e.preventDefault();
         this.props.history.push(`/categories/${categoryId}`);
     }
-    ProductPage(product) {
+
+    toProductPage(product) {
         return (e) => {
             e.preventDefault();
             this.props.history.push(`/stores/${product.store_id}/products/${product.id}`)
@@ -111,7 +134,6 @@ class HomePage extends React.Component {
         const whatIsBetzy = () => {
             return (
                 <div className="wob-container">
-                    {/* <div className="wob-content static-width"> */}
                     <div className="wob-content app-flex-width">
                         <div className="wob-head-container">
                             <div className="wob-head">
@@ -160,8 +182,6 @@ class HomePage extends React.Component {
 
         return (
             <div className="homepage">
-                {/* <div className="static-width"> */}
-
                 <section className="app-flex-width">
 
                     <div className="homepage-banner-container">
@@ -172,42 +192,8 @@ class HomePage extends React.Component {
                                 If it's handcrafted, vintage, custom, or unique, it's on {APP_NAME}.
                             </h1>
                         }
+
                         { currentUser? null : topBanner() }
-{/* 
-                        <div className="homepage-banner-box bg-color-page-b flex-row clickable">
-                            <div className="homepage-banner-gifts-container flex-row">
-                                <div className="homepage-banner-gifts-text-container">
-                                    <div className="homepage-banner-gifts-text">
-                                        <h2>One-of-a-kind... just<br/>like them.</h2>
-                                        <div className="text-with-carot-right">
-                                            <span>Shop gifts</span>
-                                            <FontAwesomeIcon icon="caret-right" size="1x" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="homepage-banner-img-container">
-                                    <img className="contained-img" src={window.pagePics.banners[0]}/>
-                                </div>
-                            </div>
-                            <div className="homepage-banner-section-2-container">
-                                <div className="homepage-banner-section-2">
-                                    <div className="homepage-banner-shop-holidays">
-                                        <img className="contained-img" src={window.pagePics.banners[3]} />
-                                        <h2>Cheerful gatherings, with a twist</h2>
-                                        <div className="text-with-carot-right">
-                                            <span>Shop Thanksgiving</span>
-                                            <FontAwesomeIcon icon="caret-right" size="1x" />
-                                        </div>   
-                                    </div>
-                                    <div className="explore-container">
-                                        <div className="text-with-carot-right">
-                                            <span>Explore 5-star finds</span>
-                                            <FontAwesomeIcon icon="caret-right" size="1x" />
-                                        </div>                             
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
 
                         { middleBanner() }
                     </div>
@@ -222,20 +208,20 @@ class HomePage extends React.Component {
                         }
                             <div className="popular-right-now-container">
                                 <h2 className="popular-right-now">Popular right now</h2> 
-                                {/* <div className="products-listing"> */}
+                                { this.state.isLoaded? 
                                     <ProductsList 
-                                        products={products} 
-                                        stores={stores} 
-                                        clickEvent={this.ProductPage} />
-                                        
-                                    {/* { sampleProducts(products, stores) } */}
-                                {/* </div>                         */}
+                                    products={products} 
+                                    stores={stores} 
+                                    clickEvent={this.toProductPage} />                           
+                                    :
+                                    loading()            
+                                }
+
+                                {/* { sampleProducts(products, stores) } */}
                             </div>
                         
                     </div> 
                 </section>
-
-                {/* </div> */}
 
                 { whatIsBetzy() }
             </div>

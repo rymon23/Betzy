@@ -25,7 +25,6 @@ function Modal({ modal, disableModal }) {
         </div> );
 }
 
-
 const mapStateToProps = (state, ownProps) => {
     return { modal: state.ui.modal };
 };

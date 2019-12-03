@@ -1622,8 +1622,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_config_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/config_util */ "./frontend/util/config_util.js");
 /* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
-/* harmony import */ var _product_product_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../product/product_list */ "./frontend/components/product/product_list.jsx");
+/* harmony import */ var _product_product_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../product/product_list */ "./frontend/components/product/product_list.jsx");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1661,18 +1661,35 @@ function (_React$Component) {
     _classCallCheck(this, HomePage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
+    _this.state = {
+      isLoaded: false
+    };
+    _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
     _this.recommendedOnClick = _this.recommendedOnClick.bind(_assertThisInitialized(_this));
-    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
+    _this.toProductPage = _this.toProductPage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(HomePage, [{
+    key: "updateFetches",
+    value: function updateFetches() {
+      var promises = [];
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_6__["isDataFetched"])(this.props.users)) promises.push(this.props.fetchAllUsers());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_6__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores());
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_6__["isDataFetched"])(this.props.products)) promises.push(this.props.fetchProducts());
+      var that = this;
+      Promise.all(promises).then(function (result) {
+        that.setState({
+          isLoaded: true
+        });
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCategories();
-      this.props.fetchProducts();
-      this.props.fetchStores();
-      this.props.fetchAllUsers();
+      this.updateFetches(); // this.props.fetchProducts();
+      // this.props.fetchStores();
+      // this.props.fetchAllUsers();
     }
   }, {
     key: "recommendedOnClick",
@@ -1681,8 +1698,8 @@ function (_React$Component) {
       this.props.history.push("/categories/".concat(categoryId));
     }
   }, {
-    key: "ProductPage",
-    value: function ProductPage(product) {
+    key: "toProductPage",
+    value: function toProductPage(product) {
       var _this2 = this;
 
       return function (e) {
@@ -1809,11 +1826,11 @@ function (_React$Component) {
         className: "popular-right-now-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "popular-right-now"
-      }, "Popular right now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }, "Popular right now"), this.state.isLoaded ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_5__["default"], {
         products: products,
         stores: stores,
-        clickEvent: this.ProductPage
-      })))), whatIsBetzy());
+        clickEvent: this.toProductPage
+      }) : Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])()))), whatIsBetzy());
     }
   }]);
 
@@ -1945,20 +1962,11 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      debugger;
       var promises = [];
       promises.push(this.props.fetchLineItems());
       if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores());
       if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(this.props.products)) promises.push(this.props.fetchProducts());
-      debugger;
-      var that = this; // Promise.allSettled(promises).then((result) => {
-      //     debugger
-      //     that.setState({
-      //         isLoaded: true,
-      //         cartItems: this.props.lineItems,
-      //     })
-      // });
-
+      var that = this;
       Promise.all(promises).then(function (result) {
         debugger;
         that.setState({
@@ -1978,12 +1986,9 @@ function (_React$Component) {
       this.props.fetchLineItems().then(function (result) {
         debugger;
         that.setState({
-          // isLoaded: true,
           cartItems: _this3.props.lineItems
         });
-      }); // this.setState({
-      //     cartItems: this.props.lineItems.filter(lineItem => lineItem.id != lineItemId) 
-      // });
+      });
     }
   }, {
     key: "render",
@@ -2231,11 +2236,7 @@ function (_React$Component) {
           product = _this$props.product,
           productStore = _this$props.productStore;
       var store = productStore;
-      var productLink = "/stores/".concat(product.store_id, "/products/").concat(product.id); // if (!lineItem || !product || !store) {
-      //     return <div>{loading()}</div>
-      // }
-
-      debugger;
+      var productLink = "/stores/".concat(product.store_id, "/products/").concat(product.id);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "line-item-container flex-column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2268,12 +2269,7 @@ function (_React$Component) {
   }]);
 
   return LineItemEdit;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // const mapStateToProps = (state, ownProps) => {
-//     const lineItems = ownProps.lineItem;
-//     debugger
-//     return { lineItems };
-// };
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
@@ -2636,11 +2632,6 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      // this.props.fetchAllUsers();
-      // this.props.fetchCategories();
-      // if (this.props.loggedIn){
-      //     this.props.fetchLineItems();
-      // }
       var promises = [];
       if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_11__["isDataFetched"])(this.props.categories)) promises.push(this.props.fetchCategories());
       if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_11__["isDataFetched"])(this.props.users)) promises.push(this.props.fetchAllUsers());
@@ -2837,7 +2828,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     category_Id: '',
     store_id: store_id
   };
-  debugger;
   return {
     product: product,
     categories: categories,

@@ -28,12 +28,6 @@ class Navbar extends React.Component{
     }
 
     componentDidMount(){
-        // this.props.fetchAllUsers();
-        // this.props.fetchCategories();
-        // if (this.props.loggedIn){
-        //     this.props.fetchLineItems();
-        // }
-
         const promises = [];
         if (!isDataFetched(this.props.categories)) promises.push(this.props.fetchCategories());
         if (!isDataFetched(this.props.users)) promises.push(this.props.fetchAllUsers());
