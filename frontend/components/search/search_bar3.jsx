@@ -37,15 +37,18 @@ class SearchBar extends React.Component {
         const searchQuery = event.target.value;
         this.setState({ searchQuery });
         // if (this.state.keywordsFetched){
-
         // }
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.fetchSearchResults(this.state.searchQuery);
-        this.props.history.push(`/search/${this.state.searchQuery}`);
-        this.setState({ searchQuery: '' });
+        if (!this.state.searchQuery || this.state.searchQuery.length <= 0){
+            this.setState({ searchQuery: '' });
+        }else {
+            this.props.fetchSearchResults(this.state.searchQuery);
+            this.props.history.push(`/search/${this.state.searchQuery}`);
+            this.setState({ searchQuery: '' });
+        };
     }
 
     render() {
@@ -83,19 +86,4 @@ class SearchBar extends React.Component {
     }
 }
 
-export default withRouter(SearchBar); 
-
-// class SearchProductsForm extends React.Component {
-
-//     render() {
-//         return (
-//             <form onSubmit={this.handleSubmit} className="search-products-form">
-//                 <input type="text"
-//                     onChange={this.update}
-//                     placeholder="Search"
-//                     value={this.state.searchQuery} />
-//                 <button><i className="fa fa-search" aria-hidden="true"></i></button>
-//             </form>
-//         )
-//     }
-// };
+export default withRouter(SearchBar);

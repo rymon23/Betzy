@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
         errors,
     };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         action: (formData) => dispatch(createProduct(formData))
     }

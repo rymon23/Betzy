@@ -97,7 +97,6 @@ class Navbar extends React.Component{
         };
         const cartItemsCounter = (loggedIn, lineItems) => {
             if (loggedIn && lineItems && lineItems.length > 0) {
-                debugger
                 return (<div id="cart-nav-counter-display">
                             <div className="cart-nav-counter-container">
                                 <span id="cart-nav-counter">{lineItems.length}</span>

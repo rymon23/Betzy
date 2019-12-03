@@ -14,7 +14,6 @@ class LoggedInNavbar extends React.Component {
 
     toStorePage(e){
         e.preventDefault();
-        debugger
         let { storeId } = this.props;
         const shopManagerLink = storeId ? `/stores/${storeId}` : "/stores/new";
         this.props.history.push(shopManagerLink);
@@ -22,7 +21,6 @@ class LoggedInNavbar extends React.Component {
 
     toCartPage(e){
         e.preventDefault();
-        debugger
         let { currentUser } = this.props;
         const cartLink = currentUser ? `/users/${currentUser.id}/line_items` : "/";
         this.props.history.push(cartLink);

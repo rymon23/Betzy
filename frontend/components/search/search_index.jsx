@@ -1,25 +1,40 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { selectAllSearchResults } from '../../reducers/selector_reducer';
-import { fetchStores } from '../../actions/store_actions';
 import ProductsList from '../product/product_list';
 import { loading } from "../utility";
+import { isDataFetched } from "../../util/helpers_util";
 
 class SearchIndex extends React.Component {
     constructor() {
         super();
-        this.ProductPage = this.ProductPage.bind(this);
+
+        this.state = {
+            isLoaded: false,
+        };
+
+        this.updateFetches = this.updateFetches.bind(this);
+        this.toProductPage = this.toProductPage.bind(this);
     };
 
-    // ProductPage(product) {
-    //     event.preventDefault();
-    //     return (event) => {
-    //         event.preventDefault();
-    //         this.props.history.push(`/shops/${product.shopId}/products/${product.id}`)
-    //     }
-    // };
+    updateFetches() {
+        const promises = [];
+        const query = this.props.query;
+        if (!isDataFetched(this.props.searchResults) && query) promises.push(this.props.fetchSearchResults(query));
+        if (!isDataFetched(this.props.stores)) promises.push(this.props.fetchStores());
+        // if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
+        const that = this;
+        Promise.all(promises)
+            .then((result) => {
+                that.setState({
+                    isLoaded: true,
+                });
+            });
+    }
 
-    ProductPage(product) {
+    componentDidMount() {
+        this.updateFetches();
+    }
+
+    toProductPage(product) {
         return (e) => {
             e.preventDefault();
             this.props.history.push(`/stores/${product.store_id}/products/${product.id}`)
@@ -27,45 +42,27 @@ class SearchIndex extends React.Component {
     }
 
     render(){
-        let { searchResults, query, stores } = this.props;
-        if (!query || !searchResults) {
-            return <div>{loading()}</div>
-        }
-
         debugger
+        if (!this.state.isLoaded) {
+            return <div>{loading()}</div>
+        };
+        let { searchResults, query, stores } = this.props;
 
-        const productsLi = searchResults.map(product => {
-            return (
-                <li key={product.id} onClick={this.ProductPage(product)} >
-                    <img src={product.imageUrls[0]} />
-                    <p>{product.name.slice(0, 30)}...</p>
-                    {/* <p className="search-shop-name">{product.shopName}</p> */}
-                    <p>USD {product.price}</p>
-                </li>
-            )
-        });
+        if (searchResults && searchResults.length === 0) {
+            return <div>
+                <h2>No results for "{query}"</h2>
+            </div>
+        };
 
         return (
             <div>
                 <h2>"{query} ({searchResults.length} Results)"</h2>
-                {/* <ul>
-                    {productsLi}
-                </ul> */}
                 <ProductsList
                     products={searchResults}
                     stores={stores}
-                    clickEvent={this.ProductPage} />
-            </div>
-        )
+                    clickEvent={this.toProductPage} />
+            </div>)
     };
 }
 
-const mapStateToProps = state => {
-    debugger
-    return {
-        searchResults: selectAllSearchResults(state.entities.searchResults),
-        stores: state.entities.stores
-    }
-};
-
-export default connect(mapStateToProps, null)(SearchIndex);
+export default SearchIndex;

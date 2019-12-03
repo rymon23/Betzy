@@ -1465,7 +1465,6 @@ var Greeting = function Greeting(_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout,
       enableModal = _ref.enableModal;
-  debugger;
 
   var sessionLinks = function sessionLinks() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2447,7 +2446,6 @@ function (_React$Component) {
     key: "toStorePage",
     value: function toStorePage(e) {
       e.preventDefault();
-      debugger;
       var storeId = this.props.storeId;
       var shopManagerLink = storeId ? "/stores/".concat(storeId) : "/stores/new";
       this.props.history.push(shopManagerLink);
@@ -2456,7 +2454,6 @@ function (_React$Component) {
     key: "toCartPage",
     value: function toCartPage(e) {
       e.preventDefault();
-      debugger;
       var currentUser = this.props.currentUser;
       var cartLink = currentUser ? "/users/".concat(currentUser.id, "/line_items") : "/";
       this.props.history.push(cartLink);
@@ -2723,7 +2720,6 @@ function (_React$Component) {
 
       var cartItemsCounter = function cartItemsCounter(loggedIn, lineItems) {
         if (loggedIn && lineItems && lineItems.length > 0) {
-          debugger;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             id: "cart-nav-counter-display"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3801,11 +3797,20 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      this.props.fetchSearchResults(this.state.searchQuery);
-      this.props.history.push("/search/".concat(this.state.searchQuery));
-      this.setState({
-        searchQuery: ''
-      });
+
+      if (!this.state.searchQuery || this.state.searchQuery.length <= 0) {
+        this.setState({
+          searchQuery: ''
+        });
+      } else {
+        this.props.fetchSearchResults(this.state.searchQuery);
+        this.props.history.push("/search/".concat(this.state.searchQuery));
+        this.setState({
+          searchQuery: ''
+        });
+      }
+
+      ;
     }
   }, {
     key: "render",
@@ -3847,19 +3852,7 @@ function (_React$Component) {
   return SearchBar;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SearchBar)); // class SearchProductsForm extends React.Component {
-//     render() {
-//         return (
-//             <form onSubmit={this.handleSubmit} className="search-products-form">
-//                 <input type="text"
-//                     onChange={this.update}
-//                     placeholder="Search"
-//                     value={this.state.searchQuery} />
-//                 <button><i className="fa fa-search" aria-hidden="true"></i></button>
-//             </form>
-//         )
-//     }
-// };
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SearchBar));
 
 /***/ }),
 
@@ -3917,11 +3910,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selector_reducer */ "./frontend/reducers/selector_reducer.js");
-/* harmony import */ var _actions_store_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/store_actions */ "./frontend/actions/store_actions.js");
-/* harmony import */ var _product_product_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../product/product_list */ "./frontend/components/product/product_list.jsx");
-/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
+/* harmony import */ var _product_product_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../product/product_list */ "./frontend/components/product/product_list.jsx");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility */ "./frontend/components/utility.jsx");
+/* harmony import */ var _util_helpers_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/helpers_util */ "./frontend/util/helpers_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3945,8 +3936,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-
 var SearchIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3958,20 +3947,37 @@ function (_React$Component) {
     _classCallCheck(this, SearchIndex);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchIndex).call(this));
-    _this.ProductPage = _this.ProductPage.bind(_assertThisInitialized(_this));
+    _this.state = {
+      isLoaded: false
+    };
+    _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
+    _this.toProductPage = _this.toProductPage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SearchIndex, [{
-    key: "ProductPage",
-    // ProductPage(product) {
-    //     event.preventDefault();
-    //     return (event) => {
-    //         event.preventDefault();
-    //         this.props.history.push(`/shops/${product.shopId}/products/${product.id}`)
-    //     }
-    // };
-    value: function ProductPage(product) {
+    key: "updateFetches",
+    value: function updateFetches() {
+      var promises = [];
+      var query = this.props.query;
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_3__["isDataFetched"])(this.props.searchResults) && query) promises.push(this.props.fetchSearchResults(query));
+      if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_3__["isDataFetched"])(this.props.stores)) promises.push(this.props.fetchStores()); // if (!isDataFetched(this.props.products)) promises.push(this.props.fetchProducts());
+
+      var that = this;
+      Promise.all(promises).then(function (result) {
+        that.setState({
+          isLoaded: true
+        });
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateFetches();
+    }
+  }, {
+    key: "toProductPage",
+    value: function toProductPage(product) {
       var _this2 = this;
 
       return function (e) {
@@ -3983,30 +3989,27 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      debugger;
 
+      if (!this.state.isLoaded) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
+      }
+
+      ;
       var _this$props = this.props,
           searchResults = _this$props.searchResults,
           query = _this$props.query,
           stores = _this$props.stores;
 
-      if (!query || !searchResults) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_5__["loading"])());
+      if (searchResults && searchResults.length === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "No results for \"", query, "\""));
       }
 
-      debugger;
-      var productsLi = searchResults.map(function (product) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: product.id,
-          onClick: _this3.ProductPage(product)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: product.imageUrls[0]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.name.slice(0, 30), "..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "USD ", product.price));
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\"", query, " (", searchResults.length, " Results)\""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      ;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\"", query, " (", searchResults.length, " Results)\""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_1__["default"], {
         products: searchResults,
         stores: stores,
-        clickEvent: this.ProductPage
+        clickEvent: this.toProductPage
       }));
     }
   }]);
@@ -4014,15 +4017,7 @@ function (_React$Component) {
   return SearchIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var mapStateToProps = function mapStateToProps(state) {
-  debugger;
-  return {
-    searchResults: Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_2__["selectAllSearchResults"])(state.entities.searchResults),
-    stores: state.entities.stores
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, null)(SearchIndex));
+/* harmony default export */ __webpack_exports__["default"] = (SearchIndex);
 
 /***/ }),
 
@@ -4038,22 +4033,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _search_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_index */ "./frontend/components/search/search_index.jsx");
 /* harmony import */ var _reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selector_reducer */ "./frontend/reducers/selector_reducer.js");
-/* harmony import */ var _actions_store_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/store_actions */ "./frontend/actions/store_actions.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _actions_store_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/store_actions */ "./frontend/actions/store_actions.js");
+
 
 
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
+  var searchResults = Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_2__["selectAllSearchResults"])(state.entities.searchResults);
+  var stores = state.entities.stores;
+  var query = ownProps.match.params.searchQuery || "";
   return {
-    searchResults: Object(_reducers_selector_reducer__WEBPACK_IMPORTED_MODULE_2__["selectAllSearchResults"])(state.entities.searchResults),
-    stores: state.entities.stores,
-    query: ownProps.match.params.searchQuery || ""
+    searchResults: searchResults,
+    stores: stores,
+    query: query
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, null)(_search_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchSearchResults: function fetchSearchResults(query) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["fetchSearchResults"])(query));
+    },
+    fetchStores: function fetchStores() {
+      return dispatch(Object(_actions_store_actions__WEBPACK_IMPORTED_MODULE_4__["fetchStores"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_search_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 

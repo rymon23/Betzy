@@ -12,8 +12,6 @@ class Api::SearchResultsController < ApplicationController
       @results = []
       substrings = {}
 
-      # debugger
-
       if !params[:search_query] || params[:search_query].length <= 0
           @results = Product.all
       else
