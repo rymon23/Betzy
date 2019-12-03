@@ -9,6 +9,7 @@ class LoggedInNavbar extends React.Component {
         
         this.toStorePage = this.toStorePage.bind(this);
         this.toCartPage = this.toCartPage.bind(this);
+        this.favoritesClick = this.favoritesClick.bind(this);
     }
 
     toStorePage(e){
@@ -25,6 +26,11 @@ class LoggedInNavbar extends React.Component {
         let { currentUser } = this.props;
         const cartLink = currentUser ? `/users/${currentUser.id}/line_items` : "/";
         this.props.history.push(cartLink);
+    }
+
+    favoritesClick(e) {
+        e.preventDefault();
+        alert('The Favorites page is currently under construction');
     }
 
     render(){
@@ -50,7 +56,7 @@ class LoggedInNavbar extends React.Component {
         return (
 
             <div className="logged-bar-container align-items-flex-end">
-                <div className="favorites-container clickable nav-icon-link-container">
+                <div className="favorites-container clickable nav-icon-link-container" onClick={this.favoritesClick}>
                     <FontAwesomeIcon className="favorites logged-nav-options-icon" icon="heart" size="1x" />
                     <p>Favorites</p>
                 </div>

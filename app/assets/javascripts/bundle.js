@@ -2439,6 +2439,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LoggedInNavbar).call(this, props));
     _this.toStorePage = _this.toStorePage.bind(_assertThisInitialized(_this));
     _this.toCartPage = _this.toCartPage.bind(_assertThisInitialized(_this));
+    _this.favoritesClick = _this.favoritesClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2461,6 +2462,12 @@ function (_React$Component) {
       this.props.history.push(cartLink);
     }
   }, {
+    key: "favoritesClick",
+    value: function favoritesClick(e) {
+      e.preventDefault();
+      alert('The Favorites page is currently under construction');
+    }
+  }, {
     key: "render",
     value: function render() {
       var notificationsDropDown = function notificationsDropDown() {
@@ -2480,7 +2487,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logged-bar-container align-items-flex-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "favorites-container clickable nav-icon-link-container"
+        className: "favorites-container clickable nav-icon-link-container",
+        onClick: this.favoritesClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         className: "favorites logged-nav-options-icon",
         icon: "heart",
