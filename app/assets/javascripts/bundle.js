@@ -3166,7 +3166,8 @@ function (_React$Component) {
       var _this$props = this.props,
           categories = _this$props.categories,
           errors = _this$props.errors,
-          keywords = _this$props.keywords;
+          keywords = _this$props.keywords,
+          product = _this$props.product;
       debugger;
       var previews = this.state.imageUrls.map(function (url) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -3257,7 +3258,7 @@ function (_React$Component) {
         className: "label-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "category"
-      }, "Category *"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Pick a category for your product")), Object(_components_utility__WEBPACK_IMPORTED_MODULE_2__["categoryOptions"])(categories, this.update('category_id'), null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Category *"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Pick a category for your product")), Object(_components_utility__WEBPACK_IMPORTED_MODULE_2__["categoryOptions"])(categories, this.update('category_id'), product.category_id ? product.category_id : null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inventory-pricing"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Inventory and pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "price"
@@ -5001,27 +5002,26 @@ var itemQuantity = function itemQuantity(product, lineItem, callBack) {
   ;
 };
 var categoryOptions = function categoryOptions(categories, callBack) {
-  var preSelected = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var preSelectedId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   if (!categories || categories.length < 1) return null;
   var options = [];
 
   for (var i = 0; i < categories.length; i++) {
     var category = categories[i];
-    if (!preSelected) preSelected = category.name;
     options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: i,
       value: category.id
     }, category.name));
   }
 
-  ;
-  debugger;
+  ; // debugger
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "quantity-options-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "quantity-options-selector",
     onChange: callBack,
-    defaultValue: preSelected
+    defaultValue: preSelectedId
   }, options));
 };
 var setDarkMode = function setDarkMode(setEnabled) {

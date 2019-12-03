@@ -98,7 +98,7 @@ class ProductForm extends React.Component {
 
     render(){
 
-        let { categories, errors, keywords } = this.props;
+        let { categories, errors, keywords, product } = this.props;
 
         debugger
 
@@ -198,12 +198,12 @@ class ProductForm extends React.Component {
                         <div className="category">
 
                             <div className="label-description">
-                                    <label htmlFor="category">Category *</label>
-                                    <p>Pick a category for your product</p>
+                                <label htmlFor="category">Category *</label>
+                                <p>Pick a category for your product</p>
                             </div>
                                 
                             {/* {categoryOptions()} */}
-                            {categoryOptions(categories, this.update('category_id') ,null) }
+                            {categoryOptions(categories, this.update('category_id'), product.category_id ? product.category_id : null) }
                         </div>
                         
                     </div>
