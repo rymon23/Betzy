@@ -2832,6 +2832,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     category_Id: '',
     store_id: store_id
   };
+  debugger;
   return {
     product: product,
     categories: categories,
@@ -5925,6 +5926,7 @@ var productErrorsReducer = function productErrorsReducer() {
 
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT_ERRORS"]:
+      debugger;
       return action.errors;
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT"]:

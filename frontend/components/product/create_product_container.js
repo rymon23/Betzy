@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
         category_Id: '', 
         store_id 
     };
+    debugger
 
     return {
         product,

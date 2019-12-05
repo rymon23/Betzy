@@ -40,21 +40,21 @@ class Api::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    debugger
+    # debugger
     if @product.save
-      debugger
+      # debugger
       render :show
     else
-        render json: @product.errors.full_messages
+      render json: @product.errors.full_messages, status: 422
     end
   end
 
   def update
     set_product
     if @product.update(product_params)
-        render :show
+      render :show
     else
-        render json: @product.errors.full_messages
+      render json: @product.errors.full_messages, status: 422
     end
   end
 
