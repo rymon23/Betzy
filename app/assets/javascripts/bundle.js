@@ -3028,6 +3028,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProductForm =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3216,7 +3217,7 @@ function (_React$Component) {
         className: "product-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-images"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, previews), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "images-input-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleClearAll

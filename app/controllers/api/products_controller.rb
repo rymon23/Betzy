@@ -40,7 +40,9 @@ class Api::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    debugger
     if @product.save
+      debugger
       render :show
     else
         render json: @product.errors.full_messages

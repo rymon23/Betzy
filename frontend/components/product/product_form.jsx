@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { categoryOptions } from '../../components/utility'
+import { imgProductShow } from '../../components/utility'
 
 class ProductForm extends React.Component {
     constructor(props){
@@ -157,6 +158,11 @@ class ProductForm extends React.Component {
 
                     <div className="product-images">
                         <h3>Photos</h3>
+
+                        <div>
+                            {previews}
+                        </div>
+                        {/* {imgProductShow(product.imageUrls[0])} */}
 
                         <div className="images-input-button">
                             <button onClick={this.handleClearAll}>Clear all</button>
