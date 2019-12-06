@@ -148,7 +148,7 @@ class ProductForm extends React.Component {
 
         return (
             <div>
-                <h2>Create New Product</h2>
+                <h2>{this.props.formNew ? "Create New Product" : "Edit Product"}</h2>
                 <form onSubmit={this.handleSubmit} className="product-form">
 
                     {errorsList(errors)}

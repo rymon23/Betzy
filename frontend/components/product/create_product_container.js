@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     debugger
 
     return {
+        formNew: true,
         product,
         categories,
         errors,

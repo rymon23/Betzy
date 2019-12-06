@@ -2834,6 +2834,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   };
   debugger;
   return {
+    formNew: true,
     product: product,
     categories: categories,
     errors: errors
@@ -2903,6 +2904,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var errors = state.errors.product;
   debugger;
   return {
+    formNew: false,
     product: product,
     categories: categories,
     keywords: keywords,
@@ -3209,7 +3211,7 @@ function (_React$Component) {
         }));
       };
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create New Product"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formNew ? "Create New Product" : "Edit Product"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "product-form"
       }, Object(_components_utility__WEBPACK_IMPORTED_MODULE_2__["errorsList"])(errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
