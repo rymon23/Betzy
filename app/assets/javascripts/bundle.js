@@ -3029,7 +3029,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var ProductForm =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3228,9 +3227,7 @@ function (_React$Component) {
         multiple: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Upload images"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "listing-details"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Listing details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "product-errors"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errorsLi)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Listing details"), Object(_components_utility__WEBPACK_IMPORTED_MODULE_2__["errorsList"])(errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "label-description"
@@ -4261,7 +4258,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "form-title"
       }, this.props.formTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-form-errors"
+        className: "form-errors-container"
       }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "credentials-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -4894,13 +4891,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!*****************************************!*\
   !*** ./frontend/components/utility.jsx ***!
   \*****************************************/
-/*! exports provided: loading, noItemsFound, imgProductCart, imgProductIndex, imgProductShow, imgIcon, itemQuantity, categoryOptions, setDarkMode */
+/*! exports provided: loading, noItemsFound, errorsList, imgProductCart, imgProductIndex, imgProductShow, imgIcon, itemQuantity, categoryOptions, setDarkMode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loading", function() { return loading; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "noItemsFound", function() { return noItemsFound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "errorsList", function() { return errorsList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imgProductCart", function() { return imgProductCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imgProductIndex", function() { return imgProductIndex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imgProductShow", function() { return imgProductShow; });
@@ -4944,6 +4942,17 @@ var noItemsFound = function noItemsFound() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "util-no-items"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "No items found"));
+};
+var errorsList = function errorsList(errors) {
+  if (!errors || errors.length <= 0) return null;
+  var errorsLi = errors.map(function (error, ix) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: ix
+    }, error);
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-errors-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errorsLi));
 };
 var imgProductCart = function imgProductCart(imgSrc) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -5782,16 +5791,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
-/* harmony import */ var _product_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_errors_reducer */ "./frontend/reducers/product_errors_reducer.js");
-/* harmony import */ var _store_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store_errors_reducer */ "./frontend/reducers/store_errors_reducer.js");
+/* harmony import */ var _store_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store_errors_reducer */ "./frontend/reducers/store_errors_reducer.js");
+/* harmony import */ var _product_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_errors_reducer */ "./frontend/reducers/product_errors_reducer.js");
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  store: _product_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  product: _store_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  store: _store_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  product: _product_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -5926,7 +5935,6 @@ var productErrorsReducer = function productErrorsReducer() {
 
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT_ERRORS"]:
-      debugger;
       return action.errors;
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT"]:

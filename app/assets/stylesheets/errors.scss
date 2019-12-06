@@ -1,10 +1,24 @@
 
+
+// .errors-ul {
+//     font-size: 12px;
+// }
+// .errors-ul > li {
+//     list-style: none;
+//     color: red;
+//     position: absolute;
+//     top: 165px;
+//     left: 20px;
+// }
+
+
+
 .errors {
   color: red;
   font-weight: bold;
 }
 
-.login-form-errors {
+.form-errors-container {
   list-style: none;
   color: red;
   font-size: 14px;

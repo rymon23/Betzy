@@ -30,6 +30,16 @@ export const noItemsFound = () => {
   );
 };
 
+export const errorsList = (errors) => {
+  if (!errors || errors.length <= 0) return null;
+  const errorsLi = errors.map((error, ix) => {
+    return <li key={ix}>{error}</li>
+  })
+  return <div className="form-errors-container">
+      <ul>{errorsLi}</ul>
+  </div>;
+};
+
 export const imgProductCart = (imgSrc) => {
   return (
     <div className="img-wrapper">

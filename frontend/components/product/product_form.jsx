@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { categoryOptions } from '../../components/utility'
-import { imgProductShow } from '../../components/utility'
+import { categoryOptions, errorsList, imgProductShow} from '../../components/utility';
 
 class ProductForm extends React.Component {
     constructor(props){
@@ -114,7 +113,7 @@ class ProductForm extends React.Component {
         }
         
         const errorsLi = errors.map(error => {
-            return <li>{error}</li>
+            return <li >{error}</li>
         })
 
         // const categoryOptions = () => {
@@ -174,11 +173,14 @@ class ProductForm extends React.Component {
                     <div className="listing-details">
                         <h3>Listing details</h3>
 
-                        <div className="product-errors">
+                        {/* <div className="product-errors">
                             <ul>
                                 {errorsLi}
                             </ul> 
-                        </div>
+                        </div> */}
+
+                        { errorsList(errors)}
+                        
                         <br/>
 
                         <div className="title">
