@@ -3245,6 +3245,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "description"
       }, "Description *"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "product description...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        required: true,
         id: "description",
         value: this.state.description || '',
         onChange: this.update('description'),
@@ -5018,8 +5019,21 @@ var categoryOptions = function categoryOptions(categories, callBack) {
   var preSelectedId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   if (!categories || categories.length < 1) return null;
   var options = [];
+  var startIX = 0;
 
-  for (var i = 0; i < categories.length; i++) {
+  if (!preSelectedId) {
+    startIX = 1;
+    preSelectedId = 0;
+    options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: preSelectedId,
+      value: preSelectedId,
+      disabled: true
+    }, "Select a Category"));
+  }
+
+  ;
+
+  for (var i = startIX; i < categories.length; i++) {
     var category = categories[i];
     options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: i,
@@ -5032,6 +5046,7 @@ var categoryOptions = function categoryOptions(categories, callBack) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "quantity-options-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    required: true,
     className: "quantity-options-selector",
     onChange: callBack,
     defaultValue: preSelectedId

@@ -91,13 +91,20 @@ export const itemQuantity = (product, lineItem, callBack) => {
 export const categoryOptions = (categories, callBack, preSelectedId = 1) => {
   if (!categories || categories.length < 1) return null;
     const options = [];
-    for (let i = 0; i < categories.length; i++) {
+    let startIX = 0;
+    if (!preSelectedId){ 
+      startIX = 1;
+      preSelectedId = 0;
+      options.push(
+        <option key={preSelectedId} value={preSelectedId} disabled>Select a Category</option>);
+    };
+    for (let i = startIX; i < categories.length; i++) {
       const category = categories[i];
       options.push(<option key={i} value={category.id}>{category.name}</option>)
     };
     // debugger
     return <div className="quantity-options-container">
-      <select className="quantity-options-selector"
+      <select required className="quantity-options-selector"
         onChange={callBack} defaultValue={preSelectedId}>
         {options}
       </select>

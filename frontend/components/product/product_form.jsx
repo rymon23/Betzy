@@ -188,7 +188,7 @@ class ProductForm extends React.Component {
                                 </p>
                             </div>
                             
-                            <textarea id="description" value={this.state.description || ''} onChange={this.update('description')} cols="30" rows="10"></textarea>
+                            <textarea required id="description" value={this.state.description || ''} onChange={this.update('description')} cols="30" rows="10"></textarea>
                         </div>
 
                         <div className="category">
