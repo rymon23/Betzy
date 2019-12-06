@@ -3179,11 +3179,7 @@ function (_React$Component) {
 
       if (!errors) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      }
-
-      var errorsLi = errors.map(function (error) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, error);
-      }); // const categoryOptions = () => {
+      } // const categoryOptions = () => {
       //     if (!categories.length) return null;
       //     return (
       //         <select value={this.state.categoryId || ''} 
@@ -3198,6 +3194,7 @@ function (_React$Component) {
       //             )}
       //         </select>)
       //     }
+
 
       var keywordOptions = function keywordOptions() {
         if (!keywords.length) return null;
@@ -3215,7 +3212,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create New Product"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "product-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_components_utility__WEBPACK_IMPORTED_MODULE_2__["errorsList"])(errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-images"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, previews), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "images-input-button"
@@ -3227,7 +3224,7 @@ function (_React$Component) {
         multiple: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Upload images"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "listing-details"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Listing details"), Object(_components_utility__WEBPACK_IMPORTED_MODULE_2__["errorsList"])(errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Listing details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "label-description"

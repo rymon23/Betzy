@@ -111,10 +111,6 @@ class ProductForm extends React.Component {
         if (!errors){
             return <div></div>
         }
-        
-        const errorsLi = errors.map(error => {
-            return <li >{error}</li>
-        })
 
         // const categoryOptions = () => {
         //     if (!categories.length) return null;
@@ -155,6 +151,8 @@ class ProductForm extends React.Component {
                 <h2>Create New Product</h2>
                 <form onSubmit={this.handleSubmit} className="product-form">
 
+                    {errorsList(errors)}
+
                     <div className="product-images">
                         <h3>Photos</h3>
 
@@ -172,15 +170,6 @@ class ProductForm extends React.Component {
 
                     <div className="listing-details">
                         <h3>Listing details</h3>
-
-                        {/* <div className="product-errors">
-                            <ul>
-                                {errorsLi}
-                            </ul> 
-                        </div> */}
-
-                        { errorsList(errors)}
-                        
                         <br/>
 
                         <div className="title">
@@ -192,7 +181,6 @@ class ProductForm extends React.Component {
                         </div>
 
                         <div className="description">
-
                             <div className="label-description">
                                 <label htmlFor="description">Description *</label>
                                 <p>
