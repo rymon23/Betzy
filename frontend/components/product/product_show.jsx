@@ -121,8 +121,11 @@ class ProductShow extends React.Component {
             <div className="product-show">
                 {/* <div className="carousel"> */}
                 {/* <div className="product-image-container"> */}
-                { imgProductShow(product.imageUrls[0]) }
-                    {/* <img src={product.imageUrls[0]} /> */}
+                {(product.imageUrls && product.imageUrls.length > 0) ? 
+                    imgProductShow(product.imageUrls[0]) 
+                    : imgProductShow(window.pagePics.placeholders.default)
+                }
+                {/* <img src={product.imageUrls[0]} /> */}
                 {/* </div> */}
                 <div className="product-info">
                     <ul>

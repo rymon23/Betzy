@@ -51,6 +51,13 @@ class Api::ProductsController < ApplicationController
 
   def update
     set_product
+
+    if params[:product][:images]
+      if params[:product][:images].length + @product.images.length > 5
+          @product.images.purge
+      end
+    end
+
     if @product.update(product_params)
       render :show
     else
@@ -89,6 +96,8 @@ class Api::ProductsController < ApplicationController
       :price,
       :quantity, 
       :category_id,
-      :store_id)
+      :store_id,
+      images: []
+      )
   end
 end

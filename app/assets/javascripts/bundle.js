@@ -3076,6 +3076,7 @@ function (_React$Component) {
       }
 
       var imageFiles = this.state.imageFiles;
+      debugger;
 
       if (imageFiles.length > 0) {
         for (var i = 0; i < imageFiles.length; i++) {
@@ -3221,6 +3222,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleClearAll
       }, "Clear all"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        required: true,
         type: "file",
         onChange: this.handleFile,
         multiple: true
@@ -3365,8 +3367,10 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "products-listing-content",
             onClick: clickEvent(product)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          }, product.imageUrls && product.imageUrls.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: product.imageUrls[0]
+          }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: window.pagePics.placeholders["default"]
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_1__["limitStringDisplay"])(product.name, 60)), stores ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             className: "products-listing-store-name"
           }, Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_1__["limitStringDisplay"])(stores[product.store_id].name, 60)) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", product.price))), editDeleteButton ? editDeleteButton(product) : null);
@@ -3578,7 +3582,7 @@ function (_React$Component) {
       }, "Add to cart");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-show"
-      }, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["imgProductShow"])(product.imageUrls[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, product.imageUrls && product.imageUrls.length > 0 ? Object(_utility__WEBPACK_IMPORTED_MODULE_2__["imgProductShow"])(product.imageUrls[0]) : Object(_utility__WEBPACK_IMPORTED_MODULE_2__["imgProductShow"])(window.pagePics.placeholders["default"]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/stores/".concat(store.id)

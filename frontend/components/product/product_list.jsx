@@ -1,6 +1,6 @@
 import React from 'react';
 import { limitStringDisplay } from "../../util/helpers_util";
-import { loading } from "../utility";
+import { loading, imgProductShow } from "../utility";
 
 class ProductsList extends React.Component {
     // constructor(){
@@ -21,7 +21,12 @@ class ProductsList extends React.Component {
                         key={product.id} >
                         <div className="products-listing-content" 
                             onClick={ clickEvent(product) }>
-                            <img src={product.imageUrls[0]} />
+                            {(product.imageUrls && product.imageUrls.length > 0) ?
+                                <img src={product.imageUrls[0]} />
+                                : <img src={window.pagePics.placeholders.default} />
+                            }
+
+                            {/* <img src={product.imageUrls[0]} /> */}
                             <p>{ limitStringDisplay(product.name, 60) }</p>
                             {
                                 stores ? 

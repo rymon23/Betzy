@@ -36,6 +36,8 @@ class ProductForm extends React.Component {
         }
         let {imageFiles} = this.state;
         
+        debugger
+        
         if (imageFiles.length > 0) {
             for (let i = 0; i < imageFiles.length; i++) {
                 formData.append('product[images][]', imageFiles[i]);
@@ -163,7 +165,7 @@ class ProductForm extends React.Component {
 
                         <div className="images-input-button">
                             <button onClick={this.handleClearAll}>Clear all</button>
-                            <input type="file" onChange={this.handleFile} multiple />
+                            <input required type="file" onChange={this.handleFile} multiple />
                             <p>Upload images</p>
                         </div>
                     </div>
