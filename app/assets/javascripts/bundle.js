@@ -4222,6 +4222,7 @@ function (_React$Component) {
     value: function inputFirstName() {
       if (this.props.formType === "login") return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        required: true,
         type: "text",
         value: this.state.username,
         onChange: this.update('username'),
@@ -4261,11 +4262,13 @@ function (_React$Component) {
       }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "credentials-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        required: true,
         type: "email",
         value: this.state.email,
         onChange: this.update('email'),
         className: "credential-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.inputFirstName(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        required: true,
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
@@ -4277,7 +4280,7 @@ function (_React$Component) {
         value: this.props.buttonType,
         className: "credential-submit-submit"
       }), this.demoUserButton())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-form-terms-container"
+        className: "session-terms-and-conditions"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By clicking Register, Continue with Google, or Continue with Facebook, you agree to Etsy's Terms of Use and Privacy Policy. Etsy may send you communications; you may change your preferences in your account settings. We'll never post without your permission."))));
     }
   }]);

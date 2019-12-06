@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
     return (
       <label>First name
          <br />
-        <input type="text"
+        <input required type="text"
           value={this.state.username}
           onChange={this.update('username')}
           className="credential-input" />
@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
             <br/>
             <label>Email address
               <br/>
-              <input type="email" 
+              <input required type="email" 
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="credential-input" />
@@ -88,7 +88,7 @@ class SessionForm extends React.Component {
             <br/>
             <label>Password
               <br/>
-              <input type="password" 
+              <input required type="password" 
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="credential-input" />
@@ -101,7 +101,7 @@ class SessionForm extends React.Component {
                 { this.demoUserButton() }  
               </div>
           </div>
-          <div className="login-form-terms-container">
+          <div className="session-terms-and-conditions">
             <p>
               By clicking Register, Continue with Google, or Continue with Facebook, you agree to Etsy's Terms of Use and Privacy Policy. Etsy may send you communications; you may change your preferences in your account settings. We'll never post without your permission.              
             </p>
