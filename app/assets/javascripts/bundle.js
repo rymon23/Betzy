@@ -5022,11 +5022,11 @@ var categoryOptions = function categoryOptions(categories, callBack) {
   var startIX = 0;
 
   if (!preSelectedId) {
-    startIX = 1;
-    preSelectedId = 0;
+    startIX = 1; // preSelectedId = 0;
+
     options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      key: preSelectedId,
-      value: preSelectedId,
+      key: 0,
+      value: 0,
       disabled: true
     }, "Select a Category"));
   }
@@ -5049,7 +5049,7 @@ var categoryOptions = function categoryOptions(categories, callBack) {
     required: true,
     className: "quantity-options-selector",
     onChange: callBack,
-    defaultValue: preSelectedId
+    defaultValue: preSelectedId ? preSelectedId : 0
   }, options));
 };
 var setDarkMode = function setDarkMode(setEnabled) {
