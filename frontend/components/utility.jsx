@@ -1,5 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const loading = (fullpage = false) => {
   if (fullpage){
@@ -158,7 +157,6 @@ export const setDarkMode = (setEnabled)=> {
 
     };
     Object.keys(appColorVars).forEach((key) => {
-      // debugger
       body.style.setProperty(appColorVars[key], colorDarkMode[key]);
     });
   };
@@ -183,7 +181,6 @@ export const setDarkMode = (setEnabled)=> {
       fontHover: 'rgb(0, 0, 0)',
     };
     Object.keys(appColorVars).forEach((key) => {
-      // debugger
       body.style.setProperty(appColorVars[key], colorDefault[key]);
     });
   };

@@ -4915,9 +4915,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDarkMode", function() { return setDarkMode; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var loading = function loading() {
@@ -5094,7 +5092,6 @@ var setDarkMode = function setDarkMode(setEnabled) {
       fontHover: 'rgb(255, 255, 255)'
     };
     Object.keys(appColorVars).forEach(function (key) {
-      // debugger
       body.style.setProperty(appColorVars[key], colorDarkMode[key]);
     });
   };
@@ -5119,7 +5116,6 @@ var setDarkMode = function setDarkMode(setEnabled) {
       fontHover: 'rgb(0, 0, 0)'
     };
     Object.keys(appColorVars).forEach(function (key) {
-      // debugger
       body.style.setProperty(appColorVars[key], colorDefault[key]);
     });
   };
