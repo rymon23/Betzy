@@ -12,9 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     const lineItem = state.entities.lineItems[productId];
     const currentUser = getCurrentUser(state);
     const currentUserId = getCurrentUserId(currentUser);
-
-    debugger
-
+    
     return {
         product,
         store,

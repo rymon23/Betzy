@@ -138,7 +138,6 @@ class ProductShow extends React.Component {
                         </li>
                         <li>
                             <label className="product-info-name" htmlFor="quantity">Quantity</label>
-                            {/* { quantityOptions(product) } */}
                             { itemQuantity(product, lineItem, this.handleChange)}
                         </li>
                         <li>

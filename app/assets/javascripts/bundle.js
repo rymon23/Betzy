@@ -3649,7 +3649,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var lineItem = state.entities.lineItems[productId];
   var currentUser = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUser"])(state);
   var currentUserId = Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_5__["getCurrentUserId"])(currentUser);
-  debugger;
   return {
     product: product,
     store: store,

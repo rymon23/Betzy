@@ -35,21 +35,21 @@ class LoggedInNavbar extends React.Component {
 
         const notificationsDropDown = () => {
             return (
-                    <div className="dropdown-container dropdown-menu-notify bg-color-page-a">
+                <div className="dropdown-container dropdown-menu-notify bg-color-page-a">
 
-                        <div className="dropdown-header-notify-container">
-                            <h4 className="dropdown-header-notify">Notifications</h4>
+                    <div className="dropdown-header-notify-container">
+                        <h4 className="dropdown-header-notify">Notifications</h4>
+                    </div>
+                    <div className="dropdown-content-notify-container">
+                        <div className="dropdown-content-notify">
+                            <h3>No notifications</h3>
+                            <p>
+                        This is where you'll see updates on your favorite items and shops, like sales, new products, and more
+                            </p>
                         </div>
-                        <div className="dropdown-content-notify-container">
-                            <div className="dropdown-content-notify">
-                                <h3>No notifications</h3>
-                                <p>
-                            This is where you'll see updates on your favorite items and shops, like sales, new products, and more
-                                </p>
-                            </div>
-                        </div>
-                    </div>)
-        }
+                    </div>
+                </div>)
+        };
 
         return (
 

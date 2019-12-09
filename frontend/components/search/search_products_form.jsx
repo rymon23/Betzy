@@ -1,7 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-
 class SearchProductsForm extends React.Component {
     constructor(){
         super();
@@ -13,7 +12,6 @@ class SearchProductsForm extends React.Component {
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     };
-
 
     update(event){
         event.preventDefault();
@@ -27,8 +25,6 @@ class SearchProductsForm extends React.Component {
         this.setState({searchQuery: ''});
     }
 
-    
-
     render(){
         return(
             <form onSubmit={this.handleSubmit} className="search-products-form">
@@ -41,10 +37,6 @@ class SearchProductsForm extends React.Component {
         
         )
     }
-    
-
-    
-    
 };
 
 export default withRouter(SearchProductsForm);
