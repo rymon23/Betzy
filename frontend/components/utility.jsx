@@ -41,6 +41,7 @@ export const errorsList = (errors) => {
 };
 
 export const imgProductCart = (imgSrc) => {
+  imgSrc = imgSrc || window.pagePics.placeholders.default;
   return (
     <div className="img-wrapper">
       <img className="img-product img-product-cart" src={imgSrc} />
@@ -48,6 +49,7 @@ export const imgProductCart = (imgSrc) => {
   );
 };
 export const imgProductIndex = (imgSrc) => {
+  imgSrc = imgSrc || window.pagePics.placeholders.default;
   return (
     <div className="img-wrapper">
       <img className=" img-product img-product-index" src={imgSrc} />
@@ -55,6 +57,7 @@ export const imgProductIndex = (imgSrc) => {
   );
 };
 export const imgProductShow = (imgSrc) => {
+  imgSrc = imgSrc || window.pagePics.placeholders.default;
   return (
     <div className="img-wrapper">
       <img className="img-product img-product-show" src={imgSrc} />

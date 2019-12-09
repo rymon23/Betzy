@@ -4962,6 +4962,7 @@ var errorsList = function errorsList(errors) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errorsLi));
 };
 var imgProductCart = function imgProductCart(imgSrc) {
+  imgSrc = imgSrc || window.pagePics.placeholders["default"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "img-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -4970,6 +4971,7 @@ var imgProductCart = function imgProductCart(imgSrc) {
   }));
 };
 var imgProductIndex = function imgProductIndex(imgSrc) {
+  imgSrc = imgSrc || window.pagePics.placeholders["default"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "img-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -4978,6 +4980,7 @@ var imgProductIndex = function imgProductIndex(imgSrc) {
   }));
 };
 var imgProductShow = function imgProductShow(imgSrc) {
+  imgSrc = imgSrc || window.pagePics.placeholders["default"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "img-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
