@@ -59,7 +59,7 @@ class CategoryShow extends React.Component {
     render(){
         let {category, stores, products} = this.props;
 
-        debugger
+        // debugger
         if (!category || !this.state.isLoaded || Object.keys(products).length  === 0 || Object.keys(stores).length === 0 ){
             return <section>{ loading() }</section>
         }

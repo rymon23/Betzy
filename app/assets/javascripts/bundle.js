@@ -1207,8 +1207,7 @@ function (_React$Component) {
       var _this$props = this.props,
           category = _this$props.category,
           stores = _this$props.stores,
-          products = _this$props.products;
-      debugger;
+          products = _this$props.products; // debugger
 
       if (!category || !this.state.isLoaded || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
