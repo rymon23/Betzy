@@ -813,9 +813,15 @@ function () {
         openRequest.onupgradeneeded = function (e) {
           //    alert("request upgrade called");
           db = e.target.result;
-          db.createObjectStore("data", {
-            keyPath: "gen"
-          }); // store.createIndex("gen", "gen", { unique: false });
+
+          if (!db.objectStoreNames.contains('user')) {
+            db.createObjectStore('user', {
+              keyPath: "id",
+              autoIncrement: true
+            });
+          } // db.createObjectStore("data", { keyPath: "gen" });
+          // store.createIndex("gen", "gen", { unique: false });
+
         };
 
         openRequest.onsuccess = function (e) {
