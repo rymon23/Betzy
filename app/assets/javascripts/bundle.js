@@ -819,9 +819,37 @@ function () {
               keyPath: "id",
               autoIncrement: true
             });
-          } // db.createObjectStore("data", { keyPath: "gen" });
-          // store.createIndex("gen", "gen", { unique: false });
+          }
 
+          ;
+
+          if (!db.objectStoreNames.contains('lineItems')) {
+            db.createObjectStore('lineItems', {
+              keyPath: "id",
+              autoIncrement: true
+            });
+          }
+
+          ;
+
+          if (!db.objectStoreNames.contains('categories')) {
+            db.createObjectStore('categories', {
+              keyPath: "id",
+              autoIncrement: true
+            });
+          }
+
+          ;
+
+          if (!db.objectStoreNames.contains('keywords')) {
+            db.createObjectStore('keywords', {
+              keyPath: "id",
+              autoIncrement: true
+            });
+          }
+
+          ; // db.createObjectStore("data", { keyPath: "gen" });
+          // store.createIndex("gen", "gen", { unique: false });
         };
 
         openRequest.onsuccess = function (e) {
@@ -832,11 +860,11 @@ function () {
             console.log("ERROR" + e.target.errorCode);
           };
 
-          var openAction = function openAction(actionType, newData, cb) {
+          var openAction = function openAction(actionType, newData, storeName, cb) {
             debugger;
             var myRecord = null;
-            var tx = db.transaction("data", "readwrite");
-            var store = tx.objectStore("data");
+            var tx = db.transaction(storeName, "readwrite");
+            var store = tx.objectStore(storeName);
             var objectStoreRequest;
 
             if (actionType === "INIT" || actionType === "GET" || actionType === "UPDATE") {
@@ -850,17 +878,18 @@ function () {
             ;
 
             tx.oncomplete = function (event) {
-              console.log("Transaction Completed");
+              console.log("Transaction Completed On ObjectStore: ".concat(storeName));
               cb(myRecord);
             };
 
             tx.onerror = function (event) {
               //   alert("Transaction Error:" + event.target.errorCode)
-              console.log.length("Transaction Error:" + event.target.errorCode);
+              // console.log.length("Transaction Error:" + event.target.errorCode);
+              console.log("Transaction Error - ObjectStore: ".concat(storeName, " - ").concat(event.target.errorCode));
             };
 
             objectStoreRequest.onsuccess = function (event) {
-              console.log("object store request successful");
+              console.log("Request Successful - ObjectStore: ".concat(storeName, " - ").concat(event.target.errorCode));
               debugger;
               var requestUpdate = {};
 

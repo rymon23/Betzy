@@ -35,7 +35,16 @@ class ClientDatabase {
                 db = e.target.result;
                 if (!db.objectStoreNames.contains('user')){
                     db.createObjectStore('user', { keyPath: "id", autoIncrement: true });
-                }
+                };
+                if (!db.objectStoreNames.contains('lineItems')){
+                    db.createObjectStore('lineItems', { keyPath: "id", autoIncrement: true });
+                };
+                if (!db.objectStoreNames.contains('categories')){
+                    db.createObjectStore('categories', { keyPath: "id", autoIncrement: true });
+                };
+                if (!db.objectStoreNames.contains('keywords')){
+                    db.createObjectStore('keywords', { keyPath: "id", autoIncrement: true });
+                };
                 // db.createObjectStore("data", { keyPath: "gen" });
                 // store.createIndex("gen", "gen", { unique: false });
             };
@@ -47,11 +56,11 @@ class ClientDatabase {
                     console.log("ERROR" + e.target.errorCode);
                 };
 
-                const openAction = (actionType, newData, cb) => {
+                const openAction = (actionType, newData, storeName, cb) => {
                     debugger
                     let myRecord = null;
-                    const tx = db.transaction("data", "readwrite");
-                    const store = tx.objectStore("data");
+                    const tx = db.transaction(storeName, "readwrite");
+                    const store = tx.objectStore(storeName);
                     let objectStoreRequest;
 
                     if (actionType === "INIT"
@@ -68,15 +77,17 @@ class ClientDatabase {
                     };
 
                     tx.oncomplete = function (event) {
-                        console.log("Transaction Completed");
+                        console.log(`Transaction Completed On ObjectStore: ${storeName}`);
                         cb(myRecord);
                     };
                     tx.onerror = function (event) {
                         //   alert("Transaction Error:" + event.target.errorCode)
-                        console.log.length("Transaction Error:" + event.target.errorCode);
+                        // console.log.length("Transaction Error:" + event.target.errorCode);
+                        console.log(`Transaction Error - ObjectStore: ${storeName} - ${event.target.errorCode}`);
                     };
                     objectStoreRequest.onsuccess = function (event) {
-                        console.log("object store request successful");
+                        console.log(`Request Successful - ObjectStore: ${storeName} - ${event.target.errorCode}`);
+
                         debugger
                         let requestUpdate = {};
 
