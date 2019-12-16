@@ -1,9 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { categoryHasProducts } from "../../util/helpers_util";
 import { loading, noItemsFound } from "../utility";
 import ProductsList from '../product/product_list';
 import { isDataFetched } from "../../util/helpers_util";
+
+function CategoryShowHook(props) {
+    const [isLoaded, setLoaded] = useState(false);
+
+    debugger
+
+    useEffect(() => {
+        updateFetches();
+    });
+
+    const updateFetches = () => {
+        const promises = [];
+        if (!isDataFetched(props.category)) promises.push(props.fetchCategory(props.match.params.categoryId));
+        if (!isDataFetched(props.products)) promises.push(props.fetchProducts());
+        if (!isDataFetched(props.stores)) promises.push(props.fetchStores());
+        const that = this;
+        Promise.all(promises)
+            .then((result) => {
+                setLoaded(true);
+                // that.setState({
+                //     isLoaded: true,
+                // });
+            });
+    };
+
+    const toProductPage = (product) => {
+        event.preventDefault();
+        return (event) => {
+            event.preventDefault();
+            props.history.push(`/stores/${product.store_id}/products/${product.id}`)
+        };
+    };
+
+    let { category, stores, products } = props;
+
+    debugger
+
+    if (!category || !isLoaded || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
+        return <section>{loading()}</section>
+    };
+
+    if (category && categoryHasProducts(category)) {
+        return <div className="products-listing" id="category-show">
+            <h2>{category.name}</h2>
+            <ul>{noItemsFound()}</ul>
+        </div>
+    };
+
+    return (
+        <div className="products-listing" id="category-show">
+            <h2>{category.name}</h2>
+            <ProductsList
+                products={products}
+                stores={stores}
+                clickEvent={() => toProductPage} />
+        </div>
+    );
+};
+
+
 
 class CategoryShow extends React.Component {
     constructor(props) {
@@ -83,4 +143,4 @@ class CategoryShow extends React.Component {
     }
 }
 
-export default CategoryShow;
+export default CategoryShowHook;

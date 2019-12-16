@@ -1168,12 +1168,87 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
 
+
+
+function CategoryShowHook(props) {
+  var _this = this;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isLoaded = _useState2[0],
+      setLoaded = _useState2[1];
+
+  debugger;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    updateFetches();
+  });
+
+  var updateFetches = function updateFetches() {
+    var promises = [];
+    if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(props.category)) promises.push(props.fetchCategory(props.match.params.categoryId));
+    if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(props.products)) promises.push(props.fetchProducts());
+    if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(props.stores)) promises.push(props.fetchStores());
+    var that = _this;
+    Promise.all(promises).then(function (result) {
+      setLoaded(true); // that.setState({
+      //     isLoaded: true,
+      // });
+    });
+  };
+
+  var toProductPage = function toProductPage(product) {
+    event.preventDefault();
+    return function (event) {
+      event.preventDefault();
+      props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
+    };
+  };
+
+  var category = props.category,
+      stores = props.stores,
+      products = props.products;
+  debugger;
+
+  if (!category || !isLoaded || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
+  }
+
+  ;
+
+  if (category && Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["categoryHasProducts"])(category)) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "products-listing",
+      id: "category-show"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["noItemsFound"])()));
+  }
+
+  ;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "products-listing",
+    id: "category-show"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_product_list__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    products: products,
+    stores: stores,
+    clickEvent: function clickEvent() {
+      return toProductPage;
+    }
+  }));
+}
+
+;
 
 var CategoryShow =
 /*#__PURE__*/
@@ -1181,17 +1256,17 @@ function (_React$Component) {
   _inherits(CategoryShow, _React$Component);
 
   function CategoryShow(props) {
-    var _this;
+    var _this2;
 
     _classCallCheck(this, CategoryShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CategoryShow).call(this, props));
-    _this.state = {
+    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(CategoryShow).call(this, props));
+    _this2.state = {
       isLoaded: false
     };
-    _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
-    _this.toProductPage = _this.toProductPage.bind(_assertThisInitialized(_this));
-    return _this;
+    _this2.updateFetches = _this2.updateFetches.bind(_assertThisInitialized(_this2));
+    _this2.toProductPage = _this2.toProductPage.bind(_assertThisInitialized(_this2));
+    return _this2;
   }
 
   _createClass(CategoryShow, [{
@@ -1227,13 +1302,13 @@ function (_React$Component) {
   }, {
     key: "toProductPage",
     value: function toProductPage(product) {
-      var _this2 = this;
+      var _this3 = this;
 
       event.preventDefault();
       return function (event) {
         event.preventDefault();
 
-        _this2.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
+        _this3.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
       };
     }
   }, {
@@ -1269,7 +1344,7 @@ function (_React$Component) {
   return CategoryShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (CategoryShow);
+/* harmony default export */ __webpack_exports__["default"] = (CategoryShowHook);
 
 /***/ }),
 
