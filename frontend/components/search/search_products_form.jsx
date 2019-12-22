@@ -34,7 +34,6 @@ class SearchProductsForm extends React.Component {
                        value={this.state.searchQuery}/>
                 <button><i className="fa fa-search" aria-hidden="true"></i></button>
             </form>
-        
         )
     }
 };

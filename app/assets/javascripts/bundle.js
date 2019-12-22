@@ -1184,14 +1184,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function CategoryShowHook(props) {
-  var _this = this;
-
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isLoaded = _useState2[0],
-      setLoaded = _useState2[1];
+      setLoaded = _useState2[1]; // debugger
 
-  debugger;
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     updateFetches();
   });
@@ -1201,11 +1199,8 @@ function CategoryShowHook(props) {
     if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(props.category)) promises.push(props.fetchCategory(props.match.params.categoryId));
     if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(props.products)) promises.push(props.fetchProducts());
     if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_2__["isDataFetched"])(props.stores)) promises.push(props.fetchStores());
-    var that = _this;
     Promise.all(promises).then(function (result) {
-      setLoaded(true); // that.setState({
-      //     isLoaded: true,
-      // });
+      setLoaded(true);
     });
   };
 
@@ -1220,7 +1215,6 @@ function CategoryShowHook(props) {
   var category = props.category,
       stores = props.stores,
       products = props.products;
-  debugger;
 
   if (!category || !isLoaded || Object.keys(products).length === 0 || Object.keys(stores).length === 0) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, Object(_utility__WEBPACK_IMPORTED_MODULE_3__["loading"])());
@@ -1256,17 +1250,17 @@ function (_React$Component) {
   _inherits(CategoryShow, _React$Component);
 
   function CategoryShow(props) {
-    var _this2;
+    var _this;
 
     _classCallCheck(this, CategoryShow);
 
-    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(CategoryShow).call(this, props));
-    _this2.state = {
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CategoryShow).call(this, props));
+    _this.state = {
       isLoaded: false
     };
-    _this2.updateFetches = _this2.updateFetches.bind(_assertThisInitialized(_this2));
-    _this2.toProductPage = _this2.toProductPage.bind(_assertThisInitialized(_this2));
-    return _this2;
+    _this.updateFetches = _this.updateFetches.bind(_assertThisInitialized(_this));
+    _this.toProductPage = _this.toProductPage.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CategoryShow, [{
@@ -1302,13 +1296,13 @@ function (_React$Component) {
   }, {
     key: "toProductPage",
     value: function toProductPage(product) {
-      var _this3 = this;
+      var _this2 = this;
 
       event.preventDefault();
       return function (event) {
         event.preventDefault();
 
-        _this3.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
+        _this2.props.history.push("/stores/".concat(product.store_id, "/products/").concat(product.id));
       };
     }
   }, {
