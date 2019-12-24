@@ -4,6 +4,18 @@ import { loading } from "../utility";
 import LineItemEdit from "./line_item_edit";
 import { isDataFetched } from "../../util/helpers_util";
 
+
+function CartIndexHook(props) {
+    const [isLoaded, setLoaded] = useState(false);
+
+    // debugger
+
+    useEffect(() => {
+        updateFetches();
+    });
+
+};
+
 class CartIndex extends React.Component {
     constructor() {
         super();
