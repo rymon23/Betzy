@@ -2050,8 +2050,7 @@ function CartIndexHook(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isLoaded = _useState2[0],
-      setLoaded = _useState2[1]; // debugger
-
+      setLoaded = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     updateFetches();

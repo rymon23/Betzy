@@ -8,8 +8,6 @@ import { isDataFetched } from "../../util/helpers_util";
 function CartIndexHook(props) {
     const [isLoaded, setLoaded] = useState(false);
 
-    // debugger
-
     useEffect(() => {
         updateFetches();
     });
