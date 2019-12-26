@@ -7,13 +7,14 @@ import { isDataFetched } from "../../util/helpers_util";
 
 function CartIndexHook(props) {
     const [isLoaded, setLoaded] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
-    const [error, setError] = useState(null);
+    const [cartItems, setCartItems] = useState(props.lineItems || []);
+    // const [error, setError] = useState(null);
     let totalCost = 0.00;
 
     useEffect(() => {
+        debugger
         updateFetches();
-    });
+    },[]);
     
     const updateFetches = () => {
         const promises = [];
@@ -23,6 +24,7 @@ function CartIndexHook(props) {
         Promise.all(promises)
             .then((result) => {
                 setLoaded(true);
+                debugger
                 setCartItems(props.lineItems);
                 // setError();
             });

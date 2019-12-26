@@ -2052,20 +2052,17 @@ function CartIndexHook(props) {
       isLoaded = _useState2[0],
       setLoaded = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.lineItems || []),
       _useState4 = _slicedToArray(_useState3, 2),
       cartItems = _useState4[0],
-      setCartItems = _useState4[1];
+      setCartItems = _useState4[1]; // const [error, setError] = useState(null);
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
-      _useState6 = _slicedToArray(_useState5, 2),
-      error = _useState6[0],
-      setError = _useState6[1];
 
   var totalCost = 0.00;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    debugger;
     updateFetches();
-  });
+  }, []);
 
   var updateFetches = function updateFetches() {
     var promises = [];
@@ -2074,6 +2071,7 @@ function CartIndexHook(props) {
     if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(props.products)) promises.push(props.fetchProducts());
     Promise.all(promises).then(function (result) {
       setLoaded(true);
+      debugger;
       setCartItems(props.lineItems); // setError();
     });
   };
