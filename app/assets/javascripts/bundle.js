@@ -2052,9 +2052,126 @@ function CartIndexHook(props) {
       isLoaded = _useState2[0],
       setLoaded = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      cartItems = _useState4[0],
+      setCartItems = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState6 = _slicedToArray(_useState5, 2),
+      error = _useState6[0],
+      setError = _useState6[1];
+
+  var totalCost = 0.00;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     updateFetches();
   });
+
+  var updateFetches = function updateFetches() {
+    var promises = [];
+    promises.push(props.fetchLineItems());
+    if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(props.stores)) promises.push(props.fetchStores());
+    if (!Object(_util_helpers_util__WEBPACK_IMPORTED_MODULE_4__["isDataFetched"])(props.products)) promises.push(props.fetchProducts());
+    Promise.all(promises).then(function (result) {
+      setLoaded(true);
+      setCartItems(props.lineItems); // setError();
+    });
+  };
+
+  var removeCartItem = function removeCartItem(lineItemId, e) {
+    e.preventDefault();
+    props.fetchLineItems().then(function (result) {
+      setCartItems(props.lineItems);
+    });
+  };
+
+  debugger;
+
+  if (!isLoaded) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utility__WEBPACK_IMPORTED_MODULE_2__["loading"])());
+  } // let { lineItems, stores, products } = this.props;
+
+
+  var stores = props.stores,
+      products = props.products;
+  var lineItems = cartItems;
+
+  if (lineItems && lineItems.length === 0) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your cart is empty"));
+  }
+
+  debugger;
+
+  var lineItemsListing = function lineItemsListing(lineItems, products, stores) {
+    totalCost = 0.00;
+    var lineItemsList = lineItems.sort(function (a, b) {
+      if (a.id < b.id) {
+        return 1;
+      } else if (a.id > b.id) {
+        return -1;
+      } else {
+        return 0;
+      }
+
+      ;
+    }).map(function (lineItem) {
+      var product = products[lineItem.product_id];
+      var store = stores[product.store_id];
+      debugger;
+      totalCost += parseFloat(product.price);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "line-items-listing-li",
+        key: lineItem.id
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_line_item_edit__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        lineItem: lineItem,
+        product: product,
+        productStore: store,
+        removeCartItem: removeCartItem
+      }));
+    });
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "line-items-listing-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "line-items-listing-ul"
+    }, lineItemsList));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart-index-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart-index"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart-header-container flex-row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, lineItems.length === 1 ? '1 item' : "".concat(lineItems.length, " items"), " in your cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/",
+    className: "cart-keep-shopping hover-underline"
+  }, "Keep shopping"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart-content-container flex-row"
+  }, lineItemsListing(lineItems, products, stores), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart-checkout-container flex-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "How you'll pay"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart-checkout-pay-options-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "cart-checkout-payment-option"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "payment",
+    value: "vista"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://www.merchantequip.com/image/?logos=v|m|a|d&height=32",
+    alt: "Merchant Equipment Store Credit Card Logos"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "cart-checkout-payment-option"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "payment",
+    value: "paypal"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://www.merchantequip.com/image/?logos=p&height=32",
+    alt: "Merchant Equipment Store Credit Card Logos"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart-total-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Item(s) total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", totalCost.toFixed(2)))))));
 }
 
 ;
